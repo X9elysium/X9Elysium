@@ -1,0 +1,58 @@
+{
+  "site": {
+    "title": "X9Elysium",
+    "base_url": "/",
+    "favicon": "/images/favicon.png",
+    "logo": "/images/X9Elysium_logo.jpg",
+    "logo_width": "60",
+    "logo_height": "40",
+    "logo_text": "X9Elysium"
+  },
+
+  "settings": {
+    "pagination": 6,
+    "summary_length": 200,
+    "blog_folder": "posts"
+  },
+
+  "params": {
+    "tag_manager_id": "",
+    "contact_form_action": "#",
+    "footer_content": "Lorem ipsum dolor sit sed dmi amet, consectetur adipiscing. Cdo tellus, sed condimentum volutpat.",
+    "copyright": "Designed & Developed"
+  },
+
+  "contact_info": {
+    "phone": "+1(604)968-6952",
+    "email": "info@andromeda.io",
+    "location": "Vancouver, BC"
+  },
+
+  "nav_button": {
+    "enable": true,
+    "label": "Contact Us Now",
+    "link": "/contact"
+  },
+
+  "metadata": {
+    "meta_author": "X9Elysium",
+    "meta_image": "/images/og-image.png",
+    "meta_description": "X9Elysium"
+  },
+
+  "call_to_action": {
+    "enable": true,
+    "title": "Get in Touch With Us",
+    "content": "Ready to leverage the power of technology for your business success? Contact us today to learn how X9Elysium can enhance your IT strategy and business performance.",
+    "button": {
+      "label": "Contact Us Now",
+      "link": "/contact"
+    }
+  },
+
+  "disqus": {
+    "enable": true,
+    "shortname": "X9Elysium-template",
+    "settings": {}
+  }
+}
