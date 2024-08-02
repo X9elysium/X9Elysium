@@ -4,6 +4,7 @@ import { Head, Html, Main, NextScript } from "next/document";
 
 const Document = () => {
   // destructuring items from config object
+  // googletagmanager
   const { favicon } = config.site;
   return (
     <Html lang="en">
@@ -12,6 +13,7 @@ const Document = () => {
             async
             src={`https://www.googletagmanager.com/gtag/js?id=GTM-PTM5F7CJ`}
           ></script>
+          
           <script
             dangerouslySetInnerHTML={{
               __html: `
