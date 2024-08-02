@@ -5,6 +5,7 @@ import { Head, Html, Main, NextScript } from "next/document";
 const Document = () => {
   // destructuring items from config object
   // googletagmanager
+  // test 2
   const { favicon } = config.site;
   return (
     <Html lang="en">
