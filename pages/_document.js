@@ -1,19 +1,20 @@
 import TwSizeIndicator from "@components/TwSizeIndicator";
 import config from "@config/config.json";
-import { Html, Head, Main, NextScript } from 'next/document';
-import Document from 'next/document';
+import { Head, Html, Main, NextScript } from "next/document";
 
 const Document = () => {
   // destructuring items from config object
   // googletagmanager
-  // test 2
+  //test
   const { favicon } = config.site;
   return (
     <Html lang="en">
       <Head>
-
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
-          <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-PTM5F7CJ"></script>
+      <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=GTM-PTM5F7CJ`}
+          ></script>
+          
           <script
             dangerouslySetInnerHTML={{
               __html: `
@@ -24,7 +25,6 @@ const Document = () => {
               `,
             }}
           />
-  
         {/* favicon */}
         <link rel="shortcut icon" href={favicon} />
         {/* theme meta */}
@@ -42,7 +42,7 @@ const Document = () => {
         />
       </Head>
       <body>
-          <noscript>
+      <noscript>
             <iframe
               src="https://www.googletagmanager.com/ns.html?id=GTM-PTM5F7CJ"
               height="0"
@@ -50,7 +50,7 @@ const Document = () => {
               style={{ display: 'none', visibility: 'hidden' }}
             ></iframe>
           </noscript>
-        <Main />
+          <Main />
         <TwSizeIndicator />
         <NextScript />
       </body>
