@@ -34,7 +34,6 @@ const App = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-
         {/* google font css */}
         <link
           rel="preconnect"
