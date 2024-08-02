@@ -34,6 +34,14 @@ const App = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-79Z3DZETYL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-79Z3DZETYL');
+</script>
         {/* google font css */}
         <link
           rel="preconnect"
