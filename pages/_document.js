@@ -10,21 +10,6 @@ const Document = () => {
   return (
     <Html lang="en">
       <Head>
-      <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=GTM-PTM5F7CJ`}
-          ></script>
-          
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', 'GTM-PTM5F7CJ');
-              `,
-            }}
-          />
         {/* favicon */}
         <link rel="shortcut icon" href={favicon} />
         {/* theme meta */}
@@ -42,14 +27,6 @@ const Document = () => {
         />
       </Head>
       <body>
-      <noscript>
-            <iframe
-              src="https://www.googletagmanager.com/ns.html?id=GTM-PTM5F7CJ"
-              height="0"
-              width="0"
-              style={{ display: 'none', visibility: 'hidden' }}
-            ></iframe>
-          </noscript>
           <Main />
         <TwSizeIndicator />
         <NextScript />
