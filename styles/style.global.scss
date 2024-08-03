@@ -4,6 +4,9 @@
 
 @layer base {
   @import "base";
+  .bg-body {
+    @apply bg-gray-100; // or any other utility classes you need
+  }
 }
 
 @layer components {
