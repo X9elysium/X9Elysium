@@ -3,24 +3,34 @@
 @tailwind utilities;
 
 @layer base {
-  @import "base";
-  .bg-body {
-    @apply bg-gray-100; // or any other utility classes you need
+  html {
+    @apply text-base;
   }
-}
-
-@layer components {
-  @import "components";
-  @import "navigation";
-  @import "buttons";
-}
-
-@layer utilities {
-  @import "utilities";
-}
-
-@layer swiper {
-  @import '../node_modules/swiper/swiper.scss';
-  @import 'swiper/scss/pagination';
-  @import './swiper.scss';
+  body {
+    @apply text-[15px] bg-body font-primary font-normal leading-relaxed text-text;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-primary font-semibold leading-tight text-dark;
+  }
+  h1, .h1 {
+    @apply text-h1-sm md:text-h1;
+  }
+  h2, .h2 {
+    @apply text-h2-sm md:text-h2;
+  }
+  h3, .h3 {
+    @apply text-h3-sm md:text-h3;
+  }
+  h4, .h4 {
+    @apply text-h4;
+  }
+  h5, .h5 {
+    @apply text-h5;
+  }
+  h6, .h6 {
+    @apply text-h6;
+  }
+  .bg-body {
+    @apply bg-gray-100;
+  }
 }
