@@ -4,7 +4,7 @@ import Head from "next/head";
 import Script from "next/script"; // Import Script component
 import { useEffect, useState } from "react";
 import TagManager from "react-gtm-module";
-import "styles/style.global.scss";
+import "styles/style.scss";
 
 const App = ({ Component, pageProps }) => {
   // Import google font css
@@ -26,11 +26,9 @@ const App = ({ Component, pageProps }) => {
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      process.env.NODE_ENV === "production" &&
-        config.params.tag_manager_id &&
-        TagManager.initialize(tagManagerArgs);
-    }, 5000);
+    if (process.env.NODE_ENV === "production" && config.params.tag_manager_id) {
+      TagManager.initialize(tagManagerArgs);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
