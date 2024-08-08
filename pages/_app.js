@@ -4,7 +4,7 @@ import Head from "next/head";
 import Script from "next/script"; // Import Script component
 import { useEffect, useState } from "react";
 import TagManager from "react-gtm-module";
-import "styles/style.scss";
+import "styles/style.global.scss";
 
 const App = ({ Component, pageProps }) => {
   // Import google font css
