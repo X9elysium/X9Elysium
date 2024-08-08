@@ -1,8 +1,13 @@
 ---
-title: "Mastering E-Commerce with Shopify"
-date: 2024-08-07
-tags: ["E-Commerce", "Shopify", "X9Elysium"]
+title: Mastering E-Commerce with Shopify
+image: /images/blog/02.jpg
+author:
+  name: Darshan Patel
+  avatar: /images/author/dp.jpeg
+date: 2023-04-04T05:00:00Z
+draft: false
 ---
+
 
 ## Mastering E-Commerce with Shopify
 
