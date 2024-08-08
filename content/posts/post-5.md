@@ -1,11 +1,12 @@
 ---
-title: Securing Your Digital Assets - Preventing and Responding to Data Breaches
+title: Securing Your Digital Assets > Preventing and Responding to Data Breaches
 image: /images/blog/05.jpg
 author:
   name: Darshan Patel
   avatar: /images/author/dp.jpeg
 date: 2024-08-14T05:00:00Z
 draft: false
+
 ---
 
 ## Securing Your Digital Assets: Preventing and Responding to Data Breaches
