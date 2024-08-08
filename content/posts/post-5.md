@@ -1,7 +1,5 @@
 ---
-title: Securing Your Digital Assets: Preventing and Responding to Data Breaches
-date: 2024-08-08
-title: Enhancing Site Speed for a Superior User Experience
+title: Securing Your Digital Assets - Preventing and Responding to Data Breaches
 image: /images/blog/05.jpg
 author:
   name: Darshan Patel
