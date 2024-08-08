@@ -1,6 +1,6 @@
 ---
 title: Mastering E-Commerce with Shopify
-image: /images/blog/02.jpg
+image: /images/blog/01.jpg
 author:
   name: Darshan Patel
   avatar: /images/author/dp.jpeg
