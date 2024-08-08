@@ -3,7 +3,7 @@
  */
 
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   content: [
     './src/**/*.{js,ts,jsx,tsx}',
     './pages/**/*.{js,ts,jsx,tsx}',
