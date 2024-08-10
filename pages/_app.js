@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import TagManager from "react-gtm-module";
 import "styles/style.global.scss";
 
+// hujhuihuh
 const App = ({ Component, pageProps }) => {
   // Import google font css
   const pf = theme.fonts.font_family.primary;
