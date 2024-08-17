@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import TagManager from "react-gtm-module";
 import "styles/style.global.scss";
 
-// hujhuihuh
 const App = ({ Component, pageProps }) => {
   // Import google font css
   const pf = theme.fonts.font_family.primary;
@@ -21,6 +20,18 @@ const App = ({ Component, pageProps }) => {
     ).then((res) => res.text().then((css) => setFontcss(css)));
   }, [pf, sf]);
 
+
+  const tagManagerArgs = {
+    gtmId: config.params.tag_manager_id,
+  };
+  
+  useEffect(() => {
+    setTimeout(() => {
+      process.env.NODE_ENV === "production" &&
+        config.params.tag_manager_id &&
+        TagManager.initialize(tagManagerArgs);
+    }, 5000);
+    
   // Google Tag Manager (GTM)
   const tagManagerArgs = {
     gtmId: config.params.tag_manager_id,
@@ -36,6 +47,7 @@ const App = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
+
         {/* Google font css */}
         <link
           rel="preconnect"
@@ -53,6 +65,25 @@ const App = ({ Component, pageProps }) => {
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
       </Head>
+
+      {/* Google Tag (gtag.js) */}
+      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-2SHBLBMKK0" />
+      <Script id="google-tag">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-2SHBLBMKK0');
+        `}
+      </Script>
+
+      {/* Klaviyo script */}
+      <Script
+        src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=XpEmXv"
+        strategy="afterInteractive"
+      />
+      
       {/* GTM script */}
       <Script
         id="gtm-script"
@@ -73,6 +104,7 @@ const App = ({ Component, pageProps }) => {
           style={{ display: "none", visibility: "hidden" }}
         ></iframe>
       </noscript>
+
       <Component {...pageProps} />
     </>
   );

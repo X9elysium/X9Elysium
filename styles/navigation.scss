@@ -3,7 +3,7 @@
   @apply h-[116px];
 }
 .header {
-  @apply fixed left-0 w-full  top-0 z-50 bg-white py-[29px] transition-all duration-500 ;
+  @apply fixed left-0 w-full  top-0 z-50 bg-white py-[10px] transition-all duration-500 ;
 
   &-sticky {
     @apply py-[18px] shadow-[0_2px_8px_rgba(32,45,73,0.1)];

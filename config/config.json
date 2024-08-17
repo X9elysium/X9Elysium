@@ -2,15 +2,15 @@
   "site": {
     "title": "X9Elysium",
     "base_url": "/",
-    "favicon": "/images/logo-1.png",
-    "logo": "/images/logo-1.png",
+    "favicon": "/images/logoo.jpg",
+    "logo": "/images/logoo.jpg",
     "logo_width": "60",
     "logo_height": "60",
     "logo_text": "X9Elysium"
   },
 
   "settings": {
-    "pagination": 6,
+    "pagination": 9,
     "summary_length": 200,
     "blog_folder": "posts"
   },
@@ -24,7 +24,7 @@
 
   "contact_info": {
     "phone": "+1(604)968-6952",
-    "email": "darshanpatel1902@gmail.com",
+    "email": "hello@X9Elysium.com",
     "location": "Vancouver, BC"
   },
 

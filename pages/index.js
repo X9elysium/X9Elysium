@@ -168,7 +168,7 @@ const Home = ({ banner, brands, features, intro, speciality, testimonial }) => {
                       "mb-8 banner-title opacity-0"
                     )}
                     <div className="banner-btn opacity-0">
-                      <Link className="btn btn-primary" href={banner.link.href}>
+                      <Link className="btn btn-primary" href="https://wa.me/+16049686952?text=Hello%2C%20I%20would%20like%20more%20information">
                         {banner.link.label}
                       </Link>
                     </div>
@@ -275,7 +275,7 @@ const Home = ({ banner, brands, features, intro, speciality, testimonial }) => {
       </section>
 
       {/* Short Into */}
-      {/* <section className="section pt-0">
+      <section className="section pt-0">
         <div className="container-xl">
           <div className="relative px-4 py-[70px]">
             <div className="text-center">
@@ -343,7 +343,7 @@ const Home = ({ banner, brands, features, intro, speciality, testimonial }) => {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Special Features */}
       <section className="section">
@@ -392,7 +392,7 @@ const Home = ({ banner, brands, features, intro, speciality, testimonial }) => {
       </section>
 
       {/* Testimonial */}
-      {/* <section className="section pt-0">
+      <section className="section pt-0">
         <div className="container">
           <div className="animate text-center">
             <p>{testimonial.subtitle}</p>
@@ -475,7 +475,7 @@ const Home = ({ banner, brands, features, intro, speciality, testimonial }) => {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Cta */}
       <Cta />
