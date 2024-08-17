@@ -15,7 +15,7 @@ function Cta() {
           <div className="animate">
             {markdownify(title, "h2", "section-title")}
             {markdownify(content, "p", "mt-10")}
-            <Link href={button.link} className="btn btn-primary mt-10">
+            <Link href="https://wa.me/+16049686952?text=Hello%2C%20I%20would%20like%20more%20information"className="btn btn-primary mt-10">
               {button.label}
             </Link>
           </div>
