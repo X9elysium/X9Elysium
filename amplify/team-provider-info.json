@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-x9elysium-dev-3d2b4-authRole",
+      "UnauthRoleArn": "arn:aws:iam::539347032605:role/amplify-x9elysium-dev-3d2b4-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::539347032605:role/amplify-x9elysium-dev-3d2b4-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-x9elysium-dev-3d2b4-deployment",
+      "UnauthRoleName": "amplify-x9elysium-dev-3d2b4-unauthRole",
+      "StackName": "amplify-x9elysium-dev-3d2b4",
+      "StackId": "arn:aws:cloudformation:us-west-2:539347032605:stack/amplify-x9elysium-dev-3d2b4/249c8450-5d0d-11ef-98e4-0af17fc1ac51",
+      "AmplifyAppId": "d98gg43vml76s"
+    },
+    "categories": {
+      "auth": {
+        "x9elysium": {}
+      }
+    }
+  }
+}
