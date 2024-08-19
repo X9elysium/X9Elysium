@@ -22,7 +22,7 @@ brands:
 #features
 features:
   sub_title: SPECIAL FEATURES
-  title: Exceptional Services for Exceptional Brand
+  title: Exceptional Services for Exceptional Brands
   description: 
   list:
     - icon: 'lock' # feather icon: https://feathericons.com/
@@ -32,20 +32,20 @@ features:
       title: Custom eCommerce Solutions
       content: Creating tailor-made software solutions to enhance your brand’s online presence and streamline operations.
     - icon: 'shield'
-      title: Consulting
+      title: IT Consulting
       content: Providing strategic insights and guidance to help your brand navigate the evolving digital marketplace.
     - icon: 'link'
       title: Digital Marketing & SEO
       content: Driving growth and boosting online visibility with targeted digital marketing strategies and SEO optimization.
-    - icon: 'lock'
+    - icon: 'code'
       title: Software Development
       content: Transform your ideas into reality with our custom software development services. We design and build software solutions that add value to your business.
-    
+
 #intro
 intro:
   title: Built Exclusively For You
   subtitle: SHORT INTRO VIDEO
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi egestas </br> Werat viverra id et aliquet. vulputate egestas sollicitudin.
+  description: Discover how X9Elysium can elevate your brand with our exclusive services. Learn more through our short intro video.
   thumbnail: "/images/video-popup.jpg"
   video_id: dyZcRRWiuuw
 
@@ -62,44 +62,41 @@ speciality:
     description: We offer specialized services for new ecommerce brands. From website development to customized product creation, we provide the tools you need to build a successful online presence.
     image: /images/features-02.png
 
-
 #Testimonial
 testimonial:
   title: OUR TESTIMONIALS
   subtitle: Don’t Take Our Word For It
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi egestas </br> Werat viverra id et aliquet. vulputate egestas sollicitudin.
+  description: See what our clients have to say about their experiences with X9Elysium.
   list:
     - author: David Cameron
       avatar: /images/user-img/01.jpg
       profession: CEO, Nexuspay
-      content: Lorem ipsum dolor amet, conseetur adipiscing elit. Ornare quam porta arcu congue felis volutpat. Vitae lectudbfs pellentesque vitae dolor
-    - author: David Cameron
+      content: X9Elysium transformed our eCommerce presence with their innovative strategies and hands-on support. We saw a significant boost in our online traffic and conversions.
+    - author: Sarah Johnson
       avatar: /images/user-img/02.jpg
-      profession: CEO, Nexuspay
-      content: Lorem ipsum dolor amet, conseetur adipiscing elit. Ornare quam porta arcu congue felis volutpat. Vitae lectudbfs pellentesque vitae dolor
-    - author: David Cameron
+      profession: Founder, EcoShop
+      content: The team at X9Elysium provided invaluable IT consulting that helped us scale our operations and improve our overall efficiency.
+    - author: Mark Thompson
       avatar: /images/user-img/03.jpg
-      profession: CEO, Nexuspay
-      content: Lorem ipsum dolor amet, conseetur adipiscing elit. Ornare quam porta arcu congue felis volutpat. Vitae lectudbfs pellentesque vitae dolor
-    - author: David Cameron
+      profession: CTO, GreenLeaf Tech
+      content: Thanks to X9Elysium's expertise in AI and eCommerce, we’ve been able to implement cutting-edge solutions that keep us ahead of the competition.
+    - author: Emily Roberts
       avatar: /images/user-img/04.png
-      profession: CEO, Nexuspay
-      content: Lorem ipsum dolor amet, conseetur adipiscing elit. Ornare quam porta arcu congue felis volutpat. Vitae lectudbfs pellentesque vitae dolor
-    - author: David Cameron
+      profession: Owner, Beauty Haven
+      content: Their custom software development service was exactly what we needed. The end product was flawless and delivered on time.
+    - author: John Williams
       avatar: /images/user-img/05.jpg
-      profession: CEO, Nexuspay
-      content: Lorem ipsum dolor amet, conseetur adipiscing elit. Ornare quam porta arcu congue felis volutpat. Vitae lectudbfs pellentesque vitae dolor
-    - author: David Cameron
+      profession: CEO, TechTribe
+      content: X9Elysium’s digital marketing strategies have greatly increased our brand’s visibility. We’re very pleased with the results.
+    - author: Lisa Carter
       avatar: /images/user-img/06.jpg
-      profession: CEO, Nexuspay
-      content: Lorem ipsum dolor amet, conseetur adipiscing elit. Ornare quam porta arcu congue felis volutpat. Vitae lectudbfs pellentesque vitae dolor
-    - author: David Cameron
+      profession: COO, Trendy Threads
+      content: We partnered with X9Elysium for IT consulting and saw immediate improvements in our business processes and technology alignment.
+    - author: James Edwards
       avatar: /images/user-img/07.jpg
-      profession: CEO, Nexuspay
-      content: Lorem ipsum dolor amet, conseetur adipiscing elit. Ornare quam porta arcu congue felis volutpat. Vitae lectudbfs pellentesque vitae dolor
-    - author: David Cameron
+      profession: Co-founder, PetWorld
+      content: The SEO optimization by X9Elysium brought us from obscurity to one of the top results in our niche.
+    - author: Maria Lopez
       avatar: /images/user-img/08.jpg
-      profession: CEO, Nexuspay
-      content: Lorem ipsum dolor amet, conseetur adipiscing elit. Ornare quam porta arcu congue felis volutpat. Vitae lectudbfs pellentesque vitae dolor
-
----
+      profession: CMO, BrightLights
+      content: Their comprehensive approach to eCommerce development made all the difference for our brand. We highly recommend X9Elysium for any growing business.

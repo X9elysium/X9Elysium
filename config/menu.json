@@ -27,6 +27,10 @@
       "url": "/blog"
     },
     {
+      "name": "Contact",
+      "url": "/contact"
+    },
+    {
       "name": "Terms & Conditions",
       "url": "/terms-policy"
     }
