@@ -74,11 +74,12 @@ Integrating secure and reliable payment gateways is essential for providing a sm
 
 Successful marketing campaigns are vital for driving traffic to your e-commerce site and converting visitors into customers. This involves using a mix of digital marketing channels, including social media, email marketing, pay-per-click (PPC) advertising, and content marketing. Key strategies include:
 
-Retargeting Ads: Re-engaging users who have visited your site but didn’t make a purchase.
-Influencer Marketing: Partnering with influencers to promote your products to a broader audience.
-Content Marketing: Creating valuable and informative content that attracts and educates potential customers.
-Upselling and Cross-selling Techniques:
-Upselling and cross-selling are powerful techniques for increasing average order value (AOV). Upselling involves encouraging customers to purchase a higher-end product, while cross-selling suggests complementary products. Examples include:
+###### Retargeting Ads: Re-engaging users who have visited your site but didn’t make a purchase.
+###### Influencer Marketing: Partnering with influencers to promote your products to a broader audience.
+###### Content Marketing: Creating valuable and informative content that attracts and educates potential customers.
+###### Upselling and Cross-selling Techniques: Upselling and cross-selling are powerful techniques for increasing average order value (AOV). Upselling involves encouraging customers to purchase a higher-end product, while cross-selling suggests complementary products. 
+
+Examples include:
 
 Product Bundles: Offering discounts on bundled products.
 Related Product Recommendations: Suggesting accessories or complementary items during checkout.
