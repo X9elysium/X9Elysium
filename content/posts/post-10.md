@@ -1,6 +1,6 @@
 ---
-title: Maximizing ROI with E-commerce Consulting - Strategies for Online Business Success
-image: /images/blog/01.jpg
+title: Online Business Success
+image: /images/blog/05.jpg
 author:
   name: Darshan Patel
   avatar: /images/author/dp.jpeg
