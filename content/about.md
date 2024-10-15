@@ -60,13 +60,13 @@ our_member:
   title: The People Behind
   content: We are a team of passionate designers, developers, and strategists committed to delivering exceptional results. Our diverse skill set and collaborative approach ensure that every project is a success.
   list:
-    - name: Valentin Staykov
+    - name: Darshan Patel
       field: Operations
       image: /images/about/team/01.jpg
-    - name: Bukiakta Bansalo
+    - name: Adhvait Jadav
       field: Product
       image: /images/about/team/02.jpg
-    - name: Ortrin Okaster
+    - name: Sam Okaster
       field: Engineering
       image: /images/about/team/03.jpg
 
