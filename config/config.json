@@ -15,11 +15,11 @@
     "blog_folder": "posts"
   },
 
-  "params": {
+    "params": {
     "tag_manager_id": "",
     "contact_form_action": "#",
-    "footer_content": "Lorem ipsum dolor sit sed dmi amet, consectetur adipiscing. Cdo tellus, sed condimentum volutpat.",
-    "copyright": "Designed & Developed"
+    "footer_content": "Thank you for visiting X9Elysium. We are dedicated to delivering cutting-edge technology solutions that empower businesses to grow and thrive in today's digital landscape. Stay connected for the latest updates and innovations.",
+    "copyright": "Designed & Developed by X9Elysium"
   },
 
   "contact_info": {
