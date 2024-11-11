@@ -63,10 +63,10 @@ const App = ({ Component, pageProps }) => {
       </Script>
 
       {/* Klaviyo script */}
-      <Script
+      {/* <Script
         src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=XpEmXv"
         strategy="afterInteractive"
-      />
+      /> */}
 
       <Component {...pageProps} />
     </>

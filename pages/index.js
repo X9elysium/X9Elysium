@@ -274,7 +274,7 @@ const Home = ({ banner, brands, features, intro, speciality, testimonial }) => {
         </div>
       </section>
 
-      {/* Short Into */}
+      {/* Short Into 
       <section className="section pt-0">
         <div className="container-xl">
           <div className="relative px-4 py-[70px]">
@@ -343,7 +343,9 @@ const Home = ({ banner, brands, features, intro, speciality, testimonial }) => {
             </div>
           </div>
         </div>
-      </section>
+      </section>  
+
+      */}
 
       {/* Special Features */}
       <section className="section">
