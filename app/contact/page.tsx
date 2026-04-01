@@ -451,10 +451,10 @@ export default function ContactPage() {
                           <p className="text-red-400 text-sm">
                             Something went wrong. Please try again or email us at{" "}
                             <a
-                              href="mailto:hello@X9Elysium.com"
+                              href="mailto:darshanpatel1902@gmail.com"
                               className="underline"
                             >
-                              hello@X9Elysium.com
+                              darshanpatel1902@gmail.com
                             </a>
                           </p>
                         </div>
@@ -492,7 +492,7 @@ export default function ContactPage() {
                   </h3>
                   <div className="space-y-5">
                     <a
-                      href="mailto:hello@X9Elysium.com"
+                      href="mailto:darshanpatel1902@gmail.com"
                       className="flex items-center gap-4 text-zinc-400 hover:text-[#10b981] transition-colors group"
                     >
                       <div className="w-10 h-10 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center group-hover:border-[#10b981]/30 transition-colors">
@@ -500,7 +500,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <p className="text-sm text-white">Email</p>
-                        <p className="text-sm">hello@X9Elysium.com</p>
+                        <p className="text-sm">darshanpatel1902@gmail.com</p>
                       </div>
                     </a>
                     <a
@@ -520,8 +520,9 @@ export default function ContactPage() {
                         <MapPin className="w-4 h-4" />
                       </div>
                       <div>
-                        <p className="text-sm text-white">Location</p>
-                        <p className="text-sm">Vancouver, BC</p>
+                        <p className="text-sm text-white">Locations</p>
+                        <p className="text-sm">HQ: 28 Ann St, Mississauga, ON</p>
+                        <p className="text-sm text-zinc-500">Calgary &bull; Vancouver</p>
                       </div>
                     </div>
                   </div>
@@ -572,7 +573,7 @@ export default function ContactPage() {
                 conversation about where your commerce is headed.
               </p>
               <a
-                href="mailto:hello@X9Elysium.com"
+                href="mailto:darshanpatel1902@gmail.com"
                 className="inline-flex items-center justify-center gap-2.5 px-10 py-4 bg-black text-white text-[0.875rem] font-bold uppercase tracking-[1.5px] rounded-lg transition-all duration-300 hover:bg-[#151515] active:scale-[0.98]"
               >
                 Email Us Directly

@@ -43,11 +43,11 @@ export default function Footer() {
             </p>
             <div className="flex flex-col gap-3">
               <a
-                href="mailto:hello@X9Elysium.com"
+                href="mailto:darshanpatel1902@gmail.com"
                 className="flex items-center gap-2.5 text-sm text-[#9b9b9b] hover:text-[#10b981] transition-colors duration-300"
               >
                 <Mail className="w-4 h-4 flex-shrink-0" />
-                hello@X9Elysium.com
+                darshanpatel1902@gmail.com
               </a>
               <a
                 href="tel:+16049686952"
@@ -56,9 +56,12 @@ export default function Footer() {
                 <Phone className="w-4 h-4 flex-shrink-0" />
                 +1 (604) 968-6952
               </a>
-              <div className="flex items-center gap-2.5 text-sm text-[#9b9b9b]">
-                <MapPin className="w-4 h-4 flex-shrink-0" />
-                Vancouver, BC
+              <div className="flex items-start gap-2.5 text-sm text-[#9b9b9b]">
+                <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                <div>
+                  <span className="block">HQ: 28 Ann Street, Mississauga, ON</span>
+                  <span className="block">Calgary &bull; Vancouver</span>
+                </div>
               </div>
             </div>
           </div>
