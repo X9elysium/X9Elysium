@@ -67,6 +67,7 @@ npm start        # Production server
 - [x] Route conflict resolved (pages/index.js removed)
 - [x] Framer Motion scroll-reveal animations on all sections
 - [x] Inter font via next/font
+- [x] Git history cleaned — single commit, sole author (Darsh Patel), all stale branches deleted
 
 ### Remaining
 - [ ] About page (App Router)
