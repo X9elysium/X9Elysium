@@ -34,9 +34,9 @@ module.exports = {
     screens: {
       sm: "540px",
       md: "768px",
-      lg: "992px",
+      lg: "960px",
       xl: "1280px",
-      "2xl": "1536px",
+      "2xl": "1440px",
     },
     container: {
       center: true,
@@ -53,6 +53,10 @@ module.exports = {
         "border-secondary": theme.colors.default.theme_color.border_secondary,
         "theme-light": theme.colors.default.theme_color.theme_light,
         "theme-dark": theme.colors.default.theme_color.theme_dark,
+        accent: "#009eff",
+        "light-bg": "#f4f4f4",
+        "warm-bg": "#f7f5f2",
+        muted: "#9b9b9b",
       },
       fontSize: {
         base: font_base + "px",
@@ -65,10 +69,29 @@ module.exports = {
         h4: h4 + "rem",
         h5: h5 + "rem",
         h6: h6 + "rem",
+        display: [
+          "clamp(3.25rem, 8vw, 6.25rem)",
+          { lineHeight: "1", fontWeight: "300" },
+        ],
+        "h2-display": [
+          "clamp(2.75rem, 6vw, 3.25rem)",
+          { lineHeight: "1", fontWeight: "300" },
+        ],
+        "h3-display": [
+          "clamp(2.25rem, 4vw, 2.75rem)",
+          { lineHeight: "1.2", fontWeight: "500" },
+        ],
+        label: [
+          "0.875rem",
+          { lineHeight: "1", fontWeight: "700", letterSpacing: "0.15em" },
+        ],
       },
       fontFamily: {
         primary: [fontPrimary, fontPrimaryType],
         secondary: [fontSecondary, fontSecondaryType],
+      },
+      maxWidth: {
+        content: "1440px",
       },
     },
   },

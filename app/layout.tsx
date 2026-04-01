@@ -4,14 +4,16 @@ import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
   variable: "--font-inter",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "X9Elysium — Shopify Unified Commerce Consulting",
+  metadataBase: new URL("https://x9elysium.com"),
+  title: "X9Elysium | Shopify Commerce Consulting",
   description:
-    "Scale your Shopify store with expert unified commerce solutions. Audits, custom integrations, migrations, and growth strategies for ambitious retailers.",
+    "Enterprise Shopify consulting. Store audits, custom integrations, platform migrations, and unified commerce strategy for ambitious retailers.",
   keywords: [
     "Shopify",
     "unified commerce",
@@ -23,19 +25,22 @@ export const metadata: Metadata = {
     "X9Elysium",
   ],
   authors: [{ name: "X9Elysium" }],
+  icons: {
+    icon: "/images/favicon.png",
+  },
   openGraph: {
-    title: "X9Elysium — Shopify Unified Commerce Consulting",
+    title: "X9Elysium | Shopify Commerce Consulting",
     description:
-      "Scale your Shopify store with expert unified commerce solutions.",
+      "Enterprise Shopify consulting. Store audits, custom integrations, platform migrations, and unified commerce strategy for ambitious retailers.",
     type: "website",
     url: "https://x9elysium.com",
     siteName: "X9Elysium",
   },
   twitter: {
     card: "summary_large_image",
-    title: "X9Elysium — Shopify Unified Commerce Consulting",
+    title: "X9Elysium | Shopify Commerce Consulting",
     description:
-      "Scale your Shopify store with expert unified commerce solutions.",
+      "Enterprise Shopify consulting. Store audits, custom integrations, platform migrations, and unified commerce strategy for ambitious retailers.",
   },
   robots: {
     index: true,
@@ -50,7 +55,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased bg-black text-white">
+        {children}
+      </body>
     </html>
   );
 }

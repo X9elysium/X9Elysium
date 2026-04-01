@@ -1,6 +1,8 @@
 import Navigation from "./components/Navigation";
 import Hero from "./components/Hero";
 import Services from "./components/Services";
+import CaseStudies from "./components/CaseStudies";
+import Partners from "./components/Partners";
 import WhyChooseUs from "./components/WhyChooseUs";
 import Testimonials from "./components/Testimonials";
 import CTABanner from "./components/CTABanner";
@@ -13,6 +15,8 @@ export default function Home() {
       <main>
         <Hero />
         <Services />
+        <CaseStudies />
+        <Partners />
         <WhyChooseUs />
         <Testimonials />
         <CTABanner />

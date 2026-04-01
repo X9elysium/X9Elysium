@@ -43,43 +43,43 @@ export default function WhyChooseUs() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="relative py-28 sm:py-32" ref={ref}>
-      {/* Subtle background accent */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-500/[0.02] to-transparent" />
-
-      <div className="section-container relative z-10">
+    <section id="about" className="section-light" ref={ref}>
+      <div className="section-container">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16 sm:mb-20"
+          className="mb-16 sm:mb-20"
         >
-          <span className="text-sm font-semibold text-indigo-400 tracking-[0.2em] uppercase mb-4 block">
-            Why X9Elysium
-          </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight text-balance">
-            Bridge the gap between vision and execution
+          <span className="section-label">Why X9Elysium</span>
+          <h2 className="text-h2-display text-[#151515] max-w-3xl text-balance">
+            Commerce infrastructure built for growth
           </h2>
-          <p className="text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed">
-            Most agencies build websites. We build commerce infrastructure that
-            powers real business growth.
+          <p className="text-[#9b9b9b] text-lg max-w-2xl mt-6 leading-relaxed">
+            Most agencies build websites. We build the commerce infrastructure
+            that powers real business growth.
           </p>
         </motion.div>
 
         {/* Stats Bar */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20 p-8 sm:p-10 rounded-2xl border border-white/[0.06] bg-white/[0.02]"
+          className="grid grid-cols-2 md:grid-cols-4 mb-20"
         >
-          {stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold gradient-text-accent mb-2">
+          {stats.map((stat, i) => (
+            <div
+              key={stat.label}
+              className={`text-center py-8 ${
+                i < stats.length - 1 ? "md:border-r md:border-[#cccccc]/40" : ""
+              }`}
+            >
+              <div className="text-display text-[#151515] mb-3">
                 {stat.value}
               </div>
-              <div className="text-sm text-zinc-500 tracking-wide">
+              <div className="text-[0.75rem] font-bold uppercase tracking-[0.15em] text-[#9b9b9b]">
                 {stat.label}
               </div>
             </div>
@@ -91,19 +91,19 @@ export default function WhyChooseUs() {
           {reasons.map((reason, i) => (
             <motion.div
               key={reason.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
+              transition={{ duration: 0.5, delay: 0.3 + i * 0.08 }}
               className="flex gap-5"
             >
-              <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center">
-                <reason.icon className="w-5 h-5 text-indigo-400" />
+              <div className="flex-shrink-0 w-12 h-12 rounded-[4px] bg-[#009eff]/10 flex items-center justify-center">
+                <reason.icon className="w-5 h-5 text-[#009eff]" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-white mb-2 tracking-tight">
+                <h3 className="text-lg font-medium text-[#151515] mb-2 tracking-tight">
                   {reason.title}
                 </h3>
-                <p className="text-zinc-400 leading-relaxed text-[15px]">
+                <p className="text-[#9b9b9b] leading-relaxed text-sm">
                   {reason.description}
                 </p>
               </div>

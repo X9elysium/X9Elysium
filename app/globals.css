@@ -10,11 +10,11 @@
   }
 
   body {
-    @apply bg-[#09090b] text-zinc-100;
+    @apply bg-black text-white;
   }
 
   ::selection {
-    @apply bg-indigo-500/30 text-white;
+    @apply bg-[#009eff]/30 text-white;
   }
 
   /* Custom scrollbar */
@@ -23,7 +23,7 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-zinc-950;
+    @apply bg-black;
   }
 
   ::-webkit-scrollbar-thumb {
@@ -31,47 +31,64 @@
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-zinc-600;
+    @apply bg-zinc-500;
   }
 }
 
 @layer components {
-  /* Gradient text utilities */
-  .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-200 to-zinc-400;
-  }
-
-  .gradient-text-accent {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-indigo-400;
-  }
-
   /* Container */
   .section-container {
-    @apply max-w-7xl mx-auto px-5 sm:px-6 lg:px-8;
+    @apply max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12;
   }
 
-  /* Glass effect */
-  .glass {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  /* Section backgrounds */
+  .section-dark {
+    @apply bg-black text-white py-16 sm:py-[100px];
   }
 
-  /* Primary CTA button */
+  .section-light {
+    @apply bg-[#f4f4f4] text-[#151515] py-16 sm:py-[100px];
+  }
+
+  .section-warm {
+    @apply bg-[#f7f5f2] text-[#151515] py-16 sm:py-[100px];
+  }
+
+  /* Primary CTA button — black bg, white text */
   .btn-primary {
-    @apply inline-flex items-center justify-center px-8 py-4 rounded-full
-      bg-gradient-to-r from-indigo-500 to-teal-500
-      text-white font-semibold text-sm tracking-wide
-      transition-all duration-300
-      hover:shadow-[0_0_30px_rgba(99,102,241,0.4)]
-      hover:scale-[1.02] active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4
+      bg-black text-white text-[0.875rem] font-bold uppercase tracking-[1.5px]
+      rounded-[4px] transition-all duration-300
+      hover:bg-[#151515] active:scale-[0.98];
   }
 
-  /* Secondary / outline button */
-  .btn-secondary {
-    @apply inline-flex items-center justify-center px-8 py-4 rounded-full
-      border border-white/20 text-white font-semibold text-sm tracking-wide
-      transition-all duration-300
-      hover:bg-white/10 hover:border-white/30
-      active:scale-[0.98];
+  /* Primary light — white bg, black text (for dark sections) */
+  .btn-primary-light {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4
+      bg-white text-black text-[0.875rem] font-bold uppercase tracking-[1.5px]
+      rounded-[4px] transition-all duration-300
+      hover:bg-zinc-100 active:scale-[0.98];
+  }
+
+  /* Accent button — cyan bg */
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4
+      bg-[#009eff] text-white text-[0.875rem] font-bold uppercase tracking-[1.5px]
+      rounded-[4px] transition-all duration-300
+      hover:bg-[#0080cc] active:scale-[0.98];
+  }
+
+  /* Outline button — for dark sections */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4
+      border border-white text-white text-[0.875rem] font-bold uppercase tracking-[1.5px]
+      rounded-[4px] transition-all duration-300
+      hover:bg-white hover:text-black active:scale-[0.98];
+  }
+
+  /* Section label — cyan uppercase */
+  .section-label {
+    @apply text-[0.875rem] font-bold uppercase tracking-[0.15em] text-[#009eff] mb-4 block;
   }
 }
 

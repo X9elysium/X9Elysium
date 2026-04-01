@@ -9,6 +9,7 @@ import {
   Gauge,
   Lightbulb,
   BarChart3,
+  ArrowRight,
 } from "lucide-react";
 
 const services = [
@@ -55,50 +56,46 @@ export default function Services() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="services" className="relative py-28 sm:py-32" ref={ref}>
+    <section id="services" className="section-light" ref={ref}>
       <div className="section-container">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16 sm:mb-20"
+          className="mb-16 sm:mb-20"
         >
-          <span className="text-sm font-semibold text-teal-400 tracking-[0.2em] uppercase mb-4 block">
-            What We Do
-          </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+          <span className="section-label">What We Do</span>
+          <h2 className="text-h2-display text-[#151515] max-w-2xl text-balance">
             End-to-end Shopify expertise
           </h2>
-          <p className="text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-[#9b9b9b] text-lg max-w-2xl mt-6 leading-relaxed">
             We partner with retailers at every stage — from initial audit to
             full-scale unified commerce transformation.
           </p>
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, i) => (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group relative p-8 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-500 cursor-default"
+              transition={{ duration: 0.5, delay: i * 0.05 }}
+              className="group relative bg-white rounded-[4px] border border-[#cccccc]/30 p-8 hover:border-[#cccccc]/60 transition-all duration-300 cursor-default"
             >
-              {/* Hover glow overlay */}
-              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-indigo-500/[0.04] via-transparent to-teal-500/[0.04]" />
-
-              <div className="relative z-10">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500/15 to-teal-500/15 flex items-center justify-center mb-6 group-hover:from-indigo-500/25 group-hover:to-teal-500/25 transition-all duration-500">
-                  <service.icon className="w-5 h-5 text-teal-400" />
-                </div>
-                <h3 className="text-xl font-semibold text-white mb-3 tracking-tight">
-                  {service.title}
-                </h3>
-                <p className="text-zinc-400 leading-relaxed text-[15px]">
-                  {service.description}
-                </p>
+              <div className="w-12 h-12 rounded-[4px] bg-[#009eff]/10 flex items-center justify-center mb-6">
+                <service.icon className="w-5 h-5 text-[#009eff]" />
+              </div>
+              <h3 className="text-xl font-medium text-[#151515] mb-3 tracking-tight">
+                {service.title}
+              </h3>
+              <p className="text-[#9b9b9b] leading-relaxed text-sm mb-6">
+                {service.description}
+              </p>
+              <div className="flex items-center overflow-hidden h-5">
+                <ArrowRight className="w-5 h-5 text-[#009eff] transform -translate-x-8 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300" />
               </div>
             </motion.div>
           ))}
