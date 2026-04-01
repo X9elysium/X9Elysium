@@ -44,7 +44,7 @@ export default function Navigation() {
             <span className="text-2xl font-bold text-white tracking-tight">
               X9
             </span>
-            <span className="text-2xl font-light text-[#9b9b9b] group-hover:text-[#009eff] transition-colors duration-300">
+            <span className="text-2xl font-light text-[#9b9b9b] group-hover:text-[#10b981] transition-colors duration-300">
               Elysium
             </span>
           </Link>
@@ -55,7 +55,7 @@ export default function Navigation() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="relative text-[0.875rem] font-bold uppercase tracking-[1.5px] text-white hover:text-white transition-colors duration-300 after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-[#009eff] after:transition-all after:duration-300 hover:after:w-full"
+                className="relative text-[0.875rem] font-bold uppercase tracking-[1.5px] text-white hover:text-white transition-colors duration-300 after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-[#10b981] after:transition-all after:duration-300 hover:after:w-full"
               >
                 {item.name}
               </Link>
@@ -73,7 +73,7 @@ export default function Navigation() {
 
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden relative z-50 p-2 text-white hover:text-[#009eff] transition-colors"
+              className="lg:hidden relative z-50 p-2 text-white hover:text-[#10b981] transition-colors"
               aria-label="Toggle menu"
             >
               <div className="w-6 h-5 flex flex-col justify-between">
@@ -123,7 +123,7 @@ export default function Navigation() {
                   <Link
                     href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-4xl font-light text-white uppercase tracking-wide hover:text-[#009eff] transition-colors"
+                    className="text-4xl font-light text-white uppercase tracking-wide hover:text-[#10b981] transition-colors"
                   >
                     {item.name}
                   </Link>

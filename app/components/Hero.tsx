@@ -10,7 +10,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-br from-black via-[#0a0a0a] to-[#111111]" />
 
       {/* Subtle accent glow — very minimal */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#009eff]/[0.03] rounded-full blur-[150px]" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#10b981]/[0.03] rounded-full blur-[150px]" />
 
       {/* Content */}
       <motion.div

@@ -138,9 +138,9 @@ export default function ContactPage() {
   };
 
   const inputClasses =
-    "w-full bg-white/[0.04] border border-white/[0.08] rounded-lg px-4 py-3.5 text-white placeholder:text-zinc-500 focus:outline-none focus:border-[#009eff]/50 focus:bg-white/[0.06] transition-all duration-300";
+    "w-full bg-white/[0.04] border border-white/[0.08] rounded-lg px-4 py-3.5 text-white placeholder:text-zinc-500 focus:outline-none focus:border-[#10b981]/50 focus:bg-white/[0.06] transition-all duration-300";
   const selectClasses =
-    "w-full bg-white/[0.04] border border-white/[0.08] rounded-lg px-4 py-3.5 text-white focus:outline-none focus:border-[#009eff]/50 focus:bg-white/[0.06] transition-all duration-300 appearance-none";
+    "w-full bg-white/[0.04] border border-white/[0.08] rounded-lg px-4 py-3.5 text-white focus:outline-none focus:border-[#10b981]/50 focus:bg-white/[0.06] transition-all duration-300 appearance-none";
   const labelClasses = "block text-[13px] font-medium text-zinc-300 mb-2";
 
   return (
@@ -152,8 +152,8 @@ export default function ContactPage() {
           {/* Gradient mesh */}
           <div className="absolute inset-0">
             <div className="absolute inset-0 bg-gradient-to-b from-[#000814] via-black to-black" />
-            <div className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-[#009eff]/[0.06] rounded-full blur-[200px]" />
-            <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#009eff]/[0.03] rounded-full blur-[150px]" />
+            <div className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-[#10b981]/[0.06] rounded-full blur-[200px]" />
+            <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#10b981]/[0.03] rounded-full blur-[150px]" />
           </div>
 
           <motion.div
@@ -162,13 +162,13 @@ export default function ContactPage() {
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             className="section-container relative z-10 text-center"
           >
-            <span className="inline-block text-[0.8rem] font-semibold uppercase tracking-[0.2em] text-[#009eff] mb-6">
+            <span className="inline-block text-[0.8rem] font-semibold uppercase tracking-[0.2em] text-[#10b981] mb-6">
               Let&apos;s Build Together
             </span>
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-white tracking-tight leading-[1.05]">
               Ready to scale
               <br />
-              <span className="text-[#009eff]">your commerce?</span>
+              <span className="text-[#10b981]">your commerce?</span>
             </h1>
             <p className="text-lg sm:text-xl text-zinc-400 max-w-2xl mx-auto mt-8 leading-relaxed">
               Tell us about your business and we&apos;ll show you exactly how to
@@ -218,8 +218,8 @@ export default function ContactPage() {
                     animate={{ opacity: 1, scale: 1 }}
                     className="flex flex-col items-center justify-center py-24 text-center"
                   >
-                    <div className="w-20 h-20 rounded-full bg-[#009eff]/10 flex items-center justify-center mb-8">
-                      <CheckCircle className="w-10 h-10 text-[#009eff]" />
+                    <div className="w-20 h-20 rounded-full bg-[#10b981]/10 flex items-center justify-center mb-8">
+                      <CheckCircle className="w-10 h-10 text-[#10b981]" />
                     </div>
                     <h2 className="text-4xl font-light text-white mb-4 tracking-tight">
                       We&apos;ve got it.
@@ -230,7 +230,7 @@ export default function ContactPage() {
                     </p>
                     <button
                       onClick={() => setStatus("idle")}
-                      className="mt-10 text-[#009eff] text-sm font-medium hover:text-white transition-colors"
+                      className="mt-10 text-[#10b981] text-sm font-medium hover:text-white transition-colors"
                     >
                       Send another message
                     </button>
@@ -242,7 +242,7 @@ export default function ContactPage() {
                     </h2>
                     <p className="text-zinc-500 text-sm mb-10">
                       Fields marked with{" "}
-                      <span className="text-[#009eff]">*</span> are required.
+                      <span className="text-[#10b981]">*</span> are required.
                       Everything else is optional.
                     </p>
                     <form onSubmit={handleSubmit} className="space-y-5">
@@ -251,7 +251,7 @@ export default function ContactPage() {
                         <div>
                           <label htmlFor="firstName" className={labelClasses}>
                             First Name{" "}
-                            <span className="text-[#009eff]">*</span>
+                            <span className="text-[#10b981]">*</span>
                           </label>
                           <input
                             type="text"
@@ -267,7 +267,7 @@ export default function ContactPage() {
                         <div>
                           <label htmlFor="lastName" className={labelClasses}>
                             Last Name{" "}
-                            <span className="text-[#009eff]">*</span>
+                            <span className="text-[#10b981]">*</span>
                           </label>
                           <input
                             type="text"
@@ -287,7 +287,7 @@ export default function ContactPage() {
                         <div>
                           <label htmlFor="email" className={labelClasses}>
                             Business Email{" "}
-                            <span className="text-[#009eff]">*</span>
+                            <span className="text-[#10b981]">*</span>
                           </label>
                           <input
                             type="email"
@@ -431,7 +431,7 @@ export default function ContactPage() {
                       <div>
                         <label htmlFor="message" className={labelClasses}>
                           Tell us about your needs{" "}
-                          <span className="text-[#009eff]">*</span>
+                          <span className="text-[#10b981]">*</span>
                         </label>
                         <textarea
                           id="message"
@@ -464,7 +464,7 @@ export default function ContactPage() {
                       <button
                         type="submit"
                         disabled={status === "sending"}
-                        className="group inline-flex items-center justify-center gap-2.5 px-10 py-4 bg-[#009eff] text-white text-[0.875rem] font-bold uppercase tracking-[1.5px] rounded-lg transition-all duration-300 hover:bg-[#0080cc] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto"
+                        className="group inline-flex items-center justify-center gap-2.5 px-10 py-4 bg-[#10b981] text-white text-[0.875rem] font-bold uppercase tracking-[1.5px] rounded-lg transition-all duration-300 hover:bg-[#059669] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto"
                       >
                         {status === "sending"
                           ? "Sending..."
@@ -493,9 +493,9 @@ export default function ContactPage() {
                   <div className="space-y-5">
                     <a
                       href="mailto:hello@X9Elysium.com"
-                      className="flex items-center gap-4 text-zinc-400 hover:text-[#009eff] transition-colors group"
+                      className="flex items-center gap-4 text-zinc-400 hover:text-[#10b981] transition-colors group"
                     >
-                      <div className="w-10 h-10 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center group-hover:border-[#009eff]/30 transition-colors">
+                      <div className="w-10 h-10 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center group-hover:border-[#10b981]/30 transition-colors">
                         <Mail className="w-4 h-4" />
                       </div>
                       <div>
@@ -505,9 +505,9 @@ export default function ContactPage() {
                     </a>
                     <a
                       href="tel:+16049686952"
-                      className="flex items-center gap-4 text-zinc-400 hover:text-[#009eff] transition-colors group"
+                      className="flex items-center gap-4 text-zinc-400 hover:text-[#10b981] transition-colors group"
                     >
-                      <div className="w-10 h-10 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center group-hover:border-[#009eff]/30 transition-colors">
+                      <div className="w-10 h-10 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center group-hover:border-[#10b981]/30 transition-colors">
                         <Phone className="w-4 h-4" />
                       </div>
                       <div>
@@ -535,8 +535,8 @@ export default function ContactPage() {
                   <div className="space-y-6">
                     {steps.map((step, i) => (
                       <div key={i} className="flex gap-4">
-                        <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#009eff]/10 flex items-center justify-center">
-                          <step.icon className="w-4 h-4 text-[#009eff]" />
+                        <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#10b981]/10 flex items-center justify-center">
+                          <step.icon className="w-4 h-4 text-[#10b981]" />
                         </div>
                         <div>
                           <p className="text-sm font-medium text-white mb-1">
@@ -556,7 +556,7 @@ export default function ContactPage() {
         </section>
 
         {/* ── Bottom CTA ── */}
-        <section className="bg-[#009eff] py-16 sm:py-20">
+        <section className="bg-[#10b981] py-16 sm:py-20">
           <div className="section-container text-center">
             <motion.div
               initial={{ opacity: 0, y: 15 }}

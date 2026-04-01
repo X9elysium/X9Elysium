@@ -10,7 +10,7 @@ export default function CTABanner() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="bg-[#009eff] py-16 sm:py-[100px]" ref={ref}>
+    <section className="bg-[#10b981] py-16 sm:py-[100px]" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 15 }}

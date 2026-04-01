@@ -96,8 +96,8 @@ export default function WhyChooseUs() {
               transition={{ duration: 0.5, delay: 0.3 + i * 0.08 }}
               className="flex gap-5"
             >
-              <div className="flex-shrink-0 w-12 h-12 rounded-[4px] bg-[#009eff]/10 flex items-center justify-center">
-                <reason.icon className="w-5 h-5 text-[#009eff]" />
+              <div className="flex-shrink-0 w-12 h-12 rounded-[4px] bg-[#10b981]/10 flex items-center justify-center">
+                <reason.icon className="w-5 h-5 text-[#10b981]" />
               </div>
               <div>
                 <h3 className="text-lg font-medium text-[#151515] mb-2 tracking-tight">

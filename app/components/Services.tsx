@@ -85,8 +85,8 @@ export default function Services() {
               transition={{ duration: 0.5, delay: i * 0.05 }}
               className="group relative bg-white rounded-[4px] border border-[#cccccc]/30 p-8 hover:border-[#cccccc]/60 transition-all duration-300 cursor-default"
             >
-              <div className="w-12 h-12 rounded-[4px] bg-[#009eff]/10 flex items-center justify-center mb-6">
-                <service.icon className="w-5 h-5 text-[#009eff]" />
+              <div className="w-12 h-12 rounded-[4px] bg-[#10b981]/10 flex items-center justify-center mb-6">
+                <service.icon className="w-5 h-5 text-[#10b981]" />
               </div>
               <h3 className="text-xl font-medium text-[#151515] mb-3 tracking-tight">
                 {service.title}
@@ -95,7 +95,7 @@ export default function Services() {
                 {service.description}
               </p>
               <div className="flex items-center overflow-hidden h-5">
-                <ArrowRight className="w-5 h-5 text-[#009eff] transform -translate-x-8 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300" />
+                <ArrowRight className="w-5 h-5 text-[#10b981] transform -translate-x-8 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300" />
               </div>
             </motion.div>
           ))}

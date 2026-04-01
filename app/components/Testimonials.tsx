@@ -62,14 +62,14 @@ export default function Testimonials() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="relative p-8 sm:p-10 rounded-[4px] border border-white/10 bg-black/40 flex flex-col"
             >
-              <Quote className="w-8 h-8 text-[#009eff]/30 mb-6 flex-shrink-0" />
+              <Quote className="w-8 h-8 text-[#10b981]/30 mb-6 flex-shrink-0" />
 
               <p className="text-white/80 leading-relaxed text-base mb-8 flex-grow">
                 &ldquo;{testimonial.quote}&rdquo;
               </p>
 
               <div className="flex items-center gap-4 mt-auto">
-                <div className="w-10 h-10 rounded-full bg-[#009eff] flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+                <div className="w-10 h-10 rounded-full bg-[#10b981] flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
                   {testimonial.name.charAt(0)}
                 </div>
                 <div>

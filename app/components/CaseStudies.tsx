@@ -64,7 +64,7 @@ export default function CaseStudies() {
           >
             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-500" />
             <div className="relative z-10 h-full flex flex-col justify-end p-8 sm:p-10">
-              <span className="text-[0.75rem] font-bold uppercase tracking-[0.15em] text-[#009eff] mb-3">
+              <span className="text-[0.75rem] font-bold uppercase tracking-[0.15em] text-[#10b981] mb-3">
                 {caseStudies[0].tag}
               </span>
               <h3 className="text-2xl sm:text-3xl font-light text-white mb-2">
@@ -74,7 +74,7 @@ export default function CaseStudies() {
                 {caseStudies[0].metric}
               </p>
               <div className="flex items-center overflow-hidden h-5">
-                <ArrowRight className="w-5 h-5 text-[#009eff] transform -translate-x-8 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300" />
+                <ArrowRight className="w-5 h-5 text-[#10b981] transform -translate-x-8 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300" />
               </div>
             </div>
           </div>
@@ -85,7 +85,7 @@ export default function CaseStudies() {
           >
             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-500" />
             <div className="relative z-10 h-full flex flex-col justify-end p-8">
-              <span className="text-[0.75rem] font-bold uppercase tracking-[0.15em] text-[#009eff] mb-3">
+              <span className="text-[0.75rem] font-bold uppercase tracking-[0.15em] text-[#10b981] mb-3">
                 {caseStudies[1].tag}
               </span>
               <h3 className="text-xl sm:text-2xl font-light text-white mb-2">
@@ -95,7 +95,7 @@ export default function CaseStudies() {
                 {caseStudies[1].metric}
               </p>
               <div className="flex items-center overflow-hidden h-5">
-                <ArrowRight className="w-5 h-5 text-[#009eff] transform -translate-x-8 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300" />
+                <ArrowRight className="w-5 h-5 text-[#10b981] transform -translate-x-8 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300" />
               </div>
             </div>
           </div>
@@ -108,7 +108,7 @@ export default function CaseStudies() {
             >
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-500" />
               <div className="relative z-10 h-full flex flex-col justify-end p-8">
-                <span className="text-[0.75rem] font-bold uppercase tracking-[0.15em] text-[#009eff] mb-3">
+                <span className="text-[0.75rem] font-bold uppercase tracking-[0.15em] text-[#10b981] mb-3">
                   {study.tag}
                 </span>
                 <h3 className="text-lg font-light text-white mb-2">
@@ -116,7 +116,7 @@ export default function CaseStudies() {
                 </h3>
                 <p className="text-[#9b9b9b] text-sm mb-4">{study.metric}</p>
                 <div className="flex items-center overflow-hidden h-5">
-                  <ArrowRight className="w-5 h-5 text-[#009eff] transform -translate-x-8 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300" />
+                  <ArrowRight className="w-5 h-5 text-[#10b981] transform -translate-x-8 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300" />
                 </div>
               </div>
             </div>
