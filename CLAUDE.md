@@ -78,3 +78,83 @@ npm start        # Production server
 - [ ] Real testimonials and case study content
 - [ ] Favicon and OG image assets
 - [ ] Production build verification
+
+---
+
+## Site Audit — snazzy-pothos-4a8a27.netlify.app (2026-04-01)
+
+### What's Working Well
+
+**Homepage (App Router — new design)**
+- All 7 sections render correctly: Nav, Hero, Services, Why Us, Testimonials, CTA Banner, Footer
+- Dark mode aesthetic applied (`#09090b` background via Tailwind CSS)
+- Inter font loads and renders via `next/font` (woff2 preloaded)
+- Framer Motion JS bundled and hydrates client-side (scroll-reveal, hover effects)
+- Single optimized CSS bundle (`/_next/static/css/96b3cdd266bd70b9.css`)
+- Anchor IDs present in code: `#services`, `#about`, `#work`, `#contact`
+
+**SEO — Present**
+- `<title>`: "X9Elysium — Shopify Unified Commerce Consulting"
+- `<meta name="description">`: present and keyword-rich
+- `<meta name="keywords">`: Shopify, unified commerce, ecommerce consulting, Shopify Plus, etc.
+- Open Graph tags: og:title, og:description, og:url, og:site_name, og:type
+- Twitter Card: summary_large_image with title + description
+- Robots: `index, follow`
+- `<html lang="en">` present
+- Viewport meta: `width=device-width, initial-scale=1`
+
+**Responsiveness**
+- Viewport meta tag present
+- Tailwind responsive breakpoints used throughout (sm/md/lg prefixes)
+- Mobile hamburger menu with AnimatePresence transitions
+- Responsive grid: 1-col mobile → 2-col tablet → 3-col desktop on services
+- Text scales responsively (text-4xl → sm:text-5xl → md:text-6xl → lg:text-7xl)
+- CTAs stack vertically on mobile, horizontal on sm+
+
+**Legacy Pages (Pages Router — still working)**
+- `/about` — loads, shows team + company info (old design/content)
+- `/posts` — blog listing with 7 articles, author Darshan Patel
+- `/contact` — loads and functional
+- `/terms-policy` — loads with Terms & Privacy content
+
+**Infrastructure**
+- robots.txt present: `Allow: /`, `Disallow: /api/*`
+- Clean HTML with Next.js streaming/RSC
+- No visible script errors
+
+### Issues Found
+
+**SEO — Missing**
+- [ ] **No favicon linked in layout.tsx** — file exists at `public/images/favicon.png` but not referenced in App Router layout
+- [ ] **No canonical URL** — missing from metadata, hurts SEO deduplication
+- [ ] **No OG image** — og:title/description set but no og:image (social shares will have no preview image)
+- [ ] **No structured data / JSON-LD** — no schema.org markup (Organization, WebSite, Service)
+- [ ] **No sitemap.xml** — only robots.txt exists, no sitemap for search engines
+
+**Accessibility**
+- [ ] **Only 1 ARIA attribute** — just `aria-label="Toggle menu"` on hamburger button
+- [ ] **No skip-to-content link** — keyboard users can't skip navigation
+- [ ] **No focus-visible styles** — tab navigation isn't visually indicated
+- [ ] **Testimonial quotes use `&ldquo;`/`&rdquo;`** — fine, but no `<blockquote>` semantic element
+
+**Content Mismatches (Legacy Pages vs New Brand)**
+- [ ] **About page is outdated** — mentions WooCommerce, WordPress, Wix (not Shopify-focused), lists old team members, references "New York" office
+- [ ] **Blog posts** — old content from 2023-2024, styled with legacy light-mode Poppins design, not matching new dark-mode aesthetic
+- [ ] **Contact page** — uses old template design, doesn't match homepage
+
+**Functionality**
+- [ ] **Placeholder social links** — Footer Connect section has generic `https://linkedin.com`, `https://twitter.com`, `https://instagram.com` (not actual company profiles)
+- [ ] **No contact form on homepage** — `#contact` scrolls to footer (email/phone only), no actual form
+- [ ] **"Book a Strategy Call" has no booking integration** — links to `#contact` (footer), not a Calendly/Cal.com embed
+
+**Performance**
+- [ ] **No image optimization** — homepage has zero images (acceptable for now, but hero could benefit from a visual)
+- [ ] **Framer Motion bundle size** — adds ~40KB to client JS; acceptable but worth monitoring
+
+### Priority Fixes (Quick Wins)
+1. Add favicon to `app/layout.tsx` → `<link rel="icon" href="/images/favicon.png" />`
+2. Add canonical URL to metadata → `metadataBase: new URL("https://x9elysium.com")`
+3. Add OG image (create or use existing brand image)
+4. Replace placeholder social links with real X9Elysium profiles
+5. Add skip-to-content link in layout
+6. Generate sitemap.xml (use `next-sitemap` or manual)
