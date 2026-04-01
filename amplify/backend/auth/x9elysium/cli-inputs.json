@@ -1,0 +1,12 @@
+{
+  "version": "1",
+  "cognitoConfig": {
+    "identityPoolName": "x9elysium_identitypool_40006f4d",
+    "allowUnauthenticatedIdentities": true,
+    "authSelections": "identityPoolOnly",
+    "resourceName": "x9elysium",
+    "sharedId": "40006f4d",
+    "serviceName": "Cognito",
+    "useDefault": "manual"
+  }
+}
