@@ -15,7 +15,7 @@ const footerLinks = {
     { name: "About", href: "#about" },
     { name: "Work", href: "#work" },
     { name: "Blog", href: "/posts" },
-    { name: "Contact", href: "#contact" },
+    { name: "Contact", href: "/contact" },
   ],
   connect: [
     { name: "LinkedIn", href: "https://linkedin.com" },

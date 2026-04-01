@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function CTABanner() {
   const ref = useRef(null);
@@ -24,10 +25,10 @@ export default function CTABanner() {
             Let&apos;s discuss how we can help you build, optimize, and scale
             your Shopify ecosystem.
           </p>
-          <a href="#contact" className="btn-primary">
+          <Link href="/contact" className="btn-primary">
             Book a Strategy Call
             <ArrowRight className="w-4 h-4" />
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>

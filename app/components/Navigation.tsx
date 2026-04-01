@@ -8,7 +8,7 @@ const navItems = [
   { name: "Services", href: "#services" },
   { name: "Work", href: "#work" },
   { name: "About", href: "#about" },
-  { name: "Contact", href: "#contact" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export default function Navigation() {
@@ -65,7 +65,7 @@ export default function Navigation() {
           {/* CTA + Mobile Toggle */}
           <div className="flex items-center gap-4">
             <Link
-              href="#contact"
+              href="/contact"
               className="hidden sm:inline-flex btn-primary-light !py-3 !px-6 !text-xs"
             >
               Talk to Us
@@ -136,7 +136,7 @@ export default function Navigation() {
                 className="pt-6"
               >
                 <Link
-                  href="#contact"
+                  href="/contact"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="btn-accent w-full text-center"
                 >
