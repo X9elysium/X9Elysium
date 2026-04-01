@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
 
 export async function POST(request: Request) {
   try {
@@ -17,7 +16,6 @@ export async function POST(request: Request) {
       message,
     } = body;
 
-    // Validate required fields
     if (!firstName || !lastName || !email || !message) {
       return NextResponse.json(
         { error: "Missing required fields" },
@@ -25,38 +23,36 @@ export async function POST(request: Request) {
       );
     }
 
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        access_key: process.env.WEB3FORMS_KEY,
+        subject: `New inquiry from ${firstName} ${lastName}${company ? ` — ${company}` : ""}`,
+        from_name: `${firstName} ${lastName}`,
+        replyto: email,
+        name: `${firstName} ${lastName}`,
+        email,
+        phone: phone || "Not provided",
+        company: company || "Not provided",
+        website: website || "Not provided",
+        annual_revenue: revenue || "Not provided",
+        current_platform: platform || "Not provided",
+        service_needed: service || "Not provided",
+        message,
+      }),
     });
 
-    const htmlBody = `
-      <h2>New Contact Form Submission</h2>
-      <table style="border-collapse: collapse; width: 100%; max-width: 600px;">
-        <tr><td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Name</td><td style="padding: 8px; border-bottom: 1px solid #eee;">${firstName} ${lastName}</td></tr>
-        <tr><td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Email</td><td style="padding: 8px; border-bottom: 1px solid #eee;">${email}</td></tr>
-        ${phone ? `<tr><td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Phone</td><td style="padding: 8px; border-bottom: 1px solid #eee;">${phone}</td></tr>` : ""}
-        ${company ? `<tr><td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Company</td><td style="padding: 8px; border-bottom: 1px solid #eee;">${company}</td></tr>` : ""}
-        ${website ? `<tr><td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Website</td><td style="padding: 8px; border-bottom: 1px solid #eee;">${website}</td></tr>` : ""}
-        ${revenue ? `<tr><td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Annual Revenue</td><td style="padding: 8px; border-bottom: 1px solid #eee;">${revenue}</td></tr>` : ""}
-        ${platform ? `<tr><td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Current Platform</td><td style="padding: 8px; border-bottom: 1px solid #eee;">${platform}</td></tr>` : ""}
-        ${service ? `<tr><td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Service Needed</td><td style="padding: 8px; border-bottom: 1px solid #eee;">${service}</td></tr>` : ""}
-        <tr><td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Message</td><td style="padding: 8px; border-bottom: 1px solid #eee;">${message}</td></tr>
-      </table>
-    `;
+    const data = await res.json();
 
-    await transporter.sendMail({
-      from: `"X9Elysium Contact" <${process.env.SMTP_USER}>`,
-      to: "darshanpatel1902@gmail.com",
-      replyTo: email,
-      subject: `New inquiry from ${firstName} ${lastName}${company ? ` — ${company}` : ""}`,
-      html: htmlBody,
-    });
-
-    return NextResponse.json({ success: true });
+    if (data.success) {
+      return NextResponse.json({ success: true });
+    } else {
+      return NextResponse.json(
+        { error: "Failed to send message" },
+        { status: 500 }
+      );
+    }
   } catch (error) {
     console.error("Contact form error:", error);
     return NextResponse.json(
