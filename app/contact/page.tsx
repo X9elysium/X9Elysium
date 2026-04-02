@@ -109,10 +109,15 @@ export default function ContactPage() {
     setStatus("sending");
 
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formState),
+        body: JSON.stringify({
+          access_key: "47e66c7f-89e0-4eab-9e57-96aboref5f65",
+          subject: `New inquiry from ${formState.firstName} ${formState.lastName}${formState.company ? ` — ${formState.company}` : ""}`,
+          from_name: `${formState.firstName} ${formState.lastName}`,
+          ...formState,
+        }),
       });
 
       if (res.ok) {
