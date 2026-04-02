@@ -109,13 +109,10 @@ export default function ContactPage() {
     setStatus("sending");
 
     try {
-      const form = e.target as HTMLFormElement;
-      const formData = new FormData(form);
-
-      const res = await fetch("/__forms.html", {
+      const res = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formState),
       });
 
       if (res.ok) {
@@ -248,14 +245,7 @@ export default function ContactPage() {
                       <span className="text-[#10b981]">*</span> are required.
                       Everything else is optional.
                     </p>
-                    <form
-                      name="contact"
-                      method="POST"
-                      data-netlify="true"
-                      onSubmit={handleSubmit}
-                      className="space-y-5"
-                    >
-                      <input type="hidden" name="form-name" value="contact" />
+                    <form onSubmit={handleSubmit} className="space-y-5">
                       {/* Name Row */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div>
