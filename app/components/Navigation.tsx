@@ -33,18 +33,28 @@ export default function Navigation() {
       <motion.header
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 bg-black transition-all duration-300 ${
-          isScrolled ? "border-b border-white/10" : ""
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          isScrolled
+            ? "bg-black/80 backdrop-blur-xl border-b border-white/[0.06] shadow-lg shadow-black/20"
+            : "bg-transparent"
         }`}
       >
-        <nav className="section-container flex items-center justify-between h-[100px] lg:h-[100px]">
+        <nav
+          className={`section-container flex items-center justify-between transition-all duration-500 ${
+            isScrolled ? "h-[64px] lg:h-[72px]" : "h-[72px] lg:h-[80px]"
+          }`}
+          aria-label="Main navigation"
+        >
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-0.5 group z-50">
+          <Link
+            href="/"
+            className="flex items-center gap-0.5 group z-50 transition-transform duration-300 hover:scale-[1.02]"
+          >
             <span className="text-2xl font-bold text-white tracking-tight">
               X9
             </span>
-            <span className="text-2xl font-light text-[#9b9b9b] group-hover:text-[#10b981] transition-colors duration-300">
+            <span className="text-2xl font-light text-neutral-500 group-hover:text-emerald-500 transition-colors duration-300">
               Elysium
             </span>
           </Link>
@@ -55,7 +65,7 @@ export default function Navigation() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="relative text-[0.875rem] font-bold uppercase tracking-[1.5px] text-white hover:text-white transition-colors duration-300 after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-[#10b981] after:transition-all after:duration-300 hover:after:w-full"
+                className="text-label-sm uppercase tracking-[0.12em] text-neutral-400 hover:text-white transition-colors duration-300"
               >
                 {item.name}
               </Link>
@@ -66,14 +76,14 @@ export default function Navigation() {
           <div className="flex items-center gap-4">
             <Link
               href="/contact"
-              className="hidden sm:inline-flex btn-primary-light !py-3 !px-6 !text-xs"
+              className="hidden sm:inline-flex items-center justify-center gap-2 px-5 py-2.5 text-label-sm bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-300"
             >
               Talk to Us
             </Link>
 
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden relative z-50 p-2 text-white hover:text-[#10b981] transition-colors"
+              className="lg:hidden relative z-50 p-2 text-white hover:text-emerald-500 transition-colors"
               aria-label="Toggle menu"
             >
               <div className="w-6 h-5 flex flex-col justify-between">
@@ -110,20 +120,21 @@ export default function Navigation() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-black pt-32 px-8 lg:hidden"
+            className="fixed inset-0 z-40 bg-gradient-to-b from-neutral-950 via-black to-black pt-28 px-8 lg:hidden"
+            aria-label="Mobile navigation"
           >
-            <nav className="flex flex-col gap-8">
+            <nav className="flex flex-col">
               {navItems.map((item, i) => (
                 <motion.div
                   key={item.name}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.08 }}
+                  transition={{ delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <Link
                     href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-4xl font-light text-white uppercase tracking-wide hover:text-[#10b981] transition-colors"
+                    className="block text-3xl sm:text-4xl font-light text-white uppercase tracking-wide py-4 border-b border-white/[0.04] hover:text-emerald-400 transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -133,7 +144,7 @@ export default function Navigation() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
-                className="pt-6"
+                className="pt-8"
               >
                 <Link
                   href="/contact"

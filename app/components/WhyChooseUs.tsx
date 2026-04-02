@@ -3,6 +3,12 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Zap, Shield, Users, TrendingUp } from "lucide-react";
+import {
+  staggerContainer,
+  fadeUp,
+  sectionTransition,
+  smoothEase,
+} from "../lib/animations";
 
 const reasons = [
   {
@@ -49,14 +55,14 @@ export default function WhyChooseUs() {
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, ease: smoothEase }}
           className="mb-16 sm:mb-20"
         >
           <span className="section-label">Why X9Elysium</span>
-          <h2 className="text-h2-display text-[#151515] max-w-3xl text-balance">
+          <h2 className="text-h2-display text-neutral-900 max-w-3xl text-balance">
             Commerce infrastructure built for growth
           </h2>
-          <p className="text-[#9b9b9b] text-lg max-w-2xl mt-6 leading-relaxed">
+          <p className="text-neutral-500 text-body-lg max-w-2xl mt-6 leading-relaxed">
             Most agencies build websites. We build the commerce infrastructure
             that powers real business growth.
           </p>
@@ -64,52 +70,59 @@ export default function WhyChooseUs() {
 
         {/* Stats Bar */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-2 md:grid-cols-4 mb-20"
+          variants={staggerContainer}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-neutral-200/60 rounded-2xl overflow-hidden mb-20"
         >
-          {stats.map((stat, i) => (
-            <div
+          {stats.map((stat) => (
+            <motion.div
               key={stat.label}
-              className={`text-center py-8 ${
-                i < stats.length - 1 ? "md:border-r md:border-[#cccccc]/40" : ""
-              }`}
+              variants={fadeUp}
+              transition={sectionTransition}
+              className="bg-neutral-100 text-center py-10 lg:py-12"
             >
-              <div className="text-display text-[#151515] mb-3">
+              <div className="text-4xl sm:text-5xl font-light text-neutral-900 tracking-tight mb-2">
                 {stat.value}
               </div>
-              <div className="text-[0.75rem] font-bold uppercase tracking-[0.15em] text-[#9b9b9b]">
+              <div className="text-label-sm uppercase text-neutral-500">
                 {stat.label}
               </div>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
 
         {/* Reasons Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {reasons.map((reason, i) => (
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
+        >
+          {reasons.map((reason) => (
             <motion.div
               key={reason.title}
-              initial={{ opacity: 0, y: 15 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.3 + i * 0.08 }}
-              className="flex gap-5"
+              variants={fadeUp}
+              transition={sectionTransition}
+              className="flex gap-5 p-6 lg:p-8 rounded-xl bg-white/60 border border-neutral-200/40 hover:bg-white hover:border-neutral-200 hover:shadow-sm transition-all duration-500"
             >
-              <div className="flex-shrink-0 w-12 h-12 rounded-[4px] bg-[#10b981]/10 flex items-center justify-center">
-                <reason.icon className="w-5 h-5 text-[#10b981]" />
+              <div className="flex-shrink-0 w-12 h-12 rounded-full border border-emerald-500/20 bg-emerald-500/[0.06] flex items-center justify-center">
+                <reason.icon
+                  className="w-5 h-5 text-emerald-500"
+                  strokeWidth={1.5}
+                />
               </div>
               <div>
-                <h3 className="text-lg font-medium text-[#151515] mb-2 tracking-tight">
+                <h3 className="text-lg font-semibold text-neutral-900 mb-2 tracking-tight">
                   {reason.title}
                 </h3>
-                <p className="text-[#9b9b9b] leading-relaxed text-sm">
+                <p className="text-neutral-500 leading-relaxed text-body-sm">
                   {reason.description}
                 </p>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

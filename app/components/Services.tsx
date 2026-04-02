@@ -11,6 +11,12 @@ import {
   BarChart3,
   ArrowRight,
 } from "lucide-react";
+import {
+  staggerContainer,
+  fadeUp,
+  sectionTransition,
+  smoothEase,
+} from "../lib/animations";
 
 const services = [
   {
@@ -62,44 +68,53 @@ export default function Services() {
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, ease: smoothEase }}
           className="mb-16 sm:mb-20"
         >
           <span className="section-label">What We Do</span>
-          <h2 className="text-h2-display text-[#151515] max-w-2xl text-balance">
+          <h2 className="text-h2-display text-neutral-900 max-w-2xl text-balance">
             End-to-end Shopify expertise
           </h2>
-          <p className="text-[#9b9b9b] text-lg max-w-2xl mt-6 leading-relaxed">
+          <p className="text-neutral-500 text-body-lg max-w-2xl mt-6 leading-relaxed">
             We partner with retailers at every stage — from initial audit to
             full-scale unified commerce transformation.
           </p>
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, i) => (
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 lg:gap-8"
+        >
+          {services.map((service) => (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 15 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
-              className="group relative bg-white rounded-[4px] border border-[#cccccc]/30 p-8 hover:border-[#cccccc]/60 transition-all duration-300 cursor-default"
+              variants={fadeUp}
+              transition={sectionTransition}
+              className="group relative bg-white rounded-xl border border-neutral-200/60 p-8 lg:p-10
+                hover:border-emerald-500/20 hover:shadow-xl hover:shadow-emerald-500/[0.04]
+                hover:-translate-y-1 transition-all duration-500 ease-out cursor-default"
             >
-              <div className="w-12 h-12 rounded-[4px] bg-[#10b981]/10 flex items-center justify-center mb-6">
-                <service.icon className="w-5 h-5 text-[#10b981]" />
+              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500/10 to-emerald-500/[0.04] flex items-center justify-center mb-6 group-hover:from-emerald-500/15 group-hover:to-emerald-500/[0.06] transition-all duration-500">
+                <service.icon
+                  className="w-6 h-6 text-emerald-500"
+                  strokeWidth={1.5}
+                />
               </div>
-              <h3 className="text-xl font-medium text-[#151515] mb-3 tracking-tight">
+              <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">
                 {service.title}
               </h3>
-              <p className="text-[#9b9b9b] leading-relaxed text-sm mb-6">
+              <p className="text-neutral-500 leading-relaxed text-body-sm mb-6">
                 {service.description}
               </p>
-              <div className="flex items-center overflow-hidden h-5">
-                <ArrowRight className="w-5 h-5 text-[#10b981] transform -translate-x-8 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300" />
-              </div>
+              <span className="text-label-sm text-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-auto flex items-center gap-1.5">
+                Learn more <ArrowRight className="w-3.5 h-3.5" />
+              </span>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

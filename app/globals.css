@@ -14,86 +14,112 @@
   }
 
   ::selection {
-    @apply bg-[#10b981]/30 text-white;
+    @apply bg-emerald-500/30 text-white;
   }
 
-  /* Custom scrollbar */
+  /* Refined scrollbar */
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 5px;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-black;
+    @apply bg-neutral-950;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-zinc-700 rounded-full;
+    @apply bg-neutral-700/50 rounded-full;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-zinc-500;
+    @apply bg-neutral-600;
+  }
+
+  /* Focus-visible for accessibility */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-emerald-500/70 rounded-sm;
   }
 }
 
 @layer components {
-  /* Container */
+  /* Container — fluid padding */
   .section-container {
-    @apply max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12;
+    @apply max-w-[1440px] mx-auto px-5 sm:px-8 md:px-12 lg:px-16 xl:px-20;
   }
 
-  /* Section backgrounds */
+  /* Section backgrounds with varied vertical rhythm */
   .section-dark {
-    @apply bg-black text-white py-16 sm:py-[100px];
+    @apply bg-black text-white py-20 sm:py-28 lg:py-32;
   }
 
   .section-light {
-    @apply bg-[#f4f4f4] text-[#151515] py-16 sm:py-[100px];
+    @apply bg-neutral-100 text-neutral-900 py-20 sm:py-28 lg:py-32;
   }
 
   .section-warm {
-    @apply bg-[#f7f5f2] text-[#151515] py-16 sm:py-[100px];
+    @apply bg-[#f7f5f2] text-neutral-900 py-20 sm:py-28 lg:py-32;
   }
 
-  /* Primary CTA button — black bg, white text */
+  /* Buttons — premium rounded with shadow hover */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 px-8 py-4
-      bg-black text-white text-[0.875rem] font-bold uppercase tracking-[1.5px]
-      rounded-[4px] transition-all duration-300
-      hover:bg-[#151515] active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2.5 px-8 py-4
+      bg-neutral-900 text-white text-body-sm font-semibold uppercase tracking-[0.1em]
+      rounded-lg transition-all duration-300 ease-out
+      hover:bg-neutral-800 hover:shadow-lg hover:shadow-black/20
+      active:scale-[0.98];
   }
 
-  /* Primary light — white bg, black text (for dark sections) */
   .btn-primary-light {
-    @apply inline-flex items-center justify-center gap-2 px-8 py-4
-      bg-white text-black text-[0.875rem] font-bold uppercase tracking-[1.5px]
-      rounded-[4px] transition-all duration-300
-      hover:bg-zinc-100 active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2.5 px-8 py-4
+      bg-white text-neutral-900 text-body-sm font-semibold uppercase tracking-[0.1em]
+      rounded-lg transition-all duration-300 ease-out
+      hover:bg-neutral-50 hover:shadow-lg hover:shadow-white/10
+      active:scale-[0.98];
   }
 
-  /* Accent button — green bg */
   .btn-accent {
-    @apply inline-flex items-center justify-center gap-2 px-8 py-4
-      bg-[#10b981] text-white text-[0.875rem] font-bold uppercase tracking-[1.5px]
-      rounded-[4px] transition-all duration-300
-      hover:bg-[#059669] active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2.5 px-8 py-4
+      bg-emerald-500 text-white text-body-sm font-semibold uppercase tracking-[0.1em]
+      rounded-lg transition-all duration-300 ease-out
+      hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-500/25
+      active:scale-[0.98];
   }
 
-  /* Outline button — for dark sections */
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 px-8 py-4
-      border border-white text-white text-[0.875rem] font-bold uppercase tracking-[1.5px]
-      rounded-[4px] transition-all duration-300
-      hover:bg-white hover:text-black active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2.5 px-8 py-4
+      border border-white/20 text-white text-body-sm font-semibold uppercase tracking-[0.1em]
+      rounded-lg transition-all duration-300 ease-out
+      hover:bg-white hover:text-neutral-900 hover:border-white
+      active:scale-[0.98];
   }
 
-  /* Section label — green uppercase */
+  /* Section label — refined */
   .section-label {
-    @apply text-[0.875rem] font-bold uppercase tracking-[0.15em] text-[#10b981] mb-4 block;
+    @apply text-label font-semibold uppercase tracking-[0.12em] text-emerald-500 mb-5 block;
+  }
+
+  /* Noise texture overlay */
+  .noise-overlay {
+    @apply pointer-events-none fixed inset-0 z-[100] opacity-[0.015];
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  /* Glass card */
+  .glass-card {
+    @apply bg-white/[0.03] border border-white/[0.06] backdrop-blur-sm rounded-2xl;
+  }
+
+  /* Glow effect utility */
+  .glow-emerald {
+    box-shadow: 0 0 80px -20px rgba(16, 185, 129, 0.15);
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .text-gradient-emerald {
+    @apply bg-gradient-to-r from-emerald-400 to-emerald-600 bg-clip-text text-transparent;
   }
 }
