@@ -36,18 +36,12 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-6 group">
               <Image
-                src="/images/logo-x9e.png"
+                src="/images/x9-logo.png"
                 alt="X9Elysium"
                 width={40}
                 height={40}
                 className="rounded-lg"
               />
-              <div className="flex items-center gap-0.5">
-                <span className="text-2xl font-bold text-white">X9</span>
-                <span className="text-2xl font-light text-neutral-500 group-hover:text-emerald-500 transition-colors duration-300">
-                  Elysium
-                </span>
-              </div>
             </Link>
             <p className="text-neutral-500 text-sm leading-relaxed mb-6 max-w-xs">
               Shopify unified commerce consulting for ambitious retailers. We
