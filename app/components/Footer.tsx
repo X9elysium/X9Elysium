@@ -49,11 +49,11 @@ export default function Footer() {
             </p>
             <div className="flex flex-col gap-3">
               <a
-                href="mailto:darshanpatel1902@gmail.com"
+                href="mailto:hello@x9elysium.com"
                 className="inline-flex items-center gap-2.5 text-sm text-neutral-500 hover:text-emerald-400 hover:translate-x-0.5 transition-all duration-300"
               >
                 <Mail className="w-4 h-4 flex-shrink-0" />
-                darshanpatel1902@gmail.com
+                hello@x9elysium.com
               </a>
               <a
                 href="tel:+16049686952"

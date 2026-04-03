@@ -17,6 +17,7 @@ const testimonials = [
     name: "Sarah Chen",
     role: "Head of Ecommerce",
     company: "Retail Brand Co.",
+    metric: "+40% revenue",
   },
   {
     quote:
@@ -24,6 +25,7 @@ const testimonials = [
     name: "Marcus Johnson",
     role: "CTO",
     company: "StyleHouse",
+    metric: "Zero downtime",
   },
   {
     quote:
@@ -31,6 +33,31 @@ const testimonials = [
     name: "Priya Patel",
     role: "Director of Operations",
     company: "NovaMart",
+    metric: "3x ROI in weeks",
+  },
+  {
+    quote:
+      "Our page load times dropped from 6.2s to 1.8s after their performance overhaul. Conversion rate jumped 28% — the numbers speak for themselves.",
+    name: "David Kim",
+    role: "Founder & CEO",
+    company: "VeloGear Athletics",
+    metric: "1.8s load time",
+  },
+  {
+    quote:
+      "They built custom subscription and inventory integrations that cut our order processing time by 65%. Our ops team finally has room to breathe.",
+    name: "Amara Osei",
+    role: "VP of Operations",
+    company: "PureRoots Wellness",
+    metric: "65% faster ops",
+  },
+  {
+    quote:
+      "X9Elysium helped us go from 3 disconnected sales channels to a truly unified commerce setup in under 90 days. Our team now runs on one source of truth.",
+    name: "James Thornton",
+    role: "Head of Digital",
+    company: "Kensington Home",
+    metric: "Omnichannel in 90 days",
   },
 ];
 
@@ -79,14 +106,21 @@ export default function Testimonials() {
               transition={sectionTransition}
               className="glass-card p-8 sm:p-10 flex flex-col hover:border-emerald-500/10 hover:shadow-lg hover:shadow-emerald-500/[0.03] transition-all duration-500"
             >
-              {/* Star rating */}
-              <div className="flex gap-1 mb-6">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star
-                    key={i}
-                    className="w-4 h-4 fill-emerald-500 text-emerald-500"
-                  />
-                ))}
+              {/* Metric badge + Star rating */}
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex gap-1">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star
+                      key={i}
+                      className="w-4 h-4 fill-emerald-500 text-emerald-500"
+                    />
+                  ))}
+                </div>
+                {testimonial.metric && (
+                  <span className="text-[11px] font-semibold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full uppercase tracking-wider">
+                    {testimonial.metric}
+                  </span>
+                )}
               </div>
 
               {/* Quote */}

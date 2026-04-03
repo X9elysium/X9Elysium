@@ -110,7 +110,7 @@ export default function ContactPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          access_key: "47e66c7f-89e0-4eab-9e57-96aboref5f65",
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "",
           subject: `New inquiry from ${formState.firstName} ${formState.lastName}${formState.company ? ` — ${formState.company}` : ""}`,
           from_name: `${formState.firstName} ${formState.lastName}`,
           ...formState,
@@ -457,10 +457,10 @@ export default function ContactPage() {
                             Something went wrong. Please try again or email us
                             at{" "}
                             <a
-                              href="mailto:darshanpatel1902@gmail.com"
+                              href="mailto:hello@x9elysium.com"
                               className="underline"
                             >
-                              darshanpatel1902@gmail.com
+                              hello@x9elysium.com
                             </a>
                           </p>
                         </div>
@@ -498,7 +498,7 @@ export default function ContactPage() {
                   </h3>
                   <div className="space-y-5">
                     <a
-                      href="mailto:darshanpatel1902@gmail.com"
+                      href="mailto:hello@x9elysium.com"
                       className="flex items-center gap-4 text-neutral-400 hover:text-emerald-400 transition-colors group"
                     >
                       <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center group-hover:border-emerald-500/30 transition-colors">
@@ -506,7 +506,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <p className="text-sm text-white">Email</p>
-                        <p className="text-sm">darshanpatel1902@gmail.com</p>
+                        <p className="text-sm">hello@x9elysium.com</p>
                       </div>
                     </a>
                     <a
@@ -590,7 +590,7 @@ export default function ContactPage() {
                 conversation about where your commerce is headed.
               </p>
               <a
-                href="mailto:darshanpatel1902@gmail.com"
+                href="mailto:hello@x9elysium.com"
                 className="btn-primary"
               >
                 Email Us Directly

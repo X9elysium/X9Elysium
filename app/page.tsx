@@ -5,7 +5,9 @@ import Services from "./components/Services";
 import CaseStudies from "./components/CaseStudies";
 import Partners from "./components/Partners";
 import WhyChooseUs from "./components/WhyChooseUs";
+import Team from "./components/Team";
 import Testimonials from "./components/Testimonials";
+import FAQ from "./components/FAQ";
 import CTABanner from "./components/CTABanner";
 import Footer from "./components/Footer";
 
@@ -26,7 +28,9 @@ export default function Home() {
         <CaseStudies />
         <Partners />
         <WhyChooseUs />
+        <Team />
         <Testimonials />
+        <FAQ />
         <CTABanner />
       </main>
       <Footer />

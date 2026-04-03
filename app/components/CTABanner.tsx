@@ -45,7 +45,7 @@ export default function CTABanner() {
               Book a Strategy Call
               <ArrowRight className="w-4 h-4" />
             </Link>
-            <a href="mailto:darshanpatel1902@gmail.com" className="btn-outline">
+            <a href="mailto:hello@x9elysium.com" className="btn-outline">
               Email Us Directly
             </a>
           </div>
