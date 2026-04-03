@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -lh \"/Users/darsh/Desktop/Dev Projects/X9Elysium/public/\"*.MP4)",
+      "Bash(git -C \"/Users/darsh/Desktop/Dev Projects/X9Elysium\" branch -a)",
+      "Bash(sips -g all \"/Users/darsh/Desktop/Dev Projects/X9Elysium/public/images/logo-x9e.png\")",
+      "Bash(sips -g all \"/Users/darsh/Desktop/Dev Projects/X9Elysium/public/456441839_488866147207033_4632849824668430109_n\\(1\\).jpg\")",
+      "Bash(sips -g all \"/Users/darsh/Desktop/Dev Projects/X9Elysium/public/images/logoo.jpg\")",
+      "Bash(md5 \"/Users/darsh/Desktop/Dev Projects/X9Elysium/public/images/logoo.jpg\" \"/Users/darsh/Desktop/Dev Projects/X9Elysium/public/456441839_488866147207033_4632849824668430109_n\\(1\\).jpg\")",
+      "Bash(sips -z 64 64 \"/Users/darsh/Desktop/Dev Projects/X9Elysium/public/456441839_488866147207033_4632849824668430109_n\\(1\\).jpg\" --out \"/Users/darsh/Desktop/Dev Projects/X9Elysium/public/images/favicon.png\")",
+      "Bash(sips -s format png -z 64 64 \"/Users/darsh/Desktop/Dev Projects/X9Elysium/public/456441839_488866147207033_4632849824668430109_n\\(1\\).jpg\" --out \"/Users/darsh/Desktop/Dev Projects/X9Elysium/public/images/favicon.png\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3001)",
+      "Bash(curl -s http://localhost:3001)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3001/hero-video.mp4)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3001/images/favicon.png)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3001/images/logo-x9e.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight \"public/456441839_488866147207033_4632849824668430109_n\\(1\\).jpg\")",
+      "Bash(sips -s format png --cropToHeightWidth 960 960 --cropOffset 50 55 \"public/456441839_488866147207033_4632849824668430109_n\\(1\\).jpg\" --out \"public/images/x9-logo.png\")",
+      "Bash(sips -s format png -z 64 64 \"public/images/x9-logo.png\" --out \"public/images/favicon.png\")"
+    ]
+  }
+}
