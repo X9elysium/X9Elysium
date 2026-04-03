@@ -14,24 +14,15 @@ import {
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
-      {/* Video background */}
+      {/* Gradient mesh background */}
       <div className="absolute inset-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="/hero-video.mp4" type="video/mp4" />
-        </video>
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black/60" />
-        {/* Gradient fade to blend into next section */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black" />
-        {/* Subtle emerald accent glow */}
-        <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-emerald-500/[0.05] rounded-full blur-[180px] will-change-transform pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-neutral-950 via-black to-black" />
+        {/* Top-right emerald glow */}
+        <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-emerald-500/[0.07] rounded-full blur-[180px] will-change-transform pointer-events-none" />
+        {/* Bottom-left subtle glow */}
+        <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-emerald-700/[0.04] rounded-full blur-[150px] will-change-transform pointer-events-none" />
+        {/* Center subtle radial */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-emerald-500/[0.02] rounded-full blur-[200px] will-change-transform pointer-events-none" />
       </div>
 
       {/* Content */}
