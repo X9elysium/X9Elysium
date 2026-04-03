@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Mail, Phone, MapPin, ArrowUp } from "lucide-react";
 
@@ -18,9 +19,8 @@ const footerLinks = {
     { name: "Contact", href: "/contact" },
   ],
   connect: [
-    { name: "LinkedIn", href: "https://linkedin.com" },
-    { name: "Twitter", href: "https://twitter.com" },
-    { name: "Instagram", href: "https://instagram.com" },
+    { name: "Instagram", href: "https://www.instagram.com/x9elysium/" },
+    { name: "Facebook", href: "https://www.facebook.com/profile.php?id=100091230745202" },
   ],
 };
 
@@ -34,11 +34,20 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 mb-16">
           {/* Brand Column */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <Link href="/" className="flex items-center gap-0.5 mb-6 group">
-              <span className="text-2xl font-bold text-white">X9</span>
-              <span className="text-2xl font-light text-neutral-500 group-hover:text-emerald-500 transition-colors duration-300">
-                Elysium
-              </span>
+            <Link href="/" className="flex items-center gap-2 mb-6 group">
+              <Image
+                src="/images/logo-x9e.png"
+                alt="X9Elysium"
+                width={40}
+                height={40}
+                className="rounded-lg"
+              />
+              <div className="flex items-center gap-0.5">
+                <span className="text-2xl font-bold text-white">X9</span>
+                <span className="text-2xl font-light text-neutral-500 group-hover:text-emerald-500 transition-colors duration-300">
+                  Elysium
+                </span>
+              </div>
             </Link>
             <p className="text-neutral-500 text-sm leading-relaxed mb-6 max-w-xs">
               Shopify unified commerce consulting for ambitious retailers. We

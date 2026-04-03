@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 
 const navItems = [
@@ -49,14 +50,24 @@ export default function Navigation() {
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-0.5 group z-50 transition-transform duration-300 hover:scale-[1.02]"
+            className="flex items-center gap-2 group z-50 transition-transform duration-300 hover:scale-[1.02]"
           >
-            <span className="text-2xl font-bold text-white tracking-tight">
-              X9
-            </span>
-            <span className="text-2xl font-light text-neutral-500 group-hover:text-emerald-500 transition-colors duration-300">
-              Elysium
-            </span>
+            <Image
+              src="/images/logo-x9e.png"
+              alt="X9Elysium"
+              width={36}
+              height={36}
+              className="rounded-lg"
+              priority
+            />
+            <div className="flex items-center gap-0.5">
+              <span className="text-2xl font-bold text-white tracking-tight">
+                X9
+              </span>
+              <span className="text-2xl font-light text-neutral-500 group-hover:text-emerald-500 transition-colors duration-300">
+                Elysium
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Menu */}
