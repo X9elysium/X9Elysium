@@ -15,6 +15,9 @@ yarn.lock
 /tmp/
 /out/
 
+# deploy artifact
+/x9elysium-static.zip
+
 # production
 /build
 /.json

@@ -8,7 +8,8 @@
     "build": "next build",
     "export": "next build && next export",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "deploy:zip": "rm -rf out && next build && cd out && zip -rq ../x9elysium-static.zip . && cd .. && echo '\\nx9elysium-static.zip is ready. Upload it to Hostinger File Manager (public_html) and Extract.'"
   },
   "dependencies": {
     "aws-amplify": "^6.5.0",

@@ -72,12 +72,17 @@ Every time changes are committed or pushed:
 ## Commands
 
 ```bash
-npm run dev      # Dev server
-npm run build    # Production build → static export in out/ (deploy this)
-npm run lint     # ESLint
+npm run dev          # Dev server
+npm run build        # Production build → static export in out/
+npm run deploy:zip   # Build + zip out/ → x9elysium-static.zip (upload to Hostinger)
+npm run lint         # ESLint
 ```
 
 `npm start` is not used because the site is a static export — no Node.js process in production.
+
+## Deployment
+
+x9elysium.com is served as plain static hosting from Hostinger's `public_html/`. To ship: run `npm run deploy:zip`, upload `x9elysium-static.zip` to `public_html/` via Hostinger File Manager, extract, purge CDN cache. Full step-by-step in `docs/deployments/hostinger-static-deploy.md`.
 
 ## Known Issues
 - `node_modules/`, `.next/`, `.next-build/`, `tmp/` may be owned by root (from a previous `sudo npm` run). Fix with: `sudo chown -R $(whoami) node_modules .next .next-build tmp`

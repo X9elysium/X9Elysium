@@ -12,6 +12,12 @@ Format:
 
 ---
 
+## (pending) — 2026-05-02 — hostinger static deploy guide + deploy:zip script
+
+- Touched: `package.json` (new `deploy:zip` script); `.gitignore` (ignore zip artifact); `docs/deployments/hostinger-static-deploy.md` (new step-by-step); `CLAUDE.md` (deployment section)
+- Tasks moved: none
+- Notes: One-command build+zip for Hostinger File Manager upload. Step-by-step covers stopping the dead Node.js app, switching to static hosting, CDN purge, and optional GitHub auto-deploy. Tested: zip is ~9.8 MB.
+
 ## (pending) — 2026-05-02 — static export, ca+us seo, defer third-party scripts
 
 - Touched: `next.config.js` (output: export, trailingSlash, env baking); `app/layout.tsx` (CA+US metadata, hreflang, geo tags, expanded JSON-LD areaServed, scripts deferred to lazyOnload, preconnect for Tawk/Clarity); `app/components/Hero.tsx` (Shopify Plus + North America copy); `app/components/Services.tsx` (Shopify Plus + Canadian/US retailers copy); `CLAUDE.md` (deployment + commands updated)
