@@ -122,6 +122,7 @@ x9elysium.com is served as plain static hosting from Hostinger's `public_html/`.
 - [x] Inter font via next/font (weights 300-700 including 600)
 - [x] Focus-visible styles for keyboard navigation
 - [x] Deployed on Hostinger (x9elysium.com)
+- [x] Foundation page at /foundation (Why + 5 Pillars + 10 Operating Rules; Naval-style premium copy; per-page SEO metadata + OG/Twitter; linked from Footer + About; registered in sitemap)
 
 ### Remaining
 - [ ] About page (App Router)

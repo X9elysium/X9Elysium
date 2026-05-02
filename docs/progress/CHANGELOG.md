@@ -12,6 +12,15 @@ Format:
 
 ---
 
+## (pending) — 2026-05-02 — /foundation page (Why + 5 Pillars + 10 Rules) with SEO+GEO hardening
+
+- Touched: `app/foundation/page.tsx` + `app/foundation/FoundationClient.tsx` + `app/foundation/data.ts` (new); `app/components/Footer.tsx` (Company column adds Foundation); `app/sitemap.ts` (registers `/foundation`); `app/about/page.tsx` (Values section now teases the full Foundation page)
+- Tasks moved: none net (no matching item in CLAUDE.md Remaining; new value-system surface area)
+- Notes: Naval-style premium page — manifesto Why, five non-negotiable Pillars (Growth-First, Responsibility, Positivity, Inclusive Collaboration, Relentless Execution) with self-attributing aphorisms, ten Operating Rules in a numbered grid, closing Promise section. Two audit passes applied:
+  - **SEO pass (seo-content):** Title trimmed 76→62 chars; per-page Article+AboutPage JSON-LD added; Promise upgraded from `<p>` to `<h2>`; self-attribution definition sentence added at top of "The Why" ("X9Elysium is a Shopify Plus consulting agency that builds commerce infrastructure for ambitious North American DTC and B2B retailers"); 8× `/services`, 3× `/work`, 6× `/contact` internal links shipping.
+  - **GEO pass (geo-content):** Pillars + Rules extracted to shared `data.ts` so server `page.tsx` can emit two `ItemList` JSON-LD blocks (5 ListItem + 10 ListItem) bound to the Article via `hasPart` and to `#organization` via `author`/`publisher`/`about`. Pillar 03/04 aphorisms rewritten for self-attribution (LLMs now extract them with X9Elysium credit). Pillar 05 nested-quote ("When can we start?") removed. Manifesto opens with subject-having sentence so AI engines can quote it standalone. Promise headline name-checks X9Elysium for entity-binding on extraction.
+  - **Verified in static HTML:** 3 JSON-LD nodes (`#article`, `#pillars`, `#rules`); `/foundation` prerenders to 6.32 kB / 148 kB First Load JS; `/foundation/` in `sitemap.xml`; linked from footer Company column + About page Values teaser.
+
 ## (pending) — 2026-05-02 — pin-gated journal at /docs/journal
 
 - Touched: `app/docs/journal/lib.ts`, `app/docs/journal/page.tsx`, `app/docs/journal/components/JournalApp.tsx` (all new); `app/docs/components/Sidebar.tsx` (Journal nav entry); `app/docs/page.tsx` (Journal hero card); `CLAUDE.md` (privacy note); `docs/journal/README.md` (encryption note); memory `feedback_docs_workflow.md` updated

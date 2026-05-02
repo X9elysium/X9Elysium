@@ -253,6 +253,17 @@ export default function AboutPage() {
               <h2 className="text-h2-display text-neutral-900 dark:text-white max-w-2xl text-balance">
                 Three principles that guide every engagement
               </h2>
+              <p className="text-neutral-500 dark:text-neutral-400 text-body-lg mt-6 leading-relaxed max-w-2xl">
+                The condensed version. The full set — five pillars, ten
+                operating rules, and the Why behind X9Elysium — lives on the{" "}
+                <Link
+                  href="/foundation"
+                  className="text-emerald-500 hover:text-emerald-400 underline-offset-4 hover:underline transition-colors"
+                >
+                  Foundation page
+                </Link>
+                .
+              </p>
             </motion.div>
 
             <motion.div
