@@ -2,5 +2,8 @@
   command = "npm run build"
   publish = "out"
 
+[build.environment]
+  NEXT_PUBLIC_CLARITY_PROJECT_ID = "nhmfksrzgs"
+
 [functions]
   included_files = ["content/**"]
