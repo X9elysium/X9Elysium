@@ -2,14 +2,20 @@
 /posts                    /blog              301
 /posts/                   /blog              301
 /posts/page/*             /blog              301
-/posts/post-1             /blog/post-1       301
-/posts/post-2             /blog/post-2       301
-/posts/post-3             /blog/post-3       301
-/posts/post-4             /blog/post-4       301
-/posts/post-5             /blog/post-5       301
-/posts/post-6             /blog/post-6       301
-/posts/post-7             /blog/post-7       301
-/posts/post-8             /blog/post-8       301
-/posts/post-9             /blog/post-9       301
-/posts/post-10            /blog/post-10      301
+
+# Legacy template post-N slugs (placeholder content was removed 2026-05-02).
+# 410 = Gone — tells crawlers these URLs are intentionally retired and should
+# be deindexed without retry. Switch back to a 301 to /blog if you ever want
+# to gracefully forward stale traffic instead of removing the URLs entirely.
+/blog/post-1              /blog              410
+/blog/post-2              /blog              410
+/blog/post-3              /blog              410
+/blog/post-4              /blog              410
+/blog/post-5              /blog              410
+/blog/post-6              /blog              410
+/blog/post-7              /blog              410
+/blog/post-8              /blog              410
+/blog/post-9              /blog              410
+/blog/post-10             /blog              410
+/posts/post-*             /blog              410
 /posts/*                  /blog/:splat       301

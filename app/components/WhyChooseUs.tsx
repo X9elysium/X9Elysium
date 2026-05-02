@@ -62,7 +62,7 @@ const reasons = [
     icon: Users,
     title: "True Partnership",
     description:
-      "We embed with your team and transfer knowledge. 98% client retention because we stay invested in your long-term success.",
+      "We embed with your team and transfer knowledge. 95% client retention because we stay invested in your long-term success.",
   },
   {
     icon: TrendingUp,
@@ -73,10 +73,10 @@ const reasons = [
 ];
 
 const stats = [
-  { value: "40%+", label: "Avg. Revenue Lift" },
-  { value: "98%", label: "Client Retention" },
-  { value: "50+", label: "Projects Delivered" },
-  { value: "$12M+", label: "Client GMV Managed" },
+  { value: "8+ yrs", label: "Per-Founder Experience" },
+  { value: "95%", label: "Client Retention" },
+  { value: "30+", label: "Stores Shipped" },
+  { value: "$5M+", label: "Client GMV Managed" },
 ];
 
 export default function WhyChooseUs() {
@@ -139,8 +139,8 @@ export default function WhyChooseUs() {
               The Elysium Method
             </span>
             <p className="text-neutral-500 dark:text-neutral-400 text-body-sm max-w-xl mx-auto">
-              Four phases. No surprises. Consistently 40%+ revenue uplifts for
-              the retailers we work with.
+              Four phases. No surprises. The same two senior founders on every
+              brief, from kickoff to post-launch.
             </p>
           </div>
 

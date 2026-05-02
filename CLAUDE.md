@@ -127,13 +127,23 @@ x9elysium.com is served as plain static hosting from Hostinger's `public_html/`.
 
 ### Remaining
 
+- [ ] **Third-party proof (highest-ROI gap, not codeable):** claim Shopify Partner directory profile + apply to Plus Partner track; claim Clutch profile + collect 5 verified reviews; claim Google Business Profile for the Mississauga HQ; create real LinkedIn company page (placeholder URL still in `config/social.json:4`); generate `/.well-known/indexnow-key.txt` and wire IndexNow ping on deploy. Full playbook in `docs/marketing/third-party-listings.md`.
 - [ ] Real testimonials with attributable names + permission (current copy is anonymized — "Head of Ecommerce, premium fashion DTC" etc. Replace once real client testimonials are collected.)
-- [ ] Real case studies with named clients + permissioned metrics
-- [ ] Set `NEXT_PUBLIC_CALCOM_URL` (or `NEXT_PUBLIC_BOOKING_URL`) in Cloudflare project env so "Book a Strategy Call" CTAs flip to Cal.com — leaving unset routes them to `/contact` form (current behaviour)
+- [ ] Real case studies with named clients + permissioned metrics — at least one named permissioned `/work/[slug]` case study before pitching tier-1 Canadian press in Month 5 of the 6-month plan.
+- [ ] Build `/locations/vancouver` page (mirrored from Toronto/Calgary). llms.txt mentions Vancouver as a served location; landing page absence is wasted local intent.
+- [ ] Set `NEXT_PUBLIC_CALCOM_URL` (or `NEXT_PUBLIC_BOOKING_URL`) in Cloudflare project env so "Book a Strategy Call" CTAs flip to Cal.com — leaving unset routes them to `/contact` form (current behaviour). Hero CTA now leads with `BookingButton` so the calendar link matters more.
 - [ ] Drop real founder photos at `public/images/about/team/darshan.jpg` and `public/images/about/team/adhvait.jpg` (square, 96×96+ recommended). Cards currently render initials avatars; the data structure and UI are ready for the photos. LinkedIn can't be auto-scraped for this — save manually from the profiles.
+- [ ] Strip per-quote `metric` badges from `app/components/Testimonials.tsx` (anonymized + specific numbers reads as fabricated). Keep the quote + role/industry; add an NDA-respecting subhead.
+- [ ] Add `Person` schema for Darshan + Adhvait to root JSON-LD (currently referenced via `sameAs` only — Person entity strengthens E-E-A-T).
+- [ ] Cornerstone content cadence — see `docs/marketing/6-month-organic-growth-plan.md` for the May–November 2026 plan: 1 cornerstone piece per month + Magento → Plus migration field guide + Plus vs BigCommerce decision page in Month 2.
 
 ### Recently Completed
 
+- [x] Content audit pass (2026-05-02): reconciled homepage stats to 30+/95%/$5M+ across Hero, WhyChooseUs, and Work; sharpened Hero around the founder-led wedge ("Founder-led Shopify Plus consulting. No juniors. No handoffs."); inverted Hero CTA hierarchy so the booking CTA is dominant. Diversified Footer service links to section anchors + added a Locations column.
+- [x] /services, /work, /contact converted to server components with per-page metadata + canonical (2026-05-02). Resolves FULL-AUDIT-REPORT P0 finding (3 of the 5 duplicate-title pages — /about was fixed earlier in the founder-led rewrite). Added `OfferCatalog` + 6-question `FAQPage` JSON-LD on /services; `BreadcrumbList` on /work; `ContactPage` schema on /contact.
+- [x] llms.txt rewrite + sitemap improvements (2026-05-02). llms.txt leads with the founder-led wedge, reconciled stats, and a "Frequently Asked" block; sitemap adds `/services` + `/work` and replaces `new Date()` with pinned `STATIC_LASTMOD` so freshness signals don't lie. References to deleted `post-N` URLs removed from llms.txt.
+- [x] Legacy template content cleanup (2026-05-02). Deleted `content/posts/post-1.md`…`post-10.md` (Hugo template fluff identified by FULL-AUDIT-REPORT as the largest E-E-A-T drag). `public/_redirects` now returns `410 Gone` on all 10 slugs.
+- [x] 6-month organic growth marketing plan + third-party listings checklist written (2026-05-02) — `docs/marketing/6-month-organic-growth-plan.md` (month-by-month plan, weekly engine cadence, conservative + aggressive revenue model) and `docs/marketing/third-party-listings.md` (P0–P3 directory + ecosystem playbook).
 - [x] Homepage Team + About Team — LinkedIn-on-hover treatment (2026-05-02). Both `app/components/Team.tsx` (homepage) and `app/about/AboutClient.tsx` (about) now render founder cards as a single anchor to the LinkedIn profile, with a top-right LinkedIn icon pill that fades in on hover. Sam Okaster removed from homepage Team.tsx (was already gone from About). Stock-photo placeholders deleted from `public/images/about/team/` — initials avatars until real photos drop in.
 - [x] About page (App Router) — founder-led rewrite (2026-05-02). GTA-based, founded 2021, only Darshan + Adhvait with real LinkedIn-sourced bios + `sameAs` JSON-LD. Removed fabricated milestones timeline + Sam Okaster + aspirational certs. Stats reframed to defensible four-year numbers. Per-page Metadata + AboutPage/Organization/Person JSON-LD graph for AI entity recognition.
 - [x] About page (App Router) — milestones, values, team, stats, certifications
