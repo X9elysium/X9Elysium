@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Shield, Eye, TrendingUp, Linkedin } from "lucide-react";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
@@ -38,7 +39,16 @@ const values = [
   },
 ];
 
-const team = [
+type TeamMember = {
+  name: string;
+  role: string;
+  bio: string;
+  initials: string;
+  image?: string;
+  linkedin: string;
+};
+
+const team: TeamMember[] = [
   {
     name: "Darshan Patel",
     role: "Founder & Full-Stack Lead",
@@ -276,18 +286,40 @@ export default function AboutClient() {
               className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl"
             >
               {team.map((member) => (
-                <motion.div
+                <motion.a
                   key={member.name}
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${member.name} on LinkedIn`}
                   variants={fadeUp}
                   transition={sectionTransition}
-                  className="group glass-card p-8 text-center hover:border-emerald-500/15 hover:-translate-y-1 transition-all duration-500"
+                  className="group relative glass-card p-8 text-center hover:border-emerald-500/15 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-500/[0.05] transition-all duration-500"
                 >
-                  <div className="relative mx-auto w-24 h-24 rounded-2xl overflow-hidden mb-6 ring-2 ring-emerald-500/20 ring-offset-4 ring-offset-white dark:ring-offset-neutral-900">
-                    <div className="w-full h-full bg-gradient-to-br from-emerald-400/20 to-emerald-600/30 flex items-center justify-center">
-                      <span className="text-2xl font-semibold text-emerald-600 dark:text-emerald-400">
-                        {member.initials}
-                      </span>
-                    </div>
+                  {/* LinkedIn icon — appears on hover */}
+                  <span
+                    aria-hidden="true"
+                    className="absolute top-5 right-5 inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 dark:text-emerald-400 opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300"
+                  >
+                    <Linkedin className="w-4 h-4" strokeWidth={1.75} />
+                  </span>
+
+                  <div className="relative mx-auto w-24 h-24 rounded-2xl overflow-hidden mb-6 ring-2 ring-emerald-500/20 ring-offset-4 ring-offset-white dark:ring-offset-neutral-900 bg-gradient-to-br from-emerald-400/20 to-emerald-600/30">
+                    {member.image ? (
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        width={96}
+                        height={96}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="text-2xl font-semibold text-emerald-600 dark:text-emerald-400">
+                          {member.initials}
+                        </span>
+                      </div>
+                    )}
                   </div>
                   <h3 className="text-lg font-semibold text-neutral-900 dark:text-white tracking-tight mb-1">
                     {member.name}
@@ -295,20 +327,10 @@ export default function AboutClient() {
                   <p className="text-emerald-500 text-sm font-medium mb-4">
                     {member.role}
                   </p>
-                  <p className="text-neutral-500 dark:text-neutral-400 text-sm leading-relaxed mb-6">
+                  <p className="text-neutral-500 dark:text-neutral-400 text-sm leading-relaxed">
                     {member.bio}
                   </p>
-                  <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-neutral-700 dark:text-neutral-300 bg-white dark:bg-white/[0.04] border border-neutral-200 dark:border-white/[0.06] hover:border-emerald-500/30 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all duration-300"
-                    aria-label={`${member.name} on LinkedIn`}
-                  >
-                    <Linkedin className="w-4 h-4" strokeWidth={1.75} />
-                    Connect on LinkedIn
-                  </a>
-                </motion.div>
+                </motion.a>
               ))}
             </motion.div>
           </div>

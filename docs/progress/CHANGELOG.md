@@ -12,6 +12,28 @@ Format:
 
 ---
 
+## (pending) — 2026-05-02 — remove unused deploy-hostinger.yml workflow
+
+- Touched:
+  - **`.github/workflows/deploy-hostinger.yml`** — deleted. Cloudflare Workers (`wrangler.toml`) has been the production deploy path for a while; this FTP workflow was dormant (no GitHub secrets configured) and just visual clutter in the Actions tab.
+  - **`CLAUDE.md`** — Deployment section updated. "Hostinger fallback (FTP)" line now notes the workflow was removed 2026-05-02 and points to the recovery doc.
+  - **`docs/deployments/github-actions-ftp-deploy.md`** — added an "archived recipe" status banner at the top, reframed the body as a recovery procedure, and appended the full workflow YAML at the bottom so the doc is self-contained if Cloudflare ever needs to be replaced.
+- Tasks moved: none.
+- Notes: `npm-publish-github-packages.yml` and `node.js.yml` left in place for now — the npm-publish one is template cruft that should also be removed (X9Elysium isn't a published package), but flagged for explicit confirmation rather than removed unilaterally. `node.js.yml` runs lint+build on push/PR and may still be useful as basic CI even though Cloudflare also runs the build.
+
+---
+
+## (pending) — 2026-05-02 — homepage Team: drop Sam Okaster, 2-founder grid, LinkedIn-on-hover
+
+- Touched:
+  - **`app/components/Team.tsx`** — rewrote homepage Team section. Removed third member (Sam Okaster, fabricated). Now shows Darshan + Adhvait only in a 2-up grid (max-w-4xl). Each card is now a single `<motion.a>` linking to the founder's LinkedIn (`dpatel99`, `adhvaitjadav`) with `target=_blank rel="noopener noreferrer"` and aria-label. A LinkedIn icon pill (lucide `Linkedin` in an emerald circle) sits absolute top-right and fades + slides in on `group-hover` — matches the on-hover pattern Darsh asked for. Avatar block supports an optional `image` field via `next/image`; falls back to initials-on-emerald-gradient when image is undefined (current state — no real photos yet, see note). Headline copy changed from "Small team. Senior expertise." → "Two senior builders. No layers in between."
+  - **`app/about/AboutClient.tsx`** — same hover treatment applied to the /about Team grid. Card is now a `<motion.a>` to LinkedIn; the bottom "Connect on LinkedIn" pill is replaced by the top-right hover icon for visual consistency with the homepage. Adds `import Image from "next/image"` and a `TeamMember` type with optional `image?: string` so future photos drop in cleanly.
+  - **`public/images/about/team/01.jpg | 02.jpg | 03.jpg`** — deleted. These were stock-photo placeholders (a stock male model was being shown as Darshan), unsafe to ship in any state. Cards now render initials avatars until real photos are dropped at `public/images/about/team/darshan.jpg` + `adhvait.jpg`.
+- Tasks moved: none directly; About-page rewrite already moved this section earlier today, this is the homepage parity pass.
+- Notes: **Could not auto-download LinkedIn profile photos.** Darsh asked me to "download our linkedin image from google linkedin url" — LinkedIn returns a 1.5 KB challenge page to all unauthenticated fetches (verified with browser-style UA), and bypassing that with spoofed Googlebot/facebookexternalhit UAs was correctly blocked by sandbox policy as TOS-evasive scraping. Real images need to be saved manually from the LinkedIn profiles and dropped at the two paths above; the data structure and UI are ready for them. Build clean (`npm run build` ✔, lint ✔).
+
+---
+
 ## (pending) — 2026-05-02 — site email → `darshan@x9elysium.com`; codebase cleanup; SPF warning logged
 
 - Touched:

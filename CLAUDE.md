@@ -91,7 +91,7 @@ x9elysium.com is served as plain static hosting from Hostinger's `public_html/`.
 
 **Primary path — Cloudflare Workers (Static Assets):** repo is connected to a Cloudflare project named `x9elysium`. On push to `main`, Cloudflare clones, runs `npm run build`, then `npx wrangler deploy` ships `out/` as static assets via Workers (configured in `wrangler.toml`). DNS for x9elysium.com points at the Cloudflare project; domain remains registered with Hostinger.
 
-**Hostinger fallback (FTP):** `.github/workflows/deploy-hostinger.yml` exists for ad-hoc Hostinger deploys but is dormant unless GitHub secrets are set. See `docs/deployments/github-actions-ftp-deploy.md`.
+**Hostinger fallback (FTP):** historical workflow `.github/workflows/deploy-hostinger.yml` was removed (2026-05-02) — Cloudflare is the only deploy path now. See `docs/deployments/github-actions-ftp-deploy.md` for the recipe if you ever need to recreate it.
 
 **Manual fallback:** `npm run deploy:zip` builds + zips `out/` for direct upload anywhere.
 
@@ -130,9 +130,11 @@ x9elysium.com is served as plain static hosting from Hostinger's `public_html/`.
 - [ ] Real testimonials with attributable names + permission (current copy is anonymized — "Head of Ecommerce, premium fashion DTC" etc. Replace once real client testimonials are collected.)
 - [ ] Real case studies with named clients + permissioned metrics
 - [ ] Set `NEXT_PUBLIC_CALCOM_URL` (or `NEXT_PUBLIC_BOOKING_URL`) in Cloudflare project env so "Book a Strategy Call" CTAs flip to Cal.com — leaving unset routes them to `/contact` form (current behaviour)
+- [ ] Drop real founder photos at `public/images/about/team/darshan.jpg` and `public/images/about/team/adhvait.jpg` (square, 96×96+ recommended). Cards currently render initials avatars; the data structure and UI are ready for the photos. LinkedIn can't be auto-scraped for this — save manually from the profiles.
 
 ### Recently Completed
 
+- [x] Homepage Team + About Team — LinkedIn-on-hover treatment (2026-05-02). Both `app/components/Team.tsx` (homepage) and `app/about/AboutClient.tsx` (about) now render founder cards as a single anchor to the LinkedIn profile, with a top-right LinkedIn icon pill that fades in on hover. Sam Okaster removed from homepage Team.tsx (was already gone from About). Stock-photo placeholders deleted from `public/images/about/team/` — initials avatars until real photos drop in.
 - [x] About page (App Router) — founder-led rewrite (2026-05-02). GTA-based, founded 2021, only Darshan + Adhvait with real LinkedIn-sourced bios + `sameAs` JSON-LD. Removed fabricated milestones timeline + Sam Okaster + aspirational certs. Stats reframed to defensible four-year numbers. Per-page Metadata + AboutPage/Organization/Person JSON-LD graph for AI entity recognition.
 - [x] About page (App Router) — milestones, values, team, stats, certifications
 - [x] Services detail page (App Router) — services grid, process, tech stack, engagement models
