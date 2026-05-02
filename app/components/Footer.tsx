@@ -6,15 +6,15 @@ import { Mail, Phone, MapPin, ArrowUp } from "lucide-react";
 
 const footerLinks = {
   services: [
-    { name: "Store Audits", href: "#services" },
-    { name: "Custom Integrations", href: "#services" },
-    { name: "Platform Migrations", href: "#services" },
-    { name: "Performance Optimization", href: "#services" },
-    { name: "Strategy Consulting", href: "#services" },
+    { name: "Store Audits", href: "/services" },
+    { name: "Custom Integrations", href: "/services" },
+    { name: "Platform Migrations", href: "/services" },
+    { name: "Performance Optimization", href: "/services" },
+    { name: "Strategy Consulting", href: "/services" },
   ],
   company: [
-    { name: "About", href: "#about" },
-    { name: "Work", href: "#work" },
+    { name: "About", href: "/about" },
+    { name: "Work", href: "/work" },
     { name: "Blog", href: "/posts" },
     { name: "Contact", href: "/contact" },
   ],
