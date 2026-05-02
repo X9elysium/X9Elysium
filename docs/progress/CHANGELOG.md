@@ -12,6 +12,15 @@ Format:
 
 ---
 
+## (pending) — 2026-05-02 — instagram content plan + automation roadmap (10 posts, brand-locked image prompts, 3 automation tiers)
+
+- Touched:
+  - **`docs/marketing/instagram-content-plan.md`** (NEW) — 10 ready-to-ship Instagram posts (5 single, 5 carousels of 4–5 slides) with Grok image prompts locked to the X9E brand rails (matte black, emerald `#10b981`, Inter sans-serif, 4:5 portrait or 1:1 carousel, X9ELYSIUM watermark). Each post = hook + data point + insight + DM-keyword CTA. Topics: replatforming true cost, Plus vs BigCommerce, 100ms = $1M, founder-led economics, AOV +34%, subscription LTV cohort lie, B2B on Plus reality, headless ROI math, international Markets QA, founder pitch closer. Plus a 3-tier automation roadmap: Tier 1 manual via Meta Business Suite ($0–15/mo), Tier 2 semi-auto via n8n + IG Graph API + Notion (~$20/mo, half-day setup), Tier 3 fully autonomous via Claude API + image gen + Slack approval loop (~$25–40/mo, ~2 days build). Recommended path: Tier 1 first 30 days, only escalate if IG produces qualified DMs. Adds three IG tracking columns to the existing engine dashboard.
+- Tasks moved: none — this is a new marketing channel layered onto the existing 6-month plan, not a redesign task.
+- Notes: This deliberately does NOT promote IG to a primary channel. The 6-month plan still leads with LinkedIn + Reddit + outbound + cornerstone content. Kill criteria included: if zero qualified discovery calls attribute to IG by end of Month 2, kill or rebuild.
+
+---
+
 ## (pending) — 2026-05-02 — content audit pass: reconcile stats, fix metadata, founder-led wedge, marketing plan
 
 - Touched:
