@@ -12,6 +12,13 @@ Format:
 
 ---
 
+## (pending) — 2026-05-02 — remove Tawk.to chatbot; lead intake = Web3Forms contact form + email only
+
+- Touched:
+  - **`app/layout.tsx`** — removed Tawk.to `<Script id="tawk-to">` block (was lazy-loading `embed.tawk.to/69d665f092b65f1c33097671/1jlmnschp`), plus its `preconnect` + `dns-prefetch` hints. `next/script` import retained — still used by Microsoft Clarity. Build verified: 0 hits for "tawk" across `out/`.
+- Tasks moved (CLAUDE.md → Completed): Tawk.to chatbot removed.
+- Notes: Decision rationale — Darsh wanted to consolidate inbound to two channels: Web3Forms `/contact` form (already wired, free up to 250 submissions/mo, lands in `hello@x9elysium.com`) and direct `mailto:hello@x9elysium.com`. No chat triage burden, no third-party widget loading on every page. If lead volume ever exceeds Web3Forms' free tier, **Tally** (free, unlimited submissions, lead dashboard) is the recommended drop-in upgrade.
+
 ## (pending) — 2026-05-02 — OG image: switch from metadata-route convention to static PNG
 
 - Touched: `app/opengraph-image.tsx` (deleted), `app/twitter-image.tsx` (deleted), `public/images/og-image.png` (new — 1200×630, 132 KB, generated once via the prior build), `app/layout.tsx` (`openGraph.images` and `twitter.images` now point at `/images/og-image.png`)

@@ -123,6 +123,7 @@ x9elysium.com is served as plain static hosting from Hostinger's `public_html/`.
 - [x] Focus-visible styles for keyboard navigation
 - [x] Deployed on Hostinger (x9elysium.com)
 - [x] Foundation page at /foundation (Why + 5 Pillars + 10 Operating Rules; Naval-style premium copy; per-page SEO metadata + OG/Twitter; linked from Footer + About; registered in sitemap)
+- [x] Tawk.to chatbot removed (2026-05-02) — leads now flow through Web3Forms contact form + direct email only. Reason: Darsh prefers async, intentional inbound over chat triage.
 
 ### Remaining
 
