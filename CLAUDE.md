@@ -84,9 +84,11 @@ npm run lint         # ESLint
 
 x9elysium.com is served as plain static hosting from Hostinger's `public_html/`.
 
-**Primary path — GitHub Actions auto-deploy:** every push to `main` triggers `.github/workflows/deploy-hostinger.yml`, which builds the static export and uploads `out/` to Hostinger via FTP. Setup guide and required secrets in `docs/deployments/github-actions-ftp-deploy.md`.
+**Primary path — Cloudflare Workers (Static Assets):** repo is connected to a Cloudflare project named `x9elysium`. On push to `main`, Cloudflare clones, runs `npm run build`, then `npx wrangler deploy` ships `out/` as static assets via Workers (configured in `wrangler.toml`). DNS for x9elysium.com points at the Cloudflare project; domain remains registered with Hostinger.
 
-**Manual fallback:** `npm run deploy:zip` produces `x9elysium-static.zip`; upload to `public_html/` via Hostinger File Manager and extract. Full step-by-step in `docs/deployments/hostinger-static-deploy.md`.
+**Hostinger fallback (FTP):** `.github/workflows/deploy-hostinger.yml` exists for ad-hoc Hostinger deploys but is dormant unless GitHub secrets are set. See `docs/deployments/github-actions-ftp-deploy.md`.
+
+**Manual fallback:** `npm run deploy:zip` builds + zips `out/` for direct upload anywhere.
 
 ## Known Issues
 - `node_modules/`, `.next/`, `.next-build/`, `tmp/` may be owned by root (from a previous `sudo npm` run). Fix with: `sudo chown -R $(whoami) node_modules .next .next-build tmp`

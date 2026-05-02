@@ -12,6 +12,12 @@ Format:
 
 ---
 
+## (pending) — 2026-05-02 — wrangler.toml for cloudflare workers static assets
+
+- Touched: `wrangler.toml` (new); `CLAUDE.md` (deployment section)
+- Tasks moved: none
+- Notes: Cloudflare's unified Workers + Pages UI requires a deploy command on every project. Switched from Pages-classic to Workers Static Assets (`[assets] directory = "./out"`). Deploy command in Cloudflare project settings is `npx wrangler deploy`. Same end result (static CDN), uses new architecture. Hostinger remains the domain registrar; DNS will point at the Cloudflare worker.
+
 ## (pending) — 2026-05-02 — github actions ftp auto-deploy to hostinger
 
 - Touched: `.github/workflows/deploy-hostinger.yml` (new); `docs/deployments/github-actions-ftp-deploy.md` (new); `CLAUDE.md` (deployment section)
