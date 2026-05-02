@@ -72,10 +72,10 @@ export default function Services() {
           className="mb-16 sm:mb-20"
         >
           <span className="section-label">What We Do</span>
-          <h2 className="text-h2-display text-neutral-900 max-w-2xl text-balance">
+          <h2 className="text-h2-display text-neutral-900 dark:text-white max-w-2xl text-balance">
             End-to-end Shopify expertise
           </h2>
-          <p className="text-neutral-500 text-body-lg max-w-2xl mt-6 leading-relaxed">
+          <p className="text-neutral-500 dark:text-neutral-400 text-body-lg max-w-2xl mt-6 leading-relaxed">
             We partner with retailers at every stage — from your first audit to
             a fully unified commerce operation.
           </p>
@@ -93,7 +93,7 @@ export default function Services() {
               key={service.title}
               variants={fadeUp}
               transition={sectionTransition}
-              className="group relative bg-white rounded-xl border border-neutral-200/60 p-8 lg:p-10
+              className="group relative bg-neutral-50 dark:bg-white/[0.04] rounded-xl border border-neutral-200/60 dark:border-white/[0.06] p-8 lg:p-10
                 hover:border-emerald-500/20 hover:shadow-xl hover:shadow-emerald-500/[0.04]
                 hover:-translate-y-1 transition-all duration-500 ease-out cursor-default"
             >
@@ -103,10 +103,10 @@ export default function Services() {
                   strokeWidth={1.5}
                 />
               </div>
-              <h3 className="text-lg font-semibold text-neutral-900 mb-3 tracking-tight">
+              <h3 className="text-lg font-semibold text-neutral-900 dark:text-white mb-3 tracking-tight">
                 {service.title}
               </h3>
-              <p className="text-neutral-500 leading-relaxed text-body-sm mb-6">
+              <p className="text-neutral-500 dark:text-neutral-400 leading-relaxed text-body-sm mb-6">
                 {service.description}
               </p>
               <span className="text-label-sm text-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-auto flex items-center gap-1.5">

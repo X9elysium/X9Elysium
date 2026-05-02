@@ -77,7 +77,7 @@ export default function Partners() {
           <span className="section-label text-center block">
             Technology Partners
           </span>
-          <h2 className="text-h2-display text-neutral-900 text-center max-w-2xl mx-auto">
+          <h2 className="text-h2-display text-neutral-900 dark:text-white text-center max-w-2xl mx-auto">
             Certified across the Shopify ecosystem
           </h2>
         </motion.div>
@@ -85,9 +85,9 @@ export default function Partners() {
 
       {/* Marquee track */}
       <div className="relative">
-        {/* Fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-32 bg-gradient-to-r from-[#f7f5f2] to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-32 bg-gradient-to-l from-[#f7f5f2] to-transparent z-10" />
+        {/* Fade edges — color matches section-warm in light, neutral-900 in dark */}
+        <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-32 bg-gradient-to-r from-[#f7f5f2] dark:from-[#171717] to-transparent z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-32 bg-gradient-to-l from-[#f7f5f2] dark:from-[#171717] to-transparent z-10" />
 
         <motion.div
           animate={{ x: [0, -1200] }}
@@ -102,7 +102,7 @@ export default function Partners() {
           ].map((partner, i) => (
             <div
               key={`${partner.name}-${i}`}
-              className="flex-shrink-0 px-4 py-6 text-neutral-900/25 hover:text-neutral-900/70 transition-colors duration-500 cursor-default"
+              className="flex-shrink-0 px-4 py-6 text-neutral-900/25 dark:text-white/25 hover:text-neutral-900/70 dark:hover:text-white/70 transition-colors duration-500 cursor-default"
             >
               {partner.logo}
             </div>

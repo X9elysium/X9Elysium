@@ -67,7 +67,7 @@ export default function Testimonials() {
 
   return (
     <section
-      className="relative bg-neutral-900 text-white py-20 sm:py-28 lg:py-32 overflow-hidden"
+      className="relative bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-white py-20 sm:py-28 lg:py-32 overflow-hidden"
       ref={ref}
     >
       {/* Ambient glow */}
@@ -83,10 +83,10 @@ export default function Testimonials() {
           className="text-center mb-16 sm:mb-20"
         >
           <span className="section-label">Client Stories</span>
-          <h2 className="text-h2-display text-white mb-6">
+          <h2 className="text-h2-display text-neutral-900 dark:text-white mb-6">
             What our clients say
           </h2>
-          <p className="text-neutral-400 text-body-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-neutral-600 dark:text-neutral-400 text-body-lg max-w-2xl mx-auto leading-relaxed">
             We measure success by what our clients achieve. Here&apos;s what
             they&apos;ve experienced.
           </p>
@@ -128,16 +128,16 @@ export default function Testimonials() {
                 &ldquo;
               </span>
 
-              <p className="text-white/80 leading-relaxed text-base mb-8 flex-grow">
+              <p className="text-neutral-700 dark:text-white/80 leading-relaxed text-base mb-8 flex-grow">
                 {testimonial.quote}
               </p>
 
               <div className="flex items-center gap-4 mt-auto">
-                <div className="w-11 h-11 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white font-semibold text-sm flex-shrink-0 ring-2 ring-emerald-500/20 ring-offset-2 ring-offset-neutral-900">
+                <div className="w-11 h-11 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white font-semibold text-sm flex-shrink-0 ring-2 ring-emerald-500/20 ring-offset-2 ring-offset-neutral-100 dark:ring-offset-neutral-900">
                   {testimonial.name.charAt(0)}
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-white tracking-wide">
+                  <div className="text-sm font-semibold text-neutral-900 dark:text-white tracking-wide">
                     {testimonial.name}
                   </div>
                   <div className="text-xs text-neutral-500">

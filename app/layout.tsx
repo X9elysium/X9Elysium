@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import { ThemeProvider } from "./components/ThemeProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -114,40 +115,42 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="font-sans antialiased bg-black text-white">
-        <div className="noise-overlay" aria-hidden="true" />
-        {children}
-        <Script id="tawk-to" strategy="afterInteractive">
-          {`
-            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-            (function(){
-              var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-              s1.async=true;
-              s1.src='https://embed.tawk.to/69d665f092b65f1c33097671/1jlmnschp';
-              s1.charset='UTF-8';
-              s1.setAttribute('crossorigin','*');
-              s0.parentNode.insertBefore(s1,s0);
-            })();
-          `}
-        </Script>
-        <Script
-          id="microsoft-clarity"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `(function(c,l,a,r,i,t,y){
-              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-            })(window,document,"clarity","script","${process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID}");`,
-          }}
-        />
+      <body className="font-sans antialiased" suppressHydrationWarning>
+        <ThemeProvider>
+          <div className="noise-overlay" aria-hidden="true" />
+          {children}
+          <Script id="tawk-to" strategy="afterInteractive">
+            {`
+              var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+              (function(){
+                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                s1.async=true;
+                s1.src='https://embed.tawk.to/69d665f092b65f1c33097671/1jlmnschp';
+                s1.charset='UTF-8';
+                s1.setAttribute('crossorigin','*');
+                s0.parentNode.insertBefore(s1,s0);
+              })();
+            `}
+          </Script>
+          <Script
+            id="microsoft-clarity"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `(function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window,document,"clarity","script","${process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID}");`,
+            }}
+          />
+        </ThemeProvider>
       </body>
     </html>
   );

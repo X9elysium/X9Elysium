@@ -10,7 +10,7 @@
   }
 
   body {
-    @apply bg-black text-white;
+    @apply bg-white text-neutral-900 dark:bg-black dark:text-white;
   }
 
   ::selection {
@@ -23,15 +23,15 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-neutral-950;
+    @apply bg-neutral-200 dark:bg-neutral-950;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-neutral-700/50 rounded-full;
+    @apply bg-neutral-400/50 rounded-full dark:bg-neutral-700/50;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-neutral-600;
+    @apply bg-neutral-500 dark:bg-neutral-600;
   }
 
   /* Focus-visible for accessibility */
@@ -48,15 +48,18 @@
 
   /* Section backgrounds with varied vertical rhythm */
   .section-dark {
-    @apply bg-black text-white py-20 sm:py-28 lg:py-32;
+    @apply bg-neutral-50 text-neutral-900 py-20 sm:py-28 lg:py-32;
+    @apply dark:bg-black dark:text-white;
   }
 
   .section-light {
-    @apply bg-neutral-100 text-neutral-900 py-20 sm:py-28 lg:py-32;
+    @apply bg-white text-neutral-900 py-20 sm:py-28 lg:py-32;
+    @apply dark:bg-neutral-900 dark:text-white;
   }
 
   .section-warm {
     @apply bg-[#f7f5f2] text-neutral-900 py-20 sm:py-28 lg:py-32;
+    @apply dark:bg-neutral-900 dark:text-white;
   }
 
   /* Buttons — premium rounded with shadow hover */
@@ -70,9 +73,11 @@
 
   .btn-primary-light {
     @apply inline-flex items-center justify-center gap-2.5 px-8 py-4
-      bg-white text-neutral-900 text-body-sm font-semibold uppercase tracking-[0.1em]
+      bg-neutral-900 text-white text-body-sm font-semibold uppercase tracking-[0.1em]
       rounded-lg transition-all duration-300 ease-out
-      hover:bg-neutral-50 hover:shadow-lg hover:shadow-white/10
+      hover:bg-neutral-800 hover:shadow-lg hover:shadow-black/20
+      dark:bg-white dark:text-neutral-900
+      dark:hover:bg-neutral-50 dark:hover:shadow-white/10
       active:scale-[0.98];
   }
 
@@ -86,9 +91,11 @@
 
   .btn-outline {
     @apply inline-flex items-center justify-center gap-2.5 px-8 py-4
-      border border-white/20 text-white text-body-sm font-semibold uppercase tracking-[0.1em]
+      border border-neutral-300 text-neutral-900 text-body-sm font-semibold uppercase tracking-[0.1em]
       rounded-lg transition-all duration-300 ease-out
-      hover:bg-white hover:text-neutral-900 hover:border-white
+      hover:bg-neutral-900 hover:text-white hover:border-neutral-900
+      dark:border-white/20 dark:text-white
+      dark:hover:bg-white dark:hover:text-neutral-900 dark:hover:border-white
       active:scale-[0.98];
   }
 
@@ -105,7 +112,8 @@
 
   /* Glass card */
   .glass-card {
-    @apply bg-white/[0.03] border border-white/[0.06] backdrop-blur-sm rounded-2xl;
+    @apply bg-neutral-100 border border-neutral-200 backdrop-blur-sm rounded-2xl;
+    @apply dark:bg-white/[0.03] dark:border-white/[0.06];
   }
 
   /* Glow effect utility */

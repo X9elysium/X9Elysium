@@ -47,7 +47,7 @@ export default function CaseStudies() {
           className="mb-16 sm:mb-20"
         >
           <span className="section-label">Our Work</span>
-          <h2 className="text-h2-display text-white max-w-3xl text-balance">
+          <h2 className="text-h2-display text-neutral-900 dark:text-white max-w-3xl text-balance">
             Work that speaks in numbers
           </h2>
         </motion.div>

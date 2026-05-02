@@ -64,10 +64,10 @@ export default function FAQ() {
           className="text-center mb-16 sm:mb-20"
         >
           <span className="section-label">Common Questions</span>
-          <h2 className="text-h2-display text-white mb-6">
+          <h2 className="text-h2-display text-neutral-900 dark:text-white mb-6">
             Got questions? We have answers.
           </h2>
-          <p className="text-neutral-400 text-body-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-neutral-600 dark:text-neutral-400 text-body-lg max-w-2xl mx-auto leading-relaxed">
             The most common things retailers ask us before getting started.
           </p>
         </motion.div>
@@ -82,7 +82,7 @@ export default function FAQ() {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="border-b border-white/[0.06] last:border-0"
+              className="border-b border-neutral-200 dark:border-white/[0.06] last:border-0"
             >
               <button
                 onClick={() =>
@@ -91,7 +91,7 @@ export default function FAQ() {
                 className="w-full flex items-center justify-between py-6 text-left group"
                 aria-expanded={openIndex === index}
               >
-                <span className="text-white font-medium text-base sm:text-lg pr-8 group-hover:text-emerald-400 transition-colors duration-300">
+                <span className="text-neutral-900 dark:text-white font-medium text-base sm:text-lg pr-8 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors duration-300">
                   {faq.question}
                 </span>
                 <motion.div
@@ -99,7 +99,7 @@ export default function FAQ() {
                   transition={{ duration: 0.3, ease: smoothEase }}
                   className="flex-shrink-0"
                 >
-                  <ChevronDown className="w-5 h-5 text-neutral-500 group-hover:text-emerald-400 transition-colors" />
+                  <ChevronDown className="w-5 h-5 text-neutral-500 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors" />
                 </motion.div>
               </button>
               <AnimatePresence initial={false}>
@@ -111,7 +111,7 @@ export default function FAQ() {
                     transition={{ duration: 0.3, ease: smoothEase }}
                     className="overflow-hidden"
                   >
-                    <p className="text-neutral-400 leading-relaxed text-body-sm pb-6">
+                    <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed text-body-sm pb-6">
                       {faq.answer}
                     </p>
                   </motion.div>

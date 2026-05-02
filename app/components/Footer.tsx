@@ -26,7 +26,7 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer id="contact" className="relative bg-black border-t border-white/[0.06]">
+    <footer id="contact" className="relative bg-neutral-50 dark:bg-black border-t border-neutral-200 dark:border-white/[0.06]">
       {/* Gradient border accent */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent" />
 
@@ -50,14 +50,14 @@ export default function Footer() {
             <div className="flex flex-col gap-3">
               <a
                 href="mailto:hello@x9elysium.com"
-                className="inline-flex items-center gap-2.5 text-sm text-neutral-500 hover:text-emerald-400 hover:translate-x-0.5 transition-all duration-300"
+                className="inline-flex items-center gap-2.5 text-sm text-neutral-500 hover:text-emerald-500 hover:translate-x-0.5 transition-all duration-300"
               >
                 <Mail className="w-4 h-4 flex-shrink-0" />
                 hello@x9elysium.com
               </a>
               <a
                 href="tel:+16049686952"
-                className="inline-flex items-center gap-2.5 text-sm text-neutral-500 hover:text-emerald-400 hover:translate-x-0.5 transition-all duration-300"
+                className="inline-flex items-center gap-2.5 text-sm text-neutral-500 hover:text-emerald-500 hover:translate-x-0.5 transition-all duration-300"
               >
                 <Phone className="w-4 h-4 flex-shrink-0" />
                 +1 (604) 968-6952
@@ -76,7 +76,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-label-sm uppercase text-white mb-6">
+            <h4 className="text-label-sm uppercase text-neutral-900 dark:text-white mb-6">
               Services
             </h4>
             <ul className="flex flex-col gap-3">
@@ -84,7 +84,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-sm text-neutral-500 hover:text-emerald-400 hover:translate-x-0.5 transition-all duration-300 inline-block"
+                    className="text-sm text-neutral-500 hover:text-emerald-500 hover:translate-x-0.5 transition-all duration-300 inline-block"
                   >
                     {link.name}
                   </Link>
@@ -95,7 +95,7 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="text-label-sm uppercase text-white mb-6">
+            <h4 className="text-label-sm uppercase text-neutral-900 dark:text-white mb-6">
               Company
             </h4>
             <ul className="flex flex-col gap-3">
@@ -103,7 +103,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-sm text-neutral-500 hover:text-emerald-400 hover:translate-x-0.5 transition-all duration-300 inline-block"
+                    className="text-sm text-neutral-500 hover:text-emerald-500 hover:translate-x-0.5 transition-all duration-300 inline-block"
                   >
                     {link.name}
                   </Link>
@@ -114,7 +114,7 @@ export default function Footer() {
 
           {/* Connect */}
           <div>
-            <h4 className="text-label-sm uppercase text-white mb-6">
+            <h4 className="text-label-sm uppercase text-neutral-900 dark:text-white mb-6">
               Connect
             </h4>
             <ul className="flex flex-col gap-3">
@@ -124,7 +124,7 @@ export default function Footer() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-neutral-500 hover:text-emerald-400 hover:translate-x-0.5 transition-all duration-300 inline-block"
+                    className="text-sm text-neutral-500 hover:text-emerald-500 hover:translate-x-0.5 transition-all duration-300 inline-block"
                   >
                     {link.name}
                   </a>
@@ -135,20 +135,20 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-neutral-600">
+        <div className="pt-8 border-t border-neutral-200 dark:border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-neutral-500 dark:text-neutral-600">
             &copy; {new Date().getFullYear()} X9Elysium. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <Link
               href="/terms-policy"
-              className="text-xs text-neutral-600 hover:text-emerald-400 transition-colors"
+              className="text-xs text-neutral-500 dark:text-neutral-600 hover:text-emerald-500 transition-colors"
             >
               Privacy Policy
             </Link>
             <Link
               href="/terms-policy"
-              className="text-xs text-neutral-600 hover:text-emerald-400 transition-colors"
+              className="text-xs text-neutral-500 dark:text-neutral-600 hover:text-emerald-500 transition-colors"
             >
               Terms of Service
             </Link>
@@ -156,7 +156,7 @@ export default function Footer() {
               onClick={() =>
                 window.scrollTo({ top: 0, behavior: "smooth" })
               }
-              className="text-xs text-neutral-600 hover:text-emerald-400 transition-colors flex items-center gap-1"
+              className="text-xs text-neutral-500 dark:text-neutral-600 hover:text-emerald-500 transition-colors flex items-center gap-1"
               aria-label="Scroll to top"
             >
               Back to top <ArrowUp className="w-3 h-3" />

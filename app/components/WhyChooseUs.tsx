@@ -94,10 +94,10 @@ export default function WhyChooseUs() {
           className="mb-16 sm:mb-20"
         >
           <span className="section-label">Why X9Elysium</span>
-          <h2 className="text-h2-display text-neutral-900 max-w-3xl text-balance">
+          <h2 className="text-h2-display text-neutral-900 dark:text-white max-w-3xl text-balance">
             Built for growth. Proven in the real world.
           </h2>
-          <p className="text-neutral-500 text-body-lg max-w-2xl mt-6 leading-relaxed">
+          <p className="text-neutral-500 dark:text-neutral-400 text-body-lg max-w-2xl mt-6 leading-relaxed">
             We don&apos;t build websites. We build the commerce infrastructure
             that powers serious retail growth.
           </p>
@@ -108,19 +108,19 @@ export default function WhyChooseUs() {
           variants={staggerContainer}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-neutral-200/60 rounded-2xl overflow-hidden mb-20"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-neutral-200/60 dark:bg-white/[0.06] rounded-2xl overflow-hidden mb-20"
         >
           {stats.map((stat) => (
             <motion.div
               key={stat.label}
               variants={fadeUp}
               transition={sectionTransition}
-              className="bg-neutral-100 text-center py-10 lg:py-12"
+              className="bg-neutral-100 dark:bg-neutral-800 text-center py-10 lg:py-12"
             >
-              <div className="text-4xl sm:text-5xl font-light text-neutral-900 tracking-tight mb-2">
+              <div className="text-4xl sm:text-5xl font-light text-neutral-900 dark:text-white tracking-tight mb-2">
                 {stat.value}
               </div>
-              <div className="text-label-sm uppercase text-neutral-500">
+              <div className="text-label-sm uppercase text-neutral-500 dark:text-neutral-400">
                 {stat.label}
               </div>
             </motion.div>
@@ -138,7 +138,7 @@ export default function WhyChooseUs() {
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-4">
               The Elysium Method
             </span>
-            <p className="text-neutral-500 text-body-sm max-w-xl mx-auto">
+            <p className="text-neutral-500 dark:text-neutral-400 text-body-sm max-w-xl mx-auto">
               Four phases. No surprises. Consistently 40%+ revenue uplifts for
               the retailers we work with.
             </p>
@@ -155,7 +155,7 @@ export default function WhyChooseUs() {
                 key={step.title}
                 variants={fadeUp}
                 transition={sectionTransition}
-                className="relative p-6 rounded-xl bg-white/60 border border-neutral-200/40 hover:bg-white hover:border-emerald-500/20 hover:shadow-sm transition-all duration-500 group"
+                className="relative p-6 rounded-xl bg-neutral-50 dark:bg-white/[0.04] border border-neutral-200/40 dark:border-white/[0.06] hover:bg-white dark:hover:bg-white/[0.07] hover:border-emerald-500/20 hover:shadow-sm transition-all duration-500 group"
               >
                 {/* Connector line */}
                 {index < methodologySteps.length - 1 && (
@@ -172,13 +172,13 @@ export default function WhyChooseUs() {
                     Phase {step.phase}
                   </span>
                 </div>
-                <h4 className="text-base font-semibold text-neutral-900 mb-1 tracking-tight">
+                <h4 className="text-base font-semibold text-neutral-900 dark:text-white mb-1 tracking-tight">
                   {step.title}
                 </h4>
                 <p className="text-[11px] font-medium text-emerald-600/80 mb-3 uppercase tracking-wider">
                   {step.duration}
                 </p>
-                <p className="text-neutral-500 text-sm leading-relaxed">
+                <p className="text-neutral-500 dark:text-neutral-400 text-sm leading-relaxed">
                   {step.description}
                 </p>
               </motion.div>
@@ -198,7 +198,7 @@ export default function WhyChooseUs() {
               key={reason.title}
               variants={fadeUp}
               transition={sectionTransition}
-              className="flex gap-5 p-6 lg:p-8 rounded-xl bg-white/60 border border-neutral-200/40 hover:bg-white hover:border-neutral-200 hover:shadow-sm transition-all duration-500"
+              className="flex gap-5 p-6 lg:p-8 rounded-xl bg-neutral-50 dark:bg-white/[0.04] border border-neutral-200/40 dark:border-white/[0.06] hover:bg-white dark:hover:bg-white/[0.07] hover:border-neutral-200 dark:hover:border-white/[0.1] hover:shadow-sm transition-all duration-500"
             >
               <div className="flex-shrink-0 w-12 h-12 rounded-full border border-emerald-500/20 bg-emerald-500/[0.06] flex items-center justify-center">
                 <reason.icon
@@ -207,10 +207,10 @@ export default function WhyChooseUs() {
                 />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-neutral-900 mb-2 tracking-tight">
+                <h3 className="text-lg font-semibold text-neutral-900 dark:text-white mb-2 tracking-tight">
                   {reason.title}
                 </h3>
-                <p className="text-neutral-500 leading-relaxed text-body-sm">
+                <p className="text-neutral-500 dark:text-neutral-400 leading-relaxed text-body-sm">
                   {reason.description}
                 </p>
               </div>

@@ -46,10 +46,10 @@ export default function Team() {
           className="text-center mb-16 sm:mb-20"
         >
           <span className="section-label">Our Team</span>
-          <h2 className="text-h2-display text-white mb-6">
+          <h2 className="text-h2-display text-neutral-900 dark:text-white mb-6">
             Small team. Senior expertise.
           </h2>
-          <p className="text-neutral-400 text-body-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-neutral-600 dark:text-neutral-400 text-body-lg max-w-2xl mx-auto leading-relaxed">
             You work directly with the people solving your problems — not a
             rotating cast of junior contractors.
           </p>
@@ -70,7 +70,7 @@ export default function Team() {
               className="glass-card p-8 text-center group hover:border-emerald-500/10 hover:shadow-lg hover:shadow-emerald-500/[0.03] transition-all duration-500"
             >
               {/* Avatar */}
-              <div className="w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden ring-2 ring-emerald-500/20 ring-offset-4 ring-offset-neutral-900 bg-neutral-800">
+              <div className="w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden ring-2 ring-emerald-500/20 ring-offset-4 ring-offset-neutral-50 dark:ring-offset-neutral-900 bg-neutral-200 dark:bg-neutral-800">
                 <Image
                   src={member.image}
                   alt={member.name}
@@ -81,13 +81,13 @@ export default function Team() {
               </div>
 
               {/* Info */}
-              <h3 className="text-lg font-semibold text-white tracking-tight mb-1">
+              <h3 className="text-lg font-semibold text-neutral-900 dark:text-white tracking-tight mb-1">
                 {member.name}
               </h3>
-              <p className="text-sm font-medium text-emerald-400 mb-4">
+              <p className="text-sm font-medium text-emerald-500 dark:text-emerald-400 mb-4">
                 {member.role}
               </p>
-              <p className="text-neutral-400 text-sm leading-relaxed">
+              <p className="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed">
                 {member.bio}
               </p>
             </motion.div>

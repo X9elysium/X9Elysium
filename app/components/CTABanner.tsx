@@ -16,8 +16,8 @@ export default function CTABanner() {
       ref={ref}
     >
       {/* Rich gradient background */}
-      <div className="absolute inset-0 bg-neutral-950" />
-      <div className="absolute inset-0 bg-gradient-to-br from-emerald-950/80 via-neutral-950 to-emerald-900/30" />
+      <div className="absolute inset-0 bg-neutral-50 dark:bg-neutral-950" />
+      <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/80 via-neutral-50 to-emerald-100/30 dark:from-emerald-950/80 dark:via-neutral-950 dark:to-emerald-900/30" />
 
       {/* Glow orbs */}
       <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald-500/[0.12] rounded-full blur-[150px] will-change-transform pointer-events-none" />
@@ -33,10 +33,10 @@ export default function CTABanner() {
           transition={{ duration: 0.8, ease: smoothEase }}
           className="text-center max-w-3xl mx-auto"
         >
-          <h2 className="text-display-sm text-white mb-6 text-balance">
+          <h2 className="text-display-sm text-neutral-900 dark:text-white mb-6 text-balance">
             Let&apos;s build something that lasts.
           </h2>
-          <p className="text-neutral-400 text-body-lg max-w-xl mx-auto mb-12 leading-relaxed">
+          <p className="text-neutral-600 dark:text-neutral-400 text-body-lg max-w-xl mx-auto mb-12 leading-relaxed">
             Tell us where your commerce is going. We&apos;ll show you how to
             get there faster.
           </p>

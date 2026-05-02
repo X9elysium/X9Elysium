@@ -140,20 +140,20 @@ export default function ContactPage() {
   };
 
   const inputClasses =
-    "w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3.5 text-white placeholder:text-neutral-600 focus:outline-none focus:border-emerald-500/40 focus:ring-2 focus:ring-emerald-500/10 focus:bg-white/[0.06] transition-all duration-300";
+    "w-full bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200 dark:border-white/[0.08] rounded-xl px-4 py-3.5 text-neutral-900 dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-600 focus:outline-none focus:border-emerald-500/40 focus:ring-2 focus:ring-emerald-500/10 focus:bg-white dark:focus:bg-white/[0.06] transition-all duration-300";
   const selectClasses =
-    "w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-emerald-500/40 focus:ring-2 focus:ring-emerald-500/10 focus:bg-white/[0.06] transition-all duration-300 appearance-none";
-  const labelClasses = "block text-[13px] font-medium text-neutral-300 mb-2";
+    "w-full bg-neutral-100 dark:bg-white/[0.04] border border-neutral-200 dark:border-white/[0.08] rounded-xl px-4 py-3.5 text-neutral-900 dark:text-white focus:outline-none focus:border-emerald-500/40 focus:ring-2 focus:ring-emerald-500/10 focus:bg-white dark:focus:bg-white/[0.06] transition-all duration-300 appearance-none";
+  const labelClasses = "block text-[13px] font-medium text-neutral-700 dark:text-neutral-300 mb-2";
 
   return (
     <>
       <Navigation />
       <main>
         {/* Hero */}
-        <section className="relative bg-black pt-[160px] sm:pt-[180px] pb-20 sm:pb-28 overflow-hidden">
+        <section className="relative bg-white dark:bg-black pt-[160px] sm:pt-[180px] pb-20 sm:pb-28 overflow-hidden">
           {/* Gradient mesh */}
           <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-b from-neutral-950 via-black to-black" />
+            <div className="absolute inset-0 bg-gradient-to-b from-neutral-100 via-white to-white dark:from-neutral-950 dark:via-black dark:to-black" />
             <div className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-emerald-500/[0.06] rounded-full blur-[200px] pointer-events-none" />
             <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-emerald-500/[0.03] rounded-full blur-[150px] pointer-events-none" />
           </div>
@@ -167,12 +167,12 @@ export default function ContactPage() {
             <span className="section-label inline-block">
               Let&apos;s Build Together
             </span>
-            <h1 className="text-display font-light text-white tracking-tight">
+            <h1 className="text-display font-light text-neutral-900 dark:text-white tracking-tight">
               Let&apos;s talk
               <br />
               <span className="text-gradient-emerald">commerce.</span>
             </h1>
-            <p className="text-body-lg text-neutral-400 max-w-2xl mx-auto mt-8 leading-relaxed">
+            <p className="text-body-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto mt-8 leading-relaxed">
               Tell us about your business and what you&apos;re trying to achieve.
               No pitch decks. No jargon. Just a straight conversation about where
               you&apos;re headed.
@@ -181,7 +181,7 @@ export default function ContactPage() {
         </section>
 
         {/* Trusted By */}
-        <section className="bg-black border-y border-white/[0.06] py-8 overflow-hidden">
+        <section className="bg-neutral-50 dark:bg-black border-y border-neutral-200 dark:border-white/[0.06] py-8 overflow-hidden">
           <div className="section-container">
             <p className="text-center text-label-sm text-neutral-500 mb-6">
               Technologies We Work With
@@ -205,7 +205,7 @@ export default function ContactPage() {
         </section>
 
         {/* Form Section */}
-        <section className="bg-black py-20 sm:py-28 lg:py-32">
+        <section className="bg-white dark:bg-black py-20 sm:py-28 lg:py-32">
           <div className="section-container">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20">
               {/* Form Column */}
@@ -224,23 +224,23 @@ export default function ContactPage() {
                     <div className="w-20 h-20 rounded-full bg-emerald-500/10 flex items-center justify-center mb-8">
                       <CheckCircle className="w-10 h-10 text-emerald-500" />
                     </div>
-                    <h2 className="text-4xl font-light text-white mb-4 tracking-tight">
+                    <h2 className="text-4xl font-light text-neutral-900 dark:text-white mb-4 tracking-tight">
                       You&apos;re in good hands.
                     </h2>
-                    <p className="text-neutral-400 text-body-lg max-w-md leading-relaxed">
+                    <p className="text-neutral-600 dark:text-neutral-400 text-body-lg max-w-md leading-relaxed">
                       A senior strategist will review your inquiry and reach out
                       within 24 hours.
                     </p>
                     <button
                       onClick={() => setStatus("idle")}
-                      className="mt-10 text-emerald-500 text-sm font-medium hover:text-white transition-colors"
+                      className="mt-10 text-emerald-500 text-sm font-medium hover:text-emerald-600 dark:hover:text-white transition-colors"
                     >
                       Send another message
                     </button>
                   </motion.div>
                 ) : (
                   <>
-                    <h2 className="text-2xl sm:text-3xl font-light text-white mb-2 tracking-tight">
+                    <h2 className="text-2xl sm:text-3xl font-light text-neutral-900 dark:text-white mb-2 tracking-tight">
                       Tell us about your project
                     </h2>
                     <p className="text-neutral-500 text-sm mb-10">
@@ -364,20 +364,20 @@ export default function ContactPage() {
                             onChange={handleChange}
                             className={selectClasses}
                           >
-                            <option value="" className="bg-neutral-950">
+                            <option value="" className="bg-white dark:bg-neutral-950">
                               Select
                             </option>
                             {revenueOptions.map((opt) => (
                               <option
                                 key={opt}
                                 value={opt}
-                                className="bg-neutral-950"
+                                className="bg-white dark:bg-neutral-950"
                               >
                                 {opt}
                               </option>
                             ))}
                           </select>
-                          <ChevronDown className="absolute right-3 bottom-4 w-4 h-4 text-neutral-600 pointer-events-none" />
+                          <ChevronDown className="absolute right-3 bottom-4 w-4 h-4 text-neutral-500 pointer-events-none" />
                         </div>
                         <div className="relative">
                           <label htmlFor="platform" className={labelClasses}>
@@ -390,20 +390,20 @@ export default function ContactPage() {
                             onChange={handleChange}
                             className={selectClasses}
                           >
-                            <option value="" className="bg-neutral-950">
+                            <option value="" className="bg-white dark:bg-neutral-950">
                               Select
                             </option>
                             {platformOptions.map((opt) => (
                               <option
                                 key={opt}
                                 value={opt}
-                                className="bg-neutral-950"
+                                className="bg-white dark:bg-neutral-950"
                               >
                                 {opt}
                               </option>
                             ))}
                           </select>
-                          <ChevronDown className="absolute right-3 bottom-4 w-4 h-4 text-neutral-600 pointer-events-none" />
+                          <ChevronDown className="absolute right-3 bottom-4 w-4 h-4 text-neutral-500 pointer-events-none" />
                         </div>
                         <div className="relative">
                           <label htmlFor="service" className={labelClasses}>
@@ -416,20 +416,20 @@ export default function ContactPage() {
                             onChange={handleChange}
                             className={selectClasses}
                           >
-                            <option value="" className="bg-neutral-950">
+                            <option value="" className="bg-white dark:bg-neutral-950">
                               Select
                             </option>
                             {serviceOptions.map((opt) => (
                               <option
                                 key={opt}
                                 value={opt}
-                                className="bg-neutral-950"
+                                className="bg-white dark:bg-neutral-950"
                               >
                                 {opt}
                               </option>
                             ))}
                           </select>
-                          <ChevronDown className="absolute right-3 bottom-4 w-4 h-4 text-neutral-600 pointer-events-none" />
+                          <ChevronDown className="absolute right-3 bottom-4 w-4 h-4 text-neutral-500 pointer-events-none" />
                         </div>
                       </div>
 
@@ -454,7 +454,7 @@ export default function ContactPage() {
                       {/* Error */}
                       {status === "error" && (
                         <div className="bg-red-500/10 border border-red-500/20 rounded-xl px-4 py-3">
-                          <p className="text-red-400 text-sm">
+                          <p className="text-red-500 dark:text-red-400 text-sm">
                             Something went wrong. Please try again or email us
                             at{" "}
                             <a
@@ -493,45 +493,45 @@ export default function ContactPage() {
                 className="lg:col-span-5 lg:pl-8"
               >
                 {/* Contact Info Card */}
-                <div className="glass-card p-8 mb-8 hover:border-white/[0.1] transition-all duration-500">
-                  <h3 className="text-lg font-medium text-white mb-6">
+                <div className="glass-card p-8 mb-8 hover:border-neutral-300 dark:hover:border-white/[0.1] transition-all duration-500">
+                  <h3 className="text-lg font-medium text-neutral-900 dark:text-white mb-6">
                     Get in touch directly
                   </h3>
                   <div className="space-y-5">
                     <a
                       href="mailto:hello@x9elysium.com"
-                      className="flex items-center gap-4 text-neutral-400 hover:text-emerald-400 transition-colors group"
+                      className="flex items-center gap-4 text-neutral-600 dark:text-neutral-400 hover:text-emerald-500 transition-colors group"
                     >
-                      <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center group-hover:border-emerald-500/30 transition-colors">
+                      <div className="w-10 h-10 rounded-xl bg-neutral-200 dark:bg-white/[0.04] border border-neutral-300 dark:border-white/[0.06] flex items-center justify-center group-hover:border-emerald-500/30 transition-colors">
                         <Mail className="w-4 h-4" />
                       </div>
                       <div>
-                        <p className="text-sm text-white">Email</p>
+                        <p className="text-sm text-neutral-900 dark:text-white">Email</p>
                         <p className="text-sm">hello@x9elysium.com</p>
                       </div>
                     </a>
                     <a
                       href="tel:+16049686952"
-                      className="flex items-center gap-4 text-neutral-400 hover:text-emerald-400 transition-colors group"
+                      className="flex items-center gap-4 text-neutral-600 dark:text-neutral-400 hover:text-emerald-500 transition-colors group"
                     >
-                      <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center group-hover:border-emerald-500/30 transition-colors">
+                      <div className="w-10 h-10 rounded-xl bg-neutral-200 dark:bg-white/[0.04] border border-neutral-300 dark:border-white/[0.06] flex items-center justify-center group-hover:border-emerald-500/30 transition-colors">
                         <Phone className="w-4 h-4" />
                       </div>
                       <div>
-                        <p className="text-sm text-white">Phone</p>
+                        <p className="text-sm text-neutral-900 dark:text-white">Phone</p>
                         <p className="text-sm">+1 (604) 968-6952</p>
                       </div>
                     </a>
-                    <div className="flex items-center gap-4 text-neutral-400">
-                      <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center">
+                    <div className="flex items-center gap-4 text-neutral-600 dark:text-neutral-400">
+                      <div className="w-10 h-10 rounded-xl bg-neutral-200 dark:bg-white/[0.04] border border-neutral-300 dark:border-white/[0.06] flex items-center justify-center">
                         <MapPin className="w-4 h-4" />
                       </div>
                       <div>
-                        <p className="text-sm text-white">Locations</p>
+                        <p className="text-sm text-neutral-900 dark:text-white">Locations</p>
                         <p className="text-sm">
                           HQ: 28 Ann St, Mississauga, ON
                         </p>
-                        <p className="text-sm text-neutral-600">
+                        <p className="text-sm text-neutral-500">
                           Calgary &bull; Vancouver
                         </p>
                       </div>
@@ -540,8 +540,8 @@ export default function ContactPage() {
                 </div>
 
                 {/* Process Steps */}
-                <div className="glass-card p-8 hover:border-white/[0.1] transition-all duration-500">
-                  <h3 className="text-lg font-medium text-white mb-6">
+                <div className="glass-card p-8 hover:border-neutral-300 dark:hover:border-white/[0.1] transition-all duration-500">
+                  <h3 className="text-lg font-medium text-neutral-900 dark:text-white mb-6">
                     What happens next?
                   </h3>
                   <div className="space-y-6 relative">
@@ -553,7 +553,7 @@ export default function ContactPage() {
                           <step.icon className="w-4 h-4 text-emerald-500" />
                         </div>
                         <div>
-                          <p className="text-sm font-medium text-white mb-1">
+                          <p className="text-sm font-medium text-neutral-900 dark:text-white mb-1">
                             {step.title}
                           </p>
                           <p className="text-sm text-neutral-500 leading-relaxed">
@@ -571,8 +571,8 @@ export default function ContactPage() {
 
         {/* Bottom CTA */}
         <section className="relative py-20 sm:py-28 overflow-hidden">
-          <div className="absolute inset-0 bg-neutral-950" />
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-950/80 via-neutral-950 to-emerald-900/30" />
+          <div className="absolute inset-0 bg-neutral-50 dark:bg-neutral-950" />
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/80 via-neutral-50 to-emerald-100/30 dark:from-emerald-950/80 dark:via-neutral-950 dark:to-emerald-900/30" />
           <div className="absolute top-[-50px] left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-emerald-500/[0.1] rounded-full blur-[150px] pointer-events-none" />
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
 
@@ -583,10 +583,10 @@ export default function ContactPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: smoothEase }}
             >
-              <h2 className="text-display-sm text-white mb-6 text-balance">
+              <h2 className="text-display-sm text-neutral-900 dark:text-white mb-6 text-balance">
                 Prefer a quick chat?
               </h2>
-              <p className="text-neutral-400 text-body-lg max-w-lg mx-auto mb-10 leading-relaxed">
+              <p className="text-neutral-600 dark:text-neutral-400 text-body-lg max-w-lg mx-auto mb-10 leading-relaxed">
                 Book a 15-minute discovery call. No commitment — just a
                 conversation about where your commerce is headed.
               </p>

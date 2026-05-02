@@ -13,10 +13,10 @@ import {
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-white dark:bg-black">
       {/* Gradient mesh background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-neutral-950 via-black to-black" />
+        <div className="absolute inset-0 bg-gradient-to-b from-neutral-100 via-white to-white dark:from-neutral-950 dark:via-black dark:to-black" />
         {/* Top-right emerald glow */}
         <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-emerald-500/[0.07] rounded-full blur-[180px] will-change-transform pointer-events-none" />
         {/* Bottom-left subtle glow */}
@@ -46,7 +46,7 @@ export default function Hero() {
         <motion.h1
           variants={fadeUpBlur}
           transition={{ duration: 0.8, ease: smoothEase }}
-          className="text-display font-light text-white max-w-4xl mt-6 text-balance tracking-tight"
+          className="text-display font-light text-neutral-900 dark:text-white max-w-4xl mt-6 text-balance tracking-tight"
         >
           We build the commerce infrastructure
           <br />
@@ -56,7 +56,7 @@ export default function Hero() {
         <motion.p
           variants={fadeUp}
           transition={{ duration: 0.8, ease: smoothEase }}
-          className="text-body-lg text-neutral-400 max-w-xl mt-8 leading-relaxed"
+          className="text-body-lg text-neutral-600 dark:text-neutral-400 max-w-xl mt-8 leading-relaxed"
         >
           50+ projects delivered. 98% client retention. From store audits and
           platform migrations to custom integrations — we architect the unified
@@ -84,8 +84,8 @@ export default function Hero() {
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden sm:block"
       >
-        <div className="w-6 h-10 rounded-full border border-white/20 flex justify-center pt-2">
-          <div className="w-1 h-2 rounded-full bg-white/40" />
+        <div className="w-6 h-10 rounded-full border border-neutral-300 dark:border-white/20 flex justify-center pt-2">
+          <div className="w-1 h-2 rounded-full bg-neutral-400 dark:bg-white/40" />
         </div>
       </motion.div>
     </section>

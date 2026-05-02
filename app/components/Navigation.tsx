@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { ThemeToggle } from "./ThemeToggle";
 
 const navItems = [
   { name: "Services", href: "#services" },
@@ -37,7 +38,7 @@ export default function Navigation() {
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? "bg-black/80 backdrop-blur-xl border-b border-white/[0.06] shadow-lg shadow-black/20"
+            ? "bg-white/90 dark:bg-black/80 backdrop-blur-xl border-b border-neutral-200 dark:border-white/[0.06] shadow-lg shadow-black/5 dark:shadow-black/20"
             : "bg-transparent"
         }`}
       >
@@ -70,15 +71,15 @@ export default function Navigation() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-label-sm uppercase tracking-[0.12em] text-neutral-400 hover:text-white transition-colors duration-300"
+                className="text-label-sm uppercase tracking-[0.12em] text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors duration-300"
               >
                 {item.name}
               </Link>
             ))}
           </div>
 
-          {/* CTA + Mobile Toggle */}
-          <div className="flex items-center gap-4">
+          {/* CTA + Theme Toggle + Mobile Toggle */}
+          <div className="flex items-center gap-3">
             <Link
               href="/contact"
               className="hidden sm:inline-flex items-center justify-center gap-2 px-5 py-2.5 text-label-sm bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-300"
@@ -86,9 +87,11 @@ export default function Navigation() {
               Start a Project
             </Link>
 
+            <ThemeToggle />
+
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden relative z-50 p-2 text-white hover:text-emerald-500 transition-colors"
+              className="lg:hidden relative z-50 p-2 text-neutral-900 dark:text-white hover:text-emerald-500 transition-colors"
               aria-label="Toggle menu"
             >
               <div className="w-6 h-5 flex flex-col justify-between">
@@ -125,7 +128,7 @@ export default function Navigation() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-gradient-to-b from-neutral-950 via-black to-black pt-28 px-8 lg:hidden"
+            className="fixed inset-0 z-40 bg-gradient-to-b from-white via-neutral-50 to-white dark:from-neutral-950 dark:via-black dark:to-black pt-28 px-8 lg:hidden"
             aria-label="Mobile navigation"
           >
             <nav className="flex flex-col">
@@ -139,7 +142,7 @@ export default function Navigation() {
                   <Link
                     href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block text-3xl sm:text-4xl font-light text-white uppercase tracking-wide py-4 border-b border-white/[0.04] hover:text-emerald-400 transition-colors"
+                    className="block text-3xl sm:text-4xl font-light text-neutral-900 dark:text-white uppercase tracking-wide py-4 border-b border-neutral-200 dark:border-white/[0.04] hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors"
                   >
                     {item.name}
                   </Link>
