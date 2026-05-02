@@ -130,12 +130,6 @@ export default function CareersPage() {
         }}
       />
 
-      <a
-        href="#open-roles"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:bg-emerald-500 focus:text-white focus:rounded-lg focus:text-sm focus:font-medium"
-      >
-        Skip to open roles
-      </a>
       <Navigation />
       <main>
         {/* Hero */}

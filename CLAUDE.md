@@ -1,7 +1,7 @@
 # X9Elysium — Project Guide
 
 ## Overview
-X9Elysium is a Shopify unified commerce consulting agency website built with Next.js 14 (App Router + legacy Pages Router). Deployed as a static export on Netlify at x9elysium.com. Premium dark-mode aesthetic with emerald green accent.
+X9Elysium is a Shopify unified commerce consulting agency website built with Next.js 14 (App Router + legacy Pages Router). Deployed on Hostinger at x9elysium.com (site + domain). Premium dark-mode aesthetic with emerald green accent.
 
 ## Architecture
 
@@ -17,7 +17,7 @@ X9Elysium is a Shopify unified commerce consulting agency website built with Nex
 - **Animations:** Framer Motion (shared variants in `app/lib/animations.ts`)
 - **Icons:** lucide-react
 - **Fonts:** Inter (via `next/font/google`, weights: 300, 400, 500, 600, 700)
-- **Deployment:** Static export (`output: "export"` in next.config.js) → Netlify
+- **Deployment:** Hostinger (Next.js runtime; auto-deploy on push to main). `netlify.toml` is a leftover from earlier hosting and is not active.
 - **Contact Form:** Web3Forms API (client-side)
 
 ### Key Directories
@@ -100,9 +100,9 @@ npm start        # Production server
 - [x] Route conflict resolved (pages/index.js removed)
 - [x] Framer Motion scroll-reveal animations with shared variants
 - [x] Inter font via next/font (weights 300-700 including 600)
-- [x] Skip-to-content link for accessibility
+- [x] Premium page loader (initial-load splash + route-transition `loading.tsx`, emerald glow + animated logo)
 - [x] Focus-visible styles for keyboard navigation
-- [x] Static export deployed on Netlify (x9elysium.com)
+- [x] Deployed on Hostinger (x9elysium.com)
 
 ### Remaining
 - [ ] About page (App Router)
