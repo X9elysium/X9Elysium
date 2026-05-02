@@ -19,15 +19,14 @@ const App = ({ Component, pageProps }) => {
     ).then((res) => res.text().then((css) => setFontcss(css)));
   }, [pf, sf]);
 
-  const tagManagerArgs = {
-    gtmId: config.params.tag_manager_id,
-  };
-  
   useEffect(() => {
     setTimeout(() => {
-      process.env.NODE_ENV === "production" &&
-        config.params.tag_manager_id &&
-        TagManager.initialize(tagManagerArgs);
+      if (
+        process.env.NODE_ENV === "production" &&
+        config.params.tag_manager_id
+      ) {
+        TagManager.initialize({ gtmId: config.params.tag_manager_id });
+      }
     }, 5000);
   }, []);
 

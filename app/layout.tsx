@@ -124,7 +124,7 @@ export default function RootLayout({
         contactPoint: {
           "@type": "ContactPoint",
           contactType: "sales",
-          email: "hello@x9elysium.com",
+          email: "darshan@x9elysium.com",
           url: "https://x9elysium.com/contact",
           areaServed: ["CA", "US"],
           availableLanguage: "English",

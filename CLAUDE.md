@@ -17,7 +17,7 @@ X9Elysium is a Shopify unified commerce consulting agency website built with Nex
 - **Animations:** Framer Motion (shared variants in `app/lib/animations.ts`)
 - **Icons:** lucide-react
 - **Fonts:** Inter (via `next/font/google`, weights: 300, 400, 500, 600, 700)
-- **Deployment:** Hostinger as **static hosting** — `next.config.js` has `output: "export"`, build emits `out/` (HTML + assets). Upload `out/` to Hostinger or wire Hostinger's deploy to publish that directory. No Node.js process runs in production. `netlify.toml` is a leftover from earlier hosting and is not active.
+- **Deployment:** Hostinger as **static hosting** — `next.config.js` has `output: "export"`, build emits `out/` (HTML + assets). Upload `out/` to Hostinger or wire Hostinger's deploy to publish that directory. No Node.js process runs in production.
 - **Contact Form:** Web3Forms API (client-side)
 
 ### Key Directories

@@ -125,10 +125,10 @@ export default function CareersFilter({
             We&apos;re always interested in great people though — drop us a
             line at{" "}
             <a
-              href="mailto:careers@x9elysium.com"
+              href="mailto:darshan@x9elysium.com"
               className="text-emerald-600 dark:text-emerald-400 hover:underline"
             >
-              careers@x9elysium.com
+              darshan@x9elysium.com
             </a>
             .
           </p>

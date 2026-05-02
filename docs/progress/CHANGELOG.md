@@ -12,6 +12,16 @@ Format:
 
 ---
 
+## (pending) — 2026-05-02 — site email → `darshan@x9elysium.com`; codebase cleanup; SPF warning logged
+
+- Touched:
+  - **Email consolidated to `darshan@x9elysium.com` across all surfaces:** `app/layout.tsx` (JSON-LD `contactPoint.email`), `app/components/Footer.tsx` (visible Footer + `mailto:`), `app/components/CTABanner.tsx` (homepage final CTA), `app/contact/page.tsx` (sidebar card, error message, bottom CTA — 7 total occurrences), `app/careers/components/CareersFilter.tsx` ("no roles match" empty state), `app/careers/[slug]/page.tsx` (job-detail apply mailto + visible address), `config/social.json`, `config/config.json`. Replaced both `hello@x9elysium.com` and `careers@x9elysium.com` (single inbox going forward). RSS feed `noreply@x9elysium.com` left as-is — that's a deliberately non-functional address per RSS spec to avoid exposing a real inbox to feed scrapers.
+  - **Lint warning fix:** `pages/_app.js` — inlined `tagManagerArgs` into the `useEffect` so the `react-hooks/exhaustive-deps` warning resolves. Lint now passes clean (`✔ No ESLint warnings or errors`).
+  - **Stale file cleanup:** removed `Instagram.html` (1.7 MB random saved page, unreferenced), `netlify.toml` (CLAUDE.md already documented this as inactive leftover from earlier hosting), `ACTION-PLAN.md` (root-level md violating the docs workflow rule, content was a stale 2026-05-02 SEO action plan referencing already-resolved blog 500s and a Netlify-vs-Hostinger decision long since superseded by Cloudflare Workers).
+  - **`CLAUDE.md`** — removed the now-obsolete reference to `netlify.toml` since the file is gone.
+- Tasks moved: none (CLAUDE.md Remaining is unchanged — these are operational cleanups, not redesign tasks).
+- Notes: Build verified — 317 occurrences of `darshan@x9elysium.com` across `out/`, 0 occurrences of `hello@x9elysium.com` on any live page (the 5 remaining are historical entries inside `/docs/progress/changelog`, which is correct). **External SPF action required:** Hostinger DNS panel currently has `v=spf1 -all` which blocks **all** outbound mail from the domain. Darsh needs to apply Hostinger's recommended record `v=spf1 include:_spf.mail.hostinger.com ~all` plus enable DKIM, otherwise mail to `darshan@x9elysium.com` may bounce or land in spam. Cannot fix from the codebase.
+
 ## (pending) — 2026-05-02 — remove Tawk.to chatbot; lead intake = Web3Forms contact form + email only
 
 - Touched:

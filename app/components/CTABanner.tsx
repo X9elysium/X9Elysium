@@ -41,7 +41,7 @@ export default function CTABanner() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <BookingButton variant="accent" />
-            <a href="mailto:hello@x9elysium.com" className="btn-outline">
+            <a href="mailto:darshan@x9elysium.com" className="btn-outline">
               Email Us Directly
             </a>
           </div>

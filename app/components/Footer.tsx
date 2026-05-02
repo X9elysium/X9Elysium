@@ -51,11 +51,11 @@ export default function Footer() {
             </p>
             <div className="flex flex-col gap-3">
               <a
-                href="mailto:hello@x9elysium.com"
+                href="mailto:darshan@x9elysium.com"
                 className="inline-flex items-center gap-2.5 text-sm text-neutral-500 hover:text-emerald-500 hover:translate-x-0.5 transition-all duration-300"
               >
                 <Mail className="w-4 h-4 flex-shrink-0" />
-                hello@x9elysium.com
+                darshan@x9elysium.com
               </a>
               <div className="flex items-start gap-2.5 text-sm text-neutral-500">
                 <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5" />

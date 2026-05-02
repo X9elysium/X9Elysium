@@ -53,7 +53,7 @@ export default function JobDetailPage({
   const subjectLine = encodeURIComponent(
     `Application — ${job.title} (${job.location})`,
   );
-  const mailto = `mailto:careers@x9elysium.com?subject=${subjectLine}`;
+  const mailto = `mailto:darshan@x9elysium.com?subject=${subjectLine}`;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -198,7 +198,7 @@ export default function JobDetailPage({
                     className="inline-flex items-center gap-2 btn-accent"
                   >
                     <Mail className="w-4 h-4" />
-                    careers@x9elysium.com
+                    darshan@x9elysium.com
                   </a>
                 </div>
               </article>

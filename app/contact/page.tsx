@@ -459,10 +459,10 @@ export default function ContactPage() {
                             Something went wrong. Please try again or email us
                             at{" "}
                             <a
-                              href="mailto:hello@x9elysium.com"
+                              href="mailto:darshan@x9elysium.com"
                               className="underline"
                             >
-                              hello@x9elysium.com
+                              darshan@x9elysium.com
                             </a>
                           </p>
                         </div>
@@ -500,7 +500,7 @@ export default function ContactPage() {
                   </h3>
                   <div className="space-y-5">
                     <a
-                      href="mailto:hello@x9elysium.com"
+                      href="mailto:darshan@x9elysium.com"
                       className="flex items-center gap-4 text-neutral-600 dark:text-neutral-400 hover:text-emerald-500 transition-colors group"
                     >
                       <div className="w-10 h-10 rounded-xl bg-neutral-200 dark:bg-white/[0.04] border border-neutral-300 dark:border-white/[0.06] flex items-center justify-center group-hover:border-emerald-500/30 transition-colors">
@@ -508,7 +508,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <p className="text-sm text-neutral-900 dark:text-white">Email</p>
-                        <p className="text-sm">hello@x9elysium.com</p>
+                        <p className="text-sm">darshan@x9elysium.com</p>
                       </div>
                     </a>
                     <a
@@ -617,7 +617,7 @@ export default function ContactPage() {
                 — and a proposal sized to the project.
               </p>
               <a
-                href="mailto:hello@x9elysium.com"
+                href="mailto:darshan@x9elysium.com"
                 className="btn-primary"
               >
                 Email Us Directly
