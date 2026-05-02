@@ -216,11 +216,11 @@ export default function AboutClient() {
             >
               <span className="section-label">What We Stand For</span>
               <h2 className="text-h2-display text-neutral-900 dark:text-white max-w-2xl text-balance">
-                Three principles that guide every engagement
+                One root value. Three working principles.
               </h2>
               <p className="text-neutral-500 dark:text-neutral-400 text-body-lg mt-6 leading-relaxed max-w-2xl">
-                The condensed version. The full set — five pillars, ten
-                operating rules, and the Why behind X9Elysium — lives on the{" "}
+                The condensed version. The full set — the Sanskrit credo that
+                roots us, five pillars, and ten operating rules — lives on the{" "}
                 <Link
                   href="/foundation"
                   className="text-emerald-500 hover:text-emerald-400 underline-offset-4 hover:underline transition-colors"
@@ -229,6 +229,52 @@ export default function AboutClient() {
                 </Link>
                 .
               </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={valuesInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, ease: smoothEase, delay: 0.1 }}
+              className="mb-12 sm:mb-14"
+            >
+              <Link
+                href="/foundation#credo"
+                className="group relative block overflow-hidden rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-emerald-500/[0.06] via-emerald-500/[0.02] to-transparent p-8 sm:p-12 hover:border-emerald-500/40 transition-colors duration-500"
+              >
+                <div className="absolute -top-20 -right-20 w-72 h-72 bg-emerald-500/[0.08] rounded-full blur-[120px] pointer-events-none" />
+                <div className="relative flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-10">
+                  <div className="flex-1">
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-500 mb-3">
+                      The Root Value
+                    </p>
+                    <p
+                      className="font-devanagari font-light text-emerald-500/95 text-3xl sm:text-4xl leading-[1.1] tracking-tight"
+                      lang="sa"
+                      aria-label="Vasudhaiva Kutumbakam"
+                    >
+                      वसुधैव कुटुम्बकम्
+                    </p>
+                    <p className="mt-2 text-sm font-medium uppercase tracking-[0.22em] text-neutral-500 dark:text-neutral-400">
+                      Vasudhaiva&nbsp;·&nbsp;Kutumbakam
+                    </p>
+                    <h3 className="mt-4 text-2xl sm:text-3xl font-light text-neutral-900 dark:text-white tracking-tight text-balance">
+                      The world is{" "}
+                      <span className="text-gradient-emerald italic">
+                        one family.
+                      </span>
+                    </h3>
+                    <p className="mt-4 text-neutral-600 dark:text-neutral-400 leading-relaxed text-sm sm:text-base max-w-xl">
+                      Clients aren&apos;t accounts. Vendors aren&apos;t line
+                      items. Teammates aren&apos;t resources. Every principle
+                      below answers to this one idea.
+                    </p>
+                  </div>
+                  <div className="text-emerald-500 flex-shrink-0 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] group-hover:gap-3 transition-all">
+                    Read the credo
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
+                </div>
+              </Link>
             </motion.div>
 
             <motion.div

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Noto_Sans_Devanagari } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { ThemeProvider } from "./components/ThemeProvider";
@@ -8,6 +8,13 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const notoDevanagari = Noto_Sans_Devanagari({
+  subsets: ["devanagari"],
+  weight: ["300", "400", "500"],
+  variable: "--font-devanagari",
   display: "swap",
 });
 
@@ -119,8 +126,9 @@ export default function RootLayout({
         name: "X9Elysium",
         url: "https://x9elysium.com",
         logo: "https://x9elysium.com/images/x9-logo.png",
+        slogan: "Vasudhaiva Kutumbakam — The world is one family.",
         description:
-          "Shopify Plus consulting agency serving Canadian and US retailers. Store audits, platform migrations, custom apps, and unified commerce strategy.",
+          "Shopify Plus consulting agency serving Canadian and US retailers. Store audits, platform migrations, custom apps, and unified commerce strategy. Rooted in Vasudhaiva Kutumbakam — the world is one family.",
         contactPoint: {
           "@type": "ContactPoint",
           contactType: "sales",
@@ -191,7 +199,11 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en-CA" className={inter.variable} suppressHydrationWarning>
+    <html
+      lang="en-CA"
+      className={`${inter.variable} ${notoDevanagari.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <link rel="preconnect" href="https://www.clarity.ms" crossOrigin="" />
         <link rel="dns-prefetch" href="https://www.clarity.ms" />

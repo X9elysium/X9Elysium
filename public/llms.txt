@@ -1,6 +1,10 @@
 # X9Elysium
 
-> Founder-led Shopify Plus consulting for Canadian and US retailers. Two senior founders, eight years each, every brief delivered by the people you hire. Store audits, Plus migrations from Magento / WooCommerce / BigCommerce / Salesforce Commerce Cloud, custom Shopify apps, and unified commerce strategy across DTC, B2B, and retail.
+> Founder-led Shopify Plus consulting for Canadian and US retailers. Two senior founders, eight years each, every brief delivered by the people you hire. Store audits, Plus migrations from Magento / WooCommerce / BigCommerce / Salesforce Commerce Cloud, custom Shopify apps, and unified commerce strategy across DTC, B2B, and retail. Rooted in Vasudhaiva Kutumbakam — the world is one family.
+
+## Core Credo
+
+**Vasudhaiva Kutumbakam (वसुधैव कुटुम्बकम्) — "The world is one family."** A Sanskrit verse from the Maha Upanishad (6.71) that anchors the X9Elysium foundation. Clients are not accounts, vendors are not line items, and teammates are not resources — every engagement is a shared ledger of trust between people who depend on each other. The five pillars and ten operating rules on the [Foundation page](https://x9elysium.com/foundation) all answer to this one idea.
 
 X9Elysium is a Shopify Partner headquartered at 28 Ann Street, Mississauga, Ontario (Greater Toronto Area), with service coverage in Calgary, Alberta and Vancouver, British Columbia. Founded 2021 by Darshan Patel (Founder & Full-Stack Lead, 8 yrs) and Adhvait Jadav (Full-Stack Lead, 8 yrs — currently embedded inside Shopify Support, giving the agency an insider view of merchant pain points). 30+ Shopify and Shopify Plus stores shipped, $5M+ aggregate client GMV under management, 95% client retention. Engagement size typically falls between CAD $25k and $150k, scoped per project — no rate card, no juniors, no offshore handoffs. Most engagements run 8–14 weeks. Specialties:
 
@@ -17,10 +21,18 @@ X9Elysium is a Shopify Partner headquartered at 28 Ann Street, Mississauga, Onta
 - [About](https://x9elysium.com/about): Founders, story, methodology, and verified credentials (Darshan Patel + Adhvait Jadav, both LinkedIn-attributed)
 - [Services](https://x9elysium.com/services): Six service disciplines — audits, custom apps, migrations, performance, strategy, analytics — with engagement model (Audit / Project / Retainer) and FAQ
 - [Work](https://x9elysium.com/work): Selected case studies across migrations, custom apps, headless, and unified commerce
-- [Foundation](https://x9elysium.com/foundation): The Elysium Method — five operating pillars and the operating rules that govern every engagement
+- [Foundation](https://x9elysium.com/foundation): The Elysium Method — the Sanskrit credo Vasudhaiva Kutumbakam (the world is one family), five operating pillars, and ten operating rules that govern every engagement
 - [Contact](https://x9elysium.com/contact): Senior-founder reply within 24 hours; web form + direct email (darshan@x9elysium.com)
 - [Blog](https://x9elysium.com/blog): Field notes on Shopify Plus, Canadian DTC, migration playbooks, and unified commerce
 - [Careers](https://x9elysium.com/careers): Open roles for senior Shopify and full-stack engineers
+
+## Platforms We Build On
+
+Shopify Plus is the primary track. Odoo and WooCommerce are deliberate secondary tracks for operators where Shopify is not the right tool.
+
+- [Shopify Plus](https://x9elysium.com/services): Primary platform — store audits, Plus migrations, custom apps, headless / Hydrogen, unified commerce
+- [Odoo (ERP + Commerce)](https://x9elysium.com/platforms/odoo): Founder-led Odoo implementations for manufacturers, distributors, and multi-channel retailers — eCommerce, Inventory, Manufacturing (MRP), Accounting, POS, and custom Python/XML modules. Migrations from QuickBooks, Sage, NetSuite, SAP B1. Shopify ↔ Odoo bridges where the storefront stays on Shopify.
+- [WooCommerce](https://x9elysium.com/platforms/woocommerce): Custom WooCommerce development for small brands and custom-logic operators — bespoke PHP plugins, theme builds, performance tuning, headless Next.js / Astro front-ends, and migrations both directions.
 
 ## Locations We Serve
 

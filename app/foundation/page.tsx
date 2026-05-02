@@ -3,10 +3,13 @@ import FoundationClient from "./FoundationClient";
 import { pillarsData, rulesData } from "./data";
 
 export const metadata: Metadata = {
-  title: "The Foundation — X9Elysium's Values, Pillars & Operating Rules",
+  title: "The Foundation — X9Elysium's Credo, Pillars & Operating Rules",
   description:
-    "The X9Elysium foundation: our Why, the 5 pillars that guide every Shopify Plus engagement, and the 10 operating rules that keep us trustworthy. Built for ambitious North American retailers who want commerce infrastructure that scales for decades.",
+    "Vasudhaiva Kutumbakam — the world is one family. The Sanskrit credo at the root of X9Elysium, the 5 pillars that guide every Shopify Plus engagement, and the 10 operating rules we will not break. Built for ambitious North American retailers who want commerce infrastructure that scales for decades.",
   keywords: [
+    "Vasudhaiva Kutumbakam",
+    "the world is one family",
+    "X9Elysium credo",
     "X9Elysium values",
     "X9Elysium foundation",
     "X9Elysium why",
@@ -28,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "The Foundation — X9Elysium",
     description:
-      "Why we exist. What we stand for. How we operate. Five pillars, ten rules, one promise to ambitious retailers.",
+      "Vasudhaiva Kutumbakam — the world is one family. The Sanskrit credo at our root, five pillars, ten rules, one promise to ambitious retailers.",
     type: "article",
     url: "https://x9elysium.com/foundation",
   },
@@ -36,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "The Foundation — X9Elysium",
     description:
-      "Why we exist. What we stand for. How we operate. Five pillars, ten rules.",
+      "Vasudhaiva Kutumbakam — the world is one family. The credo, five pillars, and ten rules behind X9Elysium.",
   },
 };
 
@@ -58,9 +61,21 @@ const foundationJsonLd = {
       publisher: { "@id": "https://x9elysium.com/#organization" },
       about: { "@id": "https://x9elysium.com/#organization" },
       hasPart: [
+        { "@id": "https://x9elysium.com/foundation#credo" },
         { "@id": "https://x9elysium.com/foundation#pillars" },
         { "@id": "https://x9elysium.com/foundation#rules" },
       ],
+    },
+    {
+      "@type": "Quotation",
+      "@id": "https://x9elysium.com/foundation#credo",
+      name: "Vasudhaiva Kutumbakam — The World is One Family",
+      text: "वसुधैव कुटुम्बकम् — Vasudhaiva Kutumbakam. The world is one family.",
+      inLanguage: ["sa", "en"],
+      spokenByCharacter: "Maha Upanishad 6.71",
+      description:
+        "The root value of X9Elysium. A Sanskrit verse from the Maha Upanishad that frames every client, vendor, and teammate as one family — one outcome, one shared ledger of trust.",
+      isPartOf: { "@id": "https://x9elysium.com/foundation#article" },
     },
     {
       "@type": "ItemList",

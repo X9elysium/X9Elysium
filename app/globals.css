@@ -130,6 +130,10 @@
   .text-gradient-emerald {
     @apply bg-gradient-to-r from-emerald-400 to-emerald-600 bg-clip-text text-transparent;
   }
+
+  .font-devanagari {
+    font-family: var(--font-devanagari), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  }
 }
 
 /* Docs prose — overrides @tailwindcss/typography defaults to match X9Elysium */

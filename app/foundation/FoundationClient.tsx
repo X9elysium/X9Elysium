@@ -41,11 +41,13 @@ const manifesto = [
 
 export default function FoundationClient() {
   const whyRef = useRef(null);
+  const credoRef = useRef(null);
   const pillarsRef = useRef(null);
   const rulesRef = useRef(null);
   const promiseRef = useRef(null);
 
   const whyInView = useInView(whyRef, { once: true, margin: "-100px" });
+  const credoInView = useInView(credoRef, { once: true, margin: "-100px" });
   const pillarsInView = useInView(pillarsRef, { once: true, margin: "-100px" });
   const rulesInView = useInView(rulesRef, { once: true, margin: "-100px" });
   const promiseInView = useInView(promiseRef, { once: true, margin: "-100px" });
@@ -96,9 +98,10 @@ export default function FoundationClient() {
               transition={{ duration: 0.8, ease: smoothEase }}
               className="text-body-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mt-8 leading-relaxed"
             >
-              The Why behind X9Elysium. The five pillars that guide every
-              engagement. The ten rules we will not break — even when it costs us.
-              This is who we are before we&apos;re who we work with.
+              The Why behind X9Elysium. The Sanskrit credo at our root. The five
+              pillars that guide every engagement. The ten rules we will not
+              break — even when it costs us. This is who we are before
+              we&apos;re who we work with.
             </motion.p>
 
             <motion.div
@@ -107,8 +110,21 @@ export default function FoundationClient() {
               className="flex flex-col sm:flex-row items-start gap-4 mt-12"
             >
               <a
-                href="#pillars"
+                href="#credo"
                 className="btn-primary-light"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document
+                    .getElementById("credo")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                Our Credo
+                <ArrowRight className="w-4 h-4" />
+              </a>
+              <a
+                href="#pillars"
+                className="btn-outline"
                 onClick={(e) => {
                   e.preventDefault();
                   document
@@ -117,11 +133,7 @@ export default function FoundationClient() {
                 }}
               >
                 The Five Pillars
-                <ArrowRight className="w-4 h-4" />
               </a>
-              <Link href="/contact" className="btn-outline">
-                Start a Project
-              </Link>
             </motion.div>
           </motion.div>
         </section>
@@ -183,7 +195,114 @@ export default function FoundationClient() {
                   machines — so founders can get back to what they actually love.
                   Building products. Serving customers. Compounding a legacy.
                 </p>
+                <p className="text-base text-neutral-500 dark:text-neutral-500 mt-4 leading-relaxed">
+                  The verse that anchors all of it lives{" "}
+                  <a
+                    href="#credo"
+                    className="text-emerald-600 dark:text-emerald-400 hover:underline underline-offset-4"
+                  >
+                    one section below
+                  </a>
+                  .
+                </p>
               </motion.div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ── The Credo: Vasudhaiva Kutumbakam ── */}
+        <section
+          id="credo"
+          ref={credoRef}
+          className="relative overflow-hidden bg-neutral-950 dark:bg-black py-28 sm:py-36"
+        >
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[820px] h-[820px] max-w-[140%] bg-emerald-500/[0.07] rounded-full blur-[200px]" />
+            <div className="absolute top-[10%] right-[-15%] w-[420px] h-[420px] bg-emerald-700/[0.06] rounded-full blur-[160px]" />
+            <div className="absolute bottom-[5%] left-[-10%] w-[360px] h-[360px] bg-emerald-400/[0.04] rounded-full blur-[140px]" />
+          </div>
+
+          <div className="section-container relative z-10 max-w-4xl text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={credoInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, ease: smoothEase }}
+            >
+              <span className="inline-block text-label font-semibold uppercase tracking-[0.2em] text-emerald-400 mb-10">
+                The Root Value
+              </span>
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0, filter: "blur(10px)", y: 20 }}
+              animate={
+                credoInView ? { opacity: 1, filter: "blur(0px)", y: 0 } : {}
+              }
+              transition={{ duration: 1, ease: smoothEase, delay: 0.1 }}
+              className="font-devanagari font-light text-emerald-400/95 text-5xl sm:text-7xl lg:text-8xl leading-[1.05] tracking-tight"
+              lang="sa"
+              aria-label="Vasudhaiva Kutumbakam"
+            >
+              वसुधैव कुटुम्बकम्
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={credoInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, ease: smoothEase, delay: 0.3 }}
+              className="mt-6 text-sm sm:text-base font-medium uppercase tracking-[0.32em] text-neutral-500"
+            >
+              Vasudhaiva&nbsp;·&nbsp;Kutumbakam
+            </motion.p>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              animate={credoInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, ease: smoothEase, delay: 0.45 }}
+              className="mt-10 text-3xl sm:text-5xl lg:text-6xl font-light text-white leading-[1.1] tracking-tight text-balance"
+            >
+              The world is{" "}
+              <span className="text-gradient-emerald italic font-light">
+                one family.
+              </span>
+            </motion.h2>
+
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              animate={credoInView ? "visible" : "hidden"}
+              className="mt-12 max-w-2xl mx-auto flex flex-col gap-6 text-neutral-300/95 text-lg sm:text-xl leading-relaxed"
+            >
+              <motion.p variants={fadeUp} transition={sectionTransition}>
+                This is the root of the X9Elysium foundation. A Sanskrit verse
+                from the Maha Upanishad — older than every framework, every
+                platform, every business school we&apos;ve ever read.
+              </motion.p>
+              <motion.p variants={fadeUp} transition={sectionTransition}>
+                Clients are not accounts. Vendors are not line items. Teammates
+                are not resources. The store you build, the customers it serves,
+                the partners who help ship it — one family, one outcome, one
+                shared ledger of trust.
+              </motion.p>
+              <motion.p
+                variants={fadeUp}
+                transition={sectionTransition}
+                className="text-emerald-400 italic"
+              >
+                Every pillar below, every rule we keep, every line of code we
+                ship — all of it answers to this one idea.
+              </motion.p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={credoInView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.8, ease: smoothEase, delay: 0.9 }}
+              className="mt-14 inline-flex items-center gap-3 text-xs font-mono uppercase tracking-[0.24em] text-neutral-500"
+            >
+              <span className="h-px w-10 bg-neutral-700" />
+              <span>Maha Upanishad · 6.71</span>
+              <span className="h-px w-10 bg-neutral-700" />
             </motion.div>
           </div>
         </section>
