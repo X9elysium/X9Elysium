@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "aws-amplify": "^6.5.0",
-    "disqus-react": "^1.1.5",
     "feather-icons-react": "^0.6.2",
     "framer-motion": "^11.15.0",
     "github-slugger": "^2.0.0",

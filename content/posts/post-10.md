@@ -4,7 +4,7 @@ image: /images/blog/05.jpg
 author:
   name: Darshan Patel
   avatar: /images/author/dp.jpeg
-date: 2024-19-09 T05:00:00Z
+date: 2024-09-19T05:00:00Z
 draft: false
 ---
 

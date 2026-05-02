@@ -1,0 +1,15 @@
+# Redirect legacy /posts/* URLs to new /blog/* structure
+/posts                    /blog              301
+/posts/                   /blog              301
+/posts/page/*             /blog              301
+/posts/post-1             /blog/post-1       301
+/posts/post-2             /blog/post-2       301
+/posts/post-3             /blog/post-3       301
+/posts/post-4             /blog/post-4       301
+/posts/post-5             /blog/post-5       301
+/posts/post-6             /blog/post-6       301
+/posts/post-7             /blog/post-7       301
+/posts/post-8             /blog/post-8       301
+/posts/post-9             /blog/post-9       301
+/posts/post-10            /blog/post-10      301
+/posts/*                  /blog/:splat       301

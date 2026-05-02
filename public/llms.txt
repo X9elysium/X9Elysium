@@ -1,0 +1,44 @@
+# X9Elysium
+
+> Shopify unified commerce consulting agency. We help Canadian retailers in the Greater Toronto Area, Calgary, Vancouver, and across Canada scale on Shopify and Shopify Plus through store audits, custom apps, platform migrations, and ongoing optimization.
+
+X9Elysium is a certified Shopify Partner headquartered in Mississauga, Ontario, with a presence in Calgary, Alberta and Vancouver, British Columbia. We work with retailers in the $500K to $20M+ ARR range across DTC, B2B, and unified commerce. Our specialties include:
+
+- Shopify Plus migrations from Magento, WooCommerce, BigCommerce, and Salesforce Commerce Cloud
+- Custom Shopify apps and integrations (ERP, OMS, 3PL, loyalty, subscriptions)
+- Unified commerce strategy and implementation (Shopify Plus + POS + B2B)
+- Conversion rate optimization and post-launch retainers
+
+## Core Pages
+
+- [Home](https://x9elysium.com/): Overview of services and approach
+- [About](https://x9elysium.com/about): Team, methodology, and credentials
+- [Services](https://x9elysium.com/services): Detailed service offerings
+- [Contact](https://x9elysium.com/contact): Book a free 30-minute strategy call
+- [Blog](https://x9elysium.com/blog): Field notes on Shopify, unified commerce, and DTC strategy
+
+## Locations We Serve
+
+- [Toronto / GTA](https://x9elysium.com/locations/toronto): Shopify Plus consulting for the Greater Toronto Area
+- [Calgary / Alberta](https://x9elysium.com/locations/calgary): Shopify consulting for Calgary and Western Canada
+
+## Recent Insights
+
+### Greater Toronto Area
+- [The 9 Best Shopify Plus Agencies in Toronto (2026 Edition)](https://x9elysium.com/blog/best-shopify-plus-agencies-toronto-2026): Vetted listicle with selection criteria, pricing, and specializations.
+- [Launching a DTC Brand in Toronto: A 90-Day Playbook](https://x9elysium.com/blog/launching-dtc-brand-toronto-90-day-playbook): Week-by-week launch sequence with budgets and Canadian-specific traps.
+- [Shopify Plus Migration Guide for GTA Retailers (2026)](https://x9elysium.com/blog/shopify-plus-migration-guide-gta-retailers): Complete migration playbook from Magento, Woo, and BigCommerce.
+
+### Calgary / Alberta
+- [The 7 Best Shopify Agencies in Calgary for 2026](https://x9elysium.com/blog/best-shopify-agencies-calgary-2026): Vetted Calgary agencies with pricing and Alberta-specific expertise.
+- [Why Calgary Is Becoming a DTC Hub in Western Canada](https://x9elysium.com/blog/western-canada-ecommerce-calgary-dtc-hub): Structural reasons behind Calgary's emergence as a Western Canadian DTC hub.
+- [Shopify Tax Setup in Alberta: The No-PST Advantage Explained](https://x9elysium.com/blog/shopify-tax-setup-alberta-no-pst): Practical tax setup playbook for Alberta DTC brands.
+
+### Canada-Wide
+- [Shopify Agency Cost in Canada: 2026 Pricing Benchmarks (CAD)](https://x9elysium.com/blog/shopify-agency-cost-canada-2026): Hourly rates, project minimums, and migration costs in Canadian dollars.
+- [Unified Commerce vs Omnichannel: What Canadian Retailers Need](https://x9elysium.com/blog/unified-commerce-vs-omnichannel-canadian-retailers): Decision framework for Canadian retailers choosing between models.
+
+## Optional
+
+- [RSS Feed](https://x9elysium.com/blog/rss.xml): All blog posts in RSS 2.0 format
+- [Sitemap](https://x9elysium.com/sitemap.xml): Full site URL listing
