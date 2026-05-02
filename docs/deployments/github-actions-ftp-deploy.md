@@ -1,8 +1,10 @@
 # GitHub Actions → Hostinger FTP Auto-Deploy
 
+> **Status (2026-05-02):** archived recipe. The `.github/workflows/deploy-hostinger.yml` workflow has been removed — x9elysium.com now deploys exclusively via the Cloudflare Workers path described in `CLAUDE.md`. Keep this doc as a recovery recipe in case you ever need to fall back to FTP.
+
 **What this gives you:** every `git push origin main` → GitHub builds the static site → uploads `out/` to Hostinger via FTP → live in ~2 minutes. No SSH, no manual zip uploads, no Node.js process on Hostinger.
 
-This is the recommended setup. The workflow file is `.github/workflows/deploy-hostinger.yml`.
+To re-enable, recreate the workflow file at `.github/workflows/deploy-hostinger.yml` using the YAML at the bottom of this document, then complete the secrets setup below.
 
 ---
 
@@ -137,3 +139,69 @@ npm run deploy:zip
 ```
 
 Then upload `x9elysium-static.zip` via Hostinger File Manager and extract into `public_html/` (full steps in `hostinger-static-deploy.md`).
+
+---
+
+## Workflow YAML (recovery copy)
+
+If you need to bring this path back, save the following as `.github/workflows/deploy-hostinger.yml`:
+
+```yaml
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-hostinger
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Build static site
+        env:
+          NEXT_PUBLIC_CLARITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_CLARITY_PROJECT_ID }}
+          NODE_ENV: production
+        run: npm run build
+
+      - name: Verify build output
+        run: |
+          test -f out/index.html || (echo "out/index.html missing — build failed" && exit 1)
+          test -d out/_next/static || (echo "out/_next/static missing — build failed" && exit 1)
+          echo "Built $(find out -type f | wc -l) files."
+
+      - name: Deploy to Hostinger via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.HOSTINGER_FTP_HOST }}
+          username: ${{ secrets.HOSTINGER_FTP_USER }}
+          password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+          server-dir: ${{ secrets.HOSTINGER_FTP_DIR }}
+          local-dir: ./out/
+          protocol: ftp
+          port: 21
+          dangerous-clean-slate: false
+          log-level: standard
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+```
