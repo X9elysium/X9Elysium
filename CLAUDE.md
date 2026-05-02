@@ -100,7 +100,6 @@ npm start        # Production server
 - [x] Route conflict resolved (pages/index.js removed)
 - [x] Framer Motion scroll-reveal animations with shared variants
 - [x] Inter font via next/font (weights 300-700 including 600)
-- [x] Premium page loader (initial-load splash + route-transition `loading.tsx`, emerald glow + animated logo)
 - [x] Focus-visible styles for keyboard navigation
 - [x] Deployed on Hostinger (x9elysium.com)
 

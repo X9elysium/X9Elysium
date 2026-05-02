@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { ThemeProvider } from "./components/ThemeProvider";
-import InitialLoader from "./components/InitialLoader";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -125,7 +124,6 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased" suppressHydrationWarning>
         <ThemeProvider>
-          <InitialLoader />
           <div className="noise-overlay" aria-hidden="true" />
           {children}
           <Script id="tawk-to" strategy="afterInteractive">
