@@ -69,6 +69,15 @@ export const metadata: Metadata = {
     siteName: "X9Elysium",
     locale: "en_CA",
     alternateLocale: ["en_US"],
+    images: [
+      {
+        url: "/images/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "X9Elysium — Shopify Plus consulting for Canadian and US retailers",
+        type: "image/png",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -76,6 +85,7 @@ export const metadata: Metadata = {
       "X9Elysium — Shopify Plus Consulting for Canada & United States Retailers",
     description:
       "Shopify Plus consulting agency serving Canadian and US retailers. Audits, migrations, custom apps, and unified commerce strategy.",
+    images: ["/images/og-image.png"],
   },
   robots: {
     index: true,
@@ -183,9 +193,7 @@ export default function RootLayout({
   return (
     <html lang="en-CA" className={inter.variable} suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://embed.tawk.to" crossOrigin="" />
         <link rel="preconnect" href="https://www.clarity.ms" crossOrigin="" />
-        <link rel="dns-prefetch" href="https://embed.tawk.to" />
         <link rel="dns-prefetch" href="https://www.clarity.ms" />
         <script
           type="application/ld+json"
@@ -196,19 +204,6 @@ export default function RootLayout({
         <ThemeProvider>
           <div className="noise-overlay" aria-hidden="true" />
           {children}
-          <Script id="tawk-to" strategy="lazyOnload">
-            {`
-              var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-              (function(){
-                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-                s1.async=true;
-                s1.src='https://embed.tawk.to/69d665f092b65f1c33097671/1jlmnschp';
-                s1.charset='UTF-8';
-                s1.setAttribute('crossorigin','*');
-                s0.parentNode.insertBefore(s1,s0);
-              })();
-            `}
-          </Script>
           {process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID ? (
             <Script
               id="microsoft-clarity"

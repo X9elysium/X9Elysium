@@ -12,6 +12,12 @@ Format:
 
 ---
 
+## (pending) — 2026-05-02 — OG image: switch from metadata-route convention to static PNG
+
+- Touched: `app/opengraph-image.tsx` (deleted), `app/twitter-image.tsx` (deleted), `public/images/og-image.png` (new — 1200×630, 132 KB, generated once via the prior build), `app/layout.tsx` (`openGraph.images` and `twitter.images` now point at `/images/og-image.png`)
+- Tasks moved: none (post-deploy fix, not in CLAUDE.md Remaining)
+- Notes: Cloudflare Workers Static Assets did not set a `Content-Type` header on the extension-less file emitted by Next 14's metadata-route convention (`out/opengraph-image`). Verified live: `curl -sI https://x9elysium.com/opengraph-image` → 200, **no `content-type` header**. Most social crawlers (FB, LinkedIn, X) reject images served without `Content-Type: image/png`, so the OG would silently not render. Switched to a plain `.png` static asset under `public/images/` — Cloudflare serves it with `Content-Type: image/png` from the extension. Build re-emits OG meta tags pointing at `https://x9elysium.com/images/og-image.png`.
+
 ## (pending) — 2026-05-02 — /about rewrite: founder-led, GTA, 2021, real LinkedIn-sourced bios
 
 - Touched:
