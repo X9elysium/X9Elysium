@@ -5,13 +5,14 @@ import { motion } from "framer-motion";
 import {
   ArrowRight,
   Mail,
-  Phone,
+  Globe,
   MapPin,
   CheckCircle,
   Clock,
   Users,
   Zap,
   ChevronDown,
+  Layers,
 } from "lucide-react";
 import Image from "next/image";
 import Navigation from "../components/Navigation";
@@ -511,15 +512,15 @@ export default function ContactPage() {
                       </div>
                     </a>
                     <a
-                      href="tel:+16049686952"
+                      href="https://x9elysium.com"
                       className="flex items-center gap-4 text-neutral-600 dark:text-neutral-400 hover:text-emerald-500 transition-colors group"
                     >
                       <div className="w-10 h-10 rounded-xl bg-neutral-200 dark:bg-white/[0.04] border border-neutral-300 dark:border-white/[0.06] flex items-center justify-center group-hover:border-emerald-500/30 transition-colors">
-                        <Phone className="w-4 h-4" />
+                        <Globe className="w-4 h-4" />
                       </div>
                       <div>
-                        <p className="text-sm text-neutral-900 dark:text-white">Phone</p>
-                        <p className="text-sm">+1 (604) 968-6952</p>
+                        <p className="text-sm text-neutral-900 dark:text-white">Website</p>
+                        <p className="text-sm">x9elysium.com</p>
                       </div>
                     </a>
                     <div className="flex items-center gap-4 text-neutral-600 dark:text-neutral-400">
@@ -537,6 +538,30 @@ export default function ContactPage() {
                       </div>
                     </div>
                   </div>
+                </div>
+
+                {/* Pricing scales with project */}
+                <div className="glass-card p-8 mb-8 hover:border-neutral-300 dark:hover:border-white/[0.1] transition-all duration-500">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+                      <Layers className="w-4 h-4 text-emerald-500" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-medium text-neutral-900 dark:text-white">
+                        Value scales with the project
+                      </h3>
+                      <p className="text-xs text-emerald-500 mt-1 uppercase tracking-wider">
+                        No off-the-shelf rate card
+                      </p>
+                    </div>
+                  </div>
+                  <p className="text-sm text-neutral-500 leading-relaxed">
+                    We price by scope, complexity, and the upside the work
+                    creates — not by hours billed. A focused audit, a custom
+                    integration, and a full Plus migration each carry very
+                    different stakes. Tell us what you&apos;re trying to move,
+                    and we&apos;ll come back with a proposal sized to it.
+                  </p>
                 </div>
 
                 {/* Process Steps */}
@@ -584,11 +609,12 @@ export default function ContactPage() {
               transition={{ duration: 0.6, ease: smoothEase }}
             >
               <h2 className="text-display-sm text-neutral-900 dark:text-white mb-6 text-balance">
-                Prefer a quick chat?
+                Prefer to write?
               </h2>
               <p className="text-neutral-600 dark:text-neutral-400 text-body-lg max-w-lg mx-auto mb-10 leading-relaxed">
-                Book a 15-minute discovery call. No commitment — just a
-                conversation about where your commerce is headed.
+                Drop us a line with a few details about your store and what
+                you&apos;re trying to move. We&apos;ll come back with thoughts
+                — and a proposal sized to the project.
               </p>
               <a
                 href="mailto:hello@x9elysium.com"

@@ -14,50 +14,50 @@ const testimonials = [
   {
     quote:
       "X9Elysium transformed our Shopify store from a basic setup into a high-performing commerce platform. Revenue increased 40% in the first quarter after launch.",
-    name: "Sarah Chen",
     role: "Head of Ecommerce",
-    company: "Retail Brand Co.",
+    company: "Premium fashion DTC",
     metric: "+40% revenue",
+    initial: "F",
   },
   {
     quote:
       "The migration from our legacy platform was seamless. Every detail — data, design, integrations — handled without a single day of downtime.",
-    name: "Marcus Johnson",
     role: "CTO",
-    company: "StyleHouse",
+    company: "Multi-brand apparel retailer",
     metric: "Zero downtime",
+    initial: "A",
   },
   {
     quote:
       "Their audit uncovered issues we'd been blind to for years. The roadmap they delivered paid for itself within weeks of implementation.",
-    name: "Priya Patel",
     role: "Director of Operations",
-    company: "NovaMart",
+    company: "Home & lifestyle DTC",
     metric: "3× ROI in weeks",
+    initial: "H",
   },
   {
     quote:
       "Load times dropped from 6.2s to 1.8s. Conversion rate jumped 28% — the numbers speak for themselves.",
-    name: "David Kim",
     role: "Founder & CEO",
-    company: "VeloGear Athletics",
+    company: "Athletic & outdoor gear",
     metric: "1.8s load time",
+    initial: "G",
   },
   {
     quote:
       "Custom subscription and inventory integrations cut our order processing time by 65%. Our ops team finally has room to breathe.",
-    name: "Amara Osei",
     role: "VP of Operations",
-    company: "PureRoots Wellness",
+    company: "Health & wellness DTC",
     metric: "65% faster ops",
+    initial: "W",
   },
   {
     quote:
       "X9Elysium took us from 3 disconnected sales channels to a fully unified commerce setup in under 90 days. One source of truth, finally.",
-    name: "James Thornton",
     role: "Head of Digital",
-    company: "Kensington Home",
+    company: "Multi-location home goods",
     metric: "Omnichannel in 90 days",
+    initial: "H",
   },
 ];
 
@@ -99,9 +99,9 @@ export default function Testimonials() {
           animate={isInView ? "visible" : "hidden"}
           className="grid grid-cols-1 md:grid-cols-3 gap-6"
         >
-          {testimonials.map((testimonial) => (
+          {testimonials.map((testimonial, idx) => (
             <motion.div
-              key={testimonial.name}
+              key={`${testimonial.company}-${idx}`}
               variants={fadeUp}
               transition={sectionTransition}
               className="glass-card p-8 sm:p-10 flex flex-col hover:border-emerald-500/10 hover:shadow-lg hover:shadow-emerald-500/[0.03] transition-all duration-500"
@@ -134,14 +134,14 @@ export default function Testimonials() {
 
               <div className="flex items-center gap-4 mt-auto">
                 <div className="w-11 h-11 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white font-semibold text-sm flex-shrink-0 ring-2 ring-emerald-500/20 ring-offset-2 ring-offset-neutral-100 dark:ring-offset-neutral-900">
-                  {testimonial.name.charAt(0)}
+                  {testimonial.initial}
                 </div>
                 <div>
                   <div className="text-sm font-semibold text-neutral-900 dark:text-white tracking-wide">
-                    {testimonial.name}
+                    {testimonial.role}
                   </div>
                   <div className="text-xs text-neutral-500">
-                    {testimonial.role}, {testimonial.company}
+                    {testimonial.company}
                   </div>
                 </div>
               </div>

@@ -125,15 +125,24 @@ x9elysium.com is served as plain static hosting from Hostinger's `public_html/`.
 - [x] Foundation page at /foundation (Why + 5 Pillars + 10 Operating Rules; Naval-style premium copy; per-page SEO metadata + OG/Twitter; linked from Footer + About; registered in sitemap)
 
 ### Remaining
-- [ ] About page (App Router)
-- [ ] Services detail page (App Router)
-- [ ] Work/case studies page (App Router)
-- [ ] Blog migration to App Router (verify all posts render after 74c97f4)
-- [ ] Careers page polish (added in 74c97f4 — confirm content + SEO)
-- [ ] Real testimonials and case study content
-- [ ] OG image asset for social shares
-- [ ] Structured data / JSON-LD (Organization, WebSite, Service)
-- [ ] sitemap.xml generation
-- [ ] Replace placeholder social links with real profiles
-- [ ] Booking integration (Calendly/Cal.com) for "Book a Strategy Call"
-- [ ] Light/dark theme toggle finalize (cd6a936 added "dar light" — confirm parity)
+
+- [ ] Real testimonials with attributable names + permission (current copy is anonymized — "Head of Ecommerce, premium fashion DTC" etc. Replace once real client testimonials are collected.)
+- [ ] Real case studies with named clients + permissioned metrics
+- [ ] Set `NEXT_PUBLIC_CALCOM_URL` (or `NEXT_PUBLIC_BOOKING_URL`) in Cloudflare project env so "Book a Strategy Call" CTAs flip to Cal.com — leaving unset routes them to `/contact` form (current behaviour)
+
+### Recently Completed
+
+- [x] About page (App Router) — milestones, values, team, stats, certifications
+- [x] Services detail page (App Router) — services grid, process, tech stack, engagement models
+- [x] Work/case studies page (App Router) — filterable bento grid, stats, testimonials
+- [x] Blog App Router migration — index + dynamic `[slug]` route with TOC, share, related posts, RSS
+- [x] Careers page polish — copy, SEO metadata, JobPosting JSON-LD per role
+- [x] Anonymized testimonials & case study attribution (role + industry only, no fabricated person names)
+- [x] OG + Twitter image at build time via `app/opengraph-image.tsx` (1200×630 PNG, brand-aware)
+- [x] Structured data / JSON-LD (Organization, WebSite, ProfessionalService) in root layout, Blog/BlogPosting on /blog, JobPosting on /careers, Breadcrumb on both
+- [x] sitemap.xml via `app/sitemap.ts` (static routes + posts + jobs)
+- [x] Removed placeholder LinkedIn URL from JSON-LD `sameAs` (Footer already only listed real Instagram + Facebook)
+- [x] Booking integration scaffold — `app/lib/booking.ts` + `BookingButton` component routes 7 "Book a Strategy Call" CTAs through `NEXT_PUBLIC_CALCOM_URL` env var with `/contact` fallback
+- [x] Phone number removed site-wide for spam mitigation — Contact page, Footer, JSON-LD `contactPoint`, `config/config.json`, `config/social.json`. Replaced with website + email-only.
+- [x] "Value scales with project size" messaging added to Contact page sidebar (no rate card; pricing by scope/complexity/upside)
+- [x] Light/dark theme parity confirmed — `next-themes` ThemeProvider in root layout, defaults to dark, all App Router pages use `dark:` variants throughout

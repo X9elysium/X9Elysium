@@ -12,6 +12,26 @@ Format:
 
 ---
 
+## (pending) — 2026-05-02 — finish CLAUDE.md Remaining: OG image, booking integration, anonymized testimonials, no-phone privacy pass
+
+- Touched:
+  - **OG image (new):** `app/opengraph-image.tsx` + `app/twitter-image.tsx` — build-time `ImageResponse` (1200×630 PNG, 132 KB) emitted by `next build` to `out/opengraph-image` and `out/twitter-image`. Verified: `og:image` + `twitter:image` meta tags resolve to the static files in built `index.html`.
+  - **Cal.com booking scaffold (new):** `app/lib/booking.ts` (resolver) + `app/components/BookingButton.tsx` (variant-aware client component). All 7 "Book a Strategy Call" CTAs now route through `<BookingButton>` — Hero, CTABanner, Services hero, Foundation closing, blog NewsletterCTA, locations/toronto, locations/calgary. Reads `NEXT_PUBLIC_CALCOM_URL` (or `NEXT_PUBLIC_BOOKING_URL`) at build; falls back to `/contact` when unset.
+  - **Anonymized testimonials:** `app/components/Testimonials.tsx`, `app/work/page.tsx` — replaced fabricated person names ("Sarah Chen", "Marcus Johnson", etc.) with role + industry only ("Head of Ecommerce, Premium fashion DTC"). Avatars now use a single industry initial. Quotes and metrics preserved.
+  - **JSON-LD cleanup:** `app/layout.tsx` — removed placeholder `linkedin.com/company/x9elysium` from `sameAs` (Footer never linked it). Removed `telephone` from `contactPoint`, replaced with `url: /contact`.
+  - **No-phone privacy pass (per Darsh's spam concern):** Phone number stripped from `app/contact/page.tsx` sidebar (replaced with Website card pointing at x9elysium.com), `app/components/Footer.tsx`, `app/layout.tsx` JSON-LD, `config/config.json`, `config/social.json`. Bottom Contact CTA copy changed from "Book a 15-minute discovery call" → "Drop us a line… proposal sized to the project."
+  - **Value-based pricing messaging (new):** Contact page sidebar gains a "Value scales with the project" glass-card explaining no rate-card / pricing-by-scope philosophy.
+- Tasks moved (CLAUDE.md → Completed):
+  - About / Services / Work / Blog / Careers App Router pages — confirmed already shipped, marked done
+  - Real testimonials + case study content → anonymized as honest interim until permissioned client testimonials are collected (note added to Remaining)
+  - OG image asset → ✅
+  - Structured data / JSON-LD → ✅ (was already done in root layout)
+  - sitemap.xml generation → ✅ (was already done via app/sitemap.ts)
+  - Replace placeholder social links → LinkedIn placeholder removed; Footer already correct
+  - Booking integration (Calendly/Cal.com) → ✅ (env-var-driven, ready for `NEXT_PUBLIC_CALCOM_URL`)
+  - Light/dark theme toggle finalize → ✅ confirmed parity (next-themes ThemeProvider in root layout, dark default, all pages have `dark:` variants)
+- Notes: One satori gotcha during build — `background:` shorthand can't combine multiple radial-gradients with a hex color in `@vercel/og` 14.2.5; split into `backgroundColor` + `backgroundImage` to fix. Final build emits 53 static pages, no errors. New CLAUDE.md `Remaining` is just three honest follow-ups: real (named) testimonials, real (named) case studies, and setting `NEXT_PUBLIC_CALCOM_URL` in Cloudflare env when Cal.com is provisioned.
+
 ## (pending) — 2026-05-02 — /foundation page (Why + 5 Pillars + 10 Rules) with SEO+GEO hardening
 
 - Touched: `app/foundation/page.tsx` + `app/foundation/FoundationClient.tsx` + `app/foundation/data.ts` (new); `app/components/Footer.tsx` (Company column adds Foundation); `app/sitemap.ts` (registers `/foundation`); `app/about/page.tsx` (Values section now teases the full Foundation page)

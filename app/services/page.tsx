@@ -17,6 +17,7 @@ import {
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import CTABanner from "../components/CTABanner";
+import { BookingButton } from "../components/BookingButton";
 import {
   fadeUp,
   fadeUpBlur,
@@ -244,10 +245,7 @@ export default function ServicesPage() {
               transition={{ duration: 0.8, ease: smoothEase }}
               className="flex flex-col sm:flex-row items-start gap-4 mt-12"
             >
-              <Link href="/contact" className="btn-accent">
-                Book a Strategy Call
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+              <BookingButton variant="accent" />
               <Link href="/work" className="btn-outline">
                 View Our Work
               </Link>

@@ -2,9 +2,8 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 import { smoothEase } from "../lib/animations";
+import { BookingButton } from "./BookingButton";
 
 export default function CTABanner() {
   const ref = useRef(null);
@@ -41,10 +40,7 @@ export default function CTABanner() {
             get there faster.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/contact" className="btn-accent">
-              Book a Strategy Call
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+            <BookingButton variant="accent" />
             <a href="mailto:hello@x9elysium.com" className="btn-outline">
               Email Us Directly
             </a>

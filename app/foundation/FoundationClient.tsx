@@ -14,6 +14,7 @@ import {
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import CTABanner from "../components/CTABanner";
+import { BookingButton } from "../components/BookingButton";
 import {
   fadeUp,
   fadeUpBlur,
@@ -320,10 +321,7 @@ export default function FoundationClient() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
-                <Link href="/contact" className="btn-accent">
-                  Book a Strategy Call
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
+                <BookingButton variant="accent" />
                 <Link
                   href="/work"
                   className="text-sm font-semibold uppercase tracking-[0.12em] text-neutral-400 hover:text-emerald-400 transition-colors"

@@ -4,6 +4,7 @@ import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
 import BlogCard from "../../blog/components/BlogCard";
 import NewsletterCTA from "../../blog/components/NewsletterCTA";
+import { BookingButton } from "../../components/BookingButton";
 import { getAllPosts } from "../../lib/blog";
 import { ArrowRight } from "lucide-react";
 
@@ -105,10 +106,7 @@ export default function TorontoLocationPage() {
                 We work with retailers across Toronto, Mississauga, Brampton, Markham, Vaughan, and Hamilton — building Shopify Plus implementations, custom apps, and platform migrations that scale.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mt-10">
-                <Link href="/contact" className="btn-accent group">
-                  Book a Strategy Call
-                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </Link>
+                <BookingButton variant="accent" />
                 <Link href="/services" className="btn-outline">
                   Explore Services
                 </Link>

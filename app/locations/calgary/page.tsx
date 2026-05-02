@@ -4,6 +4,7 @@ import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
 import BlogCard from "../../blog/components/BlogCard";
 import NewsletterCTA from "../../blog/components/NewsletterCTA";
+import { BookingButton } from "../../components/BookingButton";
 import { getAllPosts } from "../../lib/blog";
 import { ArrowRight } from "lucide-react";
 
@@ -95,10 +96,7 @@ export default function CalgaryLocationPage() {
                 We help Calgary retailers and energy-sector DTC spinoffs scale on Shopify Plus — with deep B2B experience, Alberta-aware tax setup, and unified commerce expertise. Cochrane to Okotoks, Calgary to Edmonton.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mt-10">
-                <Link href="/contact" className="btn-accent group">
-                  Book a Strategy Call
-                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </Link>
+                <BookingButton variant="accent" />
                 <Link href="/services" className="btn-outline">
                   Explore Services
                 </Link>

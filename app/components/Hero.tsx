@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 import {
   heroStagger,
   fadeIn,
@@ -10,6 +9,7 @@ import {
   fadeUp,
   smoothEase,
 } from "../lib/animations";
+import { BookingButton } from "./BookingButton";
 
 export default function Hero() {
   return (
@@ -73,9 +73,7 @@ export default function Hero() {
             Explore Our Work
             <ArrowRight className="w-4 h-4" />
           </a>
-          <Link href="/contact" className="btn-outline">
-            Book a Strategy Call
-          </Link>
+          <BookingButton variant="outline" showArrow={false} />
         </motion.div>
       </motion.div>
 

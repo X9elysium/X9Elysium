@@ -113,9 +113,9 @@ export default function RootLayout({
           "Shopify Plus consulting agency serving Canadian and US retailers. Store audits, platform migrations, custom apps, and unified commerce strategy.",
         contactPoint: {
           "@type": "ContactPoint",
-          telephone: "+1-604-968-6952",
           contactType: "sales",
           email: "hello@x9elysium.com",
+          url: "https://x9elysium.com/contact",
           areaServed: ["CA", "US"],
           availableLanguage: "English",
         },
@@ -143,7 +143,6 @@ export default function RootLayout({
         sameAs: [
           "https://www.instagram.com/x9elysium/",
           "https://www.facebook.com/profile.php?id=100091230745202",
-          "https://linkedin.com/company/x9elysium",
         ],
       },
       {

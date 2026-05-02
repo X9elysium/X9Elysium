@@ -3,8 +3,8 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { smoothEase } from "../../lib/animations";
+import { BookingButton } from "../../components/BookingButton";
 
 export default function NewsletterCTA() {
   const ref = useRef(null);
@@ -33,10 +33,7 @@ export default function NewsletterCTA() {
             We work with Canadian retailers in Toronto, Calgary, and Vancouver who are ready to scale with unified commerce. Book a free 30-minute strategy call.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link href="/contact" className="btn-accent group">
-              Book a Strategy Call
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
+            <BookingButton variant="accent" />
             <Link href="/services" className="btn-outline">
               Explore Services
             </Link>

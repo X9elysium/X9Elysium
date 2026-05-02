@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, Phone, MapPin, ArrowUp } from "lucide-react";
+import { Mail, MapPin, ArrowUp } from "lucide-react";
 
 const footerLinks = {
   services: [
@@ -56,13 +56,6 @@ export default function Footer() {
               >
                 <Mail className="w-4 h-4 flex-shrink-0" />
                 hello@x9elysium.com
-              </a>
-              <a
-                href="tel:+16049686952"
-                className="inline-flex items-center gap-2.5 text-sm text-neutral-500 hover:text-emerald-500 hover:translate-x-0.5 transition-all duration-300"
-              >
-                <Phone className="w-4 h-4 flex-shrink-0" />
-                +1 (604) 968-6952
               </a>
               <div className="flex items-start gap-2.5 text-sm text-neutral-500">
                 <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5" />
