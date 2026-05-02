@@ -12,6 +12,12 @@ Format:
 
 ---
 
+## (pending) — 2026-05-02 — public /docs route on the live site
+
+- Touched: `app/docs/layout.tsx`, `app/docs/page.tsx`, `app/docs/[...slug]/page.tsx`, `app/docs/lib.ts`, `app/docs/components/Sidebar.tsx`, `app/docs/components/MobileSidebarToggle.tsx` (all new); `app/globals.css` (`.docs-prose` typography overrides)
+- Tasks moved: none
+- Notes: Read-only docs browser at `/docs` using the same `Navigation`, `Footer`, design tokens, and `@tailwindcss/typography` as the rest of the site. Sticky sidebar with folder tree, search, on-page TOC, and breadcrumb. **`journal/` is filtered out at the lib layer** so the private go-to-market notes never reach the static export — verified `grep -c journal out/docs/index.html` = 0. All pages flagged `robots: noindex,nofollow` and absent from `sitemap.ts`. 8 file pages prerender at build time via `generateStaticParams`. The local viewer (`npm run docs`) keeps editing + journal access for local-only use.
+
 ## (pending) — 2026-05-02 — local docs viewer (npm run docs)
 
 - Touched: `scripts/docs-viewer/server.js` (new); `scripts/docs-viewer/ui/{index.html,styles.css,app.js}` (new); `package.json` (`docs` script); `docs/README.md` (viewer section); `CLAUDE.md` (commands + docs workflow)

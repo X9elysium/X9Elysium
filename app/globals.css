@@ -131,3 +131,116 @@
     @apply bg-gradient-to-r from-emerald-400 to-emerald-600 bg-clip-text text-transparent;
   }
 }
+
+/* Docs prose — overrides @tailwindcss/typography defaults to match X9Elysium */
+.docs-prose {
+  @apply text-neutral-700 dark:text-neutral-300;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.docs-prose h1,
+.docs-prose h2,
+.docs-prose h3,
+.docs-prose h4 {
+  @apply text-neutral-900 dark:text-white font-semibold tracking-tight scroll-mt-28;
+}
+
+.docs-prose h1 {
+  @apply text-3xl mt-0 mb-6 pb-3 border-b border-neutral-200/70 dark:border-white/[0.06];
+}
+
+.docs-prose h2 {
+  @apply text-2xl mt-12 mb-4;
+}
+
+.docs-prose h3 {
+  @apply text-lg mt-8 mb-3;
+}
+
+.docs-prose h4 {
+  @apply text-base mt-6 mb-2 text-neutral-700 dark:text-neutral-200;
+}
+
+.docs-prose p {
+  @apply text-neutral-700 dark:text-neutral-300;
+  margin: 0.85em 0;
+}
+
+.docs-prose strong {
+  @apply text-neutral-900 dark:text-white font-semibold;
+}
+
+.docs-prose a {
+  @apply text-emerald-700 dark:text-emerald-400 no-underline border-b border-emerald-500/30 hover:border-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-300 transition-colors;
+}
+
+.docs-prose ul,
+.docs-prose ol {
+  @apply pl-6 my-4;
+}
+
+.docs-prose li {
+  @apply my-1.5 text-neutral-700 dark:text-neutral-300;
+}
+
+.docs-prose ul > li::marker {
+  color: rgb(16 185 129 / 0.7);
+}
+
+.docs-prose ol > li::marker {
+  @apply text-neutral-400 dark:text-neutral-500 font-medium;
+}
+
+.docs-prose code {
+  @apply bg-neutral-100 dark:bg-white/[0.05] text-emerald-700 dark:text-emerald-300 border border-neutral-200/70 dark:border-white/[0.08] rounded-md px-1.5 py-0.5 text-[0.85em] font-mono;
+}
+
+.docs-prose pre {
+  @apply bg-neutral-950 dark:bg-black border border-neutral-200/40 dark:border-white/[0.06] rounded-xl p-5 overflow-x-auto my-5 text-sm;
+}
+
+.docs-prose pre code {
+  @apply bg-transparent border-0 p-0 text-neutral-100 dark:text-neutral-200 text-[0.875em];
+}
+
+.docs-prose blockquote {
+  @apply border-l-2 border-emerald-500 bg-emerald-500/[0.04] dark:bg-emerald-500/[0.06] rounded-r-lg pl-5 pr-4 py-3 my-5 not-italic text-neutral-700 dark:text-neutral-300;
+}
+
+.docs-prose blockquote p {
+  @apply my-0;
+}
+
+.docs-prose hr {
+  @apply border-neutral-200/70 dark:border-white/[0.06] my-10;
+}
+
+.docs-prose table {
+  @apply w-full text-sm my-6 border-collapse rounded-xl overflow-hidden border border-neutral-200/70 dark:border-white/[0.06];
+}
+
+.docs-prose th {
+  @apply bg-neutral-100 dark:bg-white/[0.04] text-neutral-900 dark:text-white font-semibold text-left px-4 py-2.5 border-b border-neutral-200/70 dark:border-white/[0.06];
+}
+
+.docs-prose td {
+  @apply px-4 py-2.5 border-b border-neutral-200/50 dark:border-white/[0.04] text-neutral-700 dark:text-neutral-300;
+}
+
+.docs-prose tr:last-child td {
+  @apply border-b-0;
+}
+
+.docs-prose img {
+  @apply rounded-xl border border-neutral-200/70 dark:border-white/[0.06] my-6;
+}
+
+.docs-prose input[type="checkbox"] {
+  @apply mr-2 accent-emerald-500;
+}
+
+/* Anchor link target highlight */
+.docs-prose :target {
+  scroll-margin-top: 7rem;
+}
