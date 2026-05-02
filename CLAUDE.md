@@ -58,6 +58,10 @@ All generated markdown (audits, reports, plans, notes) lives in `docs/`. Never d
 - `docs/progress/CHANGELOG.md` — running log of commits and which redesign tasks moved.
 - `docs/deployments/post-push-checks.md` — mandatory post-push verification protocol. **Run after every `git push origin main`** before reporting "done" to Darsh.
 
+### Local viewer
+
+Run `npm run docs` to open a Google Drive-style browser of `docs/` at `http://localhost:4000/docs`. Folder tree, search, in-place markdown editing (saves to disk), create/delete, and print-to-PDF via the browser. Lives in `scripts/docs-viewer/` and is not part of the static export — keeps the journal private.
+
 ### Per-commit update protocol
 
 Every time changes are committed or pushed:
@@ -75,6 +79,7 @@ Every time changes are committed or pushed:
 npm run dev          # Dev server
 npm run build        # Production build → static export in out/
 npm run deploy:zip   # Build + zip out/ → x9elysium-static.zip (upload to Hostinger)
+npm run docs         # Local docs viewer at http://localhost:4000/docs (Google Drive-style browser for docs/)
 npm run lint         # ESLint
 ```
 

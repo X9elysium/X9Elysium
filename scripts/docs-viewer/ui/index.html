@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>X9Elysium — Docs</title>
+    <link rel="stylesheet" href="/ui/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="sidebar-head">
+        <div class="brand">
+          <span class="brand-mark">X9</span>
+          <span class="brand-text">Docs</span>
+        </div>
+        <div class="search-wrap">
+          <input id="search" type="search" placeholder="Search files…" autocomplete="off" />
+        </div>
+      </div>
+      <nav id="tree" class="tree" aria-label="Files"></nav>
+      <div class="sidebar-foot">
+        <button id="newFile" class="ghost-btn" title="New markdown file">+ File</button>
+        <button id="newFolder" class="ghost-btn" title="New folder">+ Folder</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="crumbs" id="crumbs">
+          <span class="crumb-empty">Select a file</span>
+        </div>
+        <div class="actions" id="actions" hidden>
+          <button id="editBtn" class="btn">Edit</button>
+          <button id="saveBtn" class="btn btn-primary" hidden>Save</button>
+          <button id="cancelBtn" class="btn" hidden>Cancel</button>
+          <button id="printBtn" class="btn" title="Print or save as PDF">PDF</button>
+          <button id="downloadBtn" class="btn" title="Download raw file">Download</button>
+          <button id="deleteBtn" class="btn btn-danger" title="Delete file">Delete</button>
+        </div>
+      </header>
+
+      <section id="welcome" class="welcome">
+        <div class="welcome-card">
+          <h1>X9Elysium Docs</h1>
+          <p class="lede">Local-only viewer for everything in <code>docs/</code> — audits, deployments, journal, progress.</p>
+          <ul class="welcome-list">
+            <li><strong>Browse</strong> the folder tree on the left.</li>
+            <li><strong>Edit</strong> any markdown file in-place — saves go straight to disk.</li>
+            <li><strong>PDF</strong> opens the print dialog with print-optimized styling.</li>
+            <li><strong>Private:</strong> not deployed, not in the static export. Journal stays off the live site.</li>
+          </ul>
+          <div class="welcome-stats" id="welcomeStats"></div>
+        </div>
+      </section>
+
+      <article id="viewer" class="viewer markdown" hidden></article>
+
+      <div id="editor" class="editor" hidden>
+        <textarea id="editorText" spellcheck="false"></textarea>
+        <div class="editor-preview markdown" id="editorPreview"></div>
+      </div>
+    </main>
+
+    <div id="toast" class="toast" hidden></div>
+
+    <script src="/ui/app.js" defer></script>
+  </body>
+</html>

@@ -12,6 +12,12 @@ Format:
 
 ---
 
+## (pending) — 2026-05-02 — local docs viewer (npm run docs)
+
+- Touched: `scripts/docs-viewer/server.js` (new); `scripts/docs-viewer/ui/{index.html,styles.css,app.js}` (new); `package.json` (`docs` script); `docs/README.md` (viewer section); `CLAUDE.md` (commands + docs workflow)
+- Tasks moved: none
+- Notes: Google Drive-style browser for everything in `docs/`. Vanilla JS + Node `http`, only dep is `marked` (already installed). Boots at `http://localhost:4000/docs`. Folder tree, in-place markdown editing with save-to-disk, search, create/delete/rename, print-to-PDF via the browser. Strictly local — not part of the static export, not on x9elysium.com — so the private journal stays private. Smoke-tested all endpoints; path traversal blocked.
+
 ## (pending) — 2026-05-02 — wrangler.toml for cloudflare workers static assets
 
 - Touched: `wrangler.toml` (new); `CLAUDE.md` (deployment section)
