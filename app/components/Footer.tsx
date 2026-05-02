@@ -44,8 +44,8 @@ export default function Footer() {
               />
             </Link>
             <p className="text-neutral-500 text-sm leading-relaxed mb-6 max-w-xs">
-              Shopify unified commerce consulting for ambitious retailers. We
-              build, optimize, and scale commerce ecosystems.
+              Shopify unified commerce consulting for retailers ready to grow.
+              We build, optimize, and scale commerce ecosystems that perform.
             </p>
             <div className="flex flex-col gap-3">
               <a

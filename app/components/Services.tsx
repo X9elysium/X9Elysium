@@ -23,37 +23,37 @@ const services = [
     icon: Search,
     title: "Store Optimization & Audits",
     description:
-      "Comprehensive audits covering performance, UX, conversion funnels, and technical health. We pinpoint what's holding you back and build a clear roadmap to fix it.",
+      "A thorough review of your store's performance, UX, conversion flow, and tech health. We surface what's costing you revenue and hand you a clear roadmap to fix it.",
   },
   {
     icon: Code2,
     title: "Custom Apps & Integrations",
     description:
-      "Bespoke Shopify app development and third-party integrations that connect your ERP, PIM, OMS, and fulfillment systems into one seamless commerce ecosystem.",
+      "Purpose-built Shopify apps and seamless integrations connecting your ERP, PIM, OMS, and fulfillment stack — one ecosystem, zero duct tape.",
   },
   {
     icon: ArrowRightLeft,
     title: "Platform Migrations",
     description:
-      "Seamless migrations from legacy platforms to Shopify and Shopify Plus. We handle data, design, and integrations — zero downtime, zero headaches.",
+      "Moving from WooCommerce, Magento, or a legacy build to Shopify or Shopify Plus — zero downtime, full data integrity, and a smoother launch than you thought possible.",
   },
   {
     icon: Gauge,
     title: "Performance & Scaling",
     description:
-      "Optimize storefront speed, handle high-traffic events, and architect your infrastructure for reliable growth — from thousands to millions of orders.",
+      "Faster storefronts, resilient infrastructure, and architecture that handles peak traffic without breaking a sweat. Built for the long run.",
   },
   {
     icon: Lightbulb,
     title: "Strategy Consulting",
     description:
-      "Unified commerce strategy that aligns your online, retail, and wholesale channels. We help you plan, prioritize, and execute with confidence.",
+      "A unified view of your online, retail, and wholesale channels — aligned around real business goals. We help you cut through the noise and execute with precision.",
   },
   {
     icon: BarChart3,
     title: "Analytics & Reporting",
     description:
-      "Custom dashboards and analytics that surface what matters. Track performance, customer behavior, and ROI across every channel in real time.",
+      "Custom dashboards that surface the metrics that matter. Revenue, retention, order velocity — tracked in real time, across every channel.",
   },
 ];
 
@@ -76,8 +76,8 @@ export default function Services() {
             End-to-end Shopify expertise
           </h2>
           <p className="text-neutral-500 text-body-lg max-w-2xl mt-6 leading-relaxed">
-            We partner with retailers at every stage — from initial audit to
-            full-scale unified commerce transformation.
+            We partner with retailers at every stage — from your first audit to
+            a fully unified commerce operation.
           </p>
         </motion.div>
 

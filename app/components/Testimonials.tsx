@@ -21,7 +21,7 @@ const testimonials = [
   },
   {
     quote:
-      "The migration from our legacy platform was seamless. Their team handled every detail — data, design, integrations — without a single day of downtime.",
+      "The migration from our legacy platform was seamless. Every detail — data, design, integrations — handled without a single day of downtime.",
     name: "Marcus Johnson",
     role: "CTO",
     company: "StyleHouse",
@@ -29,15 +29,15 @@ const testimonials = [
   },
   {
     quote:
-      "Their audit uncovered issues we'd been blind to for years. The optimization roadmap they delivered paid for itself within weeks of implementation.",
+      "Their audit uncovered issues we'd been blind to for years. The roadmap they delivered paid for itself within weeks of implementation.",
     name: "Priya Patel",
     role: "Director of Operations",
     company: "NovaMart",
-    metric: "3x ROI in weeks",
+    metric: "3× ROI in weeks",
   },
   {
     quote:
-      "Our page load times dropped from 6.2s to 1.8s after their performance overhaul. Conversion rate jumped 28% — the numbers speak for themselves.",
+      "Load times dropped from 6.2s to 1.8s. Conversion rate jumped 28% — the numbers speak for themselves.",
     name: "David Kim",
     role: "Founder & CEO",
     company: "VeloGear Athletics",
@@ -45,7 +45,7 @@ const testimonials = [
   },
   {
     quote:
-      "They built custom subscription and inventory integrations that cut our order processing time by 65%. Our ops team finally has room to breathe.",
+      "Custom subscription and inventory integrations cut our order processing time by 65%. Our ops team finally has room to breathe.",
     name: "Amara Osei",
     role: "VP of Operations",
     company: "PureRoots Wellness",
@@ -53,7 +53,7 @@ const testimonials = [
   },
   {
     quote:
-      "X9Elysium helped us go from 3 disconnected sales channels to a truly unified commerce setup in under 90 days. Our team now runs on one source of truth.",
+      "X9Elysium took us from 3 disconnected sales channels to a fully unified commerce setup in under 90 days. One source of truth, finally.",
     name: "James Thornton",
     role: "Head of Digital",
     company: "Kensington Home",
@@ -84,11 +84,11 @@ export default function Testimonials() {
         >
           <span className="section-label">Client Stories</span>
           <h2 className="text-h2-display text-white mb-6">
-            Trusted by ambitious retailers
+            What our clients say
           </h2>
           <p className="text-neutral-400 text-body-lg max-w-2xl mx-auto leading-relaxed">
-            We measure our success by our clients&apos; results. Here&apos;s
-            what they have to say.
+            We measure success by what our clients achieve. Here&apos;s what
+            they&apos;ve experienced.
           </p>
         </motion.div>
 

@@ -57,21 +57,21 @@ const trustedLogos = [
 const steps = [
   {
     icon: Clock,
-    title: "We respond within 24 hours",
+    title: "We respond in 24 hours",
     description:
-      "Your inquiry lands with a senior strategist — not a chatbot.",
+      "Your inquiry reaches a senior strategist — not a bot.",
   },
   {
     icon: Users,
     title: "Discovery call",
     description:
-      "We learn your business, audit your current setup, and identify opportunities.",
+      "We learn your business, explore your setup, and map the opportunity.",
   },
   {
     icon: Zap,
-    title: "Tailored proposal",
+    title: "Clear proposal",
     description:
-      "You receive a clear roadmap with timelines, deliverables, and pricing.",
+      "A roadmap with timelines, deliverables, and pricing. No surprises.",
   },
 ];
 
@@ -168,13 +168,14 @@ export default function ContactPage() {
               Let&apos;s Build Together
             </span>
             <h1 className="text-display font-light text-white tracking-tight">
-              Ready to scale
+              Let&apos;s talk
               <br />
-              <span className="text-gradient-emerald">your commerce?</span>
+              <span className="text-gradient-emerald">commerce.</span>
             </h1>
             <p className="text-body-lg text-neutral-400 max-w-2xl mx-auto mt-8 leading-relaxed">
-              Tell us about your business and we&apos;ll show you exactly how to
-              grow. No pitch decks, no fluff — just a clear plan.
+              Tell us about your business and what you&apos;re trying to achieve.
+              No pitch decks. No jargon. Just a straight conversation about where
+              you&apos;re headed.
             </p>
           </motion.div>
         </section>
@@ -224,7 +225,7 @@ export default function ContactPage() {
                       <CheckCircle className="w-10 h-10 text-emerald-500" />
                     </div>
                     <h2 className="text-4xl font-light text-white mb-4 tracking-tight">
-                      We&apos;ve got it.
+                      You&apos;re in good hands.
                     </h2>
                     <p className="text-neutral-400 text-body-lg max-w-md leading-relaxed">
                       A senior strategist will review your inquiry and reach out

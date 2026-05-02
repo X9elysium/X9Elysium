@@ -7,44 +7,44 @@ import { smoothEase } from "../lib/animations";
 
 const faqs = [
   {
-    question: "How is X9Elysium different from other Shopify agencies?",
+    question: "What makes X9Elysium different from other Shopify agencies?",
     answer:
-      "Most agencies build websites — we architect unified commerce infrastructure. Our Elysium Method is a four-phase framework (Discover, Strategize, Implement, Optimize) that consistently delivers 40%+ revenue lifts. We embed with your team long-term rather than handing off deliverables and disappearing.",
+      "We build commerce infrastructure, not just websites. Our Elysium Method — Discover, Strategize, Implement, Optimize — is a structured framework that consistently delivers 40%+ revenue lifts. We stay embedded after launch because that's when most agencies disappear.",
   },
   {
-    question: "What size businesses do you work with?",
+    question: "What size retailers do you work with?",
     answer:
-      "We work best with retailers doing $500K to $20M+ in annual revenue who are ready to invest in scalable commerce infrastructure. Whether you're migrating from a legacy platform, optimizing an existing Shopify store, or building a unified omnichannel setup — our services are built for brands that have outgrown basic solutions.",
+      "Our sweet spot is retailers doing $500K to $20M+ annually who are ready to invest in scalable infrastructure. Whether you're migrating platforms, optimizing a Shopify store, or building unified omnichannel — we're built for brands that have outgrown basic solutions.",
   },
   {
     question: "How long does a typical project take?",
     answer:
-      "Store audits and optimization roadmaps take 2-3 weeks. Platform migrations typically run 6-12 weeks depending on complexity. Custom app development varies from 4-8 weeks. Full unified commerce implementations can span 8-16 weeks. We always provide a detailed timeline during our discovery phase.",
+      "Store audits take 2–3 weeks. Platform migrations run 6–12 weeks depending on complexity. Custom app builds are 4–8 weeks. Full unified commerce implementations span 8–16 weeks. You'll have a clear timeline from day one.",
   },
   {
-    question: "What does the engagement process look like?",
+    question: "What does working with you actually look like?",
     answer:
-      "It starts with a free 30-minute strategy call where we learn about your business and current setup. From there, we conduct a discovery phase to audit your existing infrastructure, then present a tailored proposal with a clear roadmap, timelines, and deliverables. No surprises — you know exactly what you're getting.",
+      "It starts with a free 30-minute strategy call. Then a discovery phase — we audit your setup and build a tailored proposal with roadmap, timelines, and pricing. No guesswork, no surprises.",
   },
   {
     question: "Do you work with businesses outside Canada?",
     answer:
-      "Absolutely. While we're headquartered in Mississauga with offices in Calgary and Vancouver, we work with retailers across North America. Shopify is a global platform, and our expertise translates across markets. We've delivered projects for brands in the US and Canada.",
+      "Yes. We're headquartered in Mississauga with a presence in Calgary and Vancouver, but we work with retailers across North America. Most engagements are remote-first, so location is never a barrier.",
   },
   {
     question: "What Shopify certifications does your team hold?",
     answer:
-      "We're a certified Shopify Partner with deep expertise across Shopify Plus, checkout extensibility, custom storefronts (Hydrogen), and the full Shopify ecosystem including Klaviyo, Gorgias, ReCharge, and ShipBob integrations. Our team stays current with every platform update.",
+      "We're a certified Shopify Partner with deep expertise in Shopify Plus, Hydrogen storefronts, checkout extensibility, and the full ecosystem — Klaviyo, Gorgias, ReCharge, ShipBob, and more.",
   },
   {
     question: "How do you measure success?",
     answer:
-      "Every engagement starts with clearly defined KPIs — revenue growth, conversion rate, page load time, order processing speed, or customer retention, depending on the project. We set up custom analytics dashboards so you can track results in real time. Our 98% client retention rate speaks to the outcomes we deliver.",
+      "Every project starts with defined KPIs — revenue growth, conversion rate, load time, processing speed, or retention. We build dashboards so you can track results in real time, not just at the final presentation.",
   },
   {
-    question: "What if we're not on Shopify yet?",
+    question: "We're not on Shopify yet — can you still help?",
     answer:
-      "That's one of our specialties. We've migrated retailers from WooCommerce, Magento, BigCommerce, and custom platforms to Shopify and Shopify Plus — with zero downtime. We handle everything: data migration, design, integrations, and team training so the transition is seamless.",
+      "That's one of our specialties. We've migrated brands from WooCommerce, Magento, BigCommerce, and custom platforms — always with zero downtime, full data integrity, and a team that handles everything end to end.",
   },
 ];
 
@@ -65,11 +65,10 @@ export default function FAQ() {
         >
           <span className="section-label">Common Questions</span>
           <h2 className="text-h2-display text-white mb-6">
-            Everything you need to know
+            Got questions? We have answers.
           </h2>
           <p className="text-neutral-400 text-body-lg max-w-2xl mx-auto leading-relaxed">
-            Answers to the questions we hear most from retailers evaluating
-            their next commerce partner.
+            The most common things retailers ask us before getting started.
           </p>
         </motion.div>
 

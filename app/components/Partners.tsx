@@ -78,7 +78,7 @@ export default function Partners() {
             Technology Partners
           </span>
           <h2 className="text-h2-display text-neutral-900 text-center max-w-2xl mx-auto">
-            Platforms and tools we&apos;re certified in
+            Certified across the Shopify ecosystem
           </h2>
         </motion.div>
       </div>

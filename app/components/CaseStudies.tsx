@@ -9,25 +9,25 @@ const caseStudies = [
   {
     tag: "Shopify Plus Migration",
     title: "Premium Fashion Retailer",
-    metric: "40% revenue increase in Q1",
+    metric: "+40% Revenue in Q1",
     bg: "bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a]",
   },
   {
     tag: "Custom App Development",
     title: "DTC Health & Wellness",
-    metric: "3x order processing speed",
+    metric: "3× Faster Order Processing",
     bg: "bg-gradient-to-br from-[#1a1a2e] via-[#16213e] to-[#0a0a1a]",
   },
   {
-    tag: "Unified Commerce Strategy",
+    tag: "Unified Commerce Build",
     title: "Multi-Location Retail Chain",
-    metric: "Omnichannel in 90 days",
+    metric: "Omnichannel live in 90 days",
     bg: "bg-gradient-to-br from-[#0d1f22] via-[#1a3a3a] to-[#0a1a1a]",
   },
   {
-    tag: "Performance Optimization",
+    tag: "Performance Overhaul",
     title: "High-Volume Marketplace",
-    metric: "Sub-second load times",
+    metric: "Sub-1s load time achieved",
     bg: "bg-gradient-to-br from-[#1c1917] via-[#292524] to-[#1c1917]",
   },
 ];
@@ -48,7 +48,7 @@ export default function CaseStudies() {
         >
           <span className="section-label">Our Work</span>
           <h2 className="text-h2-display text-white max-w-3xl text-balance">
-            Projects that deliver measurable impact
+            Work that speaks in numbers
           </h2>
         </motion.div>
 

@@ -48,9 +48,9 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: smoothEase }}
           className="text-display font-light text-white max-w-4xl mt-6 text-balance tracking-tight"
         >
-          40%+ revenue growth for
+          We build the commerce infrastructure
           <br />
-          <span className="text-gradient-emerald">ambitious Shopify retailers</span>
+          <span className="text-gradient-emerald">ambitious retailers grow on.</span>
         </motion.h1>
 
         <motion.p
@@ -58,9 +58,9 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: smoothEase }}
           className="text-body-lg text-neutral-400 max-w-xl mt-8 leading-relaxed"
         >
-          50+ projects delivered with 98% client retention. From store audits
-          and platform migrations to custom integrations — we architect the
-          unified commerce infrastructure that scales your business.
+          50+ projects delivered. 98% client retention. From store audits and
+          platform migrations to custom integrations — we architect the unified
+          commerce systems that move your revenue.
         </motion.p>
 
         <motion.div
@@ -68,8 +68,8 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: smoothEase }}
           className="flex flex-col sm:flex-row items-start gap-4 mt-12"
         >
-          <a href="#services" className="btn-primary-light">
-            Explore Our Services
+          <a href="#work" className="btn-primary-light">
+            Explore Our Work
             <ArrowRight className="w-4 h-4" />
           </a>
           <Link href="/contact" className="btn-outline">

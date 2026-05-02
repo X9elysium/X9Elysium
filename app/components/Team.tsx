@@ -13,20 +13,20 @@ import {
 const team = [
   {
     name: "Darshan Patel",
-    role: "Founder & Operations",
-    bio: "Drives strategy and client partnerships. Obsessed with building commerce infrastructure that actually moves the revenue needle.",
+    role: "Founder & Ops Lead",
+    bio: "Drives strategy, client relationships, and business operations. Darshan's hands-on approach means every engagement gets his direct attention — from first call to final delivery.",
     image: "/images/about/team/01.jpg",
   },
   {
     name: "Adhvait Jadav",
     role: "Product Lead",
-    bio: "Shapes product vision and user experience. Turns complex commerce workflows into clean, intuitive solutions retailers love.",
+    bio: "Owns product vision and user experience. Adhvait turns complex commerce workflows into clean, intuitive solutions that retailers love using every day.",
     image: "/images/about/team/02.jpg",
   },
   {
     name: "Sam Okaster",
     role: "Engineering Lead",
-    bio: "Architects the technical foundation. Specializes in Shopify Plus custom storefronts, checkout extensibility, and performance at scale.",
+    bio: "Architects the technical foundation. Sam specializes in Shopify Plus storefronts, checkout extensibility, and high-performance builds at serious scale.",
     image: "/images/about/team/03.jpg",
   },
 ];
@@ -47,11 +47,11 @@ export default function Team() {
         >
           <span className="section-label">Our Team</span>
           <h2 className="text-h2-display text-white mb-6">
-            The people behind the platform
+            Small team. Senior expertise.
           </h2>
           <p className="text-neutral-400 text-body-lg max-w-2xl mx-auto leading-relaxed">
-            A small, senior team that embeds with your business — not a rotating
-            cast of junior contractors.
+            You work directly with the people solving your problems — not a
+            rotating cast of junior contractors.
           </p>
         </motion.div>
 

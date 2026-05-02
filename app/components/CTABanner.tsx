@@ -34,11 +34,11 @@ export default function CTABanner() {
           className="text-center max-w-3xl mx-auto"
         >
           <h2 className="text-display-sm text-white mb-6 text-balance">
-            Ready to elevate your commerce experience?
+            Let&apos;s build something that lasts.
           </h2>
           <p className="text-neutral-400 text-body-lg max-w-xl mx-auto mb-12 leading-relaxed">
-            Let&apos;s discuss how we can help you build, optimize, and scale
-            your Shopify ecosystem.
+            Tell us where your commerce is going. We&apos;ll show you how to
+            get there faster.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/contact" className="btn-accent">

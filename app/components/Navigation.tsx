@@ -47,27 +47,21 @@ export default function Navigation() {
           }`}
           aria-label="Main navigation"
         >
-          {/* Logo + Shopify Partner Badge */}
-          <div className="flex items-center gap-3 z-50">
+          {/* Logo */}
+          <div className="flex items-center z-50">
             <Link
               href="/"
-              className="flex items-center gap-2 group transition-transform duration-300 hover:scale-[1.02]"
+              className="flex items-center group transition-transform duration-300 hover:scale-[1.02]"
             >
               <Image
                 src="/images/x9-logo.png"
                 alt="X9Elysium"
-                width={36}
-                height={36}
-                className="rounded-lg"
+                width={44}
+                height={44}
+                className="rounded-lg opacity-90"
                 priority
               />
             </Link>
-            <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
-              <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 text-emerald-400" fill="currentColor">
-                <path d="M15.34 3.38c-.15-.12-.35-.14-.52-.06l-1.84.93c-.16-.24-.39-.42-.66-.52-.17-.43-.46-.8-.84-1.05-.56-.37-1.2-.47-1.83-.27-.4.12-.73.39-.95.72l-.04-.02-1.8.92c-.18.09-.3.27-.32.47l-1.7 14.7c0 .02 0 .04 0 .06l2.53 1.3c.22.12.48.14.72.08.24-.07.44-.22.57-.43.12-.2.25-.38.4-.54.37.28.82.44 1.29.44.16 0 .32-.02.48-.06.7-.18 1.24-.72 1.45-1.4l.62-2.05 2.56 1.32c.15.08.33.08.48 0 .16-.08.27-.23.3-.4l1.7-14.7c.02-.18-.05-.36-.18-.48zM10.7 17.44c-.2.52-.7.83-1.23.83-.22 0-.44-.06-.64-.17l-.02-.01c.08-.18.14-.36.18-.56l.85-3.5.07-.3c.08-.32.36-.54.68-.56h.05c.32 0 .6.2.72.5l.09.24-.75 3.53z"/>
-              </svg>
-              <span className="text-[10px] font-medium text-emerald-400 uppercase tracking-wider">Partner</span>
-            </div>
           </div>
 
           {/* Desktop Menu */}
@@ -89,7 +83,7 @@ export default function Navigation() {
               href="/contact"
               className="hidden sm:inline-flex items-center justify-center gap-2 px-5 py-2.5 text-label-sm bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-300"
             >
-              Talk to Us
+              Start a Project
             </Link>
 
             <button
@@ -162,7 +156,7 @@ export default function Navigation() {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="btn-accent w-full text-center"
                 >
-                  Talk to Us
+                  Start a Project
                 </Link>
               </motion.div>
             </nav>

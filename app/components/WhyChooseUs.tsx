@@ -15,25 +15,25 @@ const methodologySteps = [
     icon: Search,
     phase: "01",
     title: "Discover",
-    duration: "Week 1-2",
+    duration: "Wk 1–2",
     description:
-      "Deep-dive audit of your current commerce setup — performance, UX, conversion funnels, tech stack, and growth blockers.",
+      "A deep audit of your store — performance, UX, conversion flow, tech stack, and growth blockers. We don't guess; we map.",
   },
   {
     icon: Lightbulb,
     phase: "02",
     title: "Strategize",
-    duration: "Week 2-3",
+    duration: "Wk 2–3",
     description:
-      "Data-backed roadmap with prioritized initiatives, clear KPIs, timeline, and architecture decisions aligned to your growth goals.",
+      "A data-backed roadmap: prioritized initiatives, clear KPIs, timelines, and architecture decisions aligned to your goals.",
   },
   {
     icon: Rocket,
     phase: "03",
     title: "Implement",
-    duration: "Week 3-10",
+    duration: "Wk 3–10",
     description:
-      "Our team embeds with yours to build, migrate, or optimize — from custom apps and integrations to full platform launches.",
+      "We embed with your team to build, migrate, or optimize — from custom apps to full platform launches.",
   },
   {
     icon: BarChart3,
@@ -41,7 +41,7 @@ const methodologySteps = [
     title: "Optimize",
     duration: "Ongoing",
     description:
-      "Continuous measurement, A/B testing, and iteration. We stay invested in your long-term success — not just the launch.",
+      "Continuous measurement, A/B testing, and iteration. We stay after launch because that's when the real work begins.",
   },
 ];
 
@@ -50,32 +50,32 @@ const reasons = [
     icon: Zap,
     title: "Deep Shopify Expertise",
     description:
-      "Hands-on experience with Shopify Plus, custom storefronts, checkout extensibility, and the latest platform capabilities.",
+      "Real hands-on work across Shopify Plus, custom storefronts, checkout extensibility, and the full platform — not just credentials.",
   },
   {
     icon: Shield,
     title: "Certified Partner",
     description:
-      "Shopify Partner with ecosystem expertise across Klaviyo, Gorgias, ReCharge, ShipBob, and enterprise integrations.",
+      "Shopify Partner with live expertise across Klaviyo, Gorgias, ReCharge, ShipBob, and enterprise-grade integrations.",
   },
   {
     icon: Users,
     title: "True Partnership",
     description:
-      "We embed with your team and transfer knowledge. 98% client retention because we stay invested in your success.",
+      "We embed with your team and transfer knowledge. 98% client retention because we stay invested in your long-term success.",
   },
   {
     icon: TrendingUp,
-    title: "Growth-Focused",
+    title: "Growth-First Thinking",
     description:
-      "Architecture optimized for where you're headed. From scaling decisions to integration choices — built for growth.",
+      "Every decision — architecture, integrations, tooling — is made with where you're going in mind, not just where you are.",
   },
 ];
 
 const stats = [
   { value: "40%+", label: "Avg. Revenue Lift" },
   { value: "98%", label: "Client Retention" },
-  { value: "2.1s", label: "Avg. Load Time Cut" },
+  { value: "50+", label: "Projects Delivered" },
   { value: "$12M+", label: "Client GMV Managed" },
 ];
 
@@ -95,11 +95,11 @@ export default function WhyChooseUs() {
         >
           <span className="section-label">Why X9Elysium</span>
           <h2 className="text-h2-display text-neutral-900 max-w-3xl text-balance">
-            Commerce infrastructure built for growth
+            Built for growth. Proven in the real world.
           </h2>
           <p className="text-neutral-500 text-body-lg max-w-2xl mt-6 leading-relaxed">
-            Most agencies build websites. We build the commerce infrastructure
-            that powers real business growth.
+            We don&apos;t build websites. We build the commerce infrastructure
+            that powers serious retail growth.
           </p>
         </motion.div>
 
@@ -139,8 +139,8 @@ export default function WhyChooseUs() {
               The Elysium Method
             </span>
             <p className="text-neutral-500 text-body-sm max-w-xl mx-auto">
-              Our battle-tested four-phase framework that consistently delivers
-              40%+ revenue lifts for ambitious retailers.
+              Four phases. No surprises. Consistently 40%+ revenue uplifts for
+              the retailers we work with.
             </p>
           </div>
 
