@@ -82,7 +82,11 @@ npm run lint         # ESLint
 
 ## Deployment
 
-x9elysium.com is served as plain static hosting from Hostinger's `public_html/`. To ship: run `npm run deploy:zip`, upload `x9elysium-static.zip` to `public_html/` via Hostinger File Manager, extract, purge CDN cache. Full step-by-step in `docs/deployments/hostinger-static-deploy.md`.
+x9elysium.com is served as plain static hosting from Hostinger's `public_html/`.
+
+**Primary path — GitHub Actions auto-deploy:** every push to `main` triggers `.github/workflows/deploy-hostinger.yml`, which builds the static export and uploads `out/` to Hostinger via FTP. Setup guide and required secrets in `docs/deployments/github-actions-ftp-deploy.md`.
+
+**Manual fallback:** `npm run deploy:zip` produces `x9elysium-static.zip`; upload to `public_html/` via Hostinger File Manager and extract. Full step-by-step in `docs/deployments/hostinger-static-deploy.md`.
 
 ## Known Issues
 - `node_modules/`, `.next/`, `.next-build/`, `tmp/` may be owned by root (from a previous `sudo npm` run). Fix with: `sudo chown -R $(whoami) node_modules .next .next-build tmp`

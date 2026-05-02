@@ -12,6 +12,12 @@ Format:
 
 ---
 
+## (pending) — 2026-05-02 — github actions ftp auto-deploy to hostinger
+
+- Touched: `.github/workflows/deploy-hostinger.yml` (new); `docs/deployments/github-actions-ftp-deploy.md` (new); `CLAUDE.md` (deployment section)
+- Tasks moved: none
+- Notes: SSH from local kept failing ("Connection reset by peer"). Pivoted to GitHub Actions building on Ubuntu and uploading `out/` via FTP using SamKirkland/FTP-Deploy-Action. Requires 4 GitHub secrets (`HOSTINGER_FTP_HOST/USER/PASSWORD/DIR`) — Darsh sets these once in repo settings. Replaces fragile manual zip-upload flow as the primary deploy path. `deploy:zip` kept as fallback.
+
 ## (pending) — 2026-05-02 — hostinger static deploy guide + deploy:zip script
 
 - Touched: `package.json` (new `deploy:zip` script); `.gitignore` (ignore zip artifact); `docs/deployments/hostinger-static-deploy.md` (new step-by-step); `CLAUDE.md` (deployment section)
