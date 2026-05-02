@@ -29,6 +29,7 @@ X9Elysium is a Shopify unified commerce consulting agency website built with Nex
 - `config/` — Site config JSON (menu, theme, social, config)
 - `content/` — Markdown content for pages and blog posts
 - `public/images/` — Static assets
+- `docs/` — All generated/maintained markdown (audits, journal, progress log). Outside `app/`/`pages/` so it is not part of the static export. See `docs/README.md`.
 
 ### Design System
 - **Background:** `#000000` (black), `#171717` (neutral-900), `#0a0a0a` (neutral-950)
@@ -47,6 +48,24 @@ X9Elysium is a Shopify unified commerce consulting agency website built with Nex
 - `tsconfig.json` must keep `baseUrl: "."` for Pages Router imports (e.g., `import "styles/style.scss"` in `_app.js`)
 - `jsconfig.json` still exists — Next.js uses tsconfig when present
 - Tailwind `content` array includes both `app/` and `pages/` paths
+
+## Documentation Workflow
+
+All generated markdown (audits, reports, plans, notes) lives in `docs/`. Never drop a new `.md` at the repo root — put it in `docs/<subfolder>/`.
+
+- `docs/audits/` — audit reports (SEO, GEO, performance, accessibility). One file per audit.
+- `docs/journal/` — Darsh's private go-to-market journal and goal tracking. **Never link from site navigation, sitemap, footer, or content.** Outside `app/`/`pages/` so it is not part of the static export. Treat it as a private working folder.
+- `docs/progress/CHANGELOG.md` — running log of commits and which redesign tasks moved.
+
+### Per-commit update protocol
+
+Every time changes are committed or pushed:
+
+1. **Append a new entry to `docs/progress/CHANGELOG.md`** (newest first) using the format documented at the bottom of that file.
+2. **Move completed items in `CLAUDE.md → Redesign Progress`** from `### Remaining` to `### Completed`.
+3. **Add new tasks discovered during the commit** to `### Remaining`.
+4. If the commit produced a new audit / report, save it under `docs/audits/` with a dated filename.
+5. Never create a new `.md` outside `docs/` (except `README.md` and `CLAUDE.md`, which stay at root).
 
 ## Commands
 ```bash
@@ -89,10 +108,12 @@ npm start        # Production server
 - [ ] About page (App Router)
 - [ ] Services detail page (App Router)
 - [ ] Work/case studies page (App Router)
-- [ ] Blog migration to App Router
+- [ ] Blog migration to App Router (verify all posts render after 74c97f4)
+- [ ] Careers page polish (added in 74c97f4 — confirm content + SEO)
 - [ ] Real testimonials and case study content
 - [ ] OG image asset for social shares
 - [ ] Structured data / JSON-LD (Organization, WebSite, Service)
 - [ ] sitemap.xml generation
 - [ ] Replace placeholder social links with real profiles
 - [ ] Booking integration (Calendly/Cal.com) for "Book a Strategy Call"
+- [ ] Light/dark theme toggle finalize (cd6a936 added "dar light" — confirm parity)
