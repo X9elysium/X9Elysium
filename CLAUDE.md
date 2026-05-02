@@ -132,6 +132,7 @@ x9elysium.com is served as plain static hosting from Hostinger's `public_html/`.
 
 ### Recently Completed
 
+- [x] About page (App Router) — founder-led rewrite (2026-05-02). GTA-based, founded 2021, only Darshan + Adhvait with real LinkedIn-sourced bios + `sameAs` JSON-LD. Removed fabricated milestones timeline + Sam Okaster + aspirational certs. Stats reframed to defensible four-year numbers. Per-page Metadata + AboutPage/Organization/Person JSON-LD graph for AI entity recognition.
 - [x] About page (App Router) — milestones, values, team, stats, certifications
 - [x] Services detail page (App Router) — services grid, process, tech stack, engagement models
 - [x] Work/case studies page (App Router) — filterable bento grid, stats, testimonials

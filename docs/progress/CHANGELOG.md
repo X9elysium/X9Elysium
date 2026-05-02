@@ -12,6 +12,20 @@ Format:
 
 ---
 
+## (pending) — 2026-05-02 — /about rewrite: founder-led, GTA, 2021, real LinkedIn-sourced bios
+
+- Touched:
+  - **`app/about/page.tsx`** — converted from client-only to server component. Adds per-page `Metadata` (title, description, keywords, canonical, OG, Twitter) and JSON-LD graph: `AboutPage` + `Organization` (foundingDate 2021, addressRegion ON, hasCredential = Shopify Partner / AWS Certified / Google Ads Certified) + two `Person` nodes for Darshan and Adhvait with `sameAs` linking to LinkedIn (`dpatel99`, `adhvaitjadav`) and `knowsAbout` skill arrays for entity recognition by AI search engines.
+  - **`app/about/AboutClient.tsx`** (new) — moved client UI here. Truth-led rewrite based on Darsh's + Adhvait's actual LinkedIn profiles:
+    - Hero: "Two senior builders. One Shopify studio." Subtitle reframes as founder duo, eight years each, no juniors / no offshore handoffs.
+    - Story: GTA-based, founded **2021** (was 2022), real partnership origin (TRU connection, both 8 yrs production e-commerce). Single-column max-w-3xl prose (timeline removed).
+    - Milestones timeline: **removed** entirely (was four fabricated entries 2022–2025).
+    - Team: trimmed from three to two members. **Sam Okaster removed** (fabricated). Darshan + Adhvait only, with bios pulled from LinkedIn (Darshan: React/Next/Shopify/Node/GCP/AWS; Adhvait: Hydrogen/custom apps/Node/PHP/SQL + currently inside Shopify Support — surfaced as a credibility play). Each card now has a "Connect on LinkedIn" pill linking to the real profile (lucide `Linkedin` icon, `target=_blank`, `rel=noopener noreferrer`, aria-label).
+    - Stats bar: replaced fabricated `50+ / $12M+ / 98% / 40%+` with realistic four-year-track-record numbers — `8+ yrs Combined Experience`, `30+ Stores Shipped`, `$5M+ GMV Managed`, `95% Client Retention`.
+    - Certifications: trimmed from six aspirational badges to three real ones — **Shopify Partner, AWS Certified, Google Ads Certified**. (Removed: Shopify Plus Partner, Klaviyo Partner, Hydrogen Certified, GA Certified, ReCharge Partner.)
+- Tasks moved (CLAUDE.md → Completed): About page (App Router) — done with founder-led rewrite.
+- Notes: Build clean (53 pages, /about = 6.54 kB, 148 kB First Load). Verified `out/about/index.html` contains 0 hits for "Sam Okaster" and "2022", 7 hits for "Greater Toronto Area", 3 hits each for `dpatel99` and `adhvaitjadav` (visible button + `sameAs` graph).
+
 ## (pending) — 2026-05-02 — finish CLAUDE.md Remaining: OG image, booking integration, anonymized testimonials, no-phone privacy pass
 
 - Touched:
