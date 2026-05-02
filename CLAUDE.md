@@ -56,6 +56,7 @@ All generated markdown (audits, reports, plans, notes) lives in `docs/`. Never d
 - `docs/audits/` — audit reports (SEO, GEO, performance, accessibility). One file per audit.
 - `docs/journal/` — Darsh's private go-to-market journal and goal tracking. **Never link from site navigation, sitemap, footer, or content.** Outside `app/`/`pages/` so it is not part of the static export. Treat it as a private working folder.
 - `docs/progress/CHANGELOG.md` — running log of commits and which redesign tasks moved.
+- `docs/deployments/post-push-checks.md` — mandatory post-push verification protocol. **Run after every `git push origin main`** before reporting "done" to Darsh.
 
 ### Per-commit update protocol
 
@@ -66,6 +67,7 @@ Every time changes are committed or pushed:
 3. **Add new tasks discovered during the commit** to `### Remaining`.
 4. If the commit produced a new audit / report, save it under `docs/audits/` with a dated filename.
 5. Never create a new `.md` outside `docs/` (except `README.md` and `CLAUDE.md`, which stay at root).
+6. **Run the post-push verification protocol** in `docs/deployments/post-push-checks.md`. Don't claim a deploy is "live" until every check passes — Hostinger CDN aggressively caches HTML and can mask broken builds.
 
 ## Commands
 ```bash

@@ -12,6 +12,12 @@ Format:
 
 ---
 
+## (pending) — 2026-05-02 — add post-push deployment verification protocol
+
+- Touched: `docs/deployments/post-push-checks.md` (new); `CLAUDE.md` (link to protocol + per-commit step 6)
+- Tasks moved: none
+- Notes: Mandatory verification checklist after every push. Origin/chunk/CSS probes, route smoke tests, change-specific live-HTML grep. Memory `feedback_post_push_verify.md` added so I run it every time without being asked.
+
 ## (pending) — 2026-05-02 — revert page loader
 
 - Touched: `app/loading.tsx` (deleted); `app/components/PageLoader.tsx` (deleted); `app/components/InitialLoader.tsx` (deleted); `app/layout.tsx` (un-wire loader); `app/globals.css` (drop `loader-slide` keyframe)
