@@ -17,7 +17,7 @@ X9Elysium is a Shopify unified commerce consulting agency website built with Nex
 - **Animations:** Framer Motion (shared variants in `app/lib/animations.ts`)
 - **Icons:** lucide-react
 - **Fonts:** Inter (via `next/font/google`, weights: 300, 400, 500, 600, 700)
-- **Deployment:** Hostinger (Next.js runtime; auto-deploy on push to main). `netlify.toml` is a leftover from earlier hosting and is not active.
+- **Deployment:** Hostinger as **static hosting** — `next.config.js` has `output: "export"`, build emits `out/` (HTML + assets). Upload `out/` to Hostinger or wire Hostinger's deploy to publish that directory. No Node.js process runs in production. `netlify.toml` is a leftover from earlier hosting and is not active.
 - **Contact Form:** Web3Forms API (client-side)
 
 ### Key Directories
@@ -70,12 +70,14 @@ Every time changes are committed or pushed:
 6. **Run the post-push verification protocol** in `docs/deployments/post-push-checks.md`. Don't claim a deploy is "live" until every check passes — Hostinger CDN aggressively caches HTML and can mask broken builds.
 
 ## Commands
+
 ```bash
 npm run dev      # Dev server
-npm run build    # Production build (static export to out/)
+npm run build    # Production build → static export in out/ (deploy this)
 npm run lint     # ESLint
-npm start        # Production server
 ```
+
+`npm start` is not used because the site is a static export — no Node.js process in production.
 
 ## Known Issues
 - `node_modules/`, `.next/`, `.next-build/`, `tmp/` may be owned by root (from a previous `sudo npm` run). Fix with: `sudo chown -R $(whoami) node_modules .next .next-build tmp`

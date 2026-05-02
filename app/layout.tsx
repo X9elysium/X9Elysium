@@ -13,40 +13,85 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://x9elysium.com"),
-  title: "X9Elysium — Shopify Commerce Consulting",
+  title: {
+    default:
+      "X9Elysium — Shopify Plus Consulting for Canada & United States Retailers",
+    template: "%s | X9Elysium",
+  },
   description:
-    "Shopify unified commerce consulting for retailers ready to scale. Store audits, custom apps, platform migrations, and commerce strategy.",
+    "Shopify Plus consulting agency serving Canadian and US retailers. Store audits, platform migrations, custom apps, and unified commerce strategy. 50+ stores delivered. 98% client retention.",
   keywords: [
-    "Shopify",
+    "Shopify Plus consulting",
+    "Shopify Plus agency Canada",
+    "Shopify Plus agency USA",
+    "Shopify consulting USA",
+    "Shopify consulting Canada",
+    "Shopify Plus partner Toronto",
+    "Shopify Plus partner New York",
+    "Shopify Plus partner Los Angeles",
+    "Shopify Plus partner Calgary",
+    "Shopify Plus partner Vancouver",
+    "Shopify migration",
+    "BigCommerce to Shopify",
+    "Magento to Shopify migration",
+    "Shopify custom apps",
     "unified commerce",
     "ecommerce consulting",
-    "Shopify Plus",
-    "store optimization",
-    "custom integrations",
-    "platform migration",
+    "Shopify Plus development",
+    "DTC ecommerce agency",
+    "B2B Shopify Plus",
+    "Shopify integrations",
     "X9Elysium",
   ],
   authors: [{ name: "X9Elysium" }],
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-CA": "/",
+      "en-US": "/",
+      "x-default": "/",
+    },
+  },
+  category: "Ecommerce Consulting",
+  applicationName: "X9Elysium",
+  creator: "X9Elysium",
+  publisher: "X9Elysium",
   icons: {
     icon: "/images/favicon.png",
   },
   openGraph: {
-    title: "X9Elysium — Shopify Commerce Consulting",
+    title:
+      "X9Elysium — Shopify Plus Consulting for Canada & United States Retailers",
     description:
-      "Shopify unified commerce consulting for retailers ready to scale. Store audits, custom apps, platform migrations, and commerce strategy.",
+      "Shopify Plus consulting agency serving Canadian and US retailers. Audits, migrations, custom apps, and unified commerce strategy.",
     type: "website",
     url: "https://x9elysium.com",
     siteName: "X9Elysium",
+    locale: "en_CA",
+    alternateLocale: ["en_US"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "X9Elysium — Shopify Commerce Consulting",
+    title:
+      "X9Elysium — Shopify Plus Consulting for Canada & United States Retailers",
     description:
-      "Shopify unified commerce consulting for retailers ready to scale. Store audits, custom apps, platform migrations, and commerce strategy.",
+      "Shopify Plus consulting agency serving Canadian and US retailers. Audits, migrations, custom apps, and unified commerce strategy.",
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  other: {
+    "geo.region": "CA-ON;CA-AB;CA-BC;US",
+    "geo.placename": "Toronto;Calgary;Vancouver;New York;Los Angeles",
+    "DC.coverage": "Canada, United States",
   },
 };
 
@@ -65,7 +110,7 @@ export default function RootLayout({
         url: "https://x9elysium.com",
         logo: "https://x9elysium.com/images/x9-logo.png",
         description:
-          "Shopify unified commerce consulting for retailers ready to scale. Store audits, custom apps, platform migrations, and commerce strategy.",
+          "Shopify Plus consulting agency serving Canadian and US retailers. Store audits, platform migrations, custom apps, and unified commerce strategy.",
         contactPoint: {
           "@type": "ContactPoint",
           telephone: "+1-604-968-6952",
@@ -82,6 +127,19 @@ export default function RootLayout({
           postalCode: "L5G 0E1",
           addressCountry: "CA",
         },
+        areaServed: [
+          { "@type": "Country", name: "Canada" },
+          { "@type": "Country", name: "United States" },
+        ],
+        knowsAbout: [
+          "Shopify Plus",
+          "Shopify",
+          "Unified Commerce",
+          "Ecommerce Migration",
+          "DTC Ecommerce",
+          "B2B Ecommerce",
+          "Headless Commerce",
+        ],
         sameAs: [
           "https://www.instagram.com/x9elysium/",
           "https://www.facebook.com/profile.php?id=100091230745202",
@@ -98,25 +156,38 @@ export default function RootLayout({
       {
         "@type": "ProfessionalService",
         "@id": "https://x9elysium.com/#service",
-        name: "X9Elysium Shopify Consulting",
+        name: "X9Elysium Shopify Plus Consulting",
         provider: { "@id": "https://x9elysium.com/#organization" },
         serviceType: [
-          "Store Optimization & Audits",
-          "Custom Apps & Integrations",
-          "Platform Migrations",
+          "Shopify Plus Store Audits",
+          "Custom Shopify Apps & Integrations",
+          "Platform Migrations to Shopify Plus",
           "Performance & Scaling",
-          "Strategy Consulting",
-          "Analytics & Reporting",
+          "Unified Commerce Strategy",
+          "Analytics & Conversion Optimization",
         ],
-        areaServed: ["CA", "US"],
+        areaServed: [
+          { "@type": "Country", name: "Canada" },
+          { "@type": "Country", name: "United States" },
+          { "@type": "AdministrativeArea", name: "Ontario" },
+          { "@type": "AdministrativeArea", name: "Alberta" },
+          { "@type": "AdministrativeArea", name: "British Columbia" },
+          { "@type": "AdministrativeArea", name: "New York" },
+          { "@type": "AdministrativeArea", name: "California" },
+          { "@type": "AdministrativeArea", name: "Texas" },
+        ],
         url: "https://x9elysium.com",
       },
     ],
   };
 
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
+    <html lang="en-CA" className={inter.variable} suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://embed.tawk.to" crossOrigin="" />
+        <link rel="preconnect" href="https://www.clarity.ms" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://embed.tawk.to" />
+        <link rel="dns-prefetch" href="https://www.clarity.ms" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -126,7 +197,7 @@ export default function RootLayout({
         <ThemeProvider>
           <div className="noise-overlay" aria-hidden="true" />
           {children}
-          <Script id="tawk-to" strategy="afterInteractive">
+          <Script id="tawk-to" strategy="lazyOnload">
             {`
               var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
               (function(){
@@ -139,17 +210,19 @@ export default function RootLayout({
               })();
             `}
           </Script>
-          <Script
-            id="microsoft-clarity"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `(function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-              })(window,document,"clarity","script","${process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID}");`,
-            }}
-          />
+          {process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID ? (
+            <Script
+              id="microsoft-clarity"
+              strategy="lazyOnload"
+              dangerouslySetInnerHTML={{
+                __html: `(function(c,l,a,r,i,t,y){
+                  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                })(window,document,"clarity","script","${process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID}");`,
+              }}
+            />
+          ) : null}
         </ThemeProvider>
       </body>
     </html>

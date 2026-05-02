@@ -12,6 +12,12 @@ Format:
 
 ---
 
+## (pending) — 2026-05-02 — static export, ca+us seo, defer third-party scripts
+
+- Touched: `next.config.js` (output: export, trailingSlash, env baking); `app/layout.tsx` (CA+US metadata, hreflang, geo tags, expanded JSON-LD areaServed, scripts deferred to lazyOnload, preconnect for Tawk/Clarity); `app/components/Hero.tsx` (Shopify Plus + North America copy); `app/components/Services.tsx` (Shopify Plus + Canadian/US retailers copy); `CLAUDE.md` (deployment + commands updated)
+- Tasks moved: none (existing remaining items unchanged)
+- Notes: Site is now a true static export (`out/`). Eliminates Hostinger Node.js dependency that was 503ing all chunks. Hostinger must be reconfigured to publish `out/` as plain static hosting. SEO copy reframed for North American Shopify Plus audience; Tawk.to + Clarity moved to `lazyOnload` to stop blocking first paint.
+
 ## (pending) — 2026-05-02 — add post-push deployment verification protocol
 
 - Touched: `docs/deployments/post-push-checks.md` (new); `CLAUDE.md` (link to protocol + per-commit step 6)

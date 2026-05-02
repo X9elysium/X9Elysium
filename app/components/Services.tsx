@@ -73,11 +73,11 @@ export default function Services() {
         >
           <span className="section-label">What We Do</span>
           <h2 className="text-h2-display text-neutral-900 dark:text-white max-w-2xl text-balance">
-            End-to-end Shopify expertise
+            End-to-end Shopify Plus expertise
           </h2>
           <p className="text-neutral-500 dark:text-neutral-400 text-body-lg max-w-2xl mt-6 leading-relaxed">
-            We partner with retailers at every stage — from your first audit to
-            a fully unified commerce operation.
+            We partner with Canadian and US retailers at every stage — from your
+            first audit to a fully unified commerce operation on Shopify Plus.
           </p>
         </motion.div>
 
