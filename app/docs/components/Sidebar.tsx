@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { ChevronRight, FolderOpen, FileText, Search } from "lucide-react";
+import { ChevronRight, FolderOpen, FileText, Search, Lock } from "lucide-react";
 import type { DocNode } from "../lib";
 
 interface SidebarProps {
@@ -43,6 +43,37 @@ export default function Sidebar({ tree }: SidebarProps) {
           filtered.map((node) => <TreeItem key={node.path} node={node} depth={0} />)
         )}
       </nav>
+
+      <JournalLink />
+    </div>
+  );
+}
+
+function JournalLink() {
+  const pathname = usePathname();
+  const isActive = pathname?.startsWith("/docs/journal");
+  return (
+    <div className="px-3 pb-4 pt-2 border-t border-neutral-200/60 dark:border-white/[0.06]">
+      <Link
+        href="/docs/journal"
+        className={`flex items-center gap-2.5 px-3 py-2.5 rounded-lg border text-sm transition ${
+          isActive
+            ? "border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
+            : "border-neutral-200 dark:border-white/[0.06] bg-neutral-50/60 dark:bg-white/[0.02] text-neutral-700 dark:text-neutral-300 hover:border-emerald-500/30 hover:text-emerald-700 dark:hover:text-emerald-300"
+        }`}
+      >
+        <Lock
+          className={`w-3.5 h-3.5 flex-shrink-0 ${
+            isActive ? "text-emerald-600 dark:text-emerald-400" : "text-neutral-400 dark:text-neutral-500"
+          }`}
+        />
+        <div className="min-w-0 flex-1">
+          <p className="text-[13px] font-medium truncate">Journal</p>
+          <p className="text-[10px] uppercase tracking-[0.12em] text-neutral-500 dark:text-neutral-500">
+            PIN required
+          </p>
+        </div>
+      </Link>
     </div>
   );
 }

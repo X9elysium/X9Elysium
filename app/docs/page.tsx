@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, FileText, Folder, Sparkles } from "lucide-react";
+import { ArrowRight, FileText, Folder, Sparkles, Lock } from "lucide-react";
 import { getAllFiles, getTree, GROUP_LABELS, GROUP_ORDER } from "./lib";
 
 export default function DocsIndexPage() {
@@ -84,6 +84,28 @@ export default function DocsIndexPage() {
           );
         })}
       </div>
+
+      {/* Journal — PIN-gated */}
+      <Link
+        href="/docs/journal"
+        className="group mt-8 flex items-center gap-4 p-5 rounded-2xl border border-neutral-200/70 dark:border-white/[0.06] bg-gradient-to-br from-emerald-500/[0.06] via-transparent to-transparent hover:border-emerald-500/40 transition-colors"
+      >
+        <div className="w-11 h-11 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-300 grid place-items-center flex-shrink-0">
+          <Lock className="w-4 h-4" />
+        </div>
+        <div className="min-w-0 flex-1">
+          <div className="flex items-center gap-2 mb-0.5">
+            <h3 className="text-base font-semibold text-neutral-900 dark:text-white">Journal</h3>
+            <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-emerald-700 dark:text-emerald-300 bg-emerald-500/10 px-2 py-0.5 rounded-full">
+              PIN required
+            </span>
+          </div>
+          <p className="text-sm text-neutral-600 dark:text-neutral-400">
+            Encrypted at build, decrypted in your browser. Go-to-market notes, weekly reflections, progress.
+          </p>
+        </div>
+        <ArrowRight className="w-4 h-4 text-neutral-400 dark:text-neutral-600 group-hover:text-emerald-500 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+      </Link>
 
       {/* README block */}
       <ReadmeNote />

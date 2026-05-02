@@ -54,7 +54,7 @@ X9Elysium is a Shopify unified commerce consulting agency website built with Nex
 All generated markdown (audits, reports, plans, notes) lives in `docs/`. Never drop a new `.md` at the repo root — put it in `docs/<subfolder>/`.
 
 - `docs/audits/` — audit reports (SEO, GEO, performance, accessibility). One file per audit.
-- `docs/journal/` — Darsh's private go-to-market journal and goal tracking. **Never link from site navigation, sitemap, footer, or content.** Outside `app/`/`pages/` so it is not part of the static export. Treat it as a private working folder.
+- `docs/journal/` — Darsh's go-to-market journal and goal tracking. Exposed at `/docs/journal` **encrypted at build time** (AES-GCM + PBKDF2-SHA-256, 100k iterations, default PIN `8344` overridable via `JOURNAL_PIN` env var). Ciphertext-only ships in the bundle; decryption happens in the browser after PIN entry. Still **not linked from main site nav, sitemap, or footer** — only from inside `/docs`. Treat as semi-private; don't write anything you wouldn't be OK with a determined person eventually finding.
 - `docs/progress/CHANGELOG.md` — running log of commits and which redesign tasks moved.
 - `docs/deployments/post-push-checks.md` — mandatory post-push verification protocol. **Run after every `git push origin main`** before reporting "done" to Darsh.
 

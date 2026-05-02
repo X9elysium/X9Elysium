@@ -12,6 +12,12 @@ Format:
 
 ---
 
+## (pending) — 2026-05-02 — pin-gated journal at /docs/journal
+
+- Touched: `app/docs/journal/lib.ts`, `app/docs/journal/page.tsx`, `app/docs/journal/components/JournalApp.tsx` (all new); `app/docs/components/Sidebar.tsx` (Journal nav entry); `app/docs/page.tsx` (Journal hero card); `CLAUDE.md` (privacy note); `docs/journal/README.md` (encryption note); memory `feedback_docs_workflow.md` updated
+- Tasks moved: none
+- Notes: Journal markdown is read at build, rendered to HTML, then AES-GCM encrypted with a PBKDF2-SHA-256 key (100k iterations) derived from `JOURNAL_PIN` env var (default `8344`). Only ciphertext + salt + iv ship in the bundle — verified `grep` for journal slugs returns 0 across `out/`. Client component shows a PIN screen, derives the key in-browser via Web Crypto, decrypts in memory, and renders. Session-locked unlock state in `sessionStorage`. Roundtrip tested in Node: PIN 8344 decrypts 4 files, PIN 1234 rejected by GCM auth tag. 4-digit PIN ≈ 14 bits — friction gate, not strong privacy. Local viewer (`npm run docs`) still shows journal cleartext for editing.
+
 ## (pending) — 2026-05-02 — public /docs route on the live site
 
 - Touched: `app/docs/layout.tsx`, `app/docs/page.tsx`, `app/docs/[...slug]/page.tsx`, `app/docs/lib.ts`, `app/docs/components/Sidebar.tsx`, `app/docs/components/MobileSidebarToggle.tsx` (all new); `app/globals.css` (`.docs-prose` typography overrides)
