@@ -12,6 +12,20 @@ Format:
 
 ---
 
+## (pending) — 2026-05-02 — tree-of-life logo on /foundation credo + remove instagram video from homepage
+
+- Touched:
+  - **`public/images/brand/tree-of-life.png`** + **`public/images/brand/tree-of-life@2x.png`** (NEW) — cleaned + cropped tree-of-life mark from a 784×1168 source JPG. Pillow-based pipeline (`/tmp/clean_logo.py`, not committed): per-pixel brightness → alpha so the near-black background becomes transparent and JPEG ringing feathers cleanly; bbox detection on green-dominant pixels with a substantial-row gap split so the "X9Elysium.com" URL band at the bottom is excluded; 3% padding; tiny Gaussian on the alpha channel to soften JPG edge artifacts. Output is 586×768 (1×) and 586×768 (2× — cap at 1440 px wasn't hit because crop is already smaller). Full canopy + infinity-loop trunk + deep roots preserved.
+  - **`app/foundation/FoundationClient.tsx`** — credo section (`#credo`) now opens with the tree mark above the "The Root Value" eyebrow. Responsive sizing: `w-24 sm:w-32 md:w-40 lg:w-44` (96 → 128 → 160 → 176 px), `priority` for LCP, `aria-hidden="true"` because the heading provides the meaning, `select-none pointer-events-none`, and an emerald drop-shadow `[0_0_60px_rgba(16,185,129,0.28)]` so the tree visually grounds the section against the existing radial glows. Entrance animation `opacity 0 → 1` + `y 24 → 0` + `scale 0.92 → 1` over 1.1s with `smoothEase`. Existing eyebrow/verse/headline/paragraphs cascade in afterwards via 0.15s delay.
+  - **`app/page.tsx`** — removed `<VideoShowcase />` from the homepage section list and dropped the import. Homepage now flows Hero → Services without the autoplay video interlude.
+  - **`app/components/VideoShowcase.tsx`** (DELETED) — only consumer was the homepage; component is no longer referenced anywhere. Removed instead of leaving as dead code.
+  - **`public/hero-video.mp4`** (DELETED, 4.5 MB) — Instagram-sourced clip that fed `VideoShowcase`. No longer ships in the static export, so first-load weight on `/` drops by ~4.5 MB on cold hits.
+  - **`public/vbTu1.jpg`** (DELETED) — the source JPG upload. Cleaned PNG variants under `public/images/brand/` are the canonical assets now; keeping the source in `public/` would have shipped 198 KB of duplicate art on every static deploy.
+- Tasks moved (CLAUDE.md → Recently Completed): added new "Tree-of-life mark + remove Instagram video from homepage" entry. Not in the Remaining list previously.
+- Notes: Build verified — `npm run build` → 47 static pages, /foundation now 8.66 kB / 150 kB First Load JS (was 8.41 kB before the image), `out/hero-video.mp4` confirmed gone, `out/images/brand/tree-of-life.png` confirmed present. The tree placement is deliberately *above* the Sanskrit verse so the visual root metaphor (canopy → trunk → roots) reinforces the textual root metaphor (Vasudhaiva Kutumbakam as the root every pillar/rule answers to). Logo cleanup was destructive on intent — text band cropped because it duplicates the URL bar, and the original JPG had visible black-on-black film-grain texture that the brightness→alpha conversion smooths into a clean transparent edge. Removed the homepage video because Darsh asked, and because autoplay video at the top of `/` was double-counting hero attention against the Hero component below it.
+
+---
+
 ## (pending) — 2026-05-02 — platform pages for Odoo + WooCommerce (secondary tracks alongside Shopify Plus)
 
 - Touched:

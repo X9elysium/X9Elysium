@@ -1,6 +1,5 @@
 import Navigation from "./components/Navigation";
 import Hero from "./components/Hero";
-import VideoShowcase from "./components/VideoShowcase";
 import Services from "./components/Services";
 import CaseStudies from "./components/CaseStudies";
 import Partners from "./components/Partners";
@@ -17,7 +16,6 @@ export default function Home() {
       <Navigation />
       <main id="main-content">
         <Hero />
-        <VideoShowcase />
         <Services />
         <CaseStudies />
         <Partners />

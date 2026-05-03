@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -224,9 +225,26 @@ export default function FoundationClient() {
 
           <div className="section-container relative z-10 max-w-4xl text-center">
             <motion.div
+              initial={{ opacity: 0, y: 24, scale: 0.92 }}
+              animate={credoInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={{ duration: 1.1, ease: smoothEase }}
+              className="flex justify-center mb-8 sm:mb-10"
+              aria-hidden="true"
+            >
+              <Image
+                src="/images/brand/tree-of-life.png"
+                alt=""
+                width={586}
+                height={768}
+                priority
+                className="w-24 sm:w-32 md:w-40 lg:w-44 h-auto select-none pointer-events-none drop-shadow-[0_0_60px_rgba(16,185,129,0.28)]"
+              />
+            </motion.div>
+
+            <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={credoInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, ease: smoothEase }}
+              transition={{ duration: 0.6, ease: smoothEase, delay: 0.15 }}
             >
               <span className="inline-block text-label font-semibold uppercase tracking-[0.2em] text-emerald-400 mb-10">
                 The Root Value
