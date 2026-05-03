@@ -10,6 +10,10 @@
     "lint": "next lint",
     "start": "next start",
     "docs": "node scripts/docs-viewer/server.js",
+    "worker:dev": "wrangler dev",
+    "worker:deploy": "wrangler deploy",
+    "worker:tail": "wrangler tail",
+    "preview": "next build && wrangler dev",
     "deploy:zip": "rm -rf out && next build && cd out && zip -rq ../x9elysium-static.zip . && cd .. && echo '\\nx9elysium-static.zip is ready. Upload it to Hostinger File Manager (public_html) and Extract.'"
   },
   "dependencies": {
@@ -40,6 +44,7 @@
   "devDependencies": {
     "@aws-amplify/backend": "^1.0.4",
     "@aws-amplify/backend-cli": "^1.2.2",
+    "@cloudflare/workers-types": "^4.20251101.0",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/typography": "^0.5.9",
     "@types/node": "^22.10.0",
@@ -64,6 +69,7 @@
     "tailwind-bootstrap-grid": "^5.0.1",
     "tailwindcss": "^3.2.4",
     "tsx": "^4.17.0",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "wrangler": "^4.36.0"
   }
 }

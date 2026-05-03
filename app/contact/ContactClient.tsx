@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, useEffect, useRef, FormEvent } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -93,6 +93,13 @@ export default function ContactClient() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
     "idle"
   );
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [gotcha, setGotcha] = useState("");
+  const formMountedAt = useRef<number>(Date.now());
+
+  useEffect(() => {
+    formMountedAt.current = Date.now();
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -105,16 +112,16 @@ export default function ContactClient() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setStatus("sending");
+    setErrorMessage(null);
 
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "",
-          subject: `New inquiry from ${formState.firstName} ${formState.lastName}${formState.company ? ` — ${formState.company}` : ""}`,
-          from_name: `${formState.firstName} ${formState.lastName}`,
           ...formState,
+          _gotcha: gotcha,
+          _ts: formMountedAt.current,
         }),
       });
 
@@ -132,8 +139,11 @@ export default function ContactClient() {
           service: "",
           message: "",
         });
+        setGotcha("");
       } else {
         setStatus("error");
+        const data = (await res.json().catch(() => null)) as { error?: string } | null;
+        if (data?.error) setErrorMessage(data.error);
       }
     } catch {
       setStatus("error");
@@ -250,6 +260,32 @@ export default function ContactClient() {
                       Everything else is optional.
                     </p>
                     <form onSubmit={handleSubmit} className="space-y-5">
+                      {/* Honeypot — hidden from humans, bots fill it */}
+                      <div
+                        aria-hidden="true"
+                        style={{
+                          position: "absolute",
+                          left: "-10000px",
+                          top: "auto",
+                          width: "1px",
+                          height: "1px",
+                          overflow: "hidden",
+                        }}
+                      >
+                        <label htmlFor="company_role">
+                          Company role (leave blank)
+                        </label>
+                        <input
+                          type="text"
+                          id="company_role"
+                          name="company_role"
+                          tabIndex={-1}
+                          autoComplete="off"
+                          value={gotcha}
+                          onChange={(e) => setGotcha(e.target.value)}
+                        />
+                      </div>
+
                       {/* Name Row */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div>
@@ -456,8 +492,8 @@ export default function ContactClient() {
                       {status === "error" && (
                         <div className="bg-red-500/10 border border-red-500/20 rounded-xl px-4 py-3">
                           <p className="text-red-500 dark:text-red-400 text-sm">
-                            Something went wrong. Please try again or email us
-                            at{" "}
+                            {errorMessage ??
+                              "Something went wrong. Please try again or email us directly."}{" "}
                             <a
                               href="mailto:darshan@x9elysium.com"
                               className="underline"

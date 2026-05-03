@@ -1,0 +1,52 @@
+name: X — sync metrics
+
+on:
+  schedule:
+    # Every 6 hours, offset from the post job to avoid collisions
+    - cron: "37 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: x-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install deps
+        working-directory: scripts/x
+        run: npm install --no-audit --no-fund
+
+      - name: Sync metrics
+        working-directory: scripts/x
+        env:
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+        run: node sync-metrics.mjs
+
+      - name: Commit and push
+        run: |
+          git config user.name "x9elysium-bot"
+          git config user.email "automation@x9elysium.com"
+          git add data/x-posted.json data/tweets.json docs/admin-dashboard/sample-data/x-posts.csv 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+            exit 0
+          fi
+          git commit -m "x: sync metrics $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push origin HEAD:main

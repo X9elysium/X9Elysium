@@ -6,6 +6,7 @@ import Partners from "./components/Partners";
 import WhyChooseUs from "./components/WhyChooseUs";
 import Team from "./components/Team";
 import Testimonials from "./components/Testimonials";
+import Tweets from "./components/Tweets";
 import FAQ from "./components/FAQ";
 import CTABanner from "./components/CTABanner";
 import Footer from "./components/Footer";
@@ -22,6 +23,7 @@ export default function Home() {
         <WhyChooseUs />
         <Team />
         <Testimonials />
+        <Tweets />
         <FAQ />
         <CTABanner />
       </main>

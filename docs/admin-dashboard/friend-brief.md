@@ -17,7 +17,7 @@ Full spec for each tab (KPI tiles, chart types, fields, **including the quarterl
 
 ## Sample data
 
-In `sample-data/`. Nine CSVs + one sample invoice template:
+In `sample-data/`. Ten CSVs + one sample invoice template:
 
 - `leads.csv` — feeds Tab 1
 - `seo-rankings.csv` + `seo-traffic.csv` — feed Tab 2
@@ -25,7 +25,8 @@ In `sample-data/`. Nine CSVs + one sample invoice template:
 - `tasks.csv` — feeds Tab 4 (includes `created_at`, `completed_at`, `due_date` so quarterly rollups + on-time-completion metrics work out of the box)
 - `invoices.csv` + `expenses.csv` — feed Tab 5
 - `sample-invoice.md` — the standardized X9Elysium invoice template (renders one row of `invoices.csv` as a real invoice)
-- `campaigns.csv` — optional Tab 6 if you want to add a marketing/campaigns view
+- `x-posts.csv` — feeds Tab 6 (Social — X). **Ships header-only**; rows are appended automatically by the GitHub Actions cron in `scripts/x/`. Design Tab 6 to render a friendly empty state until rows arrive (first cron post at 17:13 UTC).
+- `campaigns.csv` — optional Tab 7 if you want to add a marketing/campaigns view (Instagram is intentionally excluded — brand strategy is X-only)
 
 `sample-data/README.md` documents every column (type + meaning + example values + suggested calc fields like DSO, A/R aging, completion rate). Date columns are ISO 8601.
 

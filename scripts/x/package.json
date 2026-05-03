@@ -1,0 +1,19 @@
+{
+  "name": "x9elysium-x-automation",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "X.com posting + metrics-sync automation for x9elysium.com. Runs in GitHub Actions.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "post": "node post-next-thought.mjs",
+    "post:dry": "node post-next-thought.mjs --dry-run",
+    "sync": "node sync-metrics.mjs",
+    "sync:dry": "node sync-metrics.mjs --dry-run"
+  },
+  "dependencies": {
+    "twitter-api-v2": "^1.18.2"
+  }
+}

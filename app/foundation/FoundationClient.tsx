@@ -11,6 +11,8 @@ import {
   Sparkles,
   Users,
   Rocket,
+  BookOpen,
+  Quote,
 } from "lucide-react";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
@@ -45,12 +47,14 @@ export default function FoundationClient() {
   const credoRef = useRef(null);
   const pillarsRef = useRef(null);
   const rulesRef = useRef(null);
+  const textsRef = useRef(null);
   const promiseRef = useRef(null);
 
   const whyInView = useInView(whyRef, { once: true, margin: "-100px" });
   const credoInView = useInView(credoRef, { once: true, margin: "-100px" });
   const pillarsInView = useInView(pillarsRef, { once: true, margin: "-100px" });
   const rulesInView = useInView(rulesRef, { once: true, margin: "-100px" });
+  const textsInView = useInView(textsRef, { once: true, margin: "-100px" });
   const promiseInView = useInView(promiseRef, { once: true, margin: "-100px" });
 
   return (
@@ -430,6 +434,234 @@ export default function FoundationClient() {
                 </motion.li>
               ))}
             </motion.ol>
+          </div>
+        </section>
+
+        {/* ── The Texts Beneath This Foundation ── */}
+        <section
+          id="texts"
+          ref={textsRef}
+          className="relative overflow-hidden bg-black py-24 sm:py-32"
+        >
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-1/3 left-[-10%] w-[420px] h-[420px] bg-emerald-700/[0.05] rounded-full blur-[160px]" />
+            <div className="absolute bottom-[-10%] right-[-10%] w-[420px] h-[420px] bg-emerald-500/[0.05] rounded-full blur-[160px]" />
+          </div>
+
+          <div className="section-container relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={textsInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, ease: smoothEase }}
+              className="mb-16 sm:mb-20 max-w-3xl"
+            >
+              <span className="text-label font-semibold uppercase tracking-[0.2em] text-emerald-400 mb-4 block">
+                The Library Beneath
+              </span>
+              <h2 className="text-h2-display text-white text-balance">
+                The texts beneath this foundation.
+              </h2>
+              <p className="text-neutral-400 text-body-lg mt-6 leading-relaxed">
+                Two books, more than any others, pressure-tested the values
+                above. Naval Ravikant on how the founder compounds. Peter Thiel
+                on how the business stays durable. The credo is Sanskrit — the
+                operating model is studied.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              animate={textsInView ? "visible" : "hidden"}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-6"
+            >
+              {/* Naval card */}
+              <motion.article
+                variants={fadeUp}
+                transition={sectionTransition}
+                className="glass-card p-8 lg:p-10 hover:border-emerald-500/20 transition-all duration-500 flex flex-col"
+              >
+                <div className="flex items-start justify-between mb-6">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500/15 to-emerald-500/[0.04] flex items-center justify-center">
+                    <BookOpen
+                      className="w-6 h-6 text-emerald-500"
+                      strokeWidth={1.5}
+                    />
+                  </div>
+                  <span className="text-xs font-mono text-neutral-600 tracking-wider uppercase">
+                    Influence I
+                  </span>
+                </div>
+                <h3 className="text-2xl font-semibold text-white mb-2 tracking-tight">
+                  The Almanack of Naval Ravikant
+                </h3>
+                <p className="text-sm text-neutral-500 mb-6">
+                  Eric Jorgenson · 2020
+                </p>
+
+                <div className="flex items-start gap-3 mb-8 p-5 rounded-xl bg-emerald-500/[0.04] border border-emerald-500/10">
+                  <Quote
+                    className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-1"
+                    strokeWidth={1.5}
+                  />
+                  <p className="text-emerald-300/95 italic text-base leading-relaxed">
+                    Play long-term games with long-term people. All the returns
+                    in life — wealth, relationships, knowledge — come from
+                    compound interest.
+                  </p>
+                </div>
+
+                <p className="text-sm font-semibold text-neutral-300 uppercase tracking-wider mb-4">
+                  What it changed at X9Elysium
+                </p>
+                <ul className="flex flex-col gap-3 text-sm text-neutral-400 leading-relaxed">
+                  <li className="flex gap-3">
+                    <span className="text-emerald-500 flex-shrink-0">→</span>
+                    <span>
+                      <span className="text-white font-medium">
+                        Founder-led wedge.
+                      </span>{" "}
+                      Specific knowledge cannot be delegated to juniors. So we
+                      do not.
+                    </span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="text-emerald-500 flex-shrink-0">→</span>
+                    <span>
+                      <span className="text-white font-medium">
+                        Code &amp; media as primary leverage.
+                      </span>{" "}
+                      Two senior partners + frameworks, never thirty juniors +
+                      chaos.
+                    </span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="text-emerald-500 flex-shrink-0">→</span>
+                    <span>
+                      <span className="text-white font-medium">
+                        Pricing by upside, not by hour.
+                      </span>{" "}
+                      Earn with your mind, not your time. No rate card.
+                    </span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="text-emerald-500 flex-shrink-0">→</span>
+                    <span>
+                      <span className="text-white font-medium">
+                        Equanimity as infrastructure.
+                      </span>{" "}
+                      Rule of Positivity Under Pressure — desire is a contract
+                      to be unhappy until it resolves; we pick desires
+                      deliberately.
+                    </span>
+                  </li>
+                </ul>
+              </motion.article>
+
+              {/* Thiel card */}
+              <motion.article
+                variants={fadeUp}
+                transition={sectionTransition}
+                className="glass-card p-8 lg:p-10 hover:border-emerald-500/20 transition-all duration-500 flex flex-col"
+              >
+                <div className="flex items-start justify-between mb-6">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500/15 to-emerald-500/[0.04] flex items-center justify-center">
+                    <BookOpen
+                      className="w-6 h-6 text-emerald-500"
+                      strokeWidth={1.5}
+                    />
+                  </div>
+                  <span className="text-xs font-mono text-neutral-600 tracking-wider uppercase">
+                    Influence II
+                  </span>
+                </div>
+                <h3 className="text-2xl font-semibold text-white mb-2 tracking-tight">
+                  Zero to One
+                </h3>
+                <p className="text-sm text-neutral-500 mb-6">
+                  Peter Thiel &amp; Blake Masters · 2014
+                </p>
+
+                <div className="flex items-start gap-3 mb-8 p-5 rounded-xl bg-emerald-500/[0.04] border border-emerald-500/10">
+                  <Quote
+                    className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-1"
+                    strokeWidth={1.5}
+                  />
+                  <p className="text-emerald-300/95 italic text-base leading-relaxed">
+                    A startup messed up at its foundation cannot be fixed.
+                    Foundations are unfixable; get them right early.
+                  </p>
+                </div>
+
+                <p className="text-sm font-semibold text-neutral-300 uppercase tracking-wider mb-4">
+                  What it changed at X9Elysium
+                </p>
+                <ul className="flex flex-col gap-3 text-sm text-neutral-400 leading-relaxed">
+                  <li className="flex gap-3">
+                    <span className="text-emerald-500 flex-shrink-0">→</span>
+                    <span>
+                      <span className="text-white font-medium">
+                        This page exists.
+                      </span>{" "}
+                      Thiel&apos;s law literally justifies the credo, the five
+                      pillars, and the ten rules.
+                    </span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="text-emerald-500 flex-shrink-0">→</span>
+                    <span>
+                      <span className="text-white font-medium">
+                        10x, not 10%.
+                      </span>{" "}
+                      Pillar 01 is a 40%+ revenue lift bar — category change,
+                      not incremental.
+                    </span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="text-emerald-500 flex-shrink-0">→</span>
+                    <span>
+                      <span className="text-white font-medium">
+                        Last-mover, not first-mover.
+                      </span>{" "}
+                      We aim to be the last partner a serious retailer ever
+                      hires — Rule of Big Impact.
+                    </span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="text-emerald-500 flex-shrink-0">→</span>
+                    <span>
+                      <span className="text-white font-medium">
+                        Distribution as engineering.
+                      </span>{" "}
+                      Cornerstone content, GEO, llms.txt, IndexNow — production
+                      infrastructure, not marketing tasks.
+                    </span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="text-emerald-500 flex-shrink-0">→</span>
+                    <span>
+                      <span className="text-white font-medium">
+                        Power law over diversification.
+                      </span>{" "}
+                      Rule of True Partnership — saying no to wrong-fit clients
+                      is a power-law commitment.
+                    </span>
+                  </li>
+                </ul>
+              </motion.article>
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={textsInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, ease: smoothEase, delay: 0.4 }}
+              className="text-sm text-neutral-500 italic mt-12 max-w-2xl leading-relaxed"
+            >
+              The credo is the root. The pillars are the trunk. The rules are
+              the branches. These two books — read, re-read, and pressure-tested
+              against client decisions — are the soil chemistry the whole tree
+              draws from.
+            </motion.p>
           </div>
         </section>
 

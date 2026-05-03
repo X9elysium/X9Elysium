@@ -80,7 +80,26 @@ One Tableau workbook with **four sheets / tabs**, each answering one question:
 
 **Data sources:** `invoices.csv`, `expenses.csv`
 
-> *Optional Tab 6 — Marketing Campaigns* if you want to track LinkedIn / Instagram / paid: use `campaigns.csv`.
+### Tab 6 — Social (X)
+*"Is the X.com posting cadence producing reach and engagement, and which thoughts land?"*
+
+- **KPI tiles:** Posts last 30d · Total impressions 30d · Avg engagement rate 30d · Top post (likes + RTs + replies) · Posts in queue (rough — derived offline from `data/x-thoughts.md` count) · Days since last post
+- **Posts per day timeline:** sparkline / bar — confirm the 2x/day cadence is actually firing
+- **Engagement-rate trend:** line chart — engagement-rate per post over time, with a rolling 7-day average overlay
+- **Top 10 posts by engagement:** sortable table (text snippet + impressions + likes + RTs + replies + engagement_rate + url-out to x.com)
+- **Format breakdown** (when we add the column later): single-thought vs question vs list — which structure performs best
+- **Post-time analysis:** heatmap weekday × hour-of-day, color = avg engagement_rate (helps validate / change the 09:13 + 17:13 PT cadence)
+
+**Data source:** `x-posts.csv`
+
+**Notes:**
+
+- `engagement_rate` is precomputed in the CSV: `(likes + retweets + replies) / impressions`. Empty when impressions is null (Free tier sometimes returns null).
+- `impressions` may be missing on the Free X API tier. Treat as best-effort. Engagement counts (likes/RTs/replies) are always populated.
+- `text` field is the full tweet — useful for tooltips on every chart so a click can show the actual post.
+- Source of truth for posting cadence is the GitHub Actions cron (`.github/workflows/x-post.yml`) — if the timeline shows missed days, check the Action log not the dashboard.
+
+> *Optional Tab 7 — Marketing Campaigns* if you want to track LinkedIn / paid: use `campaigns.csv`. Instagram is intentionally excluded from the brand strategy (see `docs/marketing/x-automation-plan.md`).
 
 ---
 

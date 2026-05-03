@@ -237,6 +237,36 @@ One row per expense.
 
 ---
 
+## `x-posts.csv` — feeds Tab 6 (Social — X)
+
+Generated and updated by `scripts/x/sync-metrics.mjs` (runs every 6h via `.github/workflows/x-sync.yml`). One row per X.com post. New posts are also appended live by the post workflow at the moment they go out, so the file is rarely stale by more than a few hours.
+
+| column | type | meaning | example |
+|---|---|---|---|
+| `tweet_id` | string | X's numeric post ID | `1782334455667788990` |
+| `posted_at` | ISO 8601 datetime (UTC) | When the post went live | `2026-05-04T17:13:42Z` |
+| `text` | string (≤280) | Full post body | `The first thing I do on a Plus migration…` |
+| `impressions` | int or empty | Best-effort. May be empty on Free tier | `1240` |
+| `likes` | int | Total likes | `38` |
+| `retweets` | int | Total retweets | `4` |
+| `replies` | int | Total replies | `9` |
+| `bookmarks` | int | Total bookmarks | `12` |
+| `engagement_rate` | float (0–1) or empty | `(likes + retweets + replies) / impressions`. Empty when impressions is empty | `0.0411` |
+| `url` | URL | Direct link to the post | `https://x.com/x9elysium/status/178233…` |
+| `last_synced_at` | ISO 8601 datetime (UTC) | Last time metrics were refreshed for this row | `2026-05-04T23:37:11Z` |
+
+Suggested calc fields for the workbook:
+
+- `Posts Last 30d` = COUNT(tweet_id) WHERE posted_at >= TODAY() - 30
+- `Avg Engagement Rate 30d` = AVG(engagement_rate) WHERE posted_at >= TODAY() - 30 AND engagement_rate IS NOT NULL
+- `Days Since Last Post` = DATEDIFF('day', MAX(posted_at), TODAY())
+- `Cadence Health` = IIF(Days Since Last Post <= 1, "Green", IIF(Days Since Last Post <= 3, "Amber", "Red"))
+- `Top Post (30d)` = INDEX(text, 0) sorted by likes + retweets + replies DESC, LIMIT 1, WHERE posted_at >= TODAY() - 30
+
+Sample data note: the CSV ships with **header only, zero rows**, until the first cron-triggered post. That's expected — design the workbook to handle empty state cleanly (placeholder text "no posts yet — first cron is 17:13 UTC").
+
+---
+
 ## Joining hint for the workbook
 
 If you want a single multi-source view, the only natural join key across CSVs is **`date`**. Most tabs work fine with one CSV each — only consider joins for cross-cutting questions like *"which marketing campaign drove the leads that converted"* (campaigns ↔ leads via approximate date + source).

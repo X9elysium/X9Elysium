@@ -63,6 +63,7 @@ Shopify Plus is the primary track. Odoo and WooCommerce are deliberate secondary
 - **Migration timeline?** 8–14 weeks for typical Plus migrations. Longer for catalogues over 100k SKUs or B2B + DTC consolidations.
 - **Minimum revenue?** We work with retailers from ~$500k ARR through $20M+ ARR. Plus retainers fit best at $5M+.
 - **Reply time?** Senior-founder reply within 24 hours from a contact-form submission or email to darshan@x9elysium.com.
+- **Where do you publish?** Long-form on this site (`/blog`) and short-form on X.com [@x9elysium](https://x.com/x9elysium) — two operator-true thoughts per day. The X feed is mirrored on the homepage. We deliberately do not publish on Instagram for the brand.
 
 ## Optional
 

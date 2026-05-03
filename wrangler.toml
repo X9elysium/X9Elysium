@@ -1,6 +1,36 @@
 name = "x9elysium"
+main = "worker/index.ts"
 compatibility_date = "2025-01-01"
 
+# The Next.js static export is served via the asset binding.
+# The Worker (worker/index.ts) handles /api/* and falls through to ASSETS
+# for everything else.
 [assets]
 directory = "./out"
+binding = "ASSETS"
 not_found_handling = "404-page"
+
+# Plain (non-secret) variables — safe to commit.
+[vars]
+LEAD_TO_EMAIL = "darshan@x9elysium.com"
+LEAD_FROM_EMAIL = "X9Elysium <leads@x9elysium.com>"
+
+# Secrets (set via `npx wrangler secret put <NAME>`):
+#   RESEND_API_KEY      — required, Resend.com API key
+#   SLACK_WEBHOOK_URL   — optional, Slack incoming-webhook URL for instant ping
+
+# Optional: KV namespace for IP-based rate limiting.
+# Create with: npx wrangler kv namespace create LEADS_KV
+# then paste the returned id below and uncomment.
+# [[kv_namespaces]]
+# binding = "LEADS_KV"
+# id = "REPLACE_WITH_KV_ID"
+
+# Optional: D1 database for lead persistence (built-in CRM-lite).
+# Create with: npx wrangler d1 create x9elysium-leads
+# Apply schema: npx wrangler d1 execute x9elysium-leads --remote --file=worker/schema.sql
+# then paste the returned database_id below and uncomment.
+# [[d1_databases]]
+# binding = "LEADS_DB"
+# database_name = "x9elysium-leads"
+# database_id = "REPLACE_WITH_D1_ID"
