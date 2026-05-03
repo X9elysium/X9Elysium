@@ -8,8 +8,11 @@ One-time provisioning. Once these steps are done the form just works.
 
 1. Sign up at resend.com using `darshan@x9elysium.com`.
 2. Add the domain `x9elysium.com` (Domains → Add Domain).
-3. Resend gives you 3 DNS records (1× MX, 1× TXT for SPF, 1× CNAME for DKIM). Add them in Cloudflare DNS (Cloudflare manages DNS for x9elysium.com).
-4. Wait for verification (usually <5 min). Domain status flips to **Verified**.
+3. Resend shows you 3 DNS records (1× DKIM TXT, 1× SPF MX, 1× SPF TXT). Add them in Cloudflare DNS — fastest path is to import the prefilled BIND file at [`cloudflare-dns-import.zone`](./cloudflare-dns-import.zone):
+   - Open the file, replace `PASTE_FULL_DKIM_PUBLIC_KEY_FROM_RESEND_HERE` with the full `p=...` value from Resend's DKIM row (click the truncated value in Resend to expand + copy).
+   - In Cloudflare Dashboard → x9elysium.com → DNS → Records → **Import and Export** tab → **Import DNS records** → upload the edited file.
+   - Confirm all three new records show **DNS-only** (gray cloud, not orange) — DKIM/SPF must not be proxied. Cloudflare's importer defaults TXT/MX to DNS-only.
+4. Wait for verification (usually <5 min). Back in Resend → Domains → click **Verify DNS Records**. Status flips to **Verified**.
 5. Create an API key (API Keys → Create). **Permissions: Sending access · Domain: x9elysium.com**. Copy the key.
 
 > **Why DNS verification matters:** without SPF + DKIM, Gmail and Outlook will silently spam-folder your auto-replies. Verified senders land in the inbox.

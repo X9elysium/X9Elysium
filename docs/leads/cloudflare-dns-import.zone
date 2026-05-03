@@ -1,0 +1,62 @@
+;; ===================================================================
+;;  Resend DNS records for x9elysium.com
+;;  Format: BIND zone file — accepted by Cloudflare's DNS import wizard.
+;;  Import path:
+;;    Cloudflare Dashboard → x9elysium.com → DNS → Records →
+;;    "Import and Export" tab → "Import DNS records" → upload this file.
+;;  Two of the three records below are filled in. The DKIM public key is
+;;  unique to your Resend account — paste the full `p=...` string before
+;;  importing.
+;; ===================================================================
+
+$ORIGIN x9elysium.com.
+$TTL 1                              ; "Auto" in Cloudflare's UI
+
+;; --- 1. Domain Verification — DKIM ---
+;; Click the DKIM row in the Resend dashboard, copy the FULL Content value
+;; (the Resend UI truncates it as `p=MIGfMA0GCSqG[...]nmY2uYwIDAQAB`),
+;; then replace the placeholder string below with the full key.
+;;
+;; The full key is one continuous base64 blob that starts with `p=MIGfMA0G...`
+;; and ends with `...IDAQAB`. Keep the surrounding double quotes.
+resend._domainkey   IN  TXT   "p=PASTE_FULL_DKIM_PUBLIC_KEY_FROM_RESEND_HERE"
+
+;; --- 2. Enable Sending — SPF (MX record) ---
+;; Resend's UI shortens this to `feedback-smtp.[...]amazonses.com`.
+;; The `[...]` is the AWS SES region. The default for new Resend accounts is
+;; `us-east-1`. If your Resend dashboard shows a different region (e.g.
+;; `eu-west-1`, `ap-northeast-1`), edit the hostname before importing.
+send                IN  MX    10 feedback-smtp.us-east-1.amazonses.com.
+
+;; --- 3. Enable Sending — SPF (TXT record) ---
+;; Resend's UI shortens this to `v=spf1 include[...]nses.com ~all`.
+;; The full value is exactly the string below — no edits needed.
+send                IN  TXT   "v=spf1 include:amazonses.com ~all"
+
+;; ===================================================================
+;;  After import — verification checklist:
+;;
+;;  1. Cloudflare DNS Records page should show three new entries:
+;;       TXT  resend._domainkey.x9elysium.com
+;;       MX   send.x9elysium.com           (priority 10)
+;;       TXT  send.x9elysium.com
+;;
+;;  2. All three should have the orange-cloud (proxy) DISABLED — DKIM/SPF
+;;     records must be DNS-only. Cloudflare's importer defaults TXT/MX to
+;;     DNS-only, so this is usually correct out of the box. Double-check
+;;     anyway.
+;;
+;;  3. Back in Resend (resend.com → Domains → x9elysium.com), click
+;;     "Verify DNS Records". Status should flip from "Not Started" to
+;;     "Verified" within ~5 minutes.
+;;
+;;  4. Smoke-test the lead pipeline (after `wrangler secret put RESEND_API_KEY`):
+;;       curl -i -X POST https://x9elysium.com/api/lead \
+;;         -H "Content-Type: application/json" \
+;;         -H "Origin: https://x9elysium.com" \
+;;         -d '{"firstName":"Smoke","lastName":"Test",
+;;              "email":"your-throwaway@example.com",
+;;              "message":"End-to-end smoke test from CLI."}'
+;;     Expect: 200 { "ok": true }, notification email lands in
+;;     darshan@x9elysium.com, branded auto-reply lands in your throwaway.
+;; ===================================================================

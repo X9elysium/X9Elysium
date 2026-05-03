@@ -26,6 +26,7 @@ const footerLinks = {
     { name: "Foundation", href: "/foundation" },
     { name: "Work", href: "/work" },
     { name: "Blog", href: "/blog" },
+    { name: "Changelog", href: "/changelog" },
     { name: "Careers", href: "/careers" },
     { name: "Contact", href: "/contact" },
   ],
