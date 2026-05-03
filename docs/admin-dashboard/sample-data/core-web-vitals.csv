@@ -1,0 +1,521 @@
+date,page_url,device,lcp_ms,inp_ms,cls,fcp_ms,ttfb_ms,rating
+2025-11-02,/,mobile,3303.0,208.0,0.068,2513.0,1927.0,Needs Improvement
+2025-11-02,/,desktop,1924.0,114.0,0.069,1387.0,1085.0,Good
+2025-11-09,/,mobile,3296.0,256.0,0.0,2250.0,1683.0,Needs Improvement
+2025-11-09,/,desktop,2019.0,87.0,0.131,1183.0,653.0,Needs Improvement
+2025-11-16,/,mobile,3142.0,201.0,0.008,2444.0,1983.0,Needs Improvement
+2025-11-16,/,desktop,2299.0,68.0,0.123,1165.0,644.0,Needs Improvement
+2025-11-23,/,mobile,3550.0,262.0,0.037,2976.0,2395.0,Needs Improvement
+2025-11-23,/,desktop,2151.0,82.0,0.0,1684.0,1372.0,Good
+2025-11-30,/,mobile,3283.0,161.0,0.055,2256.0,1698.0,Needs Improvement
+2025-11-30,/,desktop,1902.0,172.0,0.11,1190.0,552.0,Needs Improvement
+2025-12-07,/,mobile,3132.0,155.0,0.026,2181.0,1851.0,Needs Improvement
+2025-12-07,/,desktop,1989.0,132.0,0.062,867.0,310.0,Good
+2025-12-14,/,mobile,2719.0,158.0,0.007,1774.0,1325.0,Needs Improvement
+2025-12-14,/,desktop,2040.0,100.0,0.053,1060.0,621.0,Good
+2025-12-21,/,mobile,3172.0,180.0,0.063,2403.0,1902.0,Needs Improvement
+2025-12-21,/,desktop,1921.0,90.0,0.076,1496.0,848.0,Good
+2025-12-28,/,mobile,3152.0,154.0,0.017,2497.0,2157.0,Needs Improvement
+2025-12-28,/,desktop,1994.0,88.0,0.023,1086.0,672.0,Good
+2026-01-04,/,mobile,3169.0,153.0,0.079,2600.0,2197.0,Needs Improvement
+2026-01-04,/,desktop,1961.0,90.0,0.047,933.0,248.0,Good
+2026-01-11,/,mobile,3232.0,169.0,0.043,2710.0,2148.0,Needs Improvement
+2026-01-11,/,desktop,2007.0,72.0,0.079,1569.0,1114.0,Good
+2026-01-18,/,mobile,2842.0,192.0,0.002,1932.0,1529.0,Needs Improvement
+2026-01-18,/,desktop,1982.0,156.0,0.043,1076.0,651.0,Good
+2026-01-25,/,mobile,3033.0,136.0,0.071,1892.0,1562.0,Needs Improvement
+2026-01-25,/,desktop,2056.0,110.0,0.08,949.0,637.0,Good
+2026-02-01,/,mobile,3104.0,159.0,0.105,1950.0,1296.0,Needs Improvement
+2026-02-01,/,desktop,1849.0,111.0,0.09,1037.0,466.0,Good
+2026-02-08,/,mobile,2903.0,265.0,0.089,2025.0,1684.0,Needs Improvement
+2026-02-08,/,desktop,1739.0,88.0,0.099,789.0,150,Good
+2026-02-15,/,mobile,2813.0,180.0,0.072,2047.0,1738.0,Needs Improvement
+2026-02-15,/,desktop,1856.0,122.0,0.054,843.0,180.0,Good
+2026-02-22,/,mobile,2486.0,207.0,0.022,1757.0,1350.0,Needs Improvement
+2026-02-22,/,desktop,1531.0,73.0,0.06,700,215.0,Good
+2026-03-01,/,mobile,2647.0,177.0,0.071,1915.0,1520.0,Needs Improvement
+2026-03-01,/,desktop,1656.0,60.0,0.047,700,150,Good
+2026-03-08,/,mobile,2519.0,249.0,0.073,1429.0,947.0,Needs Improvement
+2026-03-08,/,desktop,1900.0,88.0,0.107,922.0,380.0,Needs Improvement
+2026-03-15,/,mobile,2525.0,170.0,0.02,1397.0,1076.0,Needs Improvement
+2026-03-15,/,desktop,1602.0,149.0,0.104,993.0,323.0,Needs Improvement
+2026-03-22,/,mobile,2845.0,178.0,0.096,1808.0,1409.0,Needs Improvement
+2026-03-22,/,desktop,1602.0,112.0,0.068,1050.0,739.0,Good
+2026-03-29,/,mobile,2515.0,104.0,0.113,2024.0,1371.0,Needs Improvement
+2026-03-29,/,desktop,1808.0,121.0,0.074,828.0,448.0,Good
+2026-04-05,/,mobile,2790.0,225.0,0.131,2324.0,1904.0,Needs Improvement
+2026-04-05,/,desktop,1857.0,98.0,0.05,1327.0,773.0,Good
+2026-04-12,/,mobile,2764.0,174.0,0.083,2068.0,1378.0,Needs Improvement
+2026-04-12,/,desktop,1533.0,54.0,0.065,1023.0,556.0,Good
+2026-04-19,/,mobile,2794.0,164.0,0.044,2376.0,1877.0,Needs Improvement
+2026-04-19,/,desktop,1899.0,158.0,0.096,783.0,150,Good
+2026-04-26,/,mobile,2940.0,147.0,0.076,2178.0,1573.0,Needs Improvement
+2026-04-26,/,desktop,1754.0,131.0,0.029,950.0,591.0,Good
+2025-11-02,/services,mobile,3476.0,212.0,0.0,2710.0,2119.0,Needs Improvement
+2025-11-02,/services,desktop,2473.0,98.0,0.046,1359.0,940.0,Good
+2025-11-09,/services,mobile,3626.0,207.0,0.067,3095.0,2448.0,Needs Improvement
+2025-11-09,/services,desktop,2283.0,153.0,0.109,1528.0,1001.0,Needs Improvement
+2025-11-16,/services,mobile,3973.0,217.0,0.066,3102.0,2770.0,Needs Improvement
+2025-11-16,/services,desktop,2282.0,132.0,0.05,1183.0,817.0,Good
+2025-11-23,/services,mobile,3715.0,201.0,0.088,3207.0,2867.0,Needs Improvement
+2025-11-23,/services,desktop,2354.0,109.0,0.008,1643.0,1334.0,Good
+2025-11-30,/services,mobile,3776.0,197.0,0.108,2991.0,2675.0,Needs Improvement
+2025-11-30,/services,desktop,2237.0,122.0,0.021,1651.0,1093.0,Good
+2025-12-07,/services,mobile,3698.0,204.0,0.098,2883.0,2286.0,Needs Improvement
+2025-12-07,/services,desktop,2452.0,118.0,0.05,1994.0,1356.0,Good
+2025-12-14,/services,mobile,3725.0,177.0,0.068,2843.0,2274.0,Needs Improvement
+2025-12-14,/services,desktop,2437.0,53.0,0.025,1544.0,923.0,Good
+2025-12-21,/services,mobile,3543.0,165.0,0.069,3050.0,2372.0,Needs Improvement
+2025-12-21,/services,desktop,2233.0,110.0,0.079,1254.0,825.0,Good
+2025-12-28,/services,mobile,3374.0,199.0,0.0,2281.0,1645.0,Needs Improvement
+2025-12-28,/services,desktop,2417.0,122.0,0.066,1837.0,1303.0,Good
+2026-01-04,/services,mobile,3425.0,214.0,0.108,2851.0,2238.0,Needs Improvement
+2026-01-04,/services,desktop,2544.0,67.0,0.045,1576.0,1128.0,Needs Improvement
+2026-01-11,/services,mobile,3410.0,172.0,0.08,2675.0,1976.0,Needs Improvement
+2026-01-11,/services,desktop,2385.0,132.0,0.033,1814.0,1465.0,Good
+2026-01-18,/services,mobile,3661.0,191.0,0.008,2955.0,2533.0,Needs Improvement
+2026-01-18,/services,desktop,2381.0,150.0,0.109,1247.0,879.0,Needs Improvement
+2026-01-25,/services,mobile,3529.0,200.0,0.085,2424.0,1946.0,Needs Improvement
+2026-01-25,/services,desktop,2590.0,124.0,0.083,1773.0,1092.0,Needs Improvement
+2026-02-01,/services,mobile,3462.0,199.0,0.127,2282.0,1725.0,Needs Improvement
+2026-02-01,/services,desktop,2195.0,132.0,0.073,1053.0,462.0,Good
+2026-02-08,/services,mobile,3447.0,137.0,0.03,2973.0,2394.0,Needs Improvement
+2026-02-08,/services,desktop,2206.0,139.0,0.019,1746.0,1297.0,Good
+2026-02-15,/services,mobile,3192.0,175.0,0.057,2217.0,1852.0,Needs Improvement
+2026-02-15,/services,desktop,1959.0,43.0,0.027,937.0,416.0,Good
+2026-02-22,/services,mobile,3314.0,277.0,0.092,2180.0,1658.0,Needs Improvement
+2026-02-22,/services,desktop,2130.0,129.0,0.012,1144.0,823.0,Good
+2026-03-01,/services,mobile,3169.0,175.0,0.114,2561.0,1992.0,Needs Improvement
+2026-03-01,/services,desktop,2356.0,65.0,0.055,1917.0,1236.0,Good
+2026-03-08,/services,mobile,3449.0,256.0,0.053,2301.0,1776.0,Needs Improvement
+2026-03-08,/services,desktop,1995.0,160.0,0.073,847.0,251.0,Good
+2026-03-15,/services,mobile,3250.0,232.0,0.096,2201.0,1613.0,Needs Improvement
+2026-03-15,/services,desktop,2124.0,97.0,0.061,1064.0,588.0,Good
+2026-03-22,/services,mobile,2950.0,72.0,0.063,2524.0,1898.0,Needs Improvement
+2026-03-22,/services,desktop,1863.0,91.0,0.041,1291.0,831.0,Good
+2026-03-29,/services,mobile,3111.0,263.0,0.083,1993.0,1635.0,Needs Improvement
+2026-03-29,/services,desktop,2306.0,148.0,0.079,1889.0,1472.0,Good
+2026-04-05,/services,mobile,3483.0,165.0,0.048,3040.0,2704.0,Needs Improvement
+2026-04-05,/services,desktop,2190.0,96.0,0.045,1054.0,737.0,Good
+2026-04-12,/services,mobile,2925.0,257.0,0.04,2293.0,1899.0,Needs Improvement
+2026-04-12,/services,desktop,1966.0,131.0,0.122,1420.0,727.0,Needs Improvement
+2026-04-19,/services,mobile,3187.0,137.0,0.0,2134.0,1555.0,Needs Improvement
+2026-04-19,/services,desktop,1891.0,98.0,0.019,931.0,394.0,Good
+2026-04-26,/services,mobile,2853.0,157.0,0.068,2156.0,1621.0,Needs Improvement
+2026-04-26,/services,desktop,1711.0,104.0,0.057,700,239.0,Good
+2025-11-02,/work,mobile,2576.0,248.0,0.063,1573.0,1108.0,Needs Improvement
+2025-11-02,/work,desktop,1809.0,86.0,0.103,1198.0,502.0,Needs Improvement
+2025-11-09,/work,mobile,2724.0,223.0,0.057,2291.0,1970.0,Needs Improvement
+2025-11-09,/work,desktop,1776.0,124.0,0.034,1031.0,399.0,Good
+2025-11-16,/work,mobile,2580.0,208.0,0.118,1919.0,1597.0,Needs Improvement
+2025-11-16,/work,desktop,1625.0,125.0,0.067,988.0,397.0,Good
+2025-11-23,/work,mobile,2581.0,156.0,0.104,2105.0,1525.0,Needs Improvement
+2025-11-23,/work,desktop,1697.0,147.0,0.023,942.0,249.0,Good
+2025-11-30,/work,mobile,2562.0,207.0,0.026,1957.0,1548.0,Needs Improvement
+2025-11-30,/work,desktop,1793.0,114.0,0.0,972.0,559.0,Good
+2025-12-07,/work,mobile,2273.0,215.0,0.052,1787.0,1341.0,Needs Improvement
+2025-12-07,/work,desktop,1813.0,118.0,0.016,1014.0,549.0,Good
+2025-12-14,/work,mobile,2774.0,221.0,0.048,2138.0,1471.0,Needs Improvement
+2025-12-14,/work,desktop,1470.0,98.0,0.1,700,310.0,Needs Improvement
+2025-12-21,/work,mobile,2672.0,215.0,0.083,1496.0,978.0,Needs Improvement
+2025-12-21,/work,desktop,1521.0,142.0,0.101,700,150,Needs Improvement
+2025-12-28,/work,mobile,2720.0,276.0,0.104,2272.0,1651.0,Needs Improvement
+2025-12-28,/work,desktop,1463.0,108.0,0.071,700,151.0,Good
+2026-01-04,/work,mobile,2290.0,233.0,0.062,1453.0,1090.0,Needs Improvement
+2026-01-04,/work,desktop,1503.0,58.0,0.016,1011.0,317.0,Good
+2026-01-11,/work,mobile,2389.0,213.0,0.029,1473.0,1024.0,Needs Improvement
+2026-01-11,/work,desktop,1377.0,102.0,0.09,700,150,Good
+2026-01-18,/work,mobile,2187.0,191.0,0.063,1381.0,839.0,Good
+2026-01-18,/work,desktop,1749.0,94.0,0.1,1201.0,703.0,Needs Improvement
+2026-01-25,/work,mobile,2112.0,159.0,0.12,968.0,271.0,Needs Improvement
+2026-01-25,/work,desktop,1477.0,124.0,0.083,922.0,369.0,Good
+2026-02-01,/work,mobile,1774.0,140.0,0.042,967.0,495.0,Good
+2026-02-01,/work,desktop,1332.0,110.0,0.074,830.0,196.0,Good
+2026-02-08,/work,mobile,2123.0,208.0,0.093,1170.0,851.0,Needs Improvement
+2026-02-08,/work,desktop,1483.0,117.0,0.076,940.0,517.0,Good
+2026-02-15,/work,mobile,2362.0,219.0,0.085,1328.0,687.0,Needs Improvement
+2026-02-15,/work,desktop,1414.0,114.0,0.018,700,214.0,Good
+2026-02-22,/work,mobile,2329.0,224.0,0.055,1513.0,926.0,Needs Improvement
+2026-02-22,/work,desktop,1314.0,170.0,0.07,700,150,Good
+2026-03-01,/work,mobile,2349.0,200.0,0.127,1424.0,881.0,Needs Improvement
+2026-03-01,/work,desktop,1440.0,145.0,0.076,745.0,336.0,Good
+2026-03-08,/work,mobile,1932.0,213.0,0.111,823.0,507.0,Needs Improvement
+2026-03-08,/work,desktop,1595.0,82.0,0.028,856.0,195.0,Good
+2026-03-15,/work,mobile,2008.0,234.0,0.036,1026.0,350.0,Needs Improvement
+2026-03-15,/work,desktop,1184.0,124.0,0.037,700,150,Good
+2026-03-22,/work,mobile,2066.0,170.0,0.17,1317.0,887.0,Needs Improvement
+2026-03-22,/work,desktop,1608.0,40,0.037,1163.0,803.0,Good
+2026-03-29,/work,mobile,2022.0,200.0,0.077,1154.0,535.0,Good
+2026-03-29,/work,desktop,1560.0,110.0,0.038,917.0,267.0,Good
+2026-04-05,/work,mobile,1987.0,203.0,0.093,981.0,288.0,Needs Improvement
+2026-04-05,/work,desktop,1116.0,40,0.097,700,150,Good
+2026-04-12,/work,mobile,2248.0,217.0,0.066,1311.0,810.0,Needs Improvement
+2026-04-12,/work,desktop,1432.0,81.0,0.083,700,150,Good
+2026-04-19,/work,mobile,1760.0,182.0,0.125,890.0,555.0,Needs Improvement
+2026-04-19,/work,desktop,1237.0,176.0,0.0,783.0,200.0,Good
+2026-04-26,/work,mobile,2125.0,178.0,0.094,1269.0,934.0,Good
+2026-04-26,/work,desktop,1292.0,135.0,0.069,700,150,Good
+2025-11-02,/about,mobile,3909.0,183.0,0.003,2857.0,2477.0,Needs Improvement
+2025-11-02,/about,desktop,2380.0,150.0,0.057,1872.0,1283.0,Good
+2025-11-09,/about,mobile,3381.0,135.0,0.055,2286.0,1889.0,Needs Improvement
+2025-11-09,/about,desktop,2435.0,137.0,0.0,1875.0,1398.0,Good
+2025-11-16,/about,mobile,3366.0,160.0,0.022,2448.0,2132.0,Needs Improvement
+2025-11-16,/about,desktop,2357.0,143.0,0.024,1805.0,1199.0,Good
+2025-11-23,/about,mobile,3521.0,147.0,0.04,2771.0,2232.0,Needs Improvement
+2025-11-23,/about,desktop,2369.0,149.0,0.071,1582.0,923.0,Good
+2025-11-30,/about,mobile,3151.0,199.0,0.092,1966.0,1281.0,Needs Improvement
+2025-11-30,/about,desktop,2315.0,96.0,0.0,1639.0,1059.0,Good
+2025-12-07,/about,mobile,3292.0,204.0,0.063,2258.0,1682.0,Needs Improvement
+2025-12-07,/about,desktop,2227.0,145.0,0.119,1573.0,1104.0,Needs Improvement
+2025-12-14,/about,mobile,3439.0,150.0,0.087,2871.0,2438.0,Needs Improvement
+2025-12-14,/about,desktop,2075.0,110.0,0.07,1313.0,997.0,Good
+2025-12-21,/about,mobile,3709.0,154.0,0.002,2693.0,2289.0,Needs Improvement
+2025-12-21,/about,desktop,2170.0,141.0,0.059,1220.0,811.0,Good
+2025-12-28,/about,mobile,3479.0,118.0,0.055,2840.0,2330.0,Needs Improvement
+2025-12-28,/about,desktop,2272.0,97.0,0.124,1295.0,767.0,Needs Improvement
+2026-01-04,/about,mobile,3112.0,167.0,0.007,2575.0,2120.0,Needs Improvement
+2026-01-04,/about,desktop,2366.0,120.0,0.056,1581.0,1006.0,Good
+2026-01-11,/about,mobile,3526.0,209.0,0.078,2527.0,2203.0,Needs Improvement
+2026-01-11,/about,desktop,2349.0,103.0,0.09,1816.0,1127.0,Good
+2026-01-18,/about,mobile,3087.0,194.0,0.131,2031.0,1471.0,Needs Improvement
+2026-01-18,/about,desktop,2030.0,77.0,0.034,1610.0,962.0,Good
+2026-01-25,/about,mobile,2867.0,205.0,0.058,2421.0,1789.0,Needs Improvement
+2026-01-25,/about,desktop,2172.0,90.0,0.102,1366.0,1020.0,Needs Improvement
+2026-02-01,/about,mobile,3163.0,188.0,0.062,2508.0,1942.0,Needs Improvement
+2026-02-01,/about,desktop,2275.0,88.0,0.084,1769.0,1422.0,Good
+2026-02-08,/about,mobile,2886.0,200.0,0.027,2154.0,1575.0,Needs Improvement
+2026-02-08,/about,desktop,1827.0,139.0,0.071,700,173.0,Good
+2026-02-15,/about,mobile,3248.0,191.0,0.047,2200.0,1799.0,Needs Improvement
+2026-02-15,/about,desktop,2158.0,94.0,0.084,1224.0,838.0,Good
+2026-02-22,/about,mobile,3311.0,188.0,0.046,2534.0,1975.0,Needs Improvement
+2026-02-22,/about,desktop,1951.0,118.0,0.035,1218.0,663.0,Good
+2026-03-01,/about,mobile,2791.0,152.0,0.017,2146.0,1478.0,Needs Improvement
+2026-03-01,/about,desktop,1577.0,117.0,0.082,700,298.0,Good
+2026-03-08,/about,mobile,3074.0,163.0,0.129,2616.0,2292.0,Needs Improvement
+2026-03-08,/about,desktop,1920.0,62.0,0.056,804.0,150,Good
+2026-03-15,/about,mobile,3513.0,176.0,0.057,2519.0,2178.0,Needs Improvement
+2026-03-15,/about,desktop,2113.0,106.0,0.016,987.0,629.0,Good
+2026-03-22,/about,mobile,2826.0,169.0,0.055,2064.0,1375.0,Needs Improvement
+2026-03-22,/about,desktop,1800.0,147.0,0.007,709.0,150,Good
+2026-03-29,/about,mobile,2990.0,155.0,0.068,2442.0,1794.0,Needs Improvement
+2026-03-29,/about,desktop,1925.0,61.0,0.053,1209.0,793.0,Good
+2026-04-05,/about,mobile,3037.0,201.0,0.022,2589.0,2095.0,Needs Improvement
+2026-04-05,/about,desktop,2057.0,107.0,0.047,1621.0,1219.0,Good
+2026-04-12,/about,mobile,2939.0,269.0,0.1,1890.0,1273.0,Needs Improvement
+2026-04-12,/about,desktop,1864.0,123.0,0.046,1407.0,759.0,Good
+2026-04-19,/about,mobile,2753.0,206.0,0.113,2092.0,1760.0,Needs Improvement
+2026-04-19,/about,desktop,1888.0,130.0,0.0,1305.0,932.0,Good
+2026-04-26,/about,mobile,3293.0,264.0,0.028,2499.0,1955.0,Needs Improvement
+2026-04-26,/about,desktop,1996.0,123.0,0.048,1229.0,793.0,Good
+2025-11-02,/contact,mobile,2547.0,187.0,0.039,1429.0,1033.0,Needs Improvement
+2025-11-02,/contact,desktop,1707.0,155.0,0.134,1159.0,582.0,Needs Improvement
+2025-11-09,/contact,mobile,2716.0,193.0,0.063,1592.0,1105.0,Needs Improvement
+2025-11-09,/contact,desktop,1908.0,86.0,0.058,965.0,577.0,Good
+2025-11-16,/contact,mobile,2754.0,137.0,0.113,2236.0,1694.0,Needs Improvement
+2025-11-16,/contact,desktop,1421.0,128.0,0.036,700,233.0,Good
+2025-11-23,/contact,mobile,2594.0,176.0,0.123,1826.0,1244.0,Needs Improvement
+2025-11-23,/contact,desktop,1672.0,87.0,0.031,985.0,285.0,Good
+2025-11-30,/contact,mobile,2603.0,176.0,0.081,2047.0,1585.0,Needs Improvement
+2025-11-30,/contact,desktop,1588.0,170.0,0.013,700,150,Good
+2025-12-07,/contact,mobile,2281.0,195.0,0.114,1483.0,822.0,Needs Improvement
+2025-12-07,/contact,desktop,1561.0,40,0.0,700,208.0,Good
+2025-12-14,/contact,mobile,2456.0,191.0,0.072,1797.0,1378.0,Good
+2025-12-14,/contact,desktop,1832.0,91.0,0.107,777.0,160.0,Needs Improvement
+2025-12-21,/contact,mobile,2603.0,216.0,0.071,1974.0,1556.0,Needs Improvement
+2025-12-21,/contact,desktop,1549.0,104.0,0.104,700,154.0,Needs Improvement
+2025-12-28,/contact,mobile,2476.0,216.0,0.05,1848.0,1414.0,Needs Improvement
+2025-12-28,/contact,desktop,1592.0,114.0,0.095,894.0,441.0,Good
+2026-01-04,/contact,mobile,2379.0,101.0,0.116,1192.0,872.0,Needs Improvement
+2026-01-04,/contact,desktop,1513.0,142.0,0.063,700,150,Good
+2026-01-11,/contact,mobile,2663.0,165.0,0.049,1491.0,884.0,Needs Improvement
+2026-01-11,/contact,desktop,1358.0,77.0,0.0,700,265.0,Good
+2026-01-18,/contact,mobile,2438.0,212.0,0.052,1548.0,1019.0,Needs Improvement
+2026-01-18,/contact,desktop,1587.0,40,0.048,716.0,150,Good
+2026-01-25,/contact,mobile,2460.0,170.0,0.04,1888.0,1474.0,Good
+2026-01-25,/contact,desktop,1370.0,56.0,0.056,700,339.0,Good
+2026-02-01,/contact,mobile,2305.0,202.0,0.008,1562.0,928.0,Needs Improvement
+2026-02-01,/contact,desktop,1595.0,91.0,0.0,1179.0,841.0,Good
+2026-02-08,/contact,mobile,2713.0,151.0,0.087,1601.0,914.0,Needs Improvement
+2026-02-08,/contact,desktop,1580.0,108.0,0.026,700,182.0,Good
+2026-02-15,/contact,mobile,2417.0,161.0,0.087,1395.0,863.0,Good
+2026-02-15,/contact,desktop,1484.0,136.0,0.015,700,231.0,Good
+2026-02-22,/contact,mobile,2263.0,191.0,0.0,1438.0,1133.0,Good
+2026-02-22,/contact,desktop,1085.0,81.0,0.085,700,150,Good
+2026-03-01,/contact,mobile,2172.0,181.0,0.12,1001.0,449.0,Needs Improvement
+2026-03-01,/contact,desktop,1330.0,76.0,0.0,700,150,Good
+2026-03-08,/contact,mobile,2407.0,195.0,0.059,1555.0,904.0,Good
+2026-03-08,/contact,desktop,1392.0,72.0,0.06,700,351.0,Good
+2026-03-15,/contact,mobile,2598.0,233.0,0.016,2006.0,1350.0,Needs Improvement
+2026-03-15,/contact,desktop,1429.0,138.0,0.106,700,361.0,Needs Improvement
+2026-03-22,/contact,mobile,2085.0,193.0,0.012,1332.0,939.0,Good
+2026-03-22,/contact,desktop,1189.0,166.0,0.05,700,150,Good
+2026-03-29,/contact,mobile,2075.0,229.0,0.099,1550.0,1114.0,Needs Improvement
+2026-03-29,/contact,desktop,1414.0,143.0,0.07,747.0,407.0,Good
+2026-04-05,/contact,mobile,2288.0,212.0,0.0,1091.0,401.0,Needs Improvement
+2026-04-05,/contact,desktop,1753.0,49.0,0.072,969.0,346.0,Good
+2026-04-12,/contact,mobile,1888.0,183.0,0.145,1342.0,970.0,Needs Improvement
+2026-04-12,/contact,desktop,1329.0,158.0,0.123,700,210.0,Needs Improvement
+2026-04-19,/contact,mobile,1888.0,232.0,0.086,784.0,379.0,Needs Improvement
+2026-04-19,/contact,desktop,1115.0,127.0,0.046,700,313.0,Good
+2026-04-26,/contact,mobile,2618.0,250.0,0.042,1604.0,922.0,Needs Improvement
+2026-04-26,/contact,desktop,1484.0,128.0,0.079,700,310.0,Good
+2025-11-02,/foundation,mobile,3725.0,190.0,0.08,3317.0,2987.0,Needs Improvement
+2025-11-02,/foundation,desktop,2663.0,91.0,0.041,1753.0,1093.0,Needs Improvement
+2025-11-09,/foundation,mobile,3366.0,181.0,0.156,2809.0,2412.0,Needs Improvement
+2025-11-09,/foundation,desktop,2578.0,142.0,0.074,2033.0,1377.0,Needs Improvement
+2025-11-16,/foundation,mobile,3874.0,148.0,0.024,2683.0,2315.0,Needs Improvement
+2025-11-16,/foundation,desktop,2109.0,135.0,0.08,1057.0,462.0,Good
+2025-11-23,/foundation,mobile,3448.0,204.0,0.056,2708.0,2291.0,Needs Improvement
+2025-11-23,/foundation,desktop,2298.0,59.0,0.009,1543.0,864.0,Good
+2025-11-30,/foundation,mobile,3317.0,192.0,0.077,2305.0,1606.0,Needs Improvement
+2025-11-30,/foundation,desktop,2510.0,167.0,0.028,1623.0,1249.0,Needs Improvement
+2025-12-07,/foundation,mobile,3546.0,199.0,0.095,3044.0,2432.0,Needs Improvement
+2025-12-07,/foundation,desktop,2287.0,89.0,0.043,1866.0,1479.0,Good
+2025-12-14,/foundation,mobile,3904.0,206.0,0.106,3391.0,2700.0,Needs Improvement
+2025-12-14,/foundation,desktop,2456.0,134.0,0.048,1401.0,892.0,Good
+2025-12-21,/foundation,mobile,3670.0,235.0,0.082,2512.0,1868.0,Needs Improvement
+2025-12-21,/foundation,desktop,2160.0,76.0,0.0,1123.0,500.0,Good
+2025-12-28,/foundation,mobile,3420.0,132.0,0.096,2985.0,2387.0,Needs Improvement
+2025-12-28,/foundation,desktop,2359.0,126.0,0.032,1703.0,1399.0,Good
+2026-01-04,/foundation,mobile,3318.0,192.0,0.016,2577.0,2027.0,Needs Improvement
+2026-01-04,/foundation,desktop,2409.0,135.0,0.034,1688.0,1256.0,Good
+2026-01-11,/foundation,mobile,3335.0,174.0,0.113,2415.0,1721.0,Needs Improvement
+2026-01-11,/foundation,desktop,2069.0,94.0,0.095,1473.0,867.0,Good
+2026-01-18,/foundation,mobile,3551.0,193.0,0.069,3041.0,2421.0,Needs Improvement
+2026-01-18,/foundation,desktop,2397.0,101.0,0.018,1984.0,1433.0,Good
+2026-01-25,/foundation,mobile,3297.0,171.0,0.036,2519.0,2132.0,Needs Improvement
+2026-01-25,/foundation,desktop,1896.0,133.0,0.114,937.0,455.0,Needs Improvement
+2026-02-01,/foundation,mobile,3008.0,221.0,0.072,2463.0,2070.0,Needs Improvement
+2026-02-01,/foundation,desktop,2254.0,75.0,0.052,1178.0,613.0,Good
+2026-02-08,/foundation,mobile,3158.0,211.0,0.099,2160.0,1761.0,Needs Improvement
+2026-02-08,/foundation,desktop,2215.0,134.0,0.023,1735.0,1111.0,Good
+2026-02-15,/foundation,mobile,3498.0,176.0,0.0,3049.0,2447.0,Needs Improvement
+2026-02-15,/foundation,desktop,2158.0,104.0,0.0,1634.0,1327.0,Good
+2026-02-22,/foundation,mobile,3284.0,238.0,0.082,2713.0,2199.0,Needs Improvement
+2026-02-22,/foundation,desktop,2006.0,145.0,0.081,1583.0,1014.0,Good
+2026-03-01,/foundation,mobile,3260.0,200.0,0.097,2772.0,2201.0,Needs Improvement
+2026-03-01,/foundation,desktop,2220.0,101.0,0.065,1473.0,905.0,Good
+2026-03-08,/foundation,mobile,2928.0,206.0,0.065,2103.0,1430.0,Needs Improvement
+2026-03-08,/foundation,desktop,2119.0,73.0,0.087,1256.0,604.0,Good
+2026-03-15,/foundation,mobile,2769.0,189.0,0.032,1907.0,1344.0,Needs Improvement
+2026-03-15,/foundation,desktop,2032.0,127.0,0.083,1304.0,640.0,Good
+2026-03-22,/foundation,mobile,3063.0,143.0,0.074,2483.0,2101.0,Needs Improvement
+2026-03-22,/foundation,desktop,2098.0,134.0,0.098,1696.0,1059.0,Good
+2026-03-29,/foundation,mobile,3101.0,153.0,0.121,2592.0,1942.0,Needs Improvement
+2026-03-29,/foundation,desktop,1865.0,96.0,0.027,1433.0,928.0,Good
+2026-04-05,/foundation,mobile,3432.0,230.0,0.071,2954.0,2433.0,Needs Improvement
+2026-04-05,/foundation,desktop,2266.0,114.0,0.076,1082.0,478.0,Good
+2026-04-12,/foundation,mobile,2393.0,203.0,0.088,1435.0,813.0,Needs Improvement
+2026-04-12,/foundation,desktop,1962.0,40,0.051,1138.0,564.0,Good
+2026-04-19,/foundation,mobile,3240.0,218.0,0.038,2122.0,1650.0,Needs Improvement
+2026-04-19,/foundation,desktop,2136.0,110.0,0.035,1727.0,1056.0,Good
+2026-04-26,/foundation,mobile,3016.0,179.0,0.114,2417.0,1942.0,Needs Improvement
+2026-04-26,/foundation,desktop,1722.0,212.0,0.047,1263.0,858.0,Needs Improvement
+2025-11-02,/blog/magento-to-shopify-plus,mobile,2698.0,169.0,0.089,2047.0,1526.0,Needs Improvement
+2025-11-02,/blog/magento-to-shopify-plus,desktop,1835.0,121.0,0.07,1243.0,671.0,Good
+2025-11-09,/blog/magento-to-shopify-plus,mobile,2701.0,211.0,0.039,1916.0,1527.0,Needs Improvement
+2025-11-09,/blog/magento-to-shopify-plus,desktop,1741.0,48.0,0.058,700,150,Good
+2025-11-16,/blog/magento-to-shopify-plus,mobile,2529.0,226.0,0.126,1729.0,1157.0,Needs Improvement
+2025-11-16,/blog/magento-to-shopify-plus,desktop,1892.0,68.0,0.109,991.0,498.0,Needs Improvement
+2025-11-23,/blog/magento-to-shopify-plus,mobile,2829.0,239.0,0.022,2201.0,1846.0,Needs Improvement
+2025-11-23,/blog/magento-to-shopify-plus,desktop,1728.0,109.0,0.01,1174.0,480.0,Good
+2025-11-30,/blog/magento-to-shopify-plus,mobile,2586.0,163.0,0.038,2121.0,1733.0,Needs Improvement
+2025-11-30,/blog/magento-to-shopify-plus,desktop,1625.0,88.0,0.054,700,150,Good
+2025-12-07,/blog/magento-to-shopify-plus,mobile,2325.0,145.0,0.039,1429.0,925.0,Good
+2025-12-07,/blog/magento-to-shopify-plus,desktop,1712.0,155.0,0.092,1297.0,786.0,Good
+2025-12-14,/blog/magento-to-shopify-plus,mobile,2279.0,144.0,0.153,1312.0,921.0,Needs Improvement
+2025-12-14,/blog/magento-to-shopify-plus,desktop,1684.0,102.0,0.046,700,150,Good
+2025-12-21,/blog/magento-to-shopify-plus,mobile,2681.0,202.0,0.1,2104.0,1710.0,Needs Improvement
+2025-12-21,/blog/magento-to-shopify-plus,desktop,1697.0,115.0,0.0,970.0,567.0,Good
+2025-12-28,/blog/magento-to-shopify-plus,mobile,2570.0,172.0,0.11,1757.0,1357.0,Needs Improvement
+2025-12-28,/blog/magento-to-shopify-plus,desktop,1779.0,106.0,0.032,708.0,150,Good
+2026-01-04,/blog/magento-to-shopify-plus,mobile,2337.0,236.0,0.067,1703.0,1171.0,Needs Improvement
+2026-01-04,/blog/magento-to-shopify-plus,desktop,1457.0,101.0,0.034,700,246.0,Good
+2026-01-11,/blog/magento-to-shopify-plus,mobile,2189.0,127.0,0.094,1146.0,770.0,Good
+2026-01-11,/blog/magento-to-shopify-plus,desktop,1683.0,183.0,0.167,1033.0,550.0,Needs Improvement
+2026-01-18,/blog/magento-to-shopify-plus,mobile,2477.0,164.0,0.128,1972.0,1531.0,Needs Improvement
+2026-01-18,/blog/magento-to-shopify-plus,desktop,1389.0,160.0,0.08,740.0,208.0,Good
+2026-01-25,/blog/magento-to-shopify-plus,mobile,2265.0,173.0,0.064,1794.0,1165.0,Good
+2026-01-25,/blog/magento-to-shopify-plus,desktop,1516.0,115.0,0.087,1049.0,593.0,Good
+2026-02-01,/blog/magento-to-shopify-plus,mobile,2579.0,196.0,0.059,1638.0,985.0,Needs Improvement
+2026-02-01,/blog/magento-to-shopify-plus,desktop,1542.0,67.0,0.049,700,234.0,Good
+2026-02-08,/blog/magento-to-shopify-plus,mobile,2037.0,127.0,0.0,1395.0,1009.0,Good
+2026-02-08,/blog/magento-to-shopify-plus,desktop,1331.0,94.0,0.112,700,297.0,Needs Improvement
+2026-02-15,/blog/magento-to-shopify-plus,mobile,2177.0,178.0,0.066,1414.0,1037.0,Good
+2026-02-15,/blog/magento-to-shopify-plus,desktop,1515.0,138.0,0.0,708.0,150,Good
+2026-02-22,/blog/magento-to-shopify-plus,mobile,2411.0,226.0,0.063,1506.0,1081.0,Needs Improvement
+2026-02-22,/blog/magento-to-shopify-plus,desktop,1479.0,161.0,0.071,700,150,Good
+2026-03-01,/blog/magento-to-shopify-plus,mobile,1724.0,214.0,0.049,731.0,175.0,Needs Improvement
+2026-03-01,/blog/magento-to-shopify-plus,desktop,1258.0,127.0,0.017,824.0,212.0,Good
+2026-03-08,/blog/magento-to-shopify-plus,mobile,1835.0,161.0,0.051,1072.0,602.0,Good
+2026-03-08,/blog/magento-to-shopify-plus,desktop,1365.0,116.0,0.034,700,348.0,Good
+2026-03-15,/blog/magento-to-shopify-plus,mobile,1999.0,203.0,0.092,1344.0,842.0,Needs Improvement
+2026-03-15,/blog/magento-to-shopify-plus,desktop,1169.0,94.0,0.044,744.0,150,Good
+2026-03-22,/blog/magento-to-shopify-plus,mobile,2452.0,232.0,0.045,1406.0,1084.0,Needs Improvement
+2026-03-22,/blog/magento-to-shopify-plus,desktop,1576.0,93.0,0.103,984.0,427.0,Needs Improvement
+2026-03-29,/blog/magento-to-shopify-plus,mobile,1993.0,205.0,0.06,1304.0,880.0,Needs Improvement
+2026-03-29,/blog/magento-to-shopify-plus,desktop,1224.0,94.0,0.033,700,150,Good
+2026-04-05,/blog/magento-to-shopify-plus,mobile,1855.0,158.0,0.137,759.0,444.0,Needs Improvement
+2026-04-05,/blog/magento-to-shopify-plus,desktop,1262.0,156.0,0.083,721.0,294.0,Good
+2026-04-12,/blog/magento-to-shopify-plus,mobile,1939.0,255.0,0.018,1252.0,645.0,Needs Improvement
+2026-04-12,/blog/magento-to-shopify-plus,desktop,1213.0,80.0,0.083,700,150,Good
+2026-04-19,/blog/magento-to-shopify-plus,mobile,1616.0,183.0,0.204,722.0,320.0,Needs Improvement
+2026-04-19,/blog/magento-to-shopify-plus,desktop,1075.0,107.0,0.024,700,150,Good
+2026-04-26,/blog/magento-to-shopify-plus,mobile,2166.0,163.0,0.119,1114.0,590.0,Needs Improvement
+2026-04-26,/blog/magento-to-shopify-plus,desktop,1135.0,125.0,0.084,700,150,Good
+2025-11-02,/blog/bigcommerce-vs-shopify-plus,mobile,2229.0,226.0,0.004,1772.0,1276.0,Needs Improvement
+2025-11-02,/blog/bigcommerce-vs-shopify-plus,desktop,1562.0,108.0,0.042,799.0,150,Good
+2025-11-09,/blog/bigcommerce-vs-shopify-plus,mobile,2342.0,218.0,0.114,1331.0,1012.0,Needs Improvement
+2025-11-09,/blog/bigcommerce-vs-shopify-plus,desktop,1514.0,56.0,0.081,700,329.0,Good
+2025-11-16,/blog/bigcommerce-vs-shopify-plus,mobile,2408.0,200.0,0.13,1971.0,1614.0,Needs Improvement
+2025-11-16,/blog/bigcommerce-vs-shopify-plus,desktop,1597.0,194.0,0.097,700,165.0,Good
+2025-11-23,/blog/bigcommerce-vs-shopify-plus,mobile,2200.0,204.0,0.095,1299.0,806.0,Needs Improvement
+2025-11-23,/blog/bigcommerce-vs-shopify-plus,desktop,1249.0,113.0,0.08,700,150,Good
+2025-11-30,/blog/bigcommerce-vs-shopify-plus,mobile,1908.0,139.0,0.075,1411.0,849.0,Good
+2025-11-30,/blog/bigcommerce-vs-shopify-plus,desktop,1353.0,129.0,0.082,700,369.0,Good
+2025-12-07,/blog/bigcommerce-vs-shopify-plus,mobile,2704.0,192.0,0.06,1945.0,1390.0,Needs Improvement
+2025-12-07,/blog/bigcommerce-vs-shopify-plus,desktop,1595.0,118.0,0.021,1188.0,753.0,Good
+2025-12-14,/blog/bigcommerce-vs-shopify-plus,mobile,1776.0,247.0,0.068,700,150,Needs Improvement
+2025-12-14,/blog/bigcommerce-vs-shopify-plus,desktop,1664.0,79.0,0.04,1262.0,628.0,Good
+2025-12-21,/blog/bigcommerce-vs-shopify-plus,mobile,2274.0,203.0,0.01,1275.0,788.0,Needs Improvement
+2025-12-21,/blog/bigcommerce-vs-shopify-plus,desktop,1453.0,127.0,0.041,922.0,535.0,Good
+2025-12-28,/blog/bigcommerce-vs-shopify-plus,mobile,2436.0,221.0,0.07,1946.0,1530.0,Needs Improvement
+2025-12-28,/blog/bigcommerce-vs-shopify-plus,desktop,1400.0,85.0,0.123,700,186.0,Needs Improvement
+2026-01-04,/blog/bigcommerce-vs-shopify-plus,mobile,2128.0,148.0,0.073,1434.0,745.0,Good
+2026-01-04,/blog/bigcommerce-vs-shopify-plus,desktop,1435.0,123.0,0.058,867.0,501.0,Good
+2026-01-11,/blog/bigcommerce-vs-shopify-plus,mobile,2019.0,178.0,0.048,1484.0,1042.0,Good
+2026-01-11,/blog/bigcommerce-vs-shopify-plus,desktop,1545.0,92.0,0.021,899.0,516.0,Good
+2026-01-18,/blog/bigcommerce-vs-shopify-plus,mobile,1934.0,128.0,0.038,884.0,297.0,Good
+2026-01-18,/blog/bigcommerce-vs-shopify-plus,desktop,1492.0,94.0,0.034,700,278.0,Good
+2026-01-25,/blog/bigcommerce-vs-shopify-plus,mobile,1775.0,207.0,0.089,1130.0,636.0,Needs Improvement
+2026-01-25,/blog/bigcommerce-vs-shopify-plus,desktop,1068.0,135.0,0.08,700,189.0,Good
+2026-02-01,/blog/bigcommerce-vs-shopify-plus,mobile,2032.0,205.0,0.042,878.0,303.0,Needs Improvement
+2026-02-01,/blog/bigcommerce-vs-shopify-plus,desktop,1306.0,128.0,0.089,700,150,Good
+2026-02-08,/blog/bigcommerce-vs-shopify-plus,mobile,2095.0,195.0,0.019,1439.0,1081.0,Good
+2026-02-08,/blog/bigcommerce-vs-shopify-plus,desktop,1351.0,151.0,0.015,700,164.0,Good
+2026-02-15,/blog/bigcommerce-vs-shopify-plus,mobile,1897.0,176.0,0.058,1023.0,662.0,Good
+2026-02-15,/blog/bigcommerce-vs-shopify-plus,desktop,1258.0,93.0,0.044,700,238.0,Good
+2026-02-22,/blog/bigcommerce-vs-shopify-plus,mobile,1895.0,150.0,0.04,700,192.0,Good
+2026-02-22,/blog/bigcommerce-vs-shopify-plus,desktop,1195.0,40,0.062,700,150,Good
+2026-03-01,/blog/bigcommerce-vs-shopify-plus,mobile,1833.0,163.0,0.031,795.0,180.0,Good
+2026-03-01,/blog/bigcommerce-vs-shopify-plus,desktop,1376.0,145.0,0.057,720.0,150,Good
+2026-03-08,/blog/bigcommerce-vs-shopify-plus,mobile,1613.0,185.0,0.129,1138.0,557.0,Needs Improvement
+2026-03-08,/blog/bigcommerce-vs-shopify-plus,desktop,1086.0,40,0.137,700,159.0,Needs Improvement
+2026-03-15,/blog/bigcommerce-vs-shopify-plus,mobile,2028.0,199.0,0.048,1526.0,1136.0,Good
+2026-03-15,/blog/bigcommerce-vs-shopify-plus,desktop,1121.0,75.0,0.019,700,266.0,Good
+2026-03-22,/blog/bigcommerce-vs-shopify-plus,mobile,2184.0,172.0,0.062,1204.0,614.0,Good
+2026-03-22,/blog/bigcommerce-vs-shopify-plus,desktop,1289.0,141.0,0.069,887.0,453.0,Good
+2026-03-29,/blog/bigcommerce-vs-shopify-plus,mobile,1433.0,180.0,0.041,775.0,157.0,Good
+2026-03-29,/blog/bigcommerce-vs-shopify-plus,desktop,972.0,47.0,0.04,700,358.0,Good
+2026-04-05,/blog/bigcommerce-vs-shopify-plus,mobile,1716.0,187.0,0.088,834.0,432.0,Good
+2026-04-05,/blog/bigcommerce-vs-shopify-plus,desktop,1228.0,137.0,0.0,700,397.0,Good
+2026-04-12,/blog/bigcommerce-vs-shopify-plus,mobile,1403.0,159.0,0.092,700,348.0,Good
+2026-04-12,/blog/bigcommerce-vs-shopify-plus,desktop,1151.0,109.0,0.132,700,284.0,Needs Improvement
+2026-04-19,/blog/bigcommerce-vs-shopify-plus,mobile,1496.0,165.0,0.037,700,241.0,Good
+2026-04-19,/blog/bigcommerce-vs-shopify-plus,desktop,949.0,53.0,0.028,700,392.0,Good
+2026-04-26,/blog/bigcommerce-vs-shopify-plus,mobile,2017.0,251.0,0.135,1382.0,754.0,Needs Improvement
+2026-04-26,/blog/bigcommerce-vs-shopify-plus,desktop,1364.0,87.0,0.099,700,221.0,Good
+2025-11-02,/blog/plus-vs-advanced,mobile,3105.0,187.0,0.091,2018.0,1352.0,Needs Improvement
+2025-11-02,/blog/plus-vs-advanced,desktop,2257.0,133.0,0.044,1343.0,857.0,Good
+2025-11-09,/blog/plus-vs-advanced,mobile,3175.0,161.0,0.101,2573.0,2101.0,Needs Improvement
+2025-11-09,/blog/plus-vs-advanced,desktop,2117.0,120.0,0.052,1554.0,1193.0,Good
+2025-11-16,/blog/plus-vs-advanced,mobile,3407.0,170.0,0.008,2305.0,1707.0,Needs Improvement
+2025-11-16,/blog/plus-vs-advanced,desktop,2230.0,99.0,0.044,1311.0,886.0,Good
+2025-11-23,/blog/plus-vs-advanced,mobile,3075.0,143.0,0.042,2189.0,1866.0,Needs Improvement
+2025-11-23,/blog/plus-vs-advanced,desktop,2267.0,72.0,0.099,1202.0,522.0,Good
+2025-11-30,/blog/plus-vs-advanced,mobile,3325.0,195.0,0.033,2496.0,2157.0,Needs Improvement
+2025-11-30,/blog/plus-vs-advanced,desktop,2004.0,75.0,0.025,1357.0,771.0,Good
+2025-12-07,/blog/plus-vs-advanced,mobile,3115.0,191.0,0.109,2381.0,1690.0,Needs Improvement
+2025-12-07,/blog/plus-vs-advanced,desktop,2046.0,104.0,0.055,1282.0,793.0,Good
+2025-12-14,/blog/plus-vs-advanced,mobile,3311.0,187.0,0.099,2347.0,1794.0,Needs Improvement
+2025-12-14,/blog/plus-vs-advanced,desktop,2033.0,104.0,0.119,1621.0,1058.0,Needs Improvement
+2025-12-21,/blog/plus-vs-advanced,mobile,3298.0,197.0,0.051,2710.0,2099.0,Needs Improvement
+2025-12-21,/blog/plus-vs-advanced,desktop,2157.0,106.0,0.059,963.0,402.0,Good
+2025-12-28,/blog/plus-vs-advanced,mobile,2975.0,231.0,0.065,1889.0,1370.0,Needs Improvement
+2025-12-28,/blog/plus-vs-advanced,desktop,2071.0,97.0,0.026,1168.0,580.0,Good
+2026-01-04,/blog/plus-vs-advanced,mobile,3207.0,190.0,0.068,2332.0,1865.0,Needs Improvement
+2026-01-04,/blog/plus-vs-advanced,desktop,2051.0,158.0,0.029,1110.0,482.0,Good
+2026-01-11,/blog/plus-vs-advanced,mobile,2942.0,194.0,0.031,2068.0,1510.0,Needs Improvement
+2026-01-11,/blog/plus-vs-advanced,desktop,2099.0,86.0,0.043,1204.0,681.0,Good
+2026-01-18,/blog/plus-vs-advanced,mobile,2969.0,223.0,0.07,2239.0,1825.0,Needs Improvement
+2026-01-18,/blog/plus-vs-advanced,desktop,1973.0,128.0,0.107,970.0,567.0,Needs Improvement
+2026-01-25,/blog/plus-vs-advanced,mobile,3094.0,169.0,0.103,2353.0,1757.0,Needs Improvement
+2026-01-25,/blog/plus-vs-advanced,desktop,1880.0,69.0,0.0,1167.0,732.0,Good
+2026-02-01,/blog/plus-vs-advanced,mobile,3247.0,168.0,0.067,2505.0,2177.0,Needs Improvement
+2026-02-01,/blog/plus-vs-advanced,desktop,2096.0,160.0,0.023,1242.0,777.0,Good
+2026-02-08,/blog/plus-vs-advanced,mobile,3084.0,175.0,0.066,2024.0,1704.0,Needs Improvement
+2026-02-08,/blog/plus-vs-advanced,desktop,2144.0,126.0,0.08,1597.0,1187.0,Good
+2026-02-15,/blog/plus-vs-advanced,mobile,2835.0,166.0,0.04,2378.0,1877.0,Needs Improvement
+2026-02-15,/blog/plus-vs-advanced,desktop,2036.0,133.0,0.074,1363.0,981.0,Good
+2026-02-22,/blog/plus-vs-advanced,mobile,3319.0,143.0,0.105,2515.0,2129.0,Needs Improvement
+2026-02-22,/blog/plus-vs-advanced,desktop,2016.0,95.0,0.07,823.0,423.0,Good
+2026-03-01,/blog/plus-vs-advanced,mobile,2702.0,194.0,0.073,1964.0,1567.0,Needs Improvement
+2026-03-01,/blog/plus-vs-advanced,desktop,1806.0,90.0,0.084,990.0,577.0,Good
+2026-03-08,/blog/plus-vs-advanced,mobile,2901.0,223.0,0.032,2442.0,1812.0,Needs Improvement
+2026-03-08,/blog/plus-vs-advanced,desktop,2066.0,156.0,0.041,951.0,455.0,Good
+2026-03-15,/blog/plus-vs-advanced,mobile,2649.0,171.0,0.12,1817.0,1142.0,Needs Improvement
+2026-03-15,/blog/plus-vs-advanced,desktop,1755.0,101.0,0.071,1084.0,402.0,Good
+2026-03-22,/blog/plus-vs-advanced,mobile,2941.0,221.0,0.006,2124.0,1556.0,Needs Improvement
+2026-03-22,/blog/plus-vs-advanced,desktop,1876.0,106.0,0.068,1459.0,847.0,Good
+2026-03-29,/blog/plus-vs-advanced,mobile,2360.0,195.0,0.104,1806.0,1203.0,Needs Improvement
+2026-03-29,/blog/plus-vs-advanced,desktop,1699.0,137.0,0.063,912.0,606.0,Good
+2026-04-05,/blog/plus-vs-advanced,mobile,2418.0,234.0,0.014,1411.0,1016.0,Needs Improvement
+2026-04-05,/blog/plus-vs-advanced,desktop,1882.0,40,0.037,948.0,282.0,Good
+2026-04-12,/blog/plus-vs-advanced,mobile,2932.0,201.0,0.085,2246.0,1567.0,Needs Improvement
+2026-04-12,/blog/plus-vs-advanced,desktop,1916.0,104.0,0.062,978.0,555.0,Good
+2026-04-19,/blog/plus-vs-advanced,mobile,2489.0,192.0,0.017,2051.0,1382.0,Good
+2026-04-19,/blog/plus-vs-advanced,desktop,1949.0,122.0,0.017,1455.0,1063.0,Good
+2026-04-26,/blog/plus-vs-advanced,mobile,2999.0,173.0,0.103,2375.0,1926.0,Needs Improvement
+2026-04-26,/blog/plus-vs-advanced,desktop,1881.0,155.0,0.108,1458.0,1113.0,Needs Improvement
+2025-11-02,/blog/shopify-plus-pricing,mobile,3427.0,200.0,0.08,2396.0,2022.0,Needs Improvement
+2025-11-02,/blog/shopify-plus-pricing,desktop,2067.0,105.0,0.049,1235.0,592.0,Good
+2025-11-09,/blog/shopify-plus-pricing,mobile,3219.0,199.0,0.011,2770.0,2390.0,Needs Improvement
+2025-11-09,/blog/shopify-plus-pricing,desktop,2095.0,96.0,0.101,1633.0,1148.0,Needs Improvement
+2025-11-16,/blog/shopify-plus-pricing,mobile,3167.0,197.0,0.096,2245.0,1923.0,Needs Improvement
+2025-11-16,/blog/shopify-plus-pricing,desktop,2033.0,192.0,0.117,1611.0,1077.0,Needs Improvement
+2025-11-23,/blog/shopify-plus-pricing,mobile,3597.0,144.0,0.058,2818.0,2324.0,Needs Improvement
+2025-11-23,/blog/shopify-plus-pricing,desktop,2011.0,117.0,0.067,1418.0,746.0,Good
+2025-11-30,/blog/shopify-plus-pricing,mobile,3274.0,185.0,0.026,2428.0,1919.0,Needs Improvement
+2025-11-30,/blog/shopify-plus-pricing,desktop,2235.0,99.0,0.124,1113.0,519.0,Needs Improvement
+2025-12-07,/blog/shopify-plus-pricing,mobile,3003.0,153.0,0.074,2251.0,1736.0,Needs Improvement
+2025-12-07,/blog/shopify-plus-pricing,desktop,2164.0,130.0,0.098,1639.0,1016.0,Good
+2025-12-14,/blog/shopify-plus-pricing,mobile,3105.0,177.0,0.091,2652.0,2121.0,Needs Improvement
+2025-12-14,/blog/shopify-plus-pricing,desktop,1941.0,71.0,0.122,1294.0,876.0,Needs Improvement
+2025-12-21,/blog/shopify-plus-pricing,mobile,2804.0,107.0,0.036,1841.0,1195.0,Needs Improvement
+2025-12-21,/blog/shopify-plus-pricing,desktop,2052.0,107.0,0.08,1296.0,623.0,Good
+2025-12-28,/blog/shopify-plus-pricing,mobile,3138.0,227.0,0.028,2251.0,1902.0,Needs Improvement
+2025-12-28,/blog/shopify-plus-pricing,desktop,1888.0,40,0.094,1438.0,746.0,Good
+2026-01-04,/blog/shopify-plus-pricing,mobile,3255.0,159.0,0.015,2055.0,1609.0,Needs Improvement
+2026-01-04,/blog/shopify-plus-pricing,desktop,1983.0,112.0,0.075,1182.0,738.0,Good
+2026-01-11,/blog/shopify-plus-pricing,mobile,3400.0,181.0,0.0,2213.0,1774.0,Needs Improvement
+2026-01-11,/blog/shopify-plus-pricing,desktop,1958.0,108.0,0.09,1466.0,1117.0,Good
+2026-01-18,/blog/shopify-plus-pricing,mobile,2836.0,232.0,0.073,1837.0,1530.0,Needs Improvement
+2026-01-18,/blog/shopify-plus-pricing,desktop,2119.0,106.0,0.054,1687.0,1062.0,Good
+2026-01-25,/blog/shopify-plus-pricing,mobile,2592.0,192.0,0.06,2127.0,1683.0,Needs Improvement
+2026-01-25,/blog/shopify-plus-pricing,desktop,1841.0,129.0,0.033,1050.0,426.0,Good
+2026-02-01,/blog/shopify-plus-pricing,mobile,2738.0,161.0,0.127,2095.0,1454.0,Needs Improvement
+2026-02-01,/blog/shopify-plus-pricing,desktop,1550.0,91.0,0.045,1113.0,694.0,Good
+2026-02-08,/blog/shopify-plus-pricing,mobile,2731.0,183.0,0.033,2326.0,1767.0,Needs Improvement
+2026-02-08,/blog/shopify-plus-pricing,desktop,1771.0,59.0,0.071,1096.0,571.0,Good
+2026-02-15,/blog/shopify-plus-pricing,mobile,2956.0,201.0,0.045,2314.0,1740.0,Needs Improvement
+2026-02-15,/blog/shopify-plus-pricing,desktop,1925.0,154.0,0.1,1359.0,751.0,Needs Improvement
+2026-02-22,/blog/shopify-plus-pricing,mobile,3026.0,201.0,0.092,2043.0,1472.0,Needs Improvement
+2026-02-22,/blog/shopify-plus-pricing,desktop,1739.0,119.0,0.062,1297.0,835.0,Good
+2026-03-01,/blog/shopify-plus-pricing,mobile,2990.0,147.0,0.051,2065.0,1403.0,Needs Improvement
+2026-03-01,/blog/shopify-plus-pricing,desktop,1858.0,72.0,0.057,1194.0,497.0,Good
+2026-03-08,/blog/shopify-plus-pricing,mobile,3012.0,250.0,0.079,2596.0,2100.0,Needs Improvement
+2026-03-08,/blog/shopify-plus-pricing,desktop,1913.0,141.0,0.042,1094.0,623.0,Good
+2026-03-15,/blog/shopify-plus-pricing,mobile,2429.0,193.0,0.071,1966.0,1302.0,Good
+2026-03-15,/blog/shopify-plus-pricing,desktop,1823.0,166.0,0.116,956.0,406.0,Needs Improvement
+2026-03-22,/blog/shopify-plus-pricing,mobile,3312.0,229.0,0.036,2600.0,2058.0,Needs Improvement
+2026-03-22,/blog/shopify-plus-pricing,desktop,2076.0,100.0,0.127,1252.0,649.0,Needs Improvement
+2026-03-29,/blog/shopify-plus-pricing,mobile,3000.0,235.0,0.052,2152.0,1493.0,Needs Improvement
+2026-03-29,/blog/shopify-plus-pricing,desktop,1671.0,59.0,0.068,1139.0,575.0,Good
+2026-04-05,/blog/shopify-plus-pricing,mobile,2427.0,160.0,0.084,1299.0,625.0,Good
+2026-04-05,/blog/shopify-plus-pricing,desktop,1579.0,92.0,0.064,1158.0,817.0,Good
+2026-04-12,/blog/shopify-plus-pricing,mobile,2357.0,169.0,0.037,1501.0,1091.0,Good
+2026-04-12,/blog/shopify-plus-pricing,desktop,1696.0,143.0,0.041,1240.0,572.0,Good
+2026-04-19,/blog/shopify-plus-pricing,mobile,2725.0,160.0,0.051,2146.0,1598.0,Needs Improvement
+2026-04-19,/blog/shopify-plus-pricing,desktop,1949.0,100.0,0.033,1381.0,1003.0,Good
+2026-04-26,/blog/shopify-plus-pricing,mobile,2288.0,167.0,0.12,1243.0,650.0,Needs Improvement
+2026-04-26,/blog/shopify-plus-pricing,desktop,1543.0,138.0,0.078,721.0,278.0,Good

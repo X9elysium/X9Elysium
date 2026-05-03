@@ -1,0 +1,121 @@
+task_id,title,project,client,assignee,status,priority,category,created_at,due_date,completed_at,estimated_hours,actual_hours
+T-4001,Refresh homepage hero,Lumen Skincare — Subscription Setup,Lumen Skincare,Darshan Patel,In Progress,Medium,Design,2026-02-23,2026-03-08,,24,
+T-4002,Update brand assets in Drive,Internal — Site Improvements,Internal,Adhvait Patel,In Progress,Medium,Admin,2026-04-06,2026-04-22,,24,
+T-4003,Set up Markets for US + UK,Roastline — Site Speed,Roastline,Darshan Patel,In Progress,Medium,Build,2025-12-30,2026-01-27,,4,
+T-4004,Customer + order import,Northwind Apparel — Plus Migration,Northwind Apparel,Darshan Patel,Backlog,Medium,Migration,2026-03-26,2026-04-11,,2,
+T-4005,Set up Markets for US + UK,Internal — Marketing Engine,Internal,Darshan Patel,Todo,High,Build,2025-12-14,2026-01-12,,24,
+T-4006,B2B pricing model review,Lumen Skincare — Subscription Setup,Lumen Skincare,Adhvait Patel,Done,Medium,Strategy,2026-02-04,2026-02-28,2026-02-16,4,4.9
+T-4007,Set up Markets for US + UK,Vesper Home — Headless POC,Vesper Home,Darshan Patel,Todo,Low,Build,2026-02-25,2026-03-16,,3,
+T-4008,SEO audit + rewrite plan,Brassroot — Theme Refresh,Brassroot,Darshan Patel,Todo,Medium,Audit,2026-01-09,2026-01-25,,12,
+T-4009,Catalog import dry run,Northwind Apparel — Plus Migration,Northwind Apparel,Adhvait Patel,Todo,Medium,Migration,2026-02-24,2026-02-28,,2,
+T-4010,Reconcile Stripe payouts,Brassroot — Theme Refresh,Brassroot,Adhvait Patel,Done,Low,Admin,2026-01-09,2026-01-28,2026-02-02,1,1.1
+T-4011,Subscription LTV model,Internal — Marketing Engine,Internal,Darshan Patel,In Progress,Low,Strategy,2025-11-13,2025-12-12,,4,
+T-4012,Core Web Vitals audit,Atlas Outdoors — B2B Portal,Atlas Outdoors,Adhvait Patel,In Progress,Medium,Audit,2026-02-05,2026-03-03,,8,
+T-4013,Quarterly review with Vesper,Halcyon — Magento Migration,Halcyon,Darshan Patel,Done,Medium,Sales,2026-04-12,2026-05-01,2026-04-30,3,4.6
+T-4014,GA4 event audit,Tidewater — Markets Rollout,Tidewater,Adhvait Patel,Todo,Medium,Audit,2025-11-22,2025-12-05,,8,
+T-4015,Design PDP variant selector,Brassroot — Theme Refresh,Brassroot,Adhvait Patel,Done,Medium,Design,2026-04-27,2026-05-27,2026-05-01,2,1.6
+T-4016,B2B pricing model review,Vesper Home — Headless POC,Vesper Home,Adhvait Patel,Todo,High,Strategy,2026-03-29,2026-04-13,,16,
+T-4017,Reconcile Stripe payouts,Internal — Site Improvements,Internal,Adhvait Patel,In Progress,High,Admin,2026-04-19,2026-05-11,,4,
+T-4018,SEO audit + rewrite plan,Brassroot — Theme Refresh,Brassroot,Adhvait Patel,Done,Medium,Audit,2026-04-29,2026-05-05,2026-05-01,2,1.3
+T-4019,Customer + order import,Atlas Outdoors — B2B Portal,Atlas Outdoors,Darshan Patel,In Progress,Medium,Migration,2026-01-09,2026-01-17,,6,
+T-4020,Update brand assets in Drive,Northwind Apparel — Plus Migration,Northwind Apparel,Adhvait Patel,Todo,Low,Admin,2026-04-03,2026-04-09,,2,
+T-4021,Customer + order import,Vesper Home — Headless POC,Vesper Home,Darshan Patel,Todo,Medium,Migration,2026-03-09,2026-04-03,,12,
+T-4022,Wire up Recharge subscription tier,Internal — Site Improvements,Internal,Darshan Patel,Blocked,Medium,Build,2026-03-12,2026-04-03,,6,
+T-4023,Set up Markets for US + UK,Roastline — Site Speed,Roastline,Adhvait Patel,Todo,High,Build,2025-12-21,2026-01-18,,12,
+T-4024,Update brand assets in Drive,Lumen Skincare — Subscription Setup,Lumen Skincare,Darshan Patel,Todo,Medium,Admin,2026-03-13,2026-03-28,,2,
+T-4025,Discount code stacking bug,Brassroot — Theme Refresh,Brassroot,Darshan Patel,Todo,Low,Bug Fix,2026-02-02,2026-02-12,,2,
+T-4026,Theme parity QA,Vesper Home — Headless POC,Vesper Home,Darshan Patel,Done,Medium,Migration,2025-12-28,2026-01-20,2026-01-22,12,12.2
+T-4027,Q3 roadmap workshop,Lumen Skincare — Subscription Setup,Lumen Skincare,Adhvait Patel,Done,Medium,Strategy,2026-04-18,2026-05-09,2026-04-26,4,4.6
+T-4028,Quarterly review with Vesper,Halcyon — Magento Migration,Halcyon,Adhvait Patel,Done,Medium,Sales,2025-11-18,2025-12-06,2025-11-26,8,9.1
+T-4029,Subscription LTV model,Roastline — Site Speed,Roastline,Darshan Patel,In Progress,Medium,Strategy,2025-11-23,2025-12-15,,8,
+T-4030,Cart drawer iteration,Halcyon — Magento Migration,Halcyon,Darshan Patel,Backlog,Medium,Design,2026-03-29,2026-04-13,,3,
+T-4031,URL redirect map,Tidewater — Markets Rollout,Tidewater,Adhvait Patel,Done,Low,Migration,2026-02-07,2026-02-15,2026-02-18,12,8.3
+T-4032,Cart drawer iteration,Vesper Home — Headless POC,Vesper Home,Adhvait Patel,Todo,Medium,Design,2025-11-27,2025-12-21,,4,
+T-4033,LinkedIn post: site speed,Lumen Skincare — Subscription Setup,Lumen Skincare,Darshan Patel,Todo,Medium,Content,2026-04-04,2026-04-12,,3,
+T-4034,Core Web Vitals audit,Internal — Marketing Engine,Internal,Adhvait Patel,Todo,High,Audit,2026-01-12,2026-01-31,,6,
+T-4035,SEO audit + rewrite plan,Lumen Skincare — Subscription Setup,Lumen Skincare,Adhvait Patel,Todo,Low,Audit,2026-03-18,2026-04-06,,8,
+T-4036,Invoicing for April,Halcyon — Magento Migration,Halcyon,Adhvait Patel,Backlog,Low,Admin,2026-01-18,2026-02-02,,4,
+T-4037,Mobile filters redesign,Brassroot — Theme Refresh,Brassroot,Darshan Patel,Backlog,Low,Design,2026-02-05,2026-02-17,,6,
+T-4038,Theme parity QA,Halcyon — Magento Migration,Halcyon,Adhvait Patel,Todo,Medium,Migration,2026-01-12,2026-02-11,,12,
+T-4039,Reconcile Stripe payouts,Lumen Skincare — Subscription Setup,Lumen Skincare,Darshan Patel,In Progress,Low,Admin,2026-01-15,2026-02-01,,24,
+T-4040,Follow-up: Roastline (week 3),Tidewater — Markets Rollout,Tidewater,Adhvait Patel,Todo,Medium,Sales,2026-01-17,2026-02-07,,4,
+T-4041,Checkout JS error in Safari,Northwind Apparel — Plus Migration,Northwind Apparel,Darshan Patel,Blocked,Medium,Bug Fix,2025-11-07,2025-12-02,,12,
+T-4042,B2B pricing model review,Lumen Skincare — Subscription Setup,Lumen Skincare,Darshan Patel,Todo,Medium,Strategy,2025-12-23,2026-01-17,,6,
+T-4043,Update brand assets in Drive,Vesper Home — Headless POC,Vesper Home,Darshan Patel,Done,Medium,Admin,2025-12-05,2025-12-11,2025-12-05,1,1.2
+T-4044,URL redirect map,Internal — Marketing Engine,Internal,Darshan Patel,Done,Medium,Migration,2026-01-28,2026-02-05,2026-02-07,4,5.8
+T-4045,Follow-up: Roastline (week 3),Internal — Marketing Engine,Internal,Adhvait Patel,Done,High,Sales,2025-11-15,2025-11-27,2025-11-25,16,23.5
+T-4046,URL redirect map,Internal — Marketing Engine,Internal,Adhvait Patel,In Progress,Low,Migration,2025-11-12,2025-11-23,,2,
+T-4047,Wire up Recharge subscription tier,Vesper Home — Headless POC,Vesper Home,Adhvait Patel,Todo,Medium,Build,2026-01-14,2026-01-24,,8,
+T-4048,Theme parity QA,Roastline — Site Speed,Roastline,Darshan Patel,Done,Low,Migration,2026-03-29,2026-04-04,2026-04-06,2,2.3
+T-4049,Write Magento → Plus migration guide,Internal — Marketing Engine,Internal,Darshan Patel,Done,Medium,Content,2026-03-10,2026-04-02,2026-03-21,8,5.2
+T-4050,Checkout JS error in Safari,Halcyon — Magento Migration,Halcyon,Adhvait Patel,Done,High,Bug Fix,2026-02-17,2026-03-16,2026-03-12,12,8.0
+T-4051,SEO audit + rewrite plan,Internal — Site Improvements,Internal,Adhvait Patel,Todo,High,Audit,2026-03-09,2026-03-12,,6,
+T-4052,GA4 event audit,Brassroot — Theme Refresh,Brassroot,Adhvait Patel,In Progress,Medium,Audit,2026-01-04,2026-01-12,,8,
+T-4053,URL redirect map,Northwind Apparel — Plus Migration,Northwind Apparel,Darshan Patel,Todo,Medium,Migration,2026-04-27,2026-05-22,,16,
+T-4054,Discount code stacking bug,Northwind Apparel — Plus Migration,Northwind Apparel,Darshan Patel,In Progress,High,Bug Fix,2026-01-27,2026-02-04,,3,
+T-4055,Write Magento → Plus migration guide,Northwind Apparel — Plus Migration,Northwind Apparel,Darshan Patel,Done,High,Content,2026-02-27,2026-03-22,2026-03-20,8,9.9
+T-4056,Klaviyo flow trigger missing,Brassroot — Theme Refresh,Brassroot,Adhvait Patel,Done,High,Bug Fix,2026-03-01,2026-03-04,2026-03-08,4,5.1
+T-4057,Design PDP variant selector,Vesper Home — Headless POC,Vesper Home,Darshan Patel,Backlog,Medium,Design,2025-12-02,2025-12-16,,12,
+T-4058,Mobile filters redesign,Atlas Outdoors — B2B Portal,Atlas Outdoors,Darshan Patel,Done,Medium,Design,2026-04-03,2026-04-10,2026-04-08,24,30.8
+T-4059,Discovery call — Atlas Outdoors,Lumen Skincare — Subscription Setup,Lumen Skincare,Darshan Patel,Done,Medium,Sales,2026-04-15,2026-04-20,2026-04-22,6,6.4
+T-4060,LinkedIn post: site speed,Internal — Marketing Engine,Internal,Darshan Patel,In Progress,Medium,Content,2026-03-27,2026-04-11,,3,
+T-4061,Blog: BigCommerce vs Plus,Roastline — Site Speed,Roastline,Adhvait Patel,Todo,Medium,Content,2026-02-15,2026-02-18,,8,
+T-4062,SEO audit + rewrite plan,Lumen Skincare — Subscription Setup,Lumen Skincare,Adhvait Patel,In Progress,High,Audit,2025-11-04,2025-12-04,,4,
+T-4063,Mobile filters redesign,Brassroot — Theme Refresh,Brassroot,Darshan Patel,Blocked,Medium,Design,2026-04-28,2026-05-27,,2,
+T-4064,Send proposal to Lumen,Roastline — Site Speed,Roastline,Adhvait Patel,Done,High,Sales,2026-03-31,2026-04-21,2026-04-23,24,36.8
+T-4065,LinkedIn post: site speed,Vesper Home — Headless POC,Vesper Home,Adhvait Patel,Todo,Medium,Content,2025-11-27,2025-12-24,,8,
+T-4066,Quarterly review with Vesper,Internal — Marketing Engine,Internal,Adhvait Patel,Done,Low,Sales,2025-12-26,2026-01-08,2026-01-12,2,3.1
+T-4067,Subscription LTV model,Halcyon — Magento Migration,Halcyon,Adhvait Patel,Done,Low,Strategy,2026-04-04,2026-04-19,2026-04-18,3,2.8
+T-4068,Invoicing for April,Lumen Skincare — Subscription Setup,Lumen Skincare,Darshan Patel,Done,High,Admin,2026-02-10,2026-03-02,2026-03-02,6,6.7
+T-4069,Core Web Vitals audit,Halcyon — Magento Migration,Halcyon,Adhvait Patel,Blocked,Medium,Audit,2026-04-25,2026-05-08,,12,
+T-4070,Implement product bundle metafields,Tidewater — Markets Rollout,Tidewater,Adhvait Patel,In Progress,High,Build,2026-04-27,2026-05-22,,3,
+T-4071,Update brand assets in Drive,Internal — Site Improvements,Internal,Adhvait Patel,Done,Low,Admin,2026-02-11,2026-02-25,2026-02-16,1,1.1
+T-4072,Customer + order import,Internal — Site Improvements,Internal,Darshan Patel,Done,Medium,Migration,2026-02-18,2026-03-14,2026-02-22,2,2.5
+T-4073,Cart drawer iteration,Lumen Skincare — Subscription Setup,Lumen Skincare,Adhvait Patel,Done,Medium,Design,2026-03-30,2026-04-19,2026-04-02,12,15.1
+T-4074,Reconcile Stripe payouts,Roastline — Site Speed,Roastline,Adhvait Patel,Done,Low,Admin,2026-03-04,2026-03-06,2026-03-04,3,3.7
+T-4075,LinkedIn post: site speed,Roastline — Site Speed,Roastline,Darshan Patel,Backlog,Medium,Content,2025-12-10,2025-12-20,,8,
+T-4076,Discount code stacking bug,Internal — Marketing Engine,Internal,Adhvait Patel,Todo,High,Bug Fix,2026-02-19,2026-03-06,,2,
+T-4077,Case study: Northwind,Halcyon — Magento Migration,Halcyon,Darshan Patel,Done,High,Content,2026-03-20,2026-03-26,2026-03-29,16,13.4
+T-4078,Accessibility (WCAG AA) pass,Atlas Outdoors — B2B Portal,Atlas Outdoors,Adhvait Patel,Blocked,Low,Audit,2026-02-28,2026-03-17,,2,
+T-4079,Update brand assets in Drive,Vesper Home — Headless POC,Vesper Home,Darshan Patel,In Progress,Low,Admin,2025-12-08,2025-12-27,,1,
+T-4080,Invoicing for April,Brassroot — Theme Refresh,Brassroot,Darshan Patel,Todo,Medium,Admin,2026-04-03,2026-04-25,,12,
+T-4081,Invoicing for April,Atlas Outdoors — B2B Portal,Atlas Outdoors,Darshan Patel,Todo,Medium,Admin,2025-11-12,2025-12-10,,3,
+T-4082,Hydrogen storefront cart sync,Internal — Marketing Engine,Internal,Darshan Patel,Todo,Medium,Build,2026-01-27,2026-02-03,,6,
+T-4083,Case study: Northwind,Northwind Apparel — Plus Migration,Northwind Apparel,Darshan Patel,In Progress,High,Content,2025-11-14,2025-12-12,,1,
+T-4084,Core Web Vitals audit,Lumen Skincare — Subscription Setup,Lumen Skincare,Darshan Patel,In Progress,Low,Audit,2026-01-13,2026-02-10,,1,
+T-4085,Hydrogen storefront cart sync,Brassroot — Theme Refresh,Brassroot,Darshan Patel,Done,Medium,Build,2026-01-04,2026-01-29,2026-01-23,12,10.2
+T-4086,Discovery call — Atlas Outdoors,Roastline — Site Speed,Roastline,Darshan Patel,Todo,Low,Sales,2025-12-15,2026-01-08,,3,
+T-4087,Blog: BigCommerce vs Plus,Internal — Site Improvements,Internal,Darshan Patel,Todo,Medium,Content,2025-12-28,2026-01-13,,4,
+T-4088,LinkedIn post: site speed,Vesper Home — Headless POC,Vesper Home,Adhvait Patel,Backlog,Medium,Content,2026-02-28,2026-03-05,,2,
+T-4089,Subscription LTV model,Northwind Apparel — Plus Migration,Northwind Apparel,Adhvait Patel,Backlog,Medium,Strategy,2025-11-28,2025-12-20,,16,
+T-4090,Implement product bundle metafields,Roastline — Site Speed,Roastline,Adhvait Patel,Blocked,Medium,Build,2026-03-28,2026-04-10,,12,
+T-4091,Refresh homepage hero,Internal — Site Improvements,Internal,Adhvait Patel,Done,Low,Design,2025-12-29,2026-01-17,2026-01-18,3,3.0
+T-4092,LinkedIn post: site speed,Atlas Outdoors — B2B Portal,Atlas Outdoors,Darshan Patel,Done,High,Content,2026-03-31,2026-04-21,2026-03-31,3,4.6
+T-4093,Write Magento → Plus migration guide,Northwind Apparel — Plus Migration,Northwind Apparel,Darshan Patel,Todo,High,Content,2025-12-14,2025-12-24,,16,
+T-4094,LinkedIn post: site speed,Internal — Site Improvements,Internal,Darshan Patel,In Progress,Low,Content,2026-04-28,2026-05-14,,16,
+T-4095,Refresh homepage hero,Lumen Skincare — Subscription Setup,Lumen Skincare,Darshan Patel,Done,Medium,Design,2026-01-26,2026-02-19,2026-02-09,12,8.0
+T-4096,Refresh homepage hero,Halcyon — Magento Migration,Halcyon,Darshan Patel,In Progress,Medium,Design,2026-03-22,2026-04-17,,4,
+T-4097,Customer + order import,Lumen Skincare — Subscription Setup,Lumen Skincare,Darshan Patel,Done,Medium,Migration,2026-03-24,2026-03-31,2026-04-02,12,8.6
+T-4098,Reconcile Stripe payouts,Internal — Marketing Engine,Internal,Adhvait Patel,Done,Medium,Admin,2026-03-22,2026-04-15,2026-03-22,2,1.8
+T-4099,Send proposal to Lumen,Internal — Marketing Engine,Internal,Darshan Patel,Todo,Medium,Sales,2026-03-06,2026-04-05,,8,
+T-4100,Build custom B2B checkout extension,Halcyon — Magento Migration,Halcyon,Darshan Patel,Todo,Low,Build,2026-02-10,2026-02-24,,2,
+T-4101,Accessibility (WCAG AA) pass,Northwind Apparel — Plus Migration,Northwind Apparel,Darshan Patel,Done,High,Audit,2026-03-14,2026-03-21,2026-03-15,12,12.9
+T-4102,Blog: BigCommerce vs Plus,Tidewater — Markets Rollout,Tidewater,Adhvait Patel,Done,Medium,Content,2026-01-27,2026-02-11,2026-01-28,12,7.8
+T-4103,Implement product bundle metafields,Vesper Home — Headless POC,Vesper Home,Darshan Patel,Blocked,Low,Build,2025-12-27,2026-01-23,,1,
+T-4104,Q3 roadmap workshop,Northwind Apparel — Plus Migration,Northwind Apparel,Darshan Patel,Todo,Medium,Strategy,2025-11-26,2025-11-29,,2,
+T-4105,Customer + order import,Vesper Home — Headless POC,Vesper Home,Darshan Patel,Done,Medium,Migration,2025-11-04,2025-11-23,2025-11-10,1,1.3
+T-4106,Write Magento → Plus migration guide,Tidewater — Markets Rollout,Tidewater,Darshan Patel,Done,Medium,Content,2025-12-21,2026-01-18,2026-01-03,4,5.5
+T-4107,Cart drawer iteration,Northwind Apparel — Plus Migration,Northwind Apparel,Darshan Patel,Todo,Low,Design,2026-01-07,2026-01-10,,24,
+T-4108,Send proposal to Lumen,Internal — Marketing Engine,Internal,Darshan Patel,Backlog,High,Sales,2026-04-29,2026-05-01,,4,
+T-4109,Discount code stacking bug,Brassroot — Theme Refresh,Brassroot,Darshan Patel,Done,Medium,Bug Fix,2026-01-21,2026-02-12,2026-02-14,3,1.9
+T-4110,B2B pricing model review,Brassroot — Theme Refresh,Brassroot,Darshan Patel,In Progress,Medium,Strategy,2025-12-24,2026-01-13,,8,
+T-4111,Invoicing for April,Halcyon — Magento Migration,Halcyon,Darshan Patel,Backlog,Medium,Admin,2026-04-21,2026-04-23,,8,
+T-4112,Set up Markets for US + UK,Vesper Home — Headless POC,Vesper Home,Adhvait Patel,Todo,Medium,Build,2025-12-19,2026-01-06,,8,
+T-4113,Accessibility (WCAG AA) pass,Atlas Outdoors — B2B Portal,Atlas Outdoors,Darshan Patel,Done,Medium,Audit,2026-04-19,2026-05-06,2026-04-23,12,14.4
+T-4114,Set up Markets for US + UK,Northwind Apparel — Plus Migration,Northwind Apparel,Adhvait Patel,Todo,High,Build,2026-04-25,2026-05-22,,24,
+T-4115,Inventory sync race condition,Atlas Outdoors — B2B Portal,Atlas Outdoors,Darshan Patel,Done,High,Bug Fix,2025-11-03,2025-11-05,2025-11-07,6,9.1
+T-4116,URL redirect map,Vesper Home — Headless POC,Vesper Home,Darshan Patel,Todo,High,Migration,2026-02-11,2026-03-04,,24,
+T-4117,SEO audit + rewrite plan,Northwind Apparel — Plus Migration,Northwind Apparel,Darshan Patel,Todo,Medium,Audit,2025-11-09,2025-11-13,,4,
+T-4118,URL redirect map,Internal — Site Improvements,Internal,Adhvait Patel,Done,Low,Migration,2026-01-21,2026-01-24,2026-01-22,12,17.4
+T-4119,Set up Markets for US + UK,Brassroot — Theme Refresh,Brassroot,Adhvait Patel,In Progress,Medium,Build,2026-03-21,2026-03-30,,24,
+T-4120,GA4 event audit,Brassroot — Theme Refresh,Brassroot,Adhvait Patel,Todo,Low,Audit,2026-02-17,2026-02-20,,3,

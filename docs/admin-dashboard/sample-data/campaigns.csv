@@ -1,0 +1,13 @@
+campaign_id,campaign_name,channel,start_date,end_date,status,spend_usd,impressions,clicks,ctr,leads_generated,deals_closed,revenue_usd,cpl_usd,roi
+C-9001,LinkedIn — Founder-led Q1,LinkedIn,2026-01-06,2026-03-31,Completed,4500,132769,3507,0.0264,84,5,175713,53.57,38.05
+C-9002,LinkedIn — Replatforming Series,LinkedIn,2026-02-10,2026-04-30,Completed,6000,85455,1681,0.0197,60,10,354891,100.0,58.15
+C-9003,Instagram — Plus vs BigCommerce,Instagram,2026-02-01,2026-04-01,Completed,0,135513,1669,0.0123,25,1,41528,0.0,
+C-9004,Instagram — Founder Story Reels,Instagram,2026-03-01,2026-04-30,Completed,0,118509,4125,0.0348,29,1,36728,0.0,
+C-9005,Google Ads — Toronto Local,Google Ads,2025-12-01,2026-04-30,Completed,3200,67331,1634,0.0243,26,2,112900,123.08,34.28
+C-9006,Google Ads — Migration Keywords,Google Ads,2026-01-15,2026-04-30,Completed,5000,25445,421,0.0165,19,3,139829,263.16,26.97
+C-9007,Email — Magento Migration List,Email,2026-02-14,2026-03-14,Completed,0,155840,1660,0.0107,79,11,513579,0.0,
+C-9008,Email — Q1 Newsletter,Email,2026-03-01,2026-03-31,Completed,0,44832,1591,0.0355,33,1,25707,0.0,
+C-9009,Content — Pillar: Replatforming,Organic Content,2026-01-01,2026-04-30,Completed,0,147565,1544,0.0105,50,7,309760,0.0,
+C-9010,Content — Pillar: Performance,Organic Content,2026-02-01,2026-04-30,Completed,0,134391,2236,0.0166,25,1,83207,0.0,
+C-9011,Referral — Past Client Outreach,Referral,2026-01-15,2026-03-31,Completed,500,195903,5631,0.0287,144,11,708966,3.47,1416.93
+C-9012,PR — Tier-1 Canadian Press,PR,2026-03-01,2026-05-01,Active,1200,2451,49,0.02,1,0,0,1200.0,-1.0
