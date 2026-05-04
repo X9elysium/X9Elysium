@@ -168,13 +168,19 @@ export default function JobDetailPage({
                   <BulletList items={job.responsibilities} />
                 </Block>
 
-                <Block title="What we&rsquo;re looking for">
+                <Block title="What you bring">
                   <BulletList items={job.requirements} />
                 </Block>
 
                 {job.niceToHave && job.niceToHave.length > 0 && (
                   <Block title="Nice to have">
                     <BulletList items={job.niceToHave} />
+                  </Block>
+                )}
+
+                {job.whyNotForYou && job.whyNotForYou.length > 0 && (
+                  <Block title="Why this might not be for you">
+                    <BulletList items={job.whyNotForYou} />
                   </Block>
                 )}
 
