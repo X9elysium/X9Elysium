@@ -19,6 +19,7 @@ const STATIC_LASTMOD = {
   careers: "2026-04-26",
   toronto: "2026-04-22",
   calgary: "2026-04-22",
+  vancouver: "2026-05-04",
   platformOdoo: "2026-05-02",
   platformWoocommerce: "2026-05-02",
   termsPolicy: "2026-04-08",
@@ -89,6 +90,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${BASE_URL}/locations/calgary`,
       lastModified: STATIC_LASTMOD.calgary,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${BASE_URL}/locations/vancouver`,
+      lastModified: STATIC_LASTMOD.vancouver,
       changeFrequency: "monthly",
       priority: 0.85,
     },

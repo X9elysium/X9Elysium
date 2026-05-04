@@ -1,8 +1,9 @@
 /**
- * X9Elysium lead-capture Worker.
+ * X9Elysium Worker. Handles API routes; falls through to static assets for everything else.
  *
  * Routes:
  *   POST /api/lead     — accept contact-form submissions, email Darshan, auto-reply the lead
+ *   POST /api/chat     — PIN-gated Claude chat grounded on the docs corpus (worker/chat.ts)
  *   GET  /api/health   — liveness probe
  *   *                  — fall through to the static-asset binding (the Next.js export in ./out)
  *
@@ -11,12 +12,15 @@
  *   RESEND_API_KEY      secret                (required — set via `wrangler secret put`)
  *   LEAD_TO_EMAIL       var                   (required — recipient inbox)
  *   LEAD_FROM_EMAIL     var                   (required — verified Resend sender)
- *   LEADS_KV            KV namespace          (optional — IP rate-limit)
+ *   ANTHROPIC_API_KEY   secret                (required for /api/chat)
+ *   CHAT_PIN            secret                (required for /api/chat)
+ *   LEADS_KV            KV namespace          (optional — IP rate-limit, shared with /api/chat)
  *   LEADS_DB            D1 database           (optional — lead persistence)
  *   SLACK_WEBHOOK_URL   secret                (optional — push notification)
  */
 
 import { renderLeadEmail, renderLeadText, renderAutoReply, renderAutoReplyText } from "./email";
+import { handleChat } from "./chat";
 
 export interface Env {
   ASSETS: Fetcher;
@@ -26,6 +30,8 @@ export interface Env {
   LEADS_KV?: KVNamespace;
   LEADS_DB?: D1Database;
   SLACK_WEBHOOK_URL?: string;
+  ANTHROPIC_API_KEY?: string;
+  CHAT_PIN?: string;
 }
 
 interface LeadPayload {
@@ -77,6 +83,14 @@ export default {
 
     if (url.pathname === "/api/lead") {
       return handleLead(req, env, ctx);
+    }
+    if (url.pathname === "/api/chat") {
+      const origin = req.headers.get("Origin") ?? "";
+      const corsHeaders = buildCorsHeaders(origin);
+      if (origin && !ALLOWED_ORIGINS.has(origin)) {
+        return json({ error: "Forbidden" }, 403, corsHeaders);
+      }
+      return handleChat(req, env, ctx, corsHeaders);
     }
     if (url.pathname === "/api/health") {
       return json({ ok: true, ts: Date.now() });

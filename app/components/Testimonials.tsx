@@ -13,10 +13,9 @@ import {
 const testimonials = [
   {
     quote:
-      "X9Elysium transformed our Shopify store from a basic setup into a high-performing commerce platform. Revenue increased 40% in the first quarter after launch.",
+      "X9Elysium transformed our Shopify store from a basic setup into a high-performing commerce platform. The first quarter after launch was the strongest we've ever had.",
     role: "Head of Ecommerce",
     company: "Premium fashion DTC",
-    metric: "+40% revenue",
     initial: "F",
   },
   {
@@ -24,7 +23,6 @@ const testimonials = [
       "The migration from our legacy platform was seamless. Every detail — data, design, integrations — handled without a single day of downtime.",
     role: "CTO",
     company: "Multi-brand apparel retailer",
-    metric: "Zero downtime",
     initial: "A",
   },
   {
@@ -32,31 +30,27 @@ const testimonials = [
       "Their audit uncovered issues we'd been blind to for years. The roadmap they delivered paid for itself within weeks of implementation.",
     role: "Director of Operations",
     company: "Home & lifestyle DTC",
-    metric: "3× ROI in weeks",
     initial: "H",
   },
   {
     quote:
-      "Load times dropped from 6.2s to 1.8s. Conversion rate jumped 28% — the numbers speak for themselves.",
+      "Load times dropped, conversion lifted, and the team didn't have to babysit the launch. The numbers spoke for themselves at the next board review.",
     role: "Founder & CEO",
     company: "Athletic & outdoor gear",
-    metric: "1.8s load time",
     initial: "G",
   },
   {
     quote:
-      "Custom subscription and inventory integrations cut our order processing time by 65%. Our ops team finally has room to breathe.",
+      "Custom subscription and inventory integrations took the manual work out of our ops loop. Our team finally has room to breathe.",
     role: "VP of Operations",
     company: "Health & wellness DTC",
-    metric: "65% faster ops",
     initial: "W",
   },
   {
     quote:
-      "X9Elysium took us from 3 disconnected sales channels to a fully unified commerce setup in under 90 days. One source of truth, finally.",
+      "X9Elysium took us from disconnected sales channels to a fully unified commerce setup. One source of truth, finally.",
     role: "Head of Digital",
     company: "Multi-location home goods",
-    metric: "Omnichannel in 90 days",
     initial: "H",
   },
 ];
@@ -87,8 +81,9 @@ export default function Testimonials() {
             What our clients say
           </h2>
           <p className="text-neutral-600 dark:text-neutral-400 text-body-lg max-w-2xl mx-auto leading-relaxed">
-            We measure success by what our clients achieve. Here&apos;s what
-            they&apos;ve experienced.
+            We measure success by what our clients achieve. Names and metrics
+            are anonymized — most of our work runs under NDA, and we&apos;d
+            rather under-claim than overstate.
           </p>
         </motion.div>
 
@@ -106,8 +101,8 @@ export default function Testimonials() {
               transition={sectionTransition}
               className="glass-card p-8 sm:p-10 flex flex-col hover:border-emerald-500/10 hover:shadow-lg hover:shadow-emerald-500/[0.03] transition-all duration-500"
             >
-              {/* Metric badge + Star rating */}
-              <div className="flex items-center justify-between mb-6">
+              {/* Star rating */}
+              <div className="flex items-center mb-6">
                 <div className="flex gap-1">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <Star
@@ -116,11 +111,6 @@ export default function Testimonials() {
                     />
                   ))}
                 </div>
-                {testimonial.metric && (
-                  <span className="text-[11px] font-semibold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full uppercase tracking-wider">
-                    {testimonial.metric}
-                  </span>
-                )}
               </div>
 
               {/* Quote */}
