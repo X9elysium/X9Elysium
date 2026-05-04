@@ -3,7 +3,8 @@ export type Department =
   | "Design"
   | "Marketing"
   | "Operations"
-  | "Strategy";
+  | "Strategy"
+  | "Sales";
 
 export type Location = "Remote — Canada";
 
@@ -211,6 +212,132 @@ export const jobs: Job[] = [
       "Direct mentorship from our founding team.",
     ],
     postedAt: "2026-03-21",
+  },
+  {
+    slug: "head-of-sales-smb-shopify",
+    title: "Head of Sales — SMB Shopify",
+    department: "Sales",
+    location: "Remote — Canada",
+    type: "Full-time",
+    experience: "6+ years (2+ leading sales managers)",
+    salaryRange: "CA$150,000 – CA$200,000 OTE + profit share",
+    shortDescription:
+      "Build and own the SMB go-to-market motion end-to-end — pipeline, team, forecast, and pricing — for a senior-led Shopify consultancy.",
+    about:
+      "X9Elysium has been a founder-sold business since 2022. We've crossed $5M+ in client GMV influenced and 30+ shipped engagements without an outbound team. The Head of Sales is the first leadership hire in this function: you'll design the SMB sales motion from scratch, hire the AEs and Sales Manager who report to you, and own the number alongside the founders. We're not looking for a quota-carrier with a manager title — we want an operator who has built a sales engine for a services or commerce-platform business serving SMB merchants ($500K – $10M GMV) and can do it again here.",
+    responsibilities: [
+      "Own the SMB pipeline target end-to-end — generation, conversion, average deal size, and forecast accuracy.",
+      "Design the sales playbook from ICP definition through discovery, scoping, proposal, and close — codify what currently lives in the founders' heads.",
+      "Hire and lead the team: 2–4 Account Executives + 1 Sales Manager within 12 months.",
+      "Build the outbound motion: source list strategy, sequencing, attribution, and the line where it stops feeling like spam.",
+      "Own commercial pricing for retainers and project work alongside the founders, including discount discipline and floor pricing.",
+      "Run the forecast cadence — weekly pipeline reviews, monthly board-ready commit, quarterly capacity planning.",
+      "Partner with delivery to ensure every signed deal is one we can ship without melting the team.",
+    ],
+    requirements: [
+      "6+ years in B2B sales selling services, software, or platforms to SMB ecommerce merchants — Shopify, BigCommerce, WooCommerce, Magento, Klaviyo, Recharge, or similar adjacent ecosystems.",
+      "2+ years leading sales managers or running a sales org of 3+ reps with a documented pipeline methodology (MEDDPICC, Command of the Message, or equivalent).",
+      "A track record of building from $0 → $3M+ ARR or net-new bookings in a services/consulting or platform-adjacent business.",
+      "Founder-comfort — you can sit across from a Shopify Plus operator, talk migration cost vs. ROI, and disagree with a CFO without losing the room.",
+      "Excellent written craft: forecasts, account plans, post-mortems, and exec recaps are part of the job, not delegated.",
+    ],
+    niceToHave: [
+      "Prior Shopify Partner ecosystem experience (agency, app, or Shopify enterprise team).",
+      "Operated as a player-coach in your last role — happy to take the founder calls when the team needs cover.",
+      "Built or rebuilt a CRM (HubSpot or Pipedrive preferred) and tied it to delivery handoff cleanly.",
+    ],
+    whatYouGet: [
+      "Founders-direct: you report to Darshan and Adhvait, no shadow leadership layer.",
+      "Real upside — base + uncapped variable + profit-share on the book of business you build.",
+      "First-hire authority: you pick the AEs, you pick the Sales Manager, you pick the stack.",
+      "Remote-first across Canada with quarterly in-person founder + leadership offsites.",
+      "Education + conference budget (Shopify Editions, Pavilion, Sales Hacker, Winning by Design).",
+    ],
+    postedAt: "2026-05-04",
+  },
+  {
+    slug: "sales-manager-smb-ecommerce",
+    title: "Sales Manager — SMB Ecommerce",
+    department: "Sales",
+    location: "Remote — Canada",
+    type: "Full-time",
+    experience: "4+ years (2+ in sales management)",
+    salaryRange: "CA$110,000 – CA$140,000 OTE",
+    shortDescription:
+      "Lead a small AE team selling Shopify implementations, replatforms, and retainers to SMB merchants across Canada.",
+    about:
+      "We're hiring a Sales Manager who has actually managed AEs — not just been the strongest closer with a 'manager' title. You'll own a team of 2–4 Account Executives who sell Shopify and Shopify Plus engagements to small and medium ecommerce operators ($500K – $10M GMV). The role is half coaching, half operating: you'll run the pipeline cadence, sit on first-call demos when needed, and make sure every commit number is one we can defend in front of the founders.",
+    responsibilities: [
+      "Manage 2–4 AEs day-to-day: 1:1s, pipeline reviews, deal coaching, ramp plans.",
+      "Own the team's commit and best-case forecast every week — accuracy matters more than optimism here.",
+      "Run discovery and scoping calls alongside AEs on deals above CA$50K project value.",
+      "Coach AEs on the founder-led wedge — why senior, named teams beat the 5-person agency stand-up — and make sure the message doesn't drift.",
+      "Hold the line on discounting. Protect retainer floors. Walk away from misfit deals before they hit delivery.",
+      "Partner with delivery (engineering, design, CSM) to keep handoff clean and post-sale expectations grounded.",
+      "Write the weekly pipeline narrative: what moved, what slipped, what we changed.",
+    ],
+    requirements: [
+      "4+ years in B2B sales total, with at least 2 years managing a team of AEs in a services, agency, or commerce-SaaS environment.",
+      "Documented experience selling into SMB ecommerce — Shopify, BigCommerce, Klaviyo, Recharge, or comparable ecosystems.",
+      "Comfort with a CRM forecast (HubSpot or Pipedrive) and a clear, defensible methodology for staging a deal.",
+      "Strong written communication — pipeline reviews, deal reviews, and coaching notes should be in writing, not on a whiteboard.",
+      "Senior demeanour — you can sit on a call with a $5M DTC founder and a CFO and run the room.",
+    ],
+    niceToHave: [
+      "Background as an AE or AM at a Shopify Plus partner agency.",
+      "Hands-on with sales engagement tools (Apollo, Outreach, Smartlead, Instantly).",
+    ],
+    whatYouGet: [
+      "Direct line to the Head of Sales and founders — no BDR-of-the-month culture.",
+      "Real ownership: you manage the AEs, you set the cadence, you run the room on Mondays.",
+      "Variable comp tied to team attainment and retention — both halves of the equation.",
+      "Remote-first across Canada with full hardware + tooling budget.",
+      "Path to Director-level promotion as the team scales.",
+    ],
+    postedAt: "2026-05-04",
+  },
+  {
+    slug: "account-executive-smb-shopify",
+    title: "Account Executive — SMB Shopify",
+    department: "Sales",
+    location: "Remote — Canada",
+    type: "Full-time",
+    experience: "2+ years (selling to SMB ecommerce)",
+    salaryRange: "CA$80,000 – CA$110,000 OTE (CA$50K base + uncapped variable)",
+    shortDescription:
+      "Close Shopify implementation, replatform, and retainer deals with SMB ecommerce founders — outbound + warm inbound, 30–90 day cycles.",
+    about:
+      "An Account Executive at X9Elysium does not get fed leads from a BDR you'll never meet. You'll be on the first call, the discovery call, the scoping call, and the close call — supported directly by the founders, the Head of Sales, and the engineering and design team that ships the work. Our average deal is a CA$25K – CA$150K Shopify engagement with a $500K – $10M GMV merchant, often replatforming from Magento or WooCommerce, occasionally graduating to Shopify Plus. If you've sold consulting, services, or commerce platforms to SMB founders before, you'll recognize the motion.",
+    responsibilities: [
+      "Own a quota of 4–6 closed-won engagements per quarter at CA$25K – CA$150K average deal value.",
+      "Run discovery, scoping, and proposal calls directly with SMB founders, ecom managers, and ops leads.",
+      "Build pipeline through a balanced mix of outbound prospecting (40%), inbound from web + Shopify Partner directory (40%), and ecosystem referral (20%).",
+      "Translate technical scope into commercial proposals with the help of our solutions architect and delivery team.",
+      "Maintain a clean CRM — accurate next steps, dollar amounts, expected close dates. We forecast off your numbers.",
+      "Co-own the handoff to delivery: every signed SOW comes with a written brief that engineering and design can ship from.",
+      "Feed product-marketing the language merchants actually use — what's working, what isn't, what's missing from the website.",
+    ],
+    requirements: [
+      "2+ years in a closing role at a B2B services, agency, or commerce-SaaS company selling into SMB ecommerce.",
+      "Demonstrated track record hitting quota for at least four consecutive quarters.",
+      "Working knowledge of Shopify or a comparable ecommerce platform — you should be able to discuss conversion, AOV, MER, and a replatform timeline credibly.",
+      "Excellent written craft: discovery recaps, proposals, and follow-up emails should be sharp and short.",
+      "Comfort being the senior-most person in the deal until scope-of-work — no AM safety net.",
+      "2+ years in a leadership capacity broadly defined: managed a book, mentored a BDR, ran your own pipeline, or led a sales pod. We're not hiring entry-level.",
+    ],
+    niceToHave: [
+      "Experience selling Shopify Plus engagements specifically.",
+      "Background as a Shopify merchant, in-house ecom manager, or agency strategist before moving to sales.",
+      "Multilingual (FR-CA particularly useful — we serve Quebec merchants).",
+    ],
+    whatYouGet: [
+      "Uncapped variable — the more you close, the more you make.",
+      "Founders, architects, and designers on every important call. We sell as a team.",
+      "Real warm inbound from our website, Shopify Partner directory, and Clutch profile.",
+      "Remote-first across Canada with full SDR-tool, CRM, and hardware budget.",
+      "Direct mentorship from the Head of Sales and founders — quarterly career-growth syncs in writing.",
+    ],
+    postedAt: "2026-05-04",
   },
   {
     slug: "junior-shopify-developer",

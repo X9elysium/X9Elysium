@@ -12,6 +12,26 @@ Format:
 
 ---
 
+## (pending) — 2026-05-04 — three sales roles + sales team playbook
+
+- Touched:
+  - **`app/lib/careers.ts`** — added `"Sales"` to the `Department` union, then prepended three new role objects so they sort to the top by `postedAt: "2026-05-04"`:
+    - `head-of-sales-smb-shopify` — Head of Sales — SMB Shopify, 6+ yrs (2+ leading sales managers), CA$150K – $200K OTE + profit share, reports to founders, owns the SMB sales motion end-to-end (pipeline, hiring, forecast, pricing).
+    - `sales-manager-smb-ecommerce` — Sales Manager — SMB Ecommerce, 4+ yrs (2+ in sales mgmt), CA$110K – $140K OTE, manages 2–4 AEs, reports to Head of Sales.
+    - `account-executive-smb-shopify` — Account Executive — SMB Shopify, 2+ yrs selling to SMB ecom (with 2+ yrs of "leadership broadly defined" — book ownership, pod mentorship, etc.), CA$80K – $110K OTE (CA$50K base + uncapped variable), 30–90 day cycles, CA$25K – $150K average deal.
+    - All three include responsibilities, requirements (with Shopify ecosystem fluency requirement), nice-to-haves, and `whatYouGet` blocks aligned to the existing job-detail page template. Department + JobPosting JSON-LD on `/careers` and per-role JSON-LD on `/careers/[slug]` pick the new roles up automatically — no template changes needed.
+  - **`docs/sales/README.md`** (NEW) — index for the new sales folder with a roles table linking to the three live role URLs.
+  - **`docs/sales/sales-team-playbook.md`** (NEW) — v1.0 of the operating manual for the sales team. 14 sections covering: ICP (SMB Shopify $500K–$10M GMV, anti-ICP list), the founder-led wedge, the 0→5 stage funnel with exit criteria, 40/40/20 pipeline mix + outbound rules of engagement, pricing floors (CA$25K project / CA$8K retainer / CA$2.5K day-rate) + tiered discount authority (AE 0–5%, Manager 5–10%, Head of Sales 10–15%, Founders 15%+), sales-to-delivery handoff doc requirements, forecast cadence (Monday 09:00 PT pipeline review, 11:00 PT forecast call), comp philosophy with clawback rules, an 8-rule code of conduct (never lie, never sell to anti-ICP, never trash competitors by name, etc.), CRM loss-reason picklist, escalation matrix (Head of Sales / founders / delivery joint), tooling baseline (HubSpot, Apollo + Smartlead, Fathom, DocuSign), and a 30-day onboarding checklist.
+  - **`docs/sales/hiring-plan-2026.md`** (NEW) — sequencing rationale (Head of Sales first, AE last — the system before the seats), fully loaded cost model (~CA$485K worst-case if all three start in 2026, ~CA$215K realistic), Year-1 quota model (AE = CA$1.0M closed-won), application flow until ATS ships (mailto → darshan@x9elysium.com), and the promotion plan (LinkedIn personal feeds → x.com → Shopify Partner directory once claimed).
+- Tasks moved (CLAUDE.md → Remaining → Recently Completed): Sales function stand-up — three roles posted + playbook + hiring plan published.
+- Notes:
+  - **Why post all three at once.** Senior sales talent looks at the org chart before applying. Posting an AE role alone signals chaos; posting Head of Sales + Sales Manager + AE simultaneously signals an investment thesis. Documented in `hiring-plan-2026.md`.
+  - **AE "2+ years leadership" framing.** Darsh's brief asked for 2+ years of leadership across all three roles. For the AE that translates to *book ownership / pod mentorship / pipeline ownership* rather than people management — explicitly called out in the requirements list so it doesn't read as inflated.
+  - **Why a Sales department, not "Strategy".** Adds a sixth value to the `Department` union — the careers filter, JSON-LD payload, and breadcrumbs all key off this so the Sales filter chip appears automatically on `/careers`.
+  - **Application path is mailto for now.** Existing `[slug]/page.tsx` template emits `mailto:darshan@x9elysium.com?subject=Application — {role} ({location})` — Darsh asked for this, and the playbook says we'll move to an ATS only when volume forces it.
+
+---
+
 ## (pending) — 2026-05-04 — vancouver location page + testimonials cleanup + person schema + indexnow key
 
 - Touched:
