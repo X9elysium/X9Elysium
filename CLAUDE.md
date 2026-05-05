@@ -62,6 +62,14 @@ All generated markdown (audits, reports, plans, notes) lives in `docs/`. Never d
 
 Run `npm run docs` to open a Google Drive-style browser of `docs/` at `http://localhost:4000/docs`. Folder tree, search, in-place markdown editing (saves to disk), create/delete, and print-to-PDF via the browser. Lives in `scripts/docs-viewer/` and is not part of the static export — keeps the journal private.
 
+**Medium-style audio player** is built into the viewer — every `.md` file gets a "Listen" pill at the bottom. Three TTS providers:
+
+- **Browser** (default, free, offline) — uses your OS voices via `SpeechSynthesis`. The "British (default)" preset auto-picks Daniel/Kate/Serena on macOS.
+- **OpenAI** — needs an OpenAI API key pasted into the in-app voice-settings modal. Built-in preset uses `fable` (British). Key never leaves localhost; the `/api/tts` server proxy forwards directly to OpenAI.
+- **ElevenLabs** — needs an ElevenLabs API key. Three named presets ship out of the box pointing at default-library voices: **British (hot)** → Charlotte, **Naval-style** → Brian (calm male), **Elon-style** → Adam (deep male). The voice ID is editable per preset, so a properly licensed cloned voice ID can be pasted in.
+
+Speed control (0.75×–2×), MP3 download (cloud providers only — browser TTS can't be exported as a file), progress scrubbing for cloud playback, and per-paragraph chunking with parallel prefetch so long docs start playing in <1s. Settings + presets persist in `localStorage`; API keys are sent only when you hit Play and never logged or persisted by the server.
+
 ### Per-commit update protocol
 
 Every time changes are committed or pushed:

@@ -176,6 +176,80 @@ const server = http.createServer(async (req, res) => {
       return sendJSON(res, 200, { ok: true });
     }
 
+    // API: text-to-speech proxy. The user's API key is sent from the browser
+    // (localhost only) and forwarded to the chosen provider. Returns audio bytes.
+    if (pathname === "/api/tts" && req.method === "POST") {
+      const body = await readBody(req);
+      let payload;
+      try {
+        payload = JSON.parse(body || "{}");
+      } catch {
+        return sendJSON(res, 400, { error: "Invalid JSON" });
+      }
+      const { provider, text, voiceId, apiKey, model, speed, stability, similarityBoost } = payload;
+      if (!text || typeof text !== "string") return sendJSON(res, 400, { error: "text required" });
+      if (text.length > 8000) return sendJSON(res, 413, { error: "Chunk too large (max 8000 chars)" });
+      if (!apiKey) return sendJSON(res, 400, { error: "apiKey required" });
+
+      try {
+        let upstream;
+        if (provider === "openai") {
+          upstream = await fetch("https://api.openai.com/v1/audio/speech", {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${apiKey}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              model: model || "tts-1",
+              input: text,
+              voice: voiceId || "fable",
+              speed: typeof speed === "number" ? Math.max(0.25, Math.min(4.0, speed)) : 1.0,
+              response_format: "mp3",
+            }),
+          });
+        } else if (provider === "elevenlabs") {
+          if (!voiceId) return sendJSON(res, 400, { error: "voiceId required for ElevenLabs" });
+          upstream = await fetch(
+            `https://api.elevenlabs.io/v1/text-to-speech/${encodeURIComponent(voiceId)}`,
+            {
+              method: "POST",
+              headers: {
+                "xi-api-key": apiKey,
+                "Content-Type": "application/json",
+                Accept: "audio/mpeg",
+              },
+              body: JSON.stringify({
+                text,
+                model_id: model || "eleven_multilingual_v2",
+                voice_settings: {
+                  stability: typeof stability === "number" ? stability : 0.5,
+                  similarity_boost: typeof similarityBoost === "number" ? similarityBoost : 0.75,
+                },
+              }),
+            }
+          );
+        } else {
+          return sendJSON(res, 400, { error: "provider must be 'openai' or 'elevenlabs'" });
+        }
+
+        if (!upstream.ok) {
+          const errText = await upstream.text();
+          return sendJSON(res, upstream.status, {
+            error: `Upstream ${provider} error`,
+            detail: errText.slice(0, 800),
+          });
+        }
+        const buf = Buffer.from(await upstream.arrayBuffer());
+        return send(res, 200, buf, {
+          "Content-Type": "audio/mpeg",
+          "Content-Length": String(buf.length),
+        });
+      } catch (e) {
+        return sendJSON(res, 502, { error: "TTS request failed", detail: e.message });
+      }
+    }
+
     // API: rename
     if (pathname === "/api/rename" && req.method === "POST") {
       const body = await readBody(req);
