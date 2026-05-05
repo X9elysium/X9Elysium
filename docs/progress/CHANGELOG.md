@@ -12,6 +12,16 @@ Format:
 
 ---
 
+## (pending) — 2026-05-05 — claude.md hand-tuned operating manual rewrite
+
+- Touched:
+  - **`CLAUDE.md`** — full rewrite from the old template-style project guide into a hand-tuned operating manual. New sections: WHO (founders + credo), WHY (3 jobs of the site), WHAT (stack table), MAP (folder layout), WHERE (docs index), HOW Claude works (decision authority — what to ship without asking vs what needs Darsh's nod), HARD RULES (don'ts), VOICE & STYLE, WORKFLOW (commands + per-commit protocol + gotchas), CURRENT STATE (pointer to CHANGELOG), THE FUTURE (Supreme subdomain, owned chat moat, cornerstone content, sales function), and a BRIEF TEMPLATE for Grok-generated prompts.
+- Notes:
+  - File is now load-bearing for any agent (Claude, Grok, future) working on the repo. Replaces the auto-generated `/init` style with Darsh's actual posture.
+  - Also fixed local git identity: `user.name` → `dpatel999`, `user.email` → `darshanpatel1902@gmail.com` (email was already correct, name was previously "Darsh Patel").
+
+---
+
 ## (pending) — 2026-05-05 — medium-style audio player on /docs viewer
 
 - Touched:

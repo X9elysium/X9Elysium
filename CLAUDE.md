@@ -1,185 +1,258 @@
-# X9Elysium — Project Guide
+# X9Elysium — CLAUDE.md
 
-## Overview
-X9Elysium is a Shopify unified commerce consulting agency website built with Next.js 14 (App Router + legacy Pages Router). Deployed on Hostinger at x9elysium.com (site + domain). Premium dark-mode aesthetic with emerald green accent.
+> **One-line brief:** This is the operating manual for any agent (Claude Code, Grok-via-Claude, future humans) working on **x9elysium.com** — Darshan Patel's Shopify Plus consulting practice. Treat it as Darsh's voice giving you authority to ship.
 
-## Architecture
+---
 
-### Dual-Router Setup
-- **`app/`** — New App Router pages (TypeScript, Framer Motion)
-- **`pages/`** — Legacy Pages Router (JavaScript, GSAP) — retained for blog, about during migration
-- **IMPORTANT:** `pages/index.js` was removed to avoid route conflict with `app/page.tsx` on `/`.
+## 1. WHO
 
-### Tech Stack
-- **Framework:** Next.js 14 (App Router + Pages Router coexisting)
-- **Language:** TypeScript (new code), JavaScript (legacy)
-- **Styling:** Tailwind CSS 3 (custom utility classes in `app/globals.css`)
-- **Animations:** Framer Motion (shared variants in `app/lib/animations.ts`)
-- **Icons:** lucide-react
-- **Fonts:** Inter (via `next/font/google`, weights: 300, 400, 500, 600, 700)
-- **Deployment:** Hostinger as **static hosting** — `next.config.js` has `output: "export"`, build emits `out/` (HTML + assets). Upload `out/` to Hostinger or wire Hostinger's deploy to publish that directory. No Node.js process runs in production.
-- **Contact Form:** Web3Forms API (client-side)
+- **Darsh** — founder. Operates from GTA, ships from anywhere. Voice: terse, founder-led, no fluff, no fabricated metrics. Reads Naval + Thiel as load-bearing. Prefers async over chat. Commits in lowercase. Always pushes to `main` after a plan executes.
+- **Adhvait** — co-founder. Real human, real LinkedIn (`/about` JSON-LD has `sameAs`).
+- **No juniors. No handoffs. No outsourcing.** That is the wedge. Don't soften it.
+- **Root credo:** वसुधैव कुटुम्बकम् — *Vasudhaiva Kutumbakam* — "the world is one family." Every pillar, rule, and product decision answers to this. See `app/foundation/` and `docs/books-learning/`.
 
-### Key Directories
-- `app/` — App Router root (layout, page, globals.css)
-- `app/components/` — Client components for homepage sections (9 components)
-- `app/lib/` — Shared utilities (animations.ts)
-- `app/contact/` — Contact page with Web3Forms integration
-- `pages/` — Legacy router (blog, about, terms)
-- `config/` — Site config JSON (menu, theme, social, config)
-- `content/` — Markdown content for pages and blog posts
-- `public/images/` — Static assets
-- `docs/` — All generated/maintained markdown (audits, journal, progress log). Outside `app/`/`pages/` so it is not part of the static export. See `docs/README.md`.
+---
 
-### Design System
-- **Background:** `#000000` (black), `#171717` (neutral-900), `#0a0a0a` (neutral-950)
-- **Light sections:** `#f5f5f5` (neutral-100), `#f7f5f2` (warm beige)
-- **Accent:** Emerald green scale (`#10b981` primary, `#34d399` light, `#059669` dark)
-- **Text:** white (primary on dark), `#a3a3a3` neutral-400 (secondary on dark), `#737373` neutral-500 (on light), `#171717` neutral-900 (headings on light)
-- **Borders:** `border-white/[0.06]` on dark, `border-neutral-200/60` on light
-- **Cards:** `rounded-xl` (services), `rounded-2xl` (glass cards, case studies)
-- **Typography:** Inter, fluid clamp() sizing, negative letter-spacing on headings
-- **Buttons:** `.btn-primary`, `.btn-primary-light`, `.btn-accent`, `.btn-outline` in globals.css (all `rounded-lg` with shadow hover)
-- **Glassmorphism:** `.glass-card` utility (bg-white/[0.03], backdrop-blur, rounded-2xl)
-- **Animation library:** `app/lib/animations.ts` — shared variants (fadeUp, fadeUpBlur, fadeIn, scaleIn, staggerContainer, heroStagger) and easing (smoothEase)
-- **Noise overlay:** Subtle film-grain texture at 1.5% opacity via SVG filter in globals.css
+## 2. WHY THIS REPO EXISTS
 
-### Config Compatibility
-- `tsconfig.json` must keep `baseUrl: "."` for Pages Router imports (e.g., `import "styles/style.scss"` in `_app.js`)
-- `jsconfig.json` still exists — Next.js uses tsconfig when present
-- Tailwind `content` array includes both `app/` and `pages/` paths
+x9elysium.com is the **front door, the proof, and the asset.** It does three jobs and only three jobs:
 
-## Documentation Workflow
+1. **Convert warm inbound** — founders who want a Shopify Plus partner that isn't a 200-person agency.
+2. **Compound trust** — through writing, schema, and AI citations so the next founder finds us via ChatGPT/Perplexity/Google AI Overviews instead of cold outbound.
+3. **Be the canvas** — for everything Darsh wants to build next. The site is a living thesis, not a brochure.
 
-All generated markdown (audits, reports, plans, notes) lives in `docs/`. Never drop a new `.md` at the repo root — put it in `docs/<subfolder>/`.
+If a change doesn't serve at least one of those three, push back before doing it.
 
-- `docs/audits/` — audit reports (SEO, GEO, performance, accessibility). One file per audit.
-- `docs/journal/` — Darsh's go-to-market journal and goal tracking. Exposed at `/docs/journal` **encrypted at build time** (AES-GCM + PBKDF2-SHA-256, 100k iterations, default PIN `8344` overridable via `JOURNAL_PIN` env var). Ciphertext-only ships in the bundle; decryption happens in the browser after PIN entry. Still **not linked from main site nav, sitemap, or footer** — only from inside `/docs`. Treat as semi-private; don't write anything you wouldn't be OK with a determined person eventually finding.
-- `docs/progress/CHANGELOG.md` — running log of commits and which redesign tasks moved.
-- `docs/deployments/post-push-checks.md` — mandatory post-push verification protocol. **Run after every `git push origin main`** before reporting "done" to Darsh.
+---
 
-### Local viewer
+## 3. WHAT (the stack, fast)
 
-Run `npm run docs` to open a Google Drive-style browser of `docs/` at `http://localhost:4000/docs`. Folder tree, search, in-place markdown editing (saves to disk), create/delete, and print-to-PDF via the browser. Lives in `scripts/docs-viewer/` and is not part of the static export — keeps the journal private.
+| Thing | Choice |
+| --- | --- |
+| Framework | Next.js 14 — App Router primary, Pages Router legacy (blog, terms) |
+| Output | `next.config.js` → `output: "export"` → static `out/` |
+| Language | TypeScript for new code, JS for legacy |
+| Styling | Tailwind 3 + custom utilities in `app/globals.css` |
+| Motion | Framer Motion — shared variants in `app/lib/animations.ts` |
+| Icons | `lucide-react` |
+| Fonts | Inter (UI) + Noto Sans Devanagari (credo) via `next/font/google` |
+| Deploy | **Cloudflare Workers Static Assets** — `wrangler.toml`, push-to-`main` builds + ships `out/` |
+| Domain | Registered at Hostinger, DNS points at Cloudflare |
+| Dynamic backend | Cloudflare Worker at `worker/` — handles `/api/lead`, `/api/chat`, `/api/health` |
+| Lead email | Resend (pending DNS + secret) |
+| Chat | Claude Sonnet 4.6 via Anthropic API, PIN-gated, corpus-grounded |
 
-**Medium-style audio player** is built into the viewer — every `.md` file gets a "Listen" pill at the bottom. Three TTS providers:
+Aesthetic: matte black + emerald `#10b981` + Inter, soft glass cards, gradient mesh, film-grain noise overlay. Don't reinvent this — extend it.
 
-- **Browser** (default, free, offline) — uses your OS voices via `SpeechSynthesis`. The "British (default)" preset auto-picks Daniel/Kate/Serena on macOS.
-- **OpenAI** — needs an OpenAI API key pasted into the in-app voice-settings modal. Built-in preset uses `fable` (British). Key never leaves localhost; the `/api/tts` server proxy forwards directly to OpenAI.
-- **ElevenLabs** — needs an ElevenLabs API key. Three named presets ship out of the box pointing at default-library voices: **British (hot)** → Charlotte, **Naval-style** → Brian (calm male), **Elon-style** → Adam (deep male). The voice ID is editable per preset, so a properly licensed cloned voice ID can be pasted in.
+---
 
-Speed control (0.75×–2×), MP3 download (cloud providers only — browser TTS can't be exported as a file), progress scrubbing for cloud playback, and per-paragraph chunking with parallel prefetch so long docs start playing in <1s. Settings + presets persist in `localStorage`; API keys are sent only when you hit Play and never logged or persisted by the server.
+## 4. THE MAP
 
-### Per-commit update protocol
-
-Every time changes are committed or pushed:
-
-1. **Append a new entry to `docs/progress/CHANGELOG.md`** (newest first) using the format documented at the bottom of that file.
-2. **Move completed items in `CLAUDE.md → Redesign Progress`** from `### Remaining` to `### Completed`.
-3. **Add new tasks discovered during the commit** to `### Remaining`.
-4. If the commit produced a new audit / report, save it under `docs/audits/` with a dated filename.
-5. Never create a new `.md` outside `docs/` (except `README.md` and `CLAUDE.md`, which stay at root).
-6. **Run the post-push verification protocol** in `docs/deployments/post-push-checks.md`. Don't claim a deploy is "live" until every check passes — Hostinger CDN aggressively caches HTML and can mask broken builds.
-
-## Commands
-
-```bash
-npm run dev          # Dev server
-npm run build        # Production build → static export in out/
-npm run deploy:zip   # Build + zip out/ → x9elysium-static.zip (upload to Hostinger)
-npm run docs         # Local docs viewer at http://localhost:4000/docs (Google Drive-style browser for docs/)
-npm run lint         # ESLint
+```text
+app/                 App Router (TypeScript, Framer Motion)
+  components/        Homepage sections (Hero, Services, Work, Tweets, etc.)
+  lib/               animations.ts, booking.ts, careers.ts
+  <route>/           Server-component shells with Metadata + JSON-LD
+  <route>/Client.tsx Client components for interactivity
+pages/               Legacy router (blog, terms) — leave alone unless asked
+worker/              Cloudflare Worker — index.ts, chat.ts, email.ts, schema.sql
+config/              Site config JSON
+content/             Markdown for blog
+public/              Static assets, llms.txt, sitemap.xml, IndexNow keys
+data/                tweets.json, x-thoughts.md, x-posted.json
+scripts/             docs-viewer/, x/, build-chat-context.mjs
+docs/                EVERYTHING markdown — audits, journal, marketing, sales, etc.
 ```
 
-`npm start` is not used because the site is a static export — no Node.js process in production.
+---
 
-## Deployment
+## 5. WHERE THINGS LIVE (docs/ index)
 
-x9elysium.com is served as plain static hosting from Hostinger's `public_html/`.
+`docs/` is outside the static export. Read these before assuming context:
 
-**Primary path — Cloudflare Workers (Static Assets):** repo is connected to a Cloudflare project named `x9elysium`. On push to `main`, Cloudflare clones, runs `npm run build`, then `npx wrangler deploy` ships `out/` as static assets via Workers (configured in `wrangler.toml`). DNS for x9elysium.com points at the Cloudflare project; domain remains registered with Hostinger.
+- `docs/README.md` — folder map.
+- `docs/progress/CHANGELOG.md` — every commit, newest first. **Source of truth for "what shipped."** This file (CLAUDE.md) does not duplicate it.
+- `docs/deployments/post-push-checks.md` — mandatory verification protocol after every push.
+- `docs/leads/setup.md` — Resend activation recipe.
+- `docs/chat/README.md` — `/chat` setup + cost model.
+- `docs/sales/` — playbook, hiring plan, role briefs.
+- `docs/marketing/6-month-organic-growth-plan.md` — May–Nov 2026 cornerstone cadence.
+- `docs/marketing/third-party-listings.md` — Shopify Partner / Clutch / GBP / LinkedIn checklist.
+- `docs/books-learning/` — Naval + Thiel + applied notes. Load-bearing for voice.
+- `docs/journal/` — **PRIVATE.** AES-encrypted at build, PIN-gated browser decrypt. Never link from nav/sitemap/footer. Never feed to `/chat` corpus (build script enforces). Treat as semi-private — write nothing here you couldn't survive becoming public.
+- `docs/audits/` — SEO/GEO/perf audits, dated filenames.
 
-**Hostinger fallback (FTP):** historical workflow `.github/workflows/deploy-hostinger.yml` was removed (2026-05-02) — Cloudflare is the only deploy path now. See `docs/deployments/github-actions-ftp-deploy.md` for the recipe if you ever need to recreate it.
+`npm run docs` boots a Drive-style viewer at `localhost:4000/docs` with Medium-style audio playback. Never deploy it.
 
-**Manual fallback:** `npm run deploy:zip` builds + zips `out/` for direct upload anywhere.
+---
 
-## Known Issues
-- `node_modules/`, `.next/`, `.next-build/`, `tmp/` may be owned by root (from a previous `sudo npm` run). Fix with: `sudo chown -R $(whoami) node_modules .next .next-build tmp`
-- After fixing permissions: `rm -rf .next-build tmp` to clean stale build caches
-- Placeholder social links in footer (generic LinkedIn/Twitter/Instagram URLs — not real company profiles)
+## 6. HOW CLAUDE WORKS HERE
 
-## Redesign Progress
+### Authority — what you can decide without asking
 
-### Completed
-- [x] Homepage hero (gradient mesh bg, staggered blur-reveal animations, gradient text, dual CTAs, scroll indicator)
-- [x] Navigation (sticky, transparent-to-backdrop-blur scroll, reduced height, mobile gradient overlay with touch targets)
-- [x] Services section (6-card grid, rounded-xl cards, lift+glow hover, stagger animations, WCAG AA contrast)
-- [x] Case Studies (asymmetric masonry grid, rounded-2xl cards, scale hover, emerald glow overlay, richer gradients)
-- [x] Partners (infinite marquee animation, fade-edge gradients)
-- [x] Why Choose Us (gap-px stats bar in rounded-2xl container, reason cards in subtle containers, circular icons)
-- [x] Testimonials (glass-card treatment, gradient mesh bg, star ratings, gradient avatar rings)
-- [x] CTA banner (dark gradient mesh with emerald glow orbs, dual CTAs, gradient line separator)
-- [x] Footer (gradient top border accent, link hover translate-x, back-to-top button)
-- [x] Contact page (Web3Forms, glassmorphism inputs, rounded-xl, select chevrons, connector line for steps, gradient mesh CTA)
-- [x] SEO metadata (OG tags, Twitter cards, keywords, canonical URL via metadataBase, favicon)
-- [x] Tailwind CSS globals (glass-card, glow-emerald, text-gradient-emerald, noise-overlay, focus-visible, refined buttons)
-- [x] Shared animation library (app/lib/animations.ts)
-- [x] TypeScript config (compatible with both routers)
-- [x] Route conflict resolved (pages/index.js removed)
-- [x] Framer Motion scroll-reveal animations with shared variants
-- [x] Inter font via next/font (weights 300-700 including 600)
-- [x] Focus-visible styles for keyboard navigation
-- [x] Deployed on Hostinger (x9elysium.com)
-- [x] Foundation page at /foundation (Why + 5 Pillars + 10 Operating Rules; Naval-style premium copy; per-page SEO metadata + OG/Twitter; linked from Footer + About; registered in sitemap)
-- [x] Tawk.to chatbot removed (2026-05-02) — leads now flow through Web3Forms contact form + direct email only. Reason: Darsh prefers async, intentional inbound over chat triage.
+You have full authority on:
 
-### Remaining
+- **Code structure** — file placement, component split, naming, refactor scope (within the task).
+- **Copy edits** — tightening, killing fluff, removing fabricated numbers, flipping CTA hierarchy. Match Darsh's voice (see §8).
+- **Doc placement** — anything markdown goes in `docs/<subfolder>/`. Pick the subfolder, create it if needed. Never drop `.md` at repo root except this file and `README.md`.
+- **Schema/JSON-LD additions** — add Person, Organization, FAQ, Breadcrumb, OfferCatalog wherever the page warrants. E-E-A-T is a permanent priority.
+- **Visual polish** — within the design system in §3. Don't introduce a new accent color. Don't break the dark/emerald posture.
+- **Killing dead code** — delete unused components, routes, imports, packages. Don't ask permission to clean.
+- **Updating CHANGELOG** — append a new entry on every commit, newest first.
+- **Updating CLAUDE.md** — if you discover a new load-bearing constraint or change the architecture, edit this file. It's not sacred — keep it current.
 
-**Code tasks (anything I can do without an external account):**
+### Authority — what needs Darsh's nod
 
-- [ ] Cornerstone content cadence — see `docs/marketing/6-month-organic-growth-plan.md` for the May–November 2026 plan: 1 cornerstone piece per month + Magento → Plus migration field guide + Plus vs BigCommerce decision page in Month 2. (Slow grind, not a single PR.)
-- [ ] Wire IndexNow ping on every deploy — key is now hosted at `/.well-known/indexnow-key.txt` and the same key at `/22ff52dd50b59385439b192c6676d6df.txt` (root, IndexNow protocol form). Add a step to the Cloudflare deploy that POSTs the changed URL list to `https://api.indexnow.org/indexnow` after a successful build. Optional, low priority.
+- **Destructive ops** — `rm -rf`, dropping branches, force pushes, deleting `out/` from Cloudflare, rotating live secrets.
+- **External account work** — anything requiring Resend/Anthropic/Cal.com/Shopify Partner/Clutch/GBP/LinkedIn signups, DNS changes, or paid plan upgrades.
+- **Public claims** — adding a named testimonial, a named case study, a metric, or a press quote. If it can be challenged in public, Darsh confirms first. The site under-claims by design.
+- **New domain/subdomain provisioning.**
+- **Anything that touches the encrypted journal at `docs/journal/`.**
 
-**Asks for Darsh (require external accounts / decisions / personal artifacts):**
+When in doubt: ship the code, leave the public claim as a placeholder, and call it out in the commit + CHANGELOG entry as an "Ask for Darsh."
 
-- [ ] **Activate /chat (PIN-gated Claude assistant) by setting two Cloudflare Worker secrets:** `npx wrangler secret put ANTHROPIC_API_KEY` (key from console.anthropic.com) and `npx wrangler secret put CHAT_PIN` (any string — gates access to the chat), then `npm run worker:deploy`. Until both are set, the unlock screen surfaces "Chat is not configured" and `/api/chat` returns 503 — safe to ship the front-end first. Full setup recipe + cost model in `docs/chat/README.md`.
-- [ ] **Activate contact form delivery:** sign up for Resend, verify DNS for x9elysium.com (3 records: MX + SPF TXT + DKIM CNAME), then `npx wrangler secret put RESEND_API_KEY` once. Until then every form submission validates and then returns 502 → form gracefully shows "email us at darshan@x9elysium.com" with a mailto link. Safe to ship; just don't sit in that state long. Full recipe in `docs/leads/setup.md`.
-- [ ] **Third-party proof (highest-ROI gap, not codeable):** claim Shopify Partner directory profile + apply to Plus Partner track; claim Clutch profile + collect 5 verified reviews; claim Google Business Profile for the Mississauga HQ; create real LinkedIn company page (placeholder URL still in `config/social.json:4`). Full playbook in `docs/marketing/third-party-listings.md`.
-- [ ] Real testimonials with attributable names + permission (current copy is anonymized — "Head of Ecommerce, premium fashion DTC" etc. Replace once real client testimonials are collected.)
-- [ ] Real case studies with named clients + permissioned metrics — at least one named permissioned `/work/[slug]` case study before pitching tier-1 Canadian press in Month 5 of the 6-month plan.
-- [ ] Set `NEXT_PUBLIC_CALCOM_URL` (or `NEXT_PUBLIC_BOOKING_URL`) in Cloudflare project env so "Book a Strategy Call" CTAs flip to Cal.com — leaving unset routes them to `/contact` form (current behaviour). Hero CTA now leads with `BookingButton` so the calendar link matters more.
-- [ ] Drop real founder photos at `public/images/about/team/darshan.jpg` and `public/images/about/team/adhvait.jpg` (square, 96×96+ recommended). Cards currently render initials avatars; the data structure and UI are ready for the photos. LinkedIn can't be auto-scraped for this — save manually from the profiles.
+### How to start any task
 
-### Recently Completed
+1. Skim `docs/progress/CHANGELOG.md` for recent context (last 10–15 entries usually enough).
+2. Read the file you're about to change in full before editing.
+3. Run the post-push protocol after pushing — `docs/deployments/post-push-checks.md`. Hostinger/Cloudflare CDN caches HTML aggressively; don't claim "live" until checks pass.
+4. Update CHANGELOG before reporting "done."
 
-- [x] Sales function stand-up — first three sales roles + playbook + hiring plan (2026-05-04): added `"Sales"` to the `Department` union in `app/lib/careers.ts` and posted three roles top-of-stack with `postedAt: "2026-05-04"`: **Head of Sales — SMB Shopify** (slug `head-of-sales-smb-shopify`, CA$150K – $200K OTE + profit share, 6+ yrs / 2+ leading sales managers, reports to founders, owns the full SMB GTM motion: pipeline, hiring, forecast, pricing); **Sales Manager — SMB Ecommerce** (slug `sales-manager-smb-ecommerce`, CA$110K – $140K OTE, 4+ yrs / 2+ in mgmt, manages 2–4 AEs, reports to Head of Sales); **Account Executive — SMB Shopify** (slug `account-executive-smb-shopify`, CA$80K – $110K OTE = CA$50K base + uncapped variable, 2+ yrs selling to SMB ecom **with 2+ yrs leadership broadly defined** — book ownership, pod mentorship, pipeline ownership — 30–90 day cycles at CA$25K – $150K average deal). All three target SMB Shopify merchants in the **CA$500K – $10M GMV** range, remote-first across Canada, and surface automatically on `/careers` (filter chip, JSON-LD JobPosting, per-role JSON-LD, mailto:darshan@x9elysium.com application route — no template changes needed). Wrote `docs/sales/sales-team-playbook.md` v1.0 — 14-section operating manual covering ICP + anti-ICP + the founder-led wedge + the 0→5 stage funnel with exit criteria + 40/40/20 inbound/outbound/referral pipeline mix + outbound rules of engagement (5 touches over 21 days, no auto-DM tools, hard suppression list) + price floors (CA$25K project, CA$8K retainer, CA$2.5K day-rate) + tiered discount authority (AE 0–5%, Manager 5–10%, Head of Sales 10–15%, Founders 15%+) + sales-to-delivery handoff doc requirements + Monday 09:00 PT pipeline + 11:00 PT forecast cadence + comp philosophy with clawback rules + 8-rule code of conduct (never lie, never sell to anti-ICP, never trash competitors by name, never share another client's data) + CRM loss-reason picklist + escalation matrix + tooling baseline (HubSpot, Apollo + Smartlead, Fathom, DocuSign) + 30-day onboarding checklist. Also wrote `docs/sales/hiring-plan-2026.md` (Head-of-Sales-first sequencing rationale + ~CA$485K worst-case fully-loaded year-1 cost + Year-1 quota model with AE = CA$1.0M closed-won + mailto-based application flow until ATS volume justifies it + LinkedIn / X.com / Shopify Partner directory promotion plan) and `docs/sales/README.md` (folder index with the live role URLs). **Why all three at once:** senior sales talent looks at the whole org chart before applying — posting an AE alone signals chaos, posting Head + Manager + AE simultaneously signals an investment thesis. **Why Head of Sales first:** founder-sold businesses fail at sales-team scaling because they hire AEs first and watch them burn out under no system; Head of Sales builds the system → hires the manager → who hires the AEs.
-- [x] Pre-Monday housekeeping push (2026-05-04): closed five small Remaining tasks in one go so the site ships clean. **Built `/locations/vancouver`** (mirrored from Toronto/Calgary) with BC-specific copy — Pacific-Rim cross-border, BC tax (GST + PST + EHF + EPR), headless / Hydrogen for Vancouver's design-led DTC, and a 3-step "GTA-based, BC-aware" engagement explainer. Page registers in `app/sitemap.ts` (lastmod 2026-05-04, priority 0.85, monthly) and replaces the placeholder line in `public/llms.txt` (was "served remotely from the Mississauga HQ; dedicated /locations/vancouver page coming Q3 2026" → now a live link with city + speciality coverage). **Stripped per-quote metric badges from `app/components/Testimonials.tsx`** — anonymized testimonials with specific percentages read as fabricated; quotes now stand on the role + industry, with the section subhead rewritten to acknowledge the NDA posture explicitly ("Names and metrics are anonymized — most of our work runs under NDA, and we'd rather under-claim than overstate"). Per-quote prose tightened so a quote that previously said "Revenue increased 40%" now reads "the first quarter after launch was the strongest we've ever had" — directionally true, not provably specific. Removed five hard numbers across the six cards. **Added Person schema for Darshan + Adhvait to root layout JSON-LD** (`app/layout.tsx`) — both `Person` nodes (`@id`s reused from `/about` so the entities resolve as the same node site-wide), plus a `founder` property on the Organization node pointing to both `@id`s, and `https://x.com/x9elysium` added to Organization `sameAs`. E-E-A-T signal now ships on every page, not just `/about`. **Generated IndexNow API key** (`22ff52dd50b59385439b192c6676d6df`, openssl-random 32 hex chars) and dropped it at both `public/.well-known/indexnow-key.txt` and `public/22ff52dd50b59385439b192c6676d6df.txt` (root, IndexNow protocol form). **CLAUDE.md Remaining list reorganized** into "Code tasks I can do without an external account" (cornerstone content cadence + IndexNow ping wiring) vs "Asks for Darsh" (Resend signup + Anthropic key + Shopify Partner / Clutch / GBP / LinkedIn profiles + photos + Cal.com URL) so the asks are unambiguous. **Contact-form activation called out as a top-3 ask** — the form gracefully degrades to a "email us at darshan@x9elysium.com" mailto link if Resend isn't provisioned, but every submission returning 502 is the fastest way to lose warm inbound, so this is now flagged at the top of the asks list with the exact Resend-DNS-secret recipe pointed at `docs/leads/setup.md`. Outstanding: nothing else codeable for these five items — sitemap, llms.txt, schema, IndexNow key, and the location page are all live in the build.
-- [x] PIN-gated Claude chat at `/chat` grounded on the full docs corpus (2026-05-03): built an in-house assistant powered by Claude Sonnet 4.6, served through the same Cloudflare Worker that already handles `/api/lead`. **Worker** (`worker/chat.ts`): handles `POST /api/chat` — Origin allowlist (reused from lead worker) → constant-time PIN compare against `env.CHAT_PIN` → message validation (≤40 messages, ≤8 KB each, ≤60 KB total, last role must be `user`) → optional KV rate limit (40 msg/hour/IP, key prefix `cl:`, shares the existing `LEADS_KV` namespace so no new resource is needed) → POST to `https://api.anthropic.com/v1/messages` with `stream: true` against `claude-sonnet-4-6`. System prompt is two text blocks: (1) a persona/voice/scope ruleset (Darshan's terse founder voice, Vasudhaiva Kutumbakam grounding, "name source files when citing facts," "never fabricate," "the encrypted journal at /docs/journal is intentionally excluded"), and (2) the full doc corpus tagged with `cache_control: { type: "ephemeral" }` so multi-turn chats hit the prompt cache and pay 90% less from turn 2. Pipes the upstream SSE body straight back to the client. Returns 503 if either secret is unset, 401 on bad PIN, 422 on malformed payload, 429 on rate limit, 502 on upstream Anthropic failure. **Context builder** (`scripts/build-chat-context.mjs`): walks `public/llms.txt` + `docs/**` (excluding `docs/journal/**`) + `content/posts/**`, strips frontmatter, concatenates with `===== relpath =====` separators, caps at 600 KB, writes `worker/chat-context.json`. Wired as `prebuild` in `package.json` so every `next build` ships fresh corpus; current bundle is **28 files / 348 KB / ~80–100k tokens**. **Chat page** (`app/chat/page.tsx` + `app/chat/ChatClient.tsx`): server shell with `noindex,nofollow` metadata + client component (~330 lines). PIN gate validates by sending a probe `POST /api/chat` and immediately `body.cancel()`-ing the stream so the user never sees a "ping" exchange. PIN persists in `sessionStorage` (`x9_chat_pin_v1`); message history persists in `sessionStorage` (`x9_chat_history_v1`) so a refresh keeps the conversation but a closed tab does not. SSE consumer reads via `getReader()` + `TextDecoder`, parses event blocks, listens for `content_block_delta → text_delta`, appends incrementally to the trailing assistant message. UI matches the X9Elysium dark/emerald system — sticky topbar (back link, X9 Chat title, clear + lock buttons), sticky composer with auto-grow textarea (Enter sends, Shift+Enter newline), 4 starter-prompt suggestions on empty state, animated three-dot pending indicator, error states surfaced inline. **Routing**: `worker/index.ts` adds the `/api/chat` route + new `ANTHROPIC_API_KEY?` and `CHAT_PIN?` fields on `Env`. **Wrangler**: `wrangler.toml` documents the two new required secrets alongside the existing Resend/Slack ones; no new bindings (KV is reused). **Page is hidden:** not in the sitemap, footer, or navigation — discovery is by URL share only, same posture as `/docs/journal`. **Cost model**: Sonnet 4.6 at $3/M input + $0.30/M cached read + $15/M output → ~$0.25 first turn (full corpus paid once) / ~$0.03 follow-up turns within the 5-min cache window. A 10-turn conversation lands at ~$0.50 instead of ~$3 without caching. **Privacy**: the encrypted journal at `docs/journal/` is **never** loaded into the corpus — the build script's exclude list enforces this. Conversations live only in the user's `sessionStorage` (no D1 persistence), vanish on tab close. The PIN is held in `sessionStorage` and posted with each request — anyone with the PIN can quote internal strategy docs verbatim, so treat it as semi-private. **Docs**: `docs/chat/README.md` (architecture diagram, file map, one-time setup recipe, system-prompt explanation, cost model, operational recipes, privacy notes, failure-mode table, parked enhancements). **Outstanding before this is fully live**: Darsh must run `npx wrangler secret put ANTHROPIC_API_KEY` (key from console.anthropic.com) and `npx wrangler secret put CHAT_PIN` (any string) and redeploy the Worker. Until then, every chat attempt returns 503 → unlock screen shows "Chat is not configured" — so the deploy is safe to ship without the keys, the page just stays unusable until they're set.
-- [x] Custom lead-capture Worker on Cloudflare (2026-05-03): replaced the third-party Web3Forms dep with an owned `/api/lead` endpoint living in the same Cloudflare project that already serves the static site. **Worker** (`worker/index.ts`): handles `POST /api/lead`, falls through to the `ASSETS` binding for everything else; layered spam defenses run cheapest-first — `Origin` allowlist (x9elysium.com / www / localhost) → hidden honeypot input (`_gotcha`) returns silent 200 to bots → 2-second dwell trap (`_ts` captured at form mount; sub-2s submit returns silent 200) → optional KV per-IP rate limit (5/hour, key `rl:<ip>`, TTL 3600s) → field validation (firstName, lastName, valid email regex, message ≥10 chars, ≤5KB cap). Notification email to `darshan@x9elysium.com` is BLOCKING — if Resend fails, return 502 so the form surfaces "email us directly" instead of swallowing the lead. Auto-reply from `leads@x9elysium.com` and Slack webhook (both optional) run in `ctx.waitUntil` so they don't gate the response. Optional D1 binding (`LEADS_DB`) persists every lead to a `leads` table for follow-up tracking. Adds a `/api/health` liveness probe. **Email templates** (`worker/email.ts`): branded HTML notification (dark-mode card with emerald accent rule, info table, "Reply to {firstName}" mailto button, footer with received timestamp + IP + referer) and auto-reply in Darshan's voice ("Your message landed in my inbox directly — not a queue, not a CRM, not an SDR"). All user-supplied strings escaped through `escapeHtml`. **Form** (`app/contact/ContactClient.tsx`): pulled off Web3Forms entirely (was leaking `NEXT_PUBLIC_WEB3FORMS_KEY` in the client bundle), now POSTs to `/api/lead` same-origin. Added the off-screen honeypot input (`company_role`, absolute positioning + tabIndex=-1 + autoComplete=off), `formMountedAt` ref captured at mount and sent as `_ts`, and an `errorMessage` state that surfaces the Worker's actual 422/429/502 message. **Build wiring**: `wrangler.toml` got `main = "worker/index.ts"`, named the assets binding `ASSETS`, added `[vars]` for `LEAD_TO_EMAIL` + `LEAD_FROM_EMAIL`, and stub blocks for optional `[[kv_namespaces]]` + `[[d1_databases]]`. New `worker/tsconfig.json` (ES2022 + `@cloudflare/workers-types`) is isolated from the root tsconfig (root excludes the `worker` dir so DOM lib + Workers types don't collide). `package.json` adds `@cloudflare/workers-types ^4.20251101.0` + `wrangler ^4.36.0` as devDeps and four scripts: `worker:dev`, `worker:deploy`, `worker:tail`, `preview` (next build && wrangler dev — full local round-trip). **Persistence + ops**: `worker/schema.sql` defines the D1 `leads` table with received_at + email indexes. **Docs**: four files under `docs/leads/` — `README.md` (overview + ascii flow + why-custom comparison), `setup.md` (Resend signup → DNS verification → `wrangler secret put RESEND_API_KEY` → optional Slack/KV/D1 → smoke test recipe), `architecture.md` (request lifecycle + spam defense layers + cost model showing $0/mo expected on free tiers + failure-mode table + parked enhancements), `operations.md` (`wrangler tail`, D1 query recipes for last-25 / distinct-companies / CSV export, KV management, key rotation, escalation path). **Cost model**: $0/mo across Workers free tier (100k req/day) + Resend free tier (3k emails/month, 100/day) + KV (100k reads / 1k writes per day) + D1 (5M row reads / 100k writes per day). Outstanding before this is fully live: Darsh must sign up for Resend, verify DNS for x9elysium.com (3 records: MX + SPF TXT + DKIM CNAME), and run `npx wrangler secret put RESEND_API_KEY` once. Until then, every form submission will validate and then return 502 → form shows "email us at darshan@x9elysium.com" — so the deploy is safe to ship before Resend is provisioned, just don't sit in that state.
-- [x] X.com posting automation + homepage Tweets section + dashboard Tab 6 (2026-05-03): built the end-to-end X channel infra. **Posting:** GitHub Actions cron (`.github/workflows/x-post.yml`) fires twice daily at 17:13 + 01:13 UTC (09:13 + 17:13 PT, off-the-hour to dodge GH Actions runner drift). `scripts/x/post-next-thought.mjs` pops the top block from `data/x-thoughts.md`, posts via X API v2 (OAuth 1.0a User Context, `twitter-api-v2` package, isolated in `scripts/x/package.json` so the main install stays clean), updates `data/x-posted.json` (full audit log with metrics) + `data/tweets.json` (last 5 for the homepage), and commits all changes back to `main` — every post becomes a git commit, no separate logging infra. **Metrics sync:** `scripts/x/sync-metrics.mjs` runs every 6h via `.github/workflows/x-sync.yml`, refreshes likes/retweets/replies/bookmarks/impressions for the last 90d via `client.v2.tweets()`, writes `docs/admin-dashboard/sample-data/x-posts.csv` (with precomputed `engagement_rate`). Free tier impressions are best-effort — script handles null gracefully and continues. **Homepage:** new `app/components/Tweets.tsx` between Testimonials and FAQ — 3-up grid of glass cards with X9 avatar, handle, relative timestamp, full body, replies/RTs/likes counters, hover ArrowUpRight, "Follow on X" outlined CTA. Reads `data/tweets.json` via `@/data/tweets.json` static import (resolveJsonModule on, baseUrl=`.`); component returns `null` when tweets array is empty so the section is invisible until the first post lands. **Dashboard:** new `x-posts.csv` (header-only at ship time), Tab 6 spec added to `tableau-integration-plan.md` (KPI tiles + cadence timeline + engagement-rate trend + top-10 table + post-time heatmap), schema reference in `sample-data/README.md`, brief updated for the Tableau builder. **Operating manual:** `docs/marketing/x-automation-plan.md` documents the 8-step flow — X Developer app setup, four credentials + numeric user ID, GitHub repo secrets (`X_API_KEY`, `X_API_SECRET`, `X_ACCESS_TOKEN`, `X_ACCESS_TOKEN_SECRET`, `X_USER_ID`), queue editing rules (280-char limit, ~14-thought buffer, voice rails), pause/skip/manual-trigger recipes, failure modes table, kill criteria. Instagram explicitly excluded from the strategy — captured in auto-memory `feedback_social_channel.md` and called out in the Tableau spec + automation plan to prevent future drift. Outstanding: Darsh must complete Steps 1–3 of the operating manual (create X dev app + paste five secrets into GitHub) before the cron actually posts; until then, dry-runs work and the homepage section stays hidden.
-- [x] Books-learning folder + "library beneath" section on /foundation (2026-05-03): wrote four files in `docs/books-learning/` — `README.md` (index + 12-lesson TL;DR table cross-referenced to pillars/rules), `naval-ravikant.md` (deep notes on the Almanack — wealth/leverage/specific-knowledge/long-term-games/earn-with-mind-not-time + happiness/equanimity, each with explicit "implication for X9Elysium"), `zero-to-one.md` (deep notes on Thiel — contrarian question, 0→1 vs 1→n, monopoly characteristics, 10x rule, last-mover, foundations-are-unfixable / Thiel's law, distribution-as-engineering, definite optimism, power law, secrets, plus the Seven Questions answered honestly for X9Elysium 2026-05-03), and `applied-to-x9elysium.md` (audit trail of currently-honoured principles + concrete tasks for principles still to apply — decouple wealth from agency, quarterly desire-ledger audit, close the Distribution Question via Clutch / Shopify Partner directory, secrets-ledger.md, annual Thiel-seven-questions check every May). Added a new "The Library Beneath" section to `/foundation` (`#texts`) between Ten Rules and The Promise — two glass-card columns (Naval = Influence I, Thiel = Influence II), each with book metadata, an emerald-bordered pull quote, and a 4–5-item "What it changed at X9Elysium" list. Section uses `bg-black` with two emerald glow orbs so it reads as a quiet library between the warm Ten-Rules section and the dark Promise. New `BookOpen` + `Quote` lucide icons imported. The docs folder remains private (no outbound link from /foundation to the notes); the page names the books and headline lessons, the depth lives offline. Reasoning: Naval keeps the founder sane and compounding (covers leverage, pricing, equanimity); Thiel keeps the business durable and differentiated (covers monopoly, foundation, distribution, power law) — a founder-led consultancy dies of either burnout (no Naval) or commoditization (no Thiel), so both lenses are load-bearing.
-- [x] Tree-of-life mark on /foundation credo + Instagram video removed from homepage (2026-05-02): cleaned a 784×1168 source JPG (green tree on near-black with "X9Elysium.com" URL band) into a transparent-bg PNG via a Pillow pipeline (per-pixel brightness → alpha; bbox detection on green-dominant pixels with substantial-row gap split to drop the URL band; 3% padding; tiny Gaussian on alpha to soften JPG ringing). Output `public/images/brand/tree-of-life.png` + `tree-of-life@2x.png` (586×768). Placed the mark above "The Root Value" eyebrow on `/foundation#credo` with responsive sizing `w-24 sm:w-32 md:w-40 lg:w-44`, an emerald drop-shadow `[0_0_60px_rgba(16,185,129,0.28)]`, `priority` for LCP, `aria-hidden="true"`, and a 1.1s scale+fade entrance. Visually grounds the canopy → trunk → roots metaphor against the existing radial glows. Removed `<VideoShowcase />` from homepage + deleted the `VideoShowcase` component and `public/hero-video.mp4` (4.5 MB Instagram clip) — homepage now flows Hero → Services without an autoplay video competing with the hero copy. Build verified: 47 static pages, /foundation 8.66 kB / 150 kB First Load, `out/hero-video.mp4` confirmed gone, `out/images/brand/tree-of-life.png` confirmed present.
-- [x] Platform pages for Odoo + WooCommerce (2026-05-02): added `/platforms/odoo` and `/platforms/woocommerce` as deliberate secondary tracks alongside the Shopify Plus core. Odoo positioned for manufacturers / distributors / multi-channel retailers — eight modules (eCommerce, Inventory, MRP, Accounting, Purchase, CRM, POS, Custom modules), four-phase implementation path, edition-agnostic stack (Enterprise / Community / Odoo.sh / Self-Hosted), Shopify ↔ Odoo bridge framing, and three engagement models (Discovery / Full Implementation / Support Retainer). WooCommerce positioned for small clients + custom-logic operators (founders, content-led commerce, custom-logic builds) — eight capability areas (Plugin Dev, Themes, Integrations, Performance, Security, Migrations, Hosting, Headless), four-phase build process, Quick Build / Custom Build / Care Plan engagement tiers, with explicit honesty about when Shopify is the better call. Both pages: server component shell with `OfferCatalog` + 5-question `FAQPage` JSON-LD, dedicated `metadata` (title, canonical, OG, Twitter), and a client component for the interactive sections. Sitemap registers both routes (priority 0.85, monthly). Footer expanded from 5 → 6 columns with a new "Platforms" column linking Shopify Plus / Odoo / WooCommerce. `public/llms.txt` adds a "## Platforms We Build On" block so AI engines understand the secondary tracks. Build verified: 47 static pages emitted, both platform routes ship as `○ (Static)` at ~9.7 kB each.
-- [x] Vasudhaiva Kutumbakam adopted as the root value (2026-05-02): added a new `#credo` section to `/foundation` between the Why and the Five Pillars — renders वसुधैव कुटुम्बकम् (Devanagari, large, light weight, emerald-tinted) + transliteration "Vasudhaiva · Kutumbakam" + English headline "The world is one family." + three explanatory paragraphs framing it as the root every pillar/rule answers to + Maha Upanishad 6.71 attribution. Hero CTA hierarchy on /foundation flipped so the primary button now leads to the credo and the Five Pillars button is secondary; Why-section closing paragraph and hero subhead also forward-link to the credo so readers can't miss it. Mirrored a featured callout card on `/about` above the three working principles, retitled "What We Stand For" → "One root value. Three working principles." Foundation page metadata title/description rewritten to lead with the verse; new `Quotation` JSON-LD node added with both Sanskrit + English text and Maha Upanishad attribution; root layout Organization JSON-LD now carries `slogan: "Vasudhaiva Kutumbakam — The world is one family."`. Added Noto Sans Devanagari (weights 300/400/500) via `next/font/google` + a `--font-devanagari` CSS variable + `.font-devanagari` Tailwind utility so the script renders consistently across browsers (Inter doesn't ship Devanagari). `public/llms.txt` got a new `## Core Credo` block before Core Pages so AI engines pull the verse + translation + framing verbatim, and the TL;DR line appends "Rooted in Vasudhaiva Kutumbakam — the world is one family."
-- [x] Instagram content plan + automation roadmap (2026-05-02): wrote `docs/marketing/instagram-content-plan.md` — 10 ready-to-ship posts (5 single, 5 carousels) with Grok image prompts locked to brand rails (matte black, emerald `#10b981`, Inter sans-serif, 4:5 / 1:1, X9ELYSIUM watermark) and full captions + hashtags + DM-keyword CTAs across replatforming cost, Plus vs BigCommerce, site speed, founder-led economics, AOV, subscription LTV, B2B, headless ROI, Markets QA, and a founder pitch closer. Three automation tiers: Tier 1 manual (Meta Business Suite, $0–15/mo), Tier 2 semi-auto (n8n + IG Graph API + Notion, ~$20/mo, half-day setup), Tier 3 fully autonomous (Claude API + image gen + Slack approval loop, ~$25–40/mo, ~2 days build). Recommendation: ship Tier 1 first 30 days, only escalate if IG produces qualified DMs. Three IG tracking columns added to the existing engine dashboard. Kill criteria: zero qualified discovery calls attributed to IG by end of Month 2 = kill or rebuild the channel.
-- [x] Content audit pass (2026-05-02): reconciled homepage stats to 30+/95%/$5M+ across Hero, WhyChooseUs, and Work; sharpened Hero around the founder-led wedge ("Founder-led Shopify Plus consulting. No juniors. No handoffs."); inverted Hero CTA hierarchy so the booking CTA is dominant. Diversified Footer service links to section anchors + added a Locations column.
-- [x] /services, /work, /contact converted to server components with per-page metadata + canonical (2026-05-02). Resolves FULL-AUDIT-REPORT P0 finding (3 of the 5 duplicate-title pages — /about was fixed earlier in the founder-led rewrite). Added `OfferCatalog` + 6-question `FAQPage` JSON-LD on /services; `BreadcrumbList` on /work; `ContactPage` schema on /contact.
-- [x] llms.txt rewrite + sitemap improvements (2026-05-02). llms.txt leads with the founder-led wedge, reconciled stats, and a "Frequently Asked" block; sitemap adds `/services` + `/work` and replaces `new Date()` with pinned `STATIC_LASTMOD` so freshness signals don't lie. References to deleted `post-N` URLs removed from llms.txt.
-- [x] Legacy template content cleanup (2026-05-02). Deleted `content/posts/post-1.md`…`post-10.md` (Hugo template fluff identified by FULL-AUDIT-REPORT as the largest E-E-A-T drag). `public/_redirects` now returns `410 Gone` on all 10 slugs.
-- [x] 6-month organic growth marketing plan + third-party listings checklist written (2026-05-02) — `docs/marketing/6-month-organic-growth-plan.md` (month-by-month plan, weekly engine cadence, conservative + aggressive revenue model) and `docs/marketing/third-party-listings.md` (P0–P3 directory + ecosystem playbook).
-- [x] Homepage Team + About Team — LinkedIn-on-hover treatment (2026-05-02). Both `app/components/Team.tsx` (homepage) and `app/about/AboutClient.tsx` (about) now render founder cards as a single anchor to the LinkedIn profile, with a top-right LinkedIn icon pill that fades in on hover. Sam Okaster removed from homepage Team.tsx (was already gone from About). Stock-photo placeholders deleted from `public/images/about/team/` — initials avatars until real photos drop in.
-- [x] About page (App Router) — founder-led rewrite (2026-05-02). GTA-based, founded 2021, only Darshan + Adhvait with real LinkedIn-sourced bios + `sameAs` JSON-LD. Removed fabricated milestones timeline + Sam Okaster + aspirational certs. Stats reframed to defensible four-year numbers. Per-page Metadata + AboutPage/Organization/Person JSON-LD graph for AI entity recognition.
-- [x] About page (App Router) — milestones, values, team, stats, certifications
-- [x] Services detail page (App Router) — services grid, process, tech stack, engagement models
-- [x] Work/case studies page (App Router) — filterable bento grid, stats, testimonials
-- [x] Blog App Router migration — index + dynamic `[slug]` route with TOC, share, related posts, RSS
-- [x] Careers page polish — copy, SEO metadata, JobPosting JSON-LD per role
-- [x] Anonymized testimonials & case study attribution (role + industry only, no fabricated person names)
-- [x] OG + Twitter image at build time via `app/opengraph-image.tsx` (1200×630 PNG, brand-aware)
-- [x] Structured data / JSON-LD (Organization, WebSite, ProfessionalService) in root layout, Blog/BlogPosting on /blog, JobPosting on /careers, Breadcrumb on both
-- [x] sitemap.xml via `app/sitemap.ts` (static routes + posts + jobs)
-- [x] Removed placeholder LinkedIn URL from JSON-LD `sameAs` (Footer already only listed real Instagram + Facebook)
-- [x] Booking integration scaffold — `app/lib/booking.ts` + `BookingButton` component routes 7 "Book a Strategy Call" CTAs through `NEXT_PUBLIC_CALCOM_URL` env var with `/contact` fallback
-- [x] Phone number removed site-wide for spam mitigation — Contact page, Footer, JSON-LD `contactPoint`, `config/config.json`, `config/social.json`. Replaced with website + email-only.
-- [x] "Value scales with project size" messaging added to Contact page sidebar (no rate card; pricing by scope/complexity/upside)
-- [x] Light/dark theme parity confirmed — `next-themes` ThemeProvider in root layout, defaults to dark, all App Router pages use `dark:` variants throughout
+---
+
+## 7. HARD RULES (the don'ts)
+
+- **Never fabricate metrics, names, or testimonials.** Anonymized + directional > false specifics. The site recently stripped "40% revenue lift" from a quote because we couldn't prove it. Stay there.
+- **Never link `/docs/journal` from nav, footer, sitemap, or `llms.txt`.** Discoverable by URL only.
+- **Never feed `docs/journal/**` into the `/chat` Anthropic corpus.** `scripts/build-chat-context.mjs` enforces this; don't break the exclude list.
+- **Never expose API keys in client bundles.** Web3Forms was killed for this reason. All secrets live in Worker env or GH Actions secrets.
+- **Never use Instagram for X9Elysium content.** X.com only. (See `feedback_social_channel.md` in auto-memory.)
+- **Never push to `main` without running the post-push checklist.**
+- **Never auto-generate this file or run `/init` on it.** It is hand-tuned.
+- **Never duplicate CHANGELOG content here.** This file describes posture; CHANGELOG describes history.
+- **Never add a chatbot, popup, or upsell modal.** Async, intentional inbound only. Tawk.to was deleted for this reason.
+
+---
+
+## 8. VOICE & STYLE
+
+When you write copy or commit messages or docs, write like Darsh:
+
+- **Lowercase commits.** Short. `careers: restyle 3 sales roles in lazer voice` is the tone.
+- **Sentence-level.** Periods over semicolons. No ad-copy adjectives ("seamless," "cutting-edge," "world-class" — kill on sight).
+- **Concrete > abstract.** "Founder-led Shopify Plus consulting. No juniors. No handoffs." beats "boutique digital partner."
+- **Under-claim.** If we can't prove it, soften it. "The first quarter after launch was the strongest we've ever had" beats "40% revenue lift."
+- **Naval cadence in long-form.** Short clauses. Pause. Then the punch.
+- **Devanagari okay** when the credo is the subject. Use the `font-devanagari` Tailwind class.
+- **Code comments:** default to none. Only when the *why* is non-obvious. Never narrate the *what*.
+
+For the in-house copy bible see `docs/books-learning/naval-ravikant.md` and the hero on `app/page.tsx`.
+
+---
+
+## 9. WORKFLOW
+
+### Commands
+
+```bash
+npm run dev          # local dev
+npm run build        # static export → out/
+npm run docs         # localhost:4000/docs viewer
+npm run lint         # eslint
+npm run worker:dev   # local Worker
+npm run worker:deploy
+npm run preview      # full local round-trip (next build && wrangler dev)
+```
+
+`npm start` doesn't exist — the site is a static export.
+
+### Deploy
+
+- **Primary:** push to `main` → Cloudflare project `x9elysium` builds + ships via `wrangler deploy`.
+- **Fallback:** `npm run deploy:zip` → upload `out/` anywhere.
+- DNS is at Cloudflare; domain registration stays at Hostinger.
+
+### Per-commit protocol
+
+1. Append entry to `docs/progress/CHANGELOG.md` (newest first).
+2. If a task moved, update §10 of this file.
+3. If a new constraint emerged, update §6 or §7.
+4. Run `docs/deployments/post-push-checks.md`. Don't say "live" until it passes.
+
+### Known gotchas
+
+- `node_modules/`, `.next/`, `tmp/` may be root-owned from a past `sudo npm`. Fix: `sudo chown -R $(whoami) node_modules .next .next-build tmp && rm -rf .next-build tmp`.
+- `tsconfig.json` must keep `baseUrl: "."` for legacy Pages Router imports.
+- Tailwind `content` array must include both `app/` and `pages/`.
+
+---
+
+## 10. CURRENT STATE (pointer-only)
+
+**For "what shipped":** read the top 20 entries of `docs/progress/CHANGELOG.md`. That is the source of truth.
+
+**Open code tasks (no external account needed):**
+
+- Cornerstone content cadence — 1 piece/month, May–Nov 2026. See `docs/marketing/6-month-organic-growth-plan.md`.
+- IndexNow ping wiring on Cloudflare deploy. Key already at `/.well-known/indexnow-key.txt` and `/22ff52dd50b59385439b192c6676d6df.txt`.
+
+**Open asks for Darsh (external accounts/decisions):**
+
+- Activate `/api/lead` — Resend signup + DNS + `wrangler secret put RESEND_API_KEY`. Recipe: `docs/leads/setup.md`.
+- Activate `/chat` — `wrangler secret put ANTHROPIC_API_KEY` + `CHAT_PIN`. Recipe: `docs/chat/README.md`.
+- Third-party proof — Shopify Partner directory + Clutch + GBP + real LinkedIn company page. Playbook: `docs/marketing/third-party-listings.md`.
+- Cal.com — set `NEXT_PUBLIC_CALCOM_URL` in Cloudflare project env.
+- Real testimonials, named case studies, founder photos at `public/images/about/team/{darshan,adhvait}.jpg`.
+
+When any of these closes, move it to CHANGELOG with a date and prune from §10.
+
+---
+
+## 11. THE FUTURE — what we're building toward
+
+This site is the seed. The bigger arc:
+
+- **Supreme** *(codename, planned subdomain — `supreme.x9elysium.com` once provisioned).* The futuristic flagship. Vision: AI-native UX, generative interfaces, voice + multimodal interaction, real-time personalization, motion-as-information. Treat it as the **R&D vehicle** for what the consultancy will sell in 2027+ — not a marketing page. When work begins:
+  - Live at `app/supreme/` (App Router, server-component shell + heavy client interactivity) until subdomain is provisioned, then migrate to its own deploy.
+  - Design language is **post-X9Elysium** — push past the matte-black/emerald system into something that feels 2030s. WebGL, GPU shaders, sound design, predictive UI, agentic flows are all on the table.
+  - Discoverability posture: hidden until it's worth showing. Same posture as `/chat` and `/docs/journal`.
+  - Decision authority for Supreme aesthetic + interaction patterns sits with Claude — propose boldly, Darsh edits.
+
+- **Owned chat as a moat.** `/chat` is the seed of an agent that can quote our own thinking back to a prospect at 3am. Extend it: tool-calling for booking, lead capture mid-conversation, multimodal context, RAG over CHANGELOG.
+
+- **Cornerstone content as compounding asset.** One canonical piece per month. Six months in, x9elysium.com should rank for at least one decision query ("Plus vs BigCommerce", "Magento → Plus migration") in both Google and AI search.
+
+- **Sales function — Head of Sales → Manager → AEs.** Roles are live on `/careers`. Playbook is `docs/sales/sales-team-playbook.md`. Don't post AE-only.
+
+- **Tableau dashboard tab 6 — X.com signal.** Schema in `docs/admin-dashboard/sample-data/x-posts.csv`.
+
+If a feature doesn't fit one of these arcs, it probably doesn't belong.
+
+---
+
+## 12. BRIEF TEMPLATE — for Grok (or any prompt generator)
+
+Darsh sometimes asks Grok to write prompts for Claude Code. When that happens, Grok should produce prompts shaped like this — and you (Claude) can recognize this shape and execute decisively:
+
+```text
+GOAL: <one sentence — the user-visible outcome>
+WHY: <which arc from §11 it serves, or which job from §2>
+SCOPE: <files Claude is allowed to touch — be explicit>
+OUT OF SCOPE: <files/areas to leave alone>
+CONSTRAINTS:
+  - voice: matches §8
+  - aesthetic: stays in §3 (or for Supreme, push past it)
+  - hard rules: respect §7
+  - decision rights: §6 — ship without asking unless it hits "Authority needs Darsh's nod"
+ACCEPTANCE:
+  - <observable check 1 — e.g., page renders at /foo without console errors>
+  - <observable check 2 — e.g., CHANGELOG entry written>
+  - <observable check 3 — e.g., post-push protocol passes>
+DELIVERABLE: <PR / push-to-main / draft-only>
+```
+
+If a Grok-generated prompt is missing any of these, infer them from this file and proceed. Don't ping back asking — that's what this file is for.
+
+---
+
+*Last hand-tuned: 2026-05-05. Edit boldly when posture changes.*
