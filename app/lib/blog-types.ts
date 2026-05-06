@@ -1,4 +1,9 @@
-export type BlogCategory = "GTA" | "Calgary" | "Canada" | "Vancouver";
+export type BlogCategory =
+  | "GTA"
+  | "Calgary"
+  | "Canada"
+  | "Vancouver"
+  | "AI in eCommerce";
 
 export interface FAQItem {
   q: string;
