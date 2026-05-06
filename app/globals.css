@@ -248,3 +248,81 @@
 .docs-prose :target {
   scroll-margin-top: 7rem;
 }
+
+/* ============================================================
+   Grok-style article — used on /docs/audits/full-audit-report
+   Stark typographic layout, generous serif-ish display weights,
+   subtle film grain. Rides on top of .docs-prose for body content.
+   ============================================================ */
+.grok-article {
+  --grok-rule: rgb(0 0 0 / 0.08);
+}
+.dark .grok-article {
+  --grok-rule: rgb(255 255 255 / 0.08);
+}
+
+.grok-title {
+  font-size: clamp(2.25rem, 5.4vw, 4rem);
+  letter-spacing: -0.025em;
+  font-weight: 300;
+}
+
+.grok-em {
+  font-style: italic;
+  font-weight: 500;
+  background: linear-gradient(135deg, #10b981 0%, #34d399 60%, #6ee7b7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.grok-deck {
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+.grok-grain {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>");
+  mix-blend-mode: overlay;
+}
+
+/* Grok body tightens the docs-prose H2 dividers and adds a left rule */
+.grok-prose h2 {
+  position: relative;
+  padding-top: 0.25rem;
+  margin-top: 3.25rem;
+  border-top: 1px solid var(--grok-rule);
+  padding-top: 1.5rem;
+  font-size: 1.65rem;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+.grok-prose h2::before {
+  content: "§";
+  display: inline-block;
+  margin-right: 0.55rem;
+  color: rgb(16 185 129 / 0.85);
+  font-weight: 400;
+}
+
+.grok-prose h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  margin-top: 2rem;
+}
+
+.grok-prose blockquote {
+  font-size: 1.05em;
+  font-style: italic;
+}
+
+/* Player chrome */
+.grok-player .grok-play-btn {
+  box-shadow: 0 6px 16px rgb(0 0 0 / 0.12);
+}
+.dark .grok-player .grok-play-btn {
+  box-shadow: 0 6px 20px rgb(16 185 129 / 0.18);
+}

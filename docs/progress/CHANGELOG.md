@@ -12,6 +12,57 @@ Format:
 
 ---
 
+## (pending) — 2026-05-06 — pages: apply audit findings (FAQ schema, hard 404, JobPosting validThrough, copy reconcile)
+
+- Touched:
+  - **`app/layout.tsx`** — root metadata description, OpenGraph, and Twitter card now match the founder-led wedge and the defensible 30+/95% stats already on Hero/About/WhyChooseUs (audit P0 #2 / marketing-audit QW1: stop shipping inflated 50+/98% on every page that inherits the default). Organization JSON-LD `description` rewritten to one canonical sentence used across the graph (audit P1 #6: pick a single Organization description so AI engines can derive a stable entity by consensus).
+  - **`app/not-found.tsx`** *(new)* — proper Next App Router not-found route. Pulls Navigation + Footer, hero with "404 — Not Found" eyebrow, two CTAs (Home + Talk to a founder), and a 4-card destination grid (Services, Work, Insights, Contact). Sets `robots: { index: false, follow: false }` and a `/404` canonical so soft-404 → hard-404 (audit P0: random URLs returning 5xx instead of 404 caused crawlers to retry indefinitely and burned crawl budget).
+  - **`app/about/page.tsx`** — added a `FAQPage` JSON-LD node into the existing `@graph`, five Qs/As covering founders, location, why-no-juniors, retailer-fit, and the operating philosophy. `inLanguage: "en-CA"`. (audit P2 #10: AI engines disproportionately surface FAQ-marked passages in AIO and Perplexity grounding.)
+  - **`app/locations/toronto/page.tsx`**, **`app/locations/calgary/page.tsx`**, **`app/locations/vancouver/page.tsx`** — each gained a city-specific `FAQPage` JSON-LD block with 5 Qs/As. Toronto: cost in CAD, GTA cities served, migration timeline, sub-$1M fit, Shopify Partner status. Calgary: cost (15–20% below Toronto), Alberta tax matrix, B2B / energy-sector fit, Alberta cities served, two-warehouse Western+Eastern architecture. Vancouver: cost, BC tax + EHF + EPR, cross-border / Pacific-Rim, Hydrogen for design-led DTC, GTA-to-BC engagement model. (audit P2 #10: location pages are exactly the shape AIO rewards when wrapped in FAQ schema.)
+  - **`app/careers/[slug]/page.tsx`** — JobPosting schema now emits `validThrough` (auto-computed as `postedAt + 60 days` so Google rich-result eligibility doesn't lapse and we don't need per-job dates in `careers.ts`), `directApply: false` (we route applicants to email — Google's spec requires the flag when the apply path isn't an automated submission), and `baseSalary` (parsed from the `CA$95,000 – CA$130,000` shape into Schema.org `MonetaryAmount + QuantitativeValue` with `unitText: "YEAR"`, currency = CAD when the range contains `CA$` or `CAD`, else USD). Parser returns null on dirty inputs so we never ship invalid schema. `hiringOrganization` now references the canonical Organization `@id` from the root graph for entity consistency. (audit P2 #11.)
+  - **`app/docs/audits/full-audit-report/Player.tsx`**, **`app/docs/audits/full-audit-report/page.tsx`** — escaped four stray apostrophes that were blocking `next build` lint pass on the new audit-report viewer. No behaviour change.
+- Tasks moved (audit findings → resolved):
+  - SEO audit P0 #2 (duplicate title/description on /, /about, /services, /work, /contact) → already resolved in earlier server/client split; root description now also reconciled to defensible 30+/95% numbers.
+  - SEO audit P0 #4 (404 page returns 500) → resolved with `app/not-found.tsx`.
+  - SEO audit P1 #6 (inconsistent Organization description across pages) → resolved.
+  - GEO audit P2 #10 (no FAQPage on locations or services) → /services already had FAQ; added to /about, /locations/toronto, /calgary, /vancouver.
+  - SEO audit "Improvements > JobPosting missing validThrough/baseSalary/directApply" → resolved.
+  - Hero/WhyChooseUs stats reconcile (marketing-audit QW1) → already fixed; root layout fall-through description was the last copy of the old 50+/98% numbers anywhere on the site.
+- Notes:
+  - All FAQ answers are factual and defensible — no fabricated numbers, no anonymized quotes-with-metrics. Where a number is committed (60 days `validThrough`, $25–150k engagement band, 12–18 week migration timeline) it matches what's already on /services FAQ and /about copy.
+  - Build compiles clean (`next build` → ✓ Compiled successfully across all routes including `/404`, all platforms, all locations, all blog posts).
+  - Did not touch: hero video size (audit P3 perf), IndexNow ping wiring on deploy (CLAUDE.md §10 open task), `/strategy-call` landing page (blocked on Cal.com wiring — CLAUDE.md §10 open ask).
+
+---
+
+## (pending) — 2026-05-06 — docs: grok-style /docs/audits/full-audit-report with multi-voice audio
+
+- Touched:
+  - `app/docs/audits/full-audit-report/page.tsx` — new dedicated server-component route. Reads `docs/audits/FULL-AUDIT-REPORT.md` at request time, builds a Grok-magazine layout (Field Report eyebrow, oversized italic title, deck, mono byline, sticky § TOC) and renders the markdown body through the existing `.docs-prose` styles plus new `.grok-prose` overrides.
+  - `app/docs/audits/full-audit-report/Player.tsx` — new client component. Browser SpeechSynthesis player with 8 female voice presets (4 British: Kate, Serena, Lily, Martha; 4 Indian: Veena, Heera, Isha, Priya). Each preset matches against an OS voice by name+lang regex with sensible fallbacks. Speed cycle (0.85× → 1.75×), play/pause/stop, live progress, voice picker dropdown grouped by 🇬🇧/🇮🇳. No API key required — uses the OS speech engine, so quality scales with the host (macOS/iOS = best coverage).
+  - `app/docs/[...slug]/page.tsx` — added an `OVERRIDDEN` set so the catch-all stops generating `audits/full-audit-report` and the dedicated route wins (prevents static-export collision).
+  - `app/globals.css` — appended `.grok-article`, `.grok-title`, `.grok-em` (emerald gradient italic), `.grok-deck`, `.grok-grain` (inline SVG fractal noise), `.grok-prose h2` with the `§` mark + top rule, and player chrome.
+- Notes:
+  - URL: `/docs/audits/full-audit-report/` (trailing slash is set by `next.config.js → trailingSlash: true`). Verified locally: HTTP 200, all eight presets present in DOM, audit headings (Executive Summary → Hreflang) all render through the catch-all-bypass route.
+  - Speakable text strips emoji status markers (✅/⚠️/🛑) and table pipes so TTS reads as prose, not punctuation.
+  - All voices are OS-shipped — no Resend, ElevenLabs, or OpenAI keys touched. The richer cloud-voice path on the local docs viewer at `npm run docs` is unchanged.
+
+---
+
+## (pending) — 2026-05-06 — clarity: migrate to @microsoft/clarity npm package
+
+- Touched:
+  - `package.json` — added `@microsoft/clarity@^1.0.2`.
+  - `app/components/ClarityInit.tsx` — new client component, calls `Clarity.init(projectId)` once on mount.
+  - `app/layout.tsx` — replaced inline tag-loader script + `next/script` import with `<ClarityInit />`. Kept the `clarity.ms` preconnect/dns-prefetch hints.
+  - `pages/_app.js` — replaced inline tag-loader with `import Clarity from "@microsoft/clarity"` + a `useEffect` that calls `Clarity.init`.
+- Notes:
+  - Project ID still resolves via `process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID` (default `nhmfksrzgs` in `next.config.js`).
+  - Switching to the official package unlocks first-party APIs (`identify`, `setTag`, `event`, `consentV2`, `upgrade`) without inline-script gymnastics. Hooks for those can be wired ad-hoc later.
+  - Build compiles clean; pre-existing lint errors in `app/docs/audits/full-audit-report/*` are unrelated.
+
+---
+
 ## (pending) — 2026-05-05 — claude.md hand-tuned operating manual rewrite
 
 - Touched:

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Noto_Sans_Devanagari } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import { ThemeProvider } from "./components/ThemeProvider";
+import ClarityInit from "./components/ClarityInit";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: "%s | X9Elysium",
   },
   description:
-    "Shopify Plus consulting agency serving Canadian and US retailers. Store audits, platform migrations, custom apps, and unified commerce strategy. 50+ stores delivered. 98% client retention.",
+    "Founder-led Shopify Plus consulting for Canadian and US retailers. No juniors. No handoffs. Two senior founders, eight years each — store audits, Plus migrations, custom apps, and unified commerce strategy. 30+ stores shipped. 95% client retention.",
   keywords: [
     "Shopify Plus consulting",
     "Shopify Plus agency Canada",
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     title:
       "X9Elysium — Shopify Plus Consulting for Canada & United States Retailers",
     description:
-      "Shopify Plus consulting agency serving Canadian and US retailers. Audits, migrations, custom apps, and unified commerce strategy.",
+      "Founder-led Shopify Plus consulting for Canadian and US retailers. No juniors, no handoffs. Two senior founders. 30+ stores shipped. 95% retention.",
     type: "website",
     url: "https://x9elysium.com",
     siteName: "X9Elysium",
@@ -91,7 +91,7 @@ export const metadata: Metadata = {
     title:
       "X9Elysium — Shopify Plus Consulting for Canada & United States Retailers",
     description:
-      "Shopify Plus consulting agency serving Canadian and US retailers. Audits, migrations, custom apps, and unified commerce strategy.",
+      "Founder-led Shopify Plus consulting for Canadian and US retailers. No juniors, no handoffs. 30+ stores shipped. 95% retention.",
     images: ["/images/og-image.png"],
   },
   robots: {
@@ -128,7 +128,7 @@ export default function RootLayout({
         logo: "https://x9elysium.com/images/x9-logo.png",
         slogan: "Vasudhaiva Kutumbakam — The world is one family.",
         description:
-          "Shopify Plus consulting agency serving Canadian and US retailers. Store audits, platform migrations, custom apps, and unified commerce strategy. Rooted in Vasudhaiva Kutumbakam — the world is one family.",
+          "Founder-led Shopify Plus consulting for Canadian and US retailers. No juniors, no handoffs — store audits, platform migrations, custom apps, and unified commerce strategy delivered by two senior founders. Rooted in Vasudhaiva Kutumbakam — the world is one family.",
         contactPoint: {
           "@type": "ContactPoint",
           contactType: "sales",
@@ -267,19 +267,7 @@ export default function RootLayout({
         <ThemeProvider>
           <div className="noise-overlay" aria-hidden="true" />
           {children}
-          {process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID ? (
-            <Script
-              id="microsoft-clarity"
-              strategy="lazyOnload"
-              dangerouslySetInnerHTML={{
-                __html: `(function(c,l,a,r,i,t,y){
-                  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-                })(window,document,"clarity","script","${process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID}");`,
-              }}
-            />
-          ) : null}
+          <ClarityInit />
         </ThemeProvider>
       </body>
     </html>

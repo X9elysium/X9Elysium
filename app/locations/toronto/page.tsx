@@ -77,10 +77,60 @@ export default function TorontoLocationPage() {
     ],
   };
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://x9elysium.com/locations/toronto#faq",
+    inLanguage: "en-CA",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "How much does Shopify Plus consulting cost in Toronto?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Most X9Elysium engagements with GTA retailers fall between CAD $25,000 and $150,000. Discovery Audits are fixed-fee, custom apps and Plus migrations are scoped per project, and ongoing retainers are quoted monthly based on cadence. Toronto rates run at parity with the boutique-Plus market — neither the lowest nor the highest in the GTA.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Which Toronto-area cities does X9Elysium serve?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "We work with retailers across Toronto, Mississauga, Brampton, Markham, Vaughan, and Hamilton — the full Greater Toronto Area. Engagements are remote-first with on-site visits available for kickoff, mid-project reviews, and launch.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How long does a Shopify Plus migration take for a GTA retailer?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Most GTA migrations from Magento, WooCommerce, or BigCommerce land in 12 to 18 weeks: 2–3 weeks of discovery and architecture, 6–10 weeks of build and data migration, and 2–3 weeks of QA and zero-downtime cutover. Catalogues over 100k SKUs, complex ERP sync, or B2B + DTC consolidation push toward the upper end.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do you work with Toronto retailers under $1M ARR?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. We partner with GTA retailers from roughly $500k ARR through $20M+ ARR. Earlier-stage brands usually start with a fixed-scope Discovery Audit or a defined project (theme build, integration, performance pass). Plus retainers fit best for $5M+ retailers with steady roadmap demand.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is X9Elysium a Shopify Partner?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. X9Elysium is a Shopify Partner with hands-on experience across Shopify Plus, Hydrogen / Oxygen headless, checkout extensibility, and certified integrations with Klaviyo, Gorgias, ReCharge, and Yotpo.",
+        },
+      },
+    ],
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
       <Navigation />
       <main id="main-content">

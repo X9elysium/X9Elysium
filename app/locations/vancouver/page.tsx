@@ -71,10 +71,60 @@ export default function VancouverLocationPage() {
     ],
   };
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://x9elysium.com/locations/vancouver#faq",
+    inLanguage: "en-CA",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "How much does Shopify Plus consulting cost in Vancouver?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Most X9Elysium engagements with BC retailers fall between CAD $25,000 and $150,000. Vancouver-area pricing runs at parity with the boutique-Plus market on the West Coast — neither the lowest nor the highest in the Lower Mainland. Discovery Audits are fixed-fee, Plus migrations are scoped per project, and retainers are quoted monthly.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How does BC tax setup work on Shopify?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "British Columbia charges 5% GST + 7% PST on most goods, with category-specific PST exemptions, and a 10% PST rate on alcohol. Storefronts also need to handle BC's recycling fees (EHF) on electronics and the new packaging EPR program. We configure the full tax + EHF matrix and bake EPR readiness into the checkout from day one.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Does X9Elysium support cross-border and Pacific-Rim ecommerce?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. BC retailers commonly need USD pricing and Markets storefronts for the US west coast plus duties calculation and CN/JP/KR shipping integrations for APAC pull. We build cross-border setups on Shopify Markets with Avalara or Zonos for duties and DHL / FedEx / EMS connectors for international fulfilment.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can you support headless / Hydrogen builds for Vancouver DTC brands?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Vancouver's design-led DTC brands are a strong fit for Hydrogen + Oxygen + Sanity / Contentful, edge-cached for Lower Mainland and US-west traffic. We ship headless storefronts with Core Web Vitals at parity or better than the platform you're leaving.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How does X9Elysium run BC engagements from the GTA?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Hybrid. Most build work happens remotely on async Loom + Linear with one weekly live review. On-site visits are available for kickoff, mid-project review, and launch in Vancouver. Same senior-founder delivery as a Toronto or Calgary brief — same fixed scope, same fixed price.",
+        },
+      },
+    ],
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
       <Navigation />
       <main id="main-content">

@@ -19,6 +19,7 @@
     "deploy:zip": "rm -rf out && next build && cd out && zip -rq ../x9elysium-static.zip . && cd .. && echo '\\nx9elysium-static.zip is ready. Upload it to Hostinger File Manager (public_html) and Extract.'"
   },
   "dependencies": {
+    "@microsoft/clarity": "^1.0.2",
     "aws-amplify": "^6.5.0",
     "feather-icons-react": "^0.6.2",
     "framer-motion": "^11.15.0",

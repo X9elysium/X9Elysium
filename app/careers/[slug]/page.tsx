@@ -55,12 +55,48 @@ export default function JobDetailPage({
   );
   const mailto = `mailto:darshan@x9elysium.com?subject=${subjectLine}`;
 
-  const jsonLd = {
+  // JobPosting requires `validThrough` for Google's rich result eligibility.
+  // Default to 60 days after `postedAt` so old listings auto-expire from the
+  // graph without needing per-job dates in careers.ts.
+  const postedDate = new Date(job.postedAt);
+  const validThrough = new Date(
+    postedDate.getTime() + 60 * 24 * 60 * 60 * 1000,
+  )
+    .toISOString()
+    .slice(0, 10);
+
+  // Parse a "CA$95,000 – CA$130,000" / "CA$95,000 – CA$130,000 OTE + profit share"
+  // shape into a Schema.org MonetaryAmount + QuantitativeValue. Returns null when
+  // the salary isn't a clean numeric range so we don't ship invalid schema.
+  function parseBaseSalary(range: string | undefined) {
+    if (!range) return null;
+    const numbers = range.match(/(\d{1,3}(?:,\d{3})+|\d{4,})/g);
+    if (!numbers || numbers.length < 2) return null;
+    const min = Number(numbers[0].replace(/,/g, ""));
+    const max = Number(numbers[1].replace(/,/g, ""));
+    if (!Number.isFinite(min) || !Number.isFinite(max)) return null;
+    const currency = /CA\$|CAD/i.test(range) ? "CAD" : "USD";
+    return {
+      "@type": "MonetaryAmount",
+      currency,
+      value: {
+        "@type": "QuantitativeValue",
+        minValue: min,
+        maxValue: max,
+        unitText: "YEAR",
+      },
+    };
+  }
+  const baseSalary = parseBaseSalary(job.salaryRange);
+
+  const jsonLd: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "JobPosting",
     title: job.title,
     description: `${job.about}\n\nResponsibilities: ${job.responsibilities.join(" ")}\n\nRequirements: ${job.requirements.join(" ")}`,
     datePosted: job.postedAt,
+    validThrough,
+    directApply: false,
     employmentType:
       job.type === "Full-time"
         ? "FULL_TIME"
@@ -69,6 +105,7 @@ export default function JobDetailPage({
         : "CONTRACTOR",
     hiringOrganization: {
       "@type": "Organization",
+      "@id": "https://x9elysium.com/#organization",
       name: "X9Elysium",
       sameAs: "https://x9elysium.com",
       logo: "https://x9elysium.com/images/x9-logo.png",
@@ -79,6 +116,7 @@ export default function JobDetailPage({
       name: "Canada",
     },
     industry: "E-commerce / Shopify Consulting",
+    ...(baseSalary ? { baseSalary } : {}),
   };
 
   return (

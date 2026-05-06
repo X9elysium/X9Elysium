@@ -68,10 +68,60 @@ export default function CalgaryLocationPage() {
     ],
   };
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://x9elysium.com/locations/calgary#faq",
+    inLanguage: "en-CA",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "How much does Shopify Plus consulting cost in Calgary?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Most X9Elysium engagements with Alberta retailers fall between CAD $20,000 and $130,000 — Calgary rates run roughly 15–20% below Toronto without compromising delivery. Discovery Audits are fixed-fee, Plus migrations are scoped per project, and retainers are quoted monthly based on cadence.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How does Alberta tax setup work on Shopify?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Alberta has no provincial sales tax (PST), so storefronts shipping only within Alberta charge 5% GST. The complexity comes when you sell cross-Canada — Shopify needs province-aware tax overrides for BC PST, Manitoba RST, Saskatchewan PST, and Quebec QST. We configure the full tax matrix and add nexus tracking for US-bound orders when retailers cross the threshold.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do you work with B2B and energy-sector retailers in Calgary?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Calgary's B2B and energy-sector DTC spinoffs are a strong fit for the Shopify Plus + B2B stack: customer-specific catalogs, net terms, distributor portals, and price lists. We've shipped engagements for performance fabrics, ruggedized hardware, and specialty-chemicals brands taking industrial expertise into consumer markets.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What Alberta cities does X9Elysium serve?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Calgary, Cochrane, Airdrie, Okotoks, and Edmonton — the full Calgary–Edmonton corridor. Engagements are remote-first with optional on-site visits for kickoff and launch.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can X9Elysium build a two-warehouse architecture for Western and Eastern Canada?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. A typical setup is a Calgary or Edmonton hub for Western fulfilment and a GTA hub for Eastern, running on a single Shopify Plus store with location-aware allocation, shipping zones, and inventory rules. We've built this topology multiple times for $5–20M Western Canadian retailers.",
+        },
+      },
+    ],
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
       <Navigation />
       <main id="main-content">

@@ -53,6 +53,53 @@ const aboutJsonLd = {
       mainEntity: { "@id": "https://x9elysium.com/#organization" },
     },
     {
+      "@type": "FAQPage",
+      "@id": "https://x9elysium.com/about#faq",
+      inLanguage: "en-CA",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Who founded X9Elysium and when?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "X9Elysium was founded in 2021 by Darshan Patel and Adhvait Jadav. Both are senior full-stack developers with eight years of production e-commerce experience each across Shopify, Shopify Plus, Hydrogen, React, Next.js, and the broader Shopify ecosystem.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Where is X9Elysium based?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "X9Elysium is headquartered in the Greater Toronto Area (Mississauga, Ontario) and serves retailers across Canada — Toronto, Calgary, Vancouver — and the United States.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Why no juniors and no offshore handoffs?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "The founder-led model is the wedge. Both founders work hands-on every engagement — discovery, architecture, and implementation. There are no account managers between the client and the people building, and no offshore teams the work gets handed to after the sales call.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What types of retailers does X9Elysium work with?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Retailers from roughly $500k ARR through $20M+ ARR. Earlier-stage brands typically start with a Discovery Audit or a fixed-scope project; Plus retainers fit best for $5M+ retailers with consistent roadmap demand.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What is the operating philosophy of X9Elysium?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "X9Elysium operates under a published methodology — five pillars (Ownership, Data, Knowledge Transfer, Transparency, Big Impact) and a written set of operating rules — rooted in the credo Vasudhaiva Kutumbakam, the world is one family. The full Foundation document lives at x9elysium.com/foundation.",
+          },
+        },
+      ],
+    },
+    {
       "@type": "Organization",
       "@id": "https://x9elysium.com/#organization",
       name: "X9Elysium",

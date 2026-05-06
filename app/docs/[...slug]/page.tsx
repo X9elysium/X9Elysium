@@ -10,8 +10,14 @@ interface Props {
   params: { slug: string[] };
 }
 
+// Slugs handled by dedicated route files — must be excluded from the catch-all
+// to avoid duplicate static-export collisions.
+const OVERRIDDEN = new Set(["audits/full-audit-report"]);
+
 export function generateStaticParams() {
-  return getAllFiles().map((f) => ({ slug: f.slug }));
+  return getAllFiles()
+    .filter((f) => !OVERRIDDEN.has(f.slug.join("/")))
+    .map((f) => ({ slug: f.slug }));
 }
 
 export function generateMetadata({ params }: Props): Metadata {
