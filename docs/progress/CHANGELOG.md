@@ -12,6 +12,31 @@ Format:
 
 ---
 
+## (pending) — 2026-05-06 — deploy: streamline Cloudflare GH Actions pipeline + IndexNow ping + CLAUDE.md state reconcile
+
+- Touched:
+  - **`.github/workflows/deploy.yml`** *(new)* — single source of truth for the live site. `npm ci → lint → npm run build → cloudflare/wrangler-action@v3 deploy → node scripts/indexnow-submit.mjs → smoke test`. `paths-ignore` excludes `docs/**`, any `**/*.md`, the X.com automation workflows, and the data files those workflows commit (`data/x-thoughts.md`, `data/x-posted.json`, `data/tweets.json`, `scripts/x/**`) — keeps Actions minutes off content-only and bot-only commits while still deploying every site/code change. `workflow_dispatch` exposes a `skip_indexnow` toggle for manual reruns. `concurrency: cloudflare-deploy` with `cancel-in-progress: false` so deploys serialize cleanly under bursty pushes.
+  - **`scripts/indexnow-submit.mjs`** *(new)* — reads `out/sitemap.xml`, dedupes the `<loc>` URLs, chunks at 1000, POSTs to `https://api.indexnow.org/indexnow` with the existing `keyLocation = https://x9elysium.com/22ff52dd50b59385439b192c6676d6df.txt`. Fails open: any non-2xx is logged but does not exit non-zero. Closes the open task in CLAUDE.md §10 ("IndexNow ping wiring on Cloudflare deploy").
+  - **`.github/workflows/node.js.yml`** *(deleted)* — old CI-only workflow that built the site but didn't ship it. Superseded by `deploy.yml` which builds + ships in one job.
+  - **`.github/workflows/npm-publish-github-packages.yml`** *(deleted)* — irrelevant; we don't publish an npm package from this repo.
+  - **`docs/deployments/post-push-checks.md`** — full rewrite from Hostinger-Node.js-era language to Cloudflare reality. New §0 (confirm the GH Actions deploy ran), §6 (hard 404 verification), §7 (Worker `/api/*` health checks), §10 (sitemap + IndexNow confirmation), updated failure → action table, manual fallback recipe, archived Hostinger fallback.
+  - **`docs/deployments/cloudflare-deploy.md`** *(new)* — operating manual for the new pipeline. One-time setup (Cloudflare API token scopes, account ID, GitHub repo secrets `CLOUDFLARE_API_TOKEN`/`CLOUDFLARE_ACCOUNT_ID`/`NEXT_PUBLIC_CALCOM_URL`, Worker secrets via `wrangler secret put`), what the workflow does step-by-step, what `paths-ignore` excludes and how to force a deploy on a docs-only commit, common operations (preview, manual deploy, tail, cache purge), rollback paths (revert vs. dashboard), and a "why this shape" rationale.
+  - **`CLAUDE.md`** — §4 stack table updated: Deploy row now names `.github/workflows/deploy.yml` explicitly, Dynamic backend row adds `/api/comments`, two new rows for Comments (D1 + KV + spam defenses) and Tracking (Microsoft Clarity full stack). §8 Deploy section rewritten: primary path is the GH Actions workflow, manual fallback is `wrangler deploy` from the workstation, last-resort fallback is `npm run deploy:zip` to Hostinger; `paths-ignore` posture documented. §10 Current State reconciled: IndexNow wiring moved Remaining → Resolved (now lives in the workflow); migrate bespoke audit-report `Player.tsx` to shared `app/components/AudioPlayer.tsx` added as a clean-up open task; Open asks for Darsh now leads with "Provision GitHub repo secrets for Cloudflare deploy" since that's the only thing standing between green pushes and red ones. Added the comments D1 schema apply ask, the LEADS_KV provisioning ask, and the Reddit account creation ask. Last-hand-tuned bumped to 2026-05-06.
+- Tasks moved (CLAUDE.md §10):
+  - "IndexNow ping wiring on Cloudflare deploy" → resolved (in `deploy.yml` + `scripts/indexnow-submit.mjs`).
+- Open asks for Darsh introduced by this commit:
+  1. **Provision the Cloudflare deploy secrets** in repo settings: `CLOUDFLARE_API_TOKEN` (Edit Cloudflare Workers scope) + `CLOUDFLARE_ACCOUNT_ID`. Without these the deploy workflow fails at the wrangler step. Recipe: `docs/deployments/cloudflare-deploy.md` §1–3.
+  2. **Optional:** add `NEXT_PUBLIC_CALCOM_URL` and `NEXT_PUBLIC_CLARITY_PROJECT_ID` as repo secrets if/when they diverge from the baked-in defaults.
+- Notes:
+  - **Why a single deploy workflow instead of separate "build" + "deploy" jobs.** The build emits hashed asset names; if "build" runs in one runner and "deploy" runs in another, the `out/` directory has to traverse the artifact upload/download cycle, which doubles the wall time and adds a failure surface. One job, one `out/`, one wrangler deploy.
+  - **Why IndexNow runs after deploy, not before.** A failing build still pings search engines if you reverse the order — so a half-shipped state gets crawled. The current order means a red workflow keeps the previous URL set authoritative.
+  - **Why `paths-ignore` excludes the X.com automation paths.** `x-post.yml` runs twice daily and `x-sync.yml` runs every 6 hours; both commit to `data/x-thoughts.md`, `data/x-posted.json`, `data/tweets.json`. Without `paths-ignore` those bot commits trigger a full site rebuild (~3-4 min Actions minutes each) for changes that don't affect any rendered page. The site rebuilds on the next site/code commit.
+  - **Why lint is `continue-on-error`.** Darsh's stated workflow is "ship the truth, fix lint inline" — a stylistic warning shouldn't block a content fix or a hotfix from going live. A real type/build error still hard-fails because `npm run build` is hard.
+  - `amplify/` folder + `aws-amplify`/`@aws-amplify/backend` deps are dead in code (zero imports outside `amplify/backend.ts`) but bound to a real AWS Amplify app (`d98gg43vml76s` in `us-west-2`). Not deleted in this commit — that's a destructive op that orphans an external resource, flagged for a future Darsh-confirmed sweep.
+- Build verification: `next build` exits clean against the modified files; `wrangler.toml` is unchanged so `wrangler deploy` semantics are identical to the previous manual path.
+
+---
+
 ## (pending) — 2026-05-06 — blog: 2 long-form posts on Claude + Grok 4.20 daily workflow for $1M–$5M Shopify stores, new "AI in eCommerce" category
 
 - Touched:

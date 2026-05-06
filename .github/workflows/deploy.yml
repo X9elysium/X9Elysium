@@ -1,0 +1,81 @@
+name: Deploy — Cloudflare
+
+# Single source of truth for the live site.
+# Push to `main` → build static export → wrangler deploy → IndexNow ping.
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      # Skip when only docs/automation files change. Keeps content + code
+      # changes deploying fast without wasting minutes on README edits.
+      - "docs/**"
+      - "**/*.md"
+      - ".github/workflows/x-*.yml"
+      - "data/x-thoughts.md"
+      - "data/x-posted.json"
+      - "data/tweets.json"
+      - "scripts/x/**"
+  workflow_dispatch:
+    inputs:
+      skip_indexnow:
+        description: "Skip IndexNow ping"
+        required: false
+        default: "false"
+        type: choice
+        options: ["false", "true"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install deps
+        run: npm ci --no-audit --no-fund
+
+      - name: Lint
+        run: npm run lint
+        continue-on-error: true
+
+      - name: Build static export
+        run: npm run build
+        env:
+          NEXT_PUBLIC_CLARITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_CLARITY_PROJECT_ID || 'nhmfksrzgs' }}
+          NEXT_PUBLIC_CALCOM_URL: ${{ secrets.NEXT_PUBLIC_CALCOM_URL }}
+
+      - name: Deploy to Cloudflare
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy
+
+      - name: IndexNow ping
+        if: ${{ inputs.skip_indexnow != 'true' }}
+        continue-on-error: true
+        run: node scripts/indexnow-submit.mjs
+
+      - name: Post-deploy smoke test
+        continue-on-error: true
+        run: |
+          sleep 8
+          set +e
+          for path in / /blog/ /thoughts/ /contact/ /careers/ /services/ /work/ /locations/toronto/; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "https://x9elysium.com${path}")
+            echo "${code} ${path}"
+            if [ "$code" != "200" ]; then echo "::warning::non-200 at ${path}"; fi
+          done

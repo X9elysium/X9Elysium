@@ -1,18 +1,33 @@
 # Post-Push Deployment Checks
 
-Mandatory checklist run **after every `git push origin main`** to x9elysium.com. The site is hosted on Hostinger with an aggressive CDN cache (`s-maxage=31536000`), so a successful push does **not** guarantee the live site is healthy. Always verify.
+Mandatory checklist run **after every `git push origin main`** to x9elysium.com. The site deploys via the Cloudflare Workers Static Assets pipeline (`.github/workflows/deploy.yml`). A green push does **not** guarantee the live site is healthy — always verify.
 
 ## When to run
 
 - Immediately after `git push origin main`.
-- After Hostinger panel actions (Node.js restart, env var change, manual redeploy).
+- After a manual `wrangler deploy` from the workstation.
+- After Cloudflare dashboard actions (cache purge, env var changes, secret rotation).
+- After a Worker-only deploy (`npm run worker:deploy`).
 - Whenever the user reports the site is broken, slow, or showing stale content.
 
-## The checks
+## 0. Confirm the deploy actually ran
 
-Run all of these and only report "deploy verified" when **every** check passes.
+Open the GitHub Actions run for the commit:
 
-### 1. HTML status (cached path)
+```text
+https://github.com/X9elysium/X9Elysium/actions/workflows/deploy.yml
+```
+
+Expected:
+
+- `deploy` job → green.
+- `Deploy to Cloudflare` step → "Successfully published" with a `*.workers.dev` URL in the log.
+- `IndexNow ping` step → "indexnow: ok (200) N urls" or "submitted N urls."
+- `Post-deploy smoke test` → all listed paths return `200`.
+
+If the workflow is red, fix that first — the site you're checking is the previous deploy, not the one you just pushed.
+
+## 1. HTML status
 
 ```bash
 curl -sI https://x9elysium.com | head -20
@@ -20,19 +35,19 @@ curl -sI https://x9elysium.com | head -20
 
 Expected:
 
-- `HTTP/2 200`
-- `etag` should change after a successful redeploy. If etag matches a known stale version, the CDN is still serving old HTML.
-- `age:` should be small (seconds → minutes) right after a deploy. If it's hours/days old after a fresh push, the CDN didn't refresh.
+- `HTTP/2 200`.
+- `cf-ray:` header present (proves you're hitting Cloudflare).
+- `etag` should change after a successful redeploy. Same etag = previous build still serving.
 
-### 2. HTML status (origin path, cache-busted)
+## 2. Cache-busted origin probe
 
 ```bash
 curl -sI -H "Cache-Control: no-cache" -H "Pragma: no-cache" "https://x9elysium.com?_=$(date +%s)" | head -10
 ```
 
-Expected: `HTTP/2 200`. If this returns 503, the **origin Node.js process is down** — fix in Hostinger panel before anything else.
+Expected: `HTTP/2 200`. A non-200 here means the Worker itself (`worker/index.ts`) is failing — check `npx wrangler tail` from the workstation.
 
-### 3. Static chunks reachable
+## 3. Static chunks reachable
 
 Pull the chunk filenames out of the live HTML and probe them:
 
@@ -45,9 +60,9 @@ curl -s "https://x9elysium.com?_=$(date +%s)" \
     done
 ```
 
-Expected: every chunk returns `200`. Any `503` / `404` here means the cached HTML is referencing dead chunk hashes — purge HTML cache in Hostinger or wait for stale-while-revalidate to refresh.
+Expected: every chunk returns `200`. A 404 here means cached HTML is referencing a previous build's chunk hashes — purge `x9elysium.com/*` from the Cloudflare dashboard.
 
-### 4. CSS reachable
+## 4. CSS reachable
 
 ```bash
 curl -s "https://x9elysium.com?_=$(date +%s)" \
@@ -58,61 +73,110 @@ curl -s "https://x9elysium.com?_=$(date +%s)" \
     done
 ```
 
-Expected: every CSS file returns `200`. A 503 here is the classic "site renders unstyled" failure (e.g. `sr-only` no longer hiding skip-links, no Tailwind utilities applied).
+Expected: every CSS file returns `200`. A 404 here is the "site renders unstyled" failure.
 
-### 5. Critical routes
+## 5. Critical routes
 
 ```bash
-for path in / /blog /contact /careers /services /work /locations/toronto /locations/calgary; do
+for path in / /blog/ /thoughts/ /contact/ /careers/ /services/ /work/ \
+            /locations/toronto/ /locations/calgary/ /locations/vancouver/ \
+            /platforms/odoo/ /platforms/woocommerce/ /foundation/ /docs/; do
   echo "$(curl -s -o /dev/null -w '%{http_code}' "https://x9elysium.com${path}") ${path}";
 done
 ```
 
 Expected: all `200`.
 
-### 6. Visual / DOM sanity
-
-Fetch the homepage and confirm key strings are present in the rendered HTML:
+## 6. 404 path is a real 404 (not a soft 404)
 
 ```bash
-curl -s "https://x9elysium.com?_=$(date +%s)" | grep -oE "X9Elysium|hero|main-content" | sort -u | head
+curl -s -o /dev/null -w '%{http_code}\n' "https://x9elysium.com/this-page-should-not-exist-$(date +%s)"
 ```
 
-If the DOM is missing expected content, hydration is failing.
+Expected: `404`. The static export ships `app/not-found.tsx` and `wrangler.toml` sets `not_found_handling = "404-page"` — both required.
 
-### 7. Confirm the change you just shipped is actually live
-
-Pick something specific to the commit (a removed string, a new component name, a class change) and grep the live HTML for it. Example after removing skip-to-content:
+## 7. Worker APIs (only after secrets are wired — see CLAUDE.md §10)
 
 ```bash
-curl -s "https://x9elysium.com?_=$(date +%s)" | grep -c "Skip to content"
+curl -s https://x9elysium.com/api/health
+
+# Lead intake (will 502 if RESEND_API_KEY isn't set — expected today)
+curl -sI -X POST -H "content-type: application/json" \
+  -d '{"name":"deploy-check","email":"check@example.com","message":"ignore"}' \
+  https://x9elysium.com/api/lead
+
+# Comments (will 503 if D1 schema isn't applied yet — expected today)
+curl -s 'https://x9elysium.com/api/comments?thread=blog/test'
 ```
 
-Expected for that change: `0`. If non-zero, the deploy hasn't propagated yet.
+Expected when secrets/D1 are live: `200`. While they're pending, the failures are documented and not blockers for the static site.
+
+## 8. Visual / DOM sanity
+
+```bash
+curl -s "https://x9elysium.com?_=$(date +%s)" | grep -oE "X9Elysium|Vasudhaiva|main-content" | sort -u
+```
+
+If the DOM is missing expected content, hydration is failing or the wrong build is live.
+
+## 9. Confirm the change you just shipped is actually live
+
+Pick something specific to the commit (a removed string, a new route, a class change) and grep the live HTML for it.
+
+For a new blog post:
+
+```bash
+curl -s -o /dev/null -w '%{http_code}\n' https://x9elysium.com/blog/<new-slug>/
+```
+
+For a new schema field, fetch the HTML and grep for the JSON-LD key. Until you can prove the new bits are on the live site, do **not** report "deploy verified."
+
+## 10. Sitemap freshness + IndexNow confirmation
+
+```bash
+curl -s https://x9elysium.com/sitemap.xml | grep -c "<loc>"
+```
+
+Expected: matches the route count (plus blog/career permutations). The deploy workflow auto-pings IndexNow with this list — `indexnow: submitted N urls.` in the log is the proof.
 
 ## What to do when checks fail
 
 | Failure | Likely cause | Action |
 |---|---|---|
-| Origin HTML 503 | Hostinger Node.js process crashed / OOM / quota | Restart in hPanel; check resource usage and error log |
-| Chunks 503 but origin HTML 200 | Stale CDN HTML referencing dead chunk hashes | Purge cache in Hostinger CDN settings, or push again to bump asset hashes |
-| CSS 503 only | Same as above (chunk pipeline broken) | Same |
-| Old etag, high `age:` | CDN didn't pick up new HTML | Purge cache; verify build deployed |
-| New string not in live HTML | Deploy didn't run / failed silently | Check Hostinger deploy log; if auto-deploy from git, confirm hook fired |
-| Routes 200 but DOM blank | Hydration crash | Check Tawk.to / Clarity / any client-only script; check browser console |
+| Workflow red on `Deploy to Cloudflare` | Wrong/expired API token, account ID, or wrangler.toml drift | Re-issue token, update `CLOUDFLARE_API_TOKEN` in repo secrets |
+| Workflow red on `Build static export` | TS error, missing module, env var missing | Reproduce locally with `npm run build`; check `scripts/build-chat-context.mjs` against any new MDX |
+| 404s on `/_next/*` | Cloudflare cache pinning previous build's chunk hashes | Cloudflare dash → Caching → Purge `x9elysium.com/*` |
+| 5xx on `/api/*` | Worker error in `worker/index.ts` | `npx wrangler tail` to stream live logs |
+| 200 on `/should-not-exist` | Wrangler not finding 404 page | Confirm `wrangler.toml` has `not_found_handling = "404-page"` and `app/not-found.tsx` is in the build |
+| Sitemap shows old `lastmod` | `STATIC_LASTMOD` map in `app/sitemap.ts` not bumped | Bump the relevant key when content meaningfully changed |
 
-## Notes on Hostinger specifics
+## Manual fallback (only if GH Actions is unavailable)
 
-- `cache-control: s-maxage=31536000` (1 year) on HTML is set by the platform. Combined with `stale-while-revalidate`, the CDN can keep serving old HTML for a long time after a redeploy.
-- `x-powered-by: Next.js` + `x-nextjs-cache: HIT` headers confirm a Node.js process is running. If that process dies, all chunks 503 even when cached HTML still serves.
-- A push to `main` does **not** guarantee the Hostinger Node.js app picks up the new build. Always verify via the checks above; if HTML etag doesn't change, trigger a manual redeploy or restart in hPanel.
-- The `netlify.toml` in the repo is **not active** — Hostinger ignores it.
+```bash
+npm ci --no-audit --no-fund
+npm run build
+npx wrangler deploy
+node scripts/indexnow-submit.mjs
+```
+
+Requires `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` in the local shell.
+
+## Hostinger fallback (archived)
+
+If Cloudflare is unreachable for an extended outage, the static export in `out/` can be uploaded to Hostinger:
+
+```bash
+npm run deploy:zip
+# upload x9elysium-static.zip to public_html → Extract
+```
+
+Recipe: `docs/deployments/hostinger-static-deploy.md`. Cloudflare is the live target.
 
 ## Reporting back to the user
 
-After running the checks, report a one-line summary per check result, then either:
+Report a one-line summary per check result, then either:
 
-- "**Deploy verified live**" — every check green, plus the change-specific check (#7) confirms the new code is rendered.
-- "**Deploy failed: <which check failed and why>**" — name the failing check, the inferred cause from the table above, and the next action.
+- "**Deploy verified live**" — every check green, plus #9 confirms the new code is rendered.
+- "**Deploy failed: <which check failed and why>**" — name the failing check, the inferred cause, and the next action.
 
 Never claim a deploy is healthy based on a single 200 from `curl https://x9elysium.com`.

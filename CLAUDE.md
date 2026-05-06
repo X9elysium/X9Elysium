@@ -2,7 +2,7 @@
 
 > **One-line brief:** Operating manual for any agent (Claude Code, Grok-via-Claude, future humans) working on **x9elysium.com** — Darshan Patel's Shopify Plus consulting practice. Treat this as Darsh's voice giving you full authority to ship. You are not a junior. You are a co-founder with a keyboard.
 
-**Last hand-tuned:** 2026-05-05. Edit this file boldly when posture changes. Never auto-generate. Never `/init` it.
+**Last hand-tuned:** 2026-05-06. Edit this file boldly when posture changes. Never auto-generate. Never `/init` it.
 
 ---
 
@@ -70,11 +70,13 @@ When in doubt: **ship the code**, leave the public claim as a placeholder, and c
 | Motion | Framer Motion — shared variants in `app/lib/animations.ts` |
 | Icons | `lucide-react` |
 | Fonts | Inter (UI) + Noto Sans Devanagari (credo) via `next/font/google` |
-| Deploy | **Cloudflare Workers Static Assets** — `wrangler.toml`, push-to-`main` builds + ships `out/` |
+| Deploy | **Cloudflare Workers Static Assets** — `wrangler.toml` + `.github/workflows/deploy.yml`. Push to `main` → GH Actions → `wrangler deploy` → IndexNow ping → smoke test. |
 | Domain | Registered at Hostinger, DNS at Cloudflare |
-| Dynamic backend | Cloudflare Worker at `worker/` — `/api/lead`, `/api/chat`, `/api/health` |
-| Lead email | Resend (pending DNS + secret) |
+| Dynamic backend | Cloudflare Worker at `worker/` — `/api/lead`, `/api/chat`, `/api/comments`, `/api/health` |
+| Lead email | Resend (pending DNS + `wrangler secret put RESEND_API_KEY`) |
 | Chat | Claude Sonnet 4.6 via Anthropic API, PIN-gated, corpus-grounded |
+| Comments | D1 + KV via `/api/comments`. Schema in `worker/schema.sql` (apply once). Honeypot + math captcha + URL gate + per-IP rate limit. |
+| Tracking | Microsoft Clarity (`@microsoft/clarity` v1) — full session/scroll/rage/exit tracking via `app/components/ClarityTracker.tsx`. Default project `nhmfksrzgs`, override with `NEXT_PUBLIC_CLARITY_PROJECT_ID`. |
 
 **Aesthetic:** matte black + emerald `#10b981` + Inter, soft glass cards, gradient mesh, film-grain noise overlay. Don't reinvent — extend.
 
@@ -166,9 +168,12 @@ npm run preview      # full local round-trip (next build && wrangler dev)
 
 ### Deploy
 
-- **Primary:** push to `main` → Cloudflare project `x9elysium` builds + ships via `wrangler deploy`.
-- **Fallback:** `npm run deploy:zip` → upload `out/` anywhere.
+- **Primary:** push to `main` → `.github/workflows/deploy.yml` → `npm ci && npm run build` → `cloudflare/wrangler-action@v3` → `wrangler deploy` → IndexNow batch submit (`scripts/indexnow-submit.mjs`) → smoke-test the critical routes. Single source of truth.
+- **Manual fallback:** `npm ci && npm run build && npx wrangler deploy` from the workstation. Requires `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID` in the local shell.
+- **Last-resort fallback:** `npm run deploy:zip` → upload `out/` to Hostinger File Manager. Archived; only if Cloudflare is unreachable.
+- **`paths-ignore`** on the workflow skips deploys for docs-only commits and the X.com automation cron pushes (`data/x-thoughts.md`, `data/x-posted.json`, `data/tweets.json`, `scripts/x/**`). Force a deploy with an empty commit or **Run workflow** in the Actions tab.
 - DNS at Cloudflare; domain registration stays at Hostinger.
+- Setup recipe: `docs/deployments/cloudflare-deploy.md`.
 
 ### Per-commit protocol
 
@@ -214,14 +219,18 @@ If a feature doesn't fit one of these arcs, it probably doesn't belong.
 **Open code tasks (no external account needed):**
 
 - Cornerstone content cadence — 1 piece/month, May–Nov 2026. See `docs/marketing/6-month-organic-growth-plan.md`.
-- IndexNow ping wiring on Cloudflare deploy. Key already at `/.well-known/indexnow-key.txt` and `/22ff52dd50b59385439b192c6676d6df.txt`.
+- Migrate the bespoke `app/docs/audits/full-audit-report/Player.tsx` to the shared `app/components/AudioPlayer.tsx` (5-minute follow-up — was deferred as scope creep when the shared player landed).
 
 **Open asks for Darsh (external accounts/decisions):**
 
+- Provision **GitHub repo secrets** for the Cloudflare deploy workflow: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`. Recipe: `docs/deployments/cloudflare-deploy.md` §1–3. Without these the workflow fails at the `Deploy to Cloudflare` step.
 - Activate `/api/lead` — Resend signup + DNS + `wrangler secret put RESEND_API_KEY`. Recipe: `docs/leads/setup.md`.
 - Activate `/chat` — `wrangler secret put ANTHROPIC_API_KEY` + `CHAT_PIN`. Recipe: `docs/chat/README.md`.
+- Apply the comments schema to D1: `npx wrangler d1 execute x9elysium-leads --remote --file=worker/schema.sql`. Until applied, `POST /api/comments` returns 503 and pages render with empty comments sections.
+- Provision `LEADS_KV` (per-IP rate limit for `/api/lead` and `/api/comments`). Optional — failure mode is "rate limiter silently no-ops."
 - Third-party proof — Shopify Partner directory + Clutch + GBP + real LinkedIn company page. Playbook: `docs/marketing/third-party-listings.md`.
-- Cal.com — set `NEXT_PUBLIC_CALCOM_URL` in Cloudflare project env.
+- Cal.com — set `NEXT_PUBLIC_CALCOM_URL` as a GitHub repo secret (the deploy workflow forwards it to `next build`).
+- Reddit — create `u/x9elysium` (or `u/darshanpatel-x9`) per `docs/marketing/reddit-geo-seo-plan.md`.
 - Real testimonials, named case studies, founder photos at `public/images/about/team/{darshan,adhvait}.jpg`.
 
 When any of these closes, move it to CHANGELOG with a date and prune from §10.
