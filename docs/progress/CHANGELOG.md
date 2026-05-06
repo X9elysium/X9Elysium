@@ -12,6 +12,19 @@ Format:
 
 ---
 
+## (pending) — 2026-05-06 — blog: 13 new founder-readable posts on data/AI/CRO/ads pain points (rounding the post-batch to 15 with the two already in HEAD)
+
+- Touched:
+  - **`content/posts/`** — added 13 new MDX posts translating Shopify engineering–blog–level concepts into founder-readable strategy. Combined with the two posts already committed in `4df8e65` (`vector-search-killed-keyword-search-shopify`, `why-bfcm-still-breaks-shopify-stores-2026`) this completes the 15-post batch the user asked for. New post slugs in this commit: `ai-product-descriptions-seo-cro-2026`, `shopify-checkout-extensibility-revenue-impact`, `hydrogen-vs-themes-when-headless-pays-off`, `page-speed-revenue-math-2026`, `first-party-data-after-third-party-cookies-2026`, `meta-ads-attribution-fix-2026`, `incrementality-testing-dtc-brands`, `shopify-ab-testing-without-breaking-conversion`, `real-time-inventory-multi-location-stockouts`, `product-feed-optimization-google-meta-tiktok-2026`, `cart-abandonment-recovery-2026-beyond-email`, `shopify-app-bloat-hidden-conversion-tax`, `ai-agents-shopping-llms-txt-shopify`. Topics span data infrastructure, AI/LLM readiness (incl. agent commerce + llms.txt), CRO surfaces (checkout extensibility, app bloat, page-speed math, A/B testing rigor), and the ads pain stack (Meta attribution, incrementality testing, product feed optimization, Hydrogen vs themes math). Each follows the existing frontmatter contract (FAQs, hero rotation 01–07.jpg), targets ~1500–2200 words, and is keyed Canada-wide rather than location-specific.
+  - **`app/sitemap.ts`** — bumped blog lastmod from 2026-05-02 → 2026-05-06 to reflect the 15 new entries (the per-post sitemap rows are auto-generated from `getAllPosts()` so no manual addition needed).
+- Notes:
+  - All 15 posts cycle the existing `/images/blog/01.jpg`–`07.jpg` set; new hero photography would be a future-cadence ask.
+  - One post (`ai-agents-shopping-llms-txt-shopify`) is the closest fit for "next flagship" but `featured: false` is held to avoid hijacking the existing pinned Toronto Plus agency featured slot. Easy to flip later.
+  - Voice held against §6 of CLAUDE.md — under-claim throughout, ranges for any quoted lift, no fabricated client metrics, no testimonials inserted.
+  - Build verification: prebuild (`build-chat-context`) parses all 15 posts cleanly. Full `next build` is blocked by an unrelated in-flight feature (`Comments` component imported in `app/blog/[slug]/page.tsx` and `app/docs/[...slug]/page.tsx` but the component file itself isn't checked in). That work is outside scope of this post-batch and is left untouched in the working tree. The blog post commit is isolated to the new MDX + sitemap + CHANGELOG so main stays buildable when the Comments feature lands.
+
+---
+
 ## (pending) — 2026-05-06 — pages: apply audit findings (FAQ schema, hard 404, JobPosting validThrough, copy reconcile)
 
 - Touched:

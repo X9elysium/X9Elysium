@@ -14,7 +14,7 @@ const STATIC_LASTMOD = {
   services: "2026-05-02",
   work: "2026-05-02",
   contact: "2026-05-02",
-  blog: "2026-05-02",
+  blog: "2026-05-06",
   changelog: "2026-05-03",
   careers: "2026-04-26",
   toronto: "2026-04-22",
