@@ -41,7 +41,8 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          # 22 — required by wrangler v4 (the version in package.json).
+          node-version: 22
           cache: "npm"
 
       - name: Install deps
