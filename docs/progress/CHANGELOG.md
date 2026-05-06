@@ -12,6 +12,22 @@ Format:
 
 ---
 
+## (pending) — 2026-05-06 — blog: 2 long-form posts on Claude + Grok 4.20 daily workflow for $1M–$5M Shopify stores, new "AI in eCommerce" category
+
+- Touched:
+  - **`app/lib/blog-types.ts`** — `BlogCategory` type extended with `"AI in eCommerce"`. Existing `GTA | Calgary | Canada | Vancouver` values untouched. Category is just a string in frontmatter so no other code paths needed updating; `CategoryFilter` picks up the new pill automatically.
+  - **`content/posts/claude-daily-workflow-shopify-1m-5m-store-owners.mdx`** *(new)* — ~2,200-word operator playbook for putting Claude Opus 4.7 (1M context, April 2026) and Sonnet 4.6 into a small Shopify ops team's daily rhythm. Walks through a real week against [chillymoose.ca](https://chillymoose.ca) (Brent Insulator, Algonquin Tumbler, Ice Box, Wheeled Explorer): Monday catalog work, Tuesday support drafts, Wednesday email/ads/long-form blog, Thursday Liquid + Shopify AI Toolkit (April 9 2026 release), Friday Opus 4.7 long-context reporting. Ships explicit `tldr` frontmatter (punch + summary + 3 truths), 5 FAQs covering model choice, Toolkit safety, brand voice, time savings, PII risk. Featured: true. Category: "AI in eCommerce."
+  - **`content/posts/grok-4-20-daily-workflow-shopify-1m-5m-store-owners.mdx`** *(new)* — ~2,300-word companion piece on Grok 4.20 (March 2026): 4-agent multi-agent architecture, 2M context window, native X.com `x_search`, 235 tok/sec, $2/$6 per million tokens. Explicit Claude vs Grok division-of-labour matrix — Grok is the *scout* (live signal), Claude is the *operator* (structure + voice + Shopify integration). Same Chilly Moose-shaped week: Monday brand brief, Tuesday competitive monitoring, Wednesday category trend detection, Thursday content calendar with live signal anchoring, Friday quarterly long-context strategic memo. Ships explicit `tldr`, 5 FAQs covering model differences, brand-safety, subscription mix, Shopify integration limits, PII boundaries. Featured: true. Category: "AI in eCommerce."
+- Build verification:
+  - `npm run build` clean. Both posts SSG'd to `out/blog/<slug>/index.html` + `index.txt`. Blog index renders the new "AI in eCommerce" filter pill (8 occurrences in `out/blog/index.html` — pill + 2 cards × multiple positions in JSON-LD/breadcrumb/UI). Sitemap auto-includes both via `getAllPosts()`.
+- Notes:
+  - Tone held against CLAUDE.md §6 — terse, sentence-level, banned ad-copy adjectives, ranges for all quoted numbers, no fabricated client metrics or testimonials. Voice consistent with the existing 24-post catalog.
+  - chillymoose.ca treated as illustrative archetype, not a claimed client. No engagement claims, no client logo, no quoted metrics from them. Public homepage facts only (product names, price ranges, partnerships) — same posture as our existing GTA/Calgary local pages that name retailers without claiming work for them.
+  - Hero rotation: posts use `/images/blog/03.jpg` and `/images/blog/04.jpg` — same set as existing posts; new hero photography is a future-cadence ask.
+  - Sources cited inline (Anthropic Opus 4.7 pricing, BenchLM Sonnet 4.6 vs Opus 4.7, Shopify AI Toolkit announce, fudge.ai walkthrough, Grok 4.20 reviews, hackceleration benchmark, Apify Grok X Intelligence) so the AI-citation surface for both posts is well-grounded for ChatGPT/Perplexity/AIO ingestion.
+
+---
+
 ## (pending) — 2026-05-06 — site: TLDRs on blog/docs/journal, open comments, /thoughts feed, Reddit GEO playbook
 
 - Touched:
