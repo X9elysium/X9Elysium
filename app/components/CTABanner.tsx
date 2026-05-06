@@ -40,8 +40,13 @@ export default function CTABanner() {
             get there faster.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <BookingButton variant="accent" />
-            <a href="mailto:darshan@x9elysium.com" className="btn-outline">
+            <BookingButton variant="accent" source="cta_banner" />
+            <a
+              href="mailto:darshan@x9elysium.com"
+              className="btn-outline"
+              data-track-cta="email_direct"
+              data-track-location="cta_banner"
+            >
               Email Us Directly
             </a>
           </div>

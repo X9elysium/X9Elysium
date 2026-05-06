@@ -10,6 +10,7 @@ import { ThemeToggle } from "./ThemeToggle";
 const navItems = [
   { name: "Services", href: "/services" },
   { name: "Work", href: "/work" },
+  { name: "Thoughts", href: "/thoughts" },
   { name: "Blog", href: "/blog" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
@@ -93,6 +94,8 @@ export default function Navigation() {
             <Link
               href="/contact"
               className="hidden sm:inline-flex items-center justify-center gap-2 px-5 py-2.5 text-label-sm bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-300"
+              data-track-cta="start_project"
+              data-track-location="nav_desktop"
             >
               Start a Project
             </Link>
@@ -168,6 +171,8 @@ export default function Navigation() {
                   href="/contact"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="btn-accent w-full text-center"
+                  data-track-cta="start_project"
+                  data-track-location="nav_mobile"
                 >
                   Start a Project
                 </Link>

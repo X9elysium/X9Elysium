@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
 import Link from "next/link";
 import { ArrowLeft, KeyRound, Lock, Send, Sparkles, Trash2, AlertCircle } from "lucide-react";
+import { clarity } from "../lib/clarity";
 
 type Role = "user" | "assistant";
 interface Message {
@@ -40,12 +41,16 @@ export default function ChatClient() {
     if (storedPin) {
       setPin(storedPin);
       setUnlocked(true);
+      clarity.event("chat_session_resumed");
     }
     const storedHistory = sessionStorage.getItem(SESSION_HISTORY_KEY);
     if (storedHistory) {
       try {
         const parsed = JSON.parse(storedHistory);
-        if (Array.isArray(parsed)) setMessages(parsed);
+        if (Array.isArray(parsed)) {
+          setMessages(parsed);
+          clarity.tag("chat_history_restored", String(parsed.length));
+        }
       } catch {
         // ignore
       }
@@ -72,6 +77,7 @@ export default function ChatClient() {
     e.preventDefault();
     setPinError(null);
     setPinBusy(true);
+    clarity.event("chat_pin_attempt");
     try {
       // Validate the PIN by sending a no-op probe message — the Worker will
       // 401 if wrong, 503 if backend not configured, 200 with stream if right.
@@ -82,16 +88,19 @@ export default function ChatClient() {
       });
       if (probe.status === 401) {
         setPinError("Invalid PIN.");
+        clarity.event("chat_pin_invalid");
         return;
       }
       if (probe.status === 503) {
         const body = (await probe.json().catch(() => ({}))) as { error?: string };
         setPinError(body.error || "Chat is not configured yet.");
+        clarity.event("chat_unavailable");
         return;
       }
       if (!probe.ok) {
         const body = (await probe.json().catch(() => ({}))) as { error?: string };
         setPinError(body.error || `Chat is unavailable (${probe.status}).`);
+        clarity.event("chat_pin_error");
         return;
       }
       // Drain + drop the probe stream so we don't show a "ping" exchange.
@@ -103,8 +112,11 @@ export default function ChatClient() {
       sessionStorage.setItem(SESSION_PIN_KEY, pin.trim());
       setPin(pin.trim());
       setUnlocked(true);
+      clarity.event("chat_unlocked");
+      clarity.upgrade("chat_intent");
     } catch {
       setPinError("Network error. Try again.");
+      clarity.event("chat_pin_network_error");
     } finally {
       setPinBusy(false);
     }
@@ -112,12 +124,15 @@ export default function ChatClient() {
 
   function clearChat() {
     abortRef.current?.abort();
+    clarity.event("chat_cleared");
+    clarity.tag("chat_messages_at_clear", String(messages.length));
     setMessages([]);
     setError(null);
   }
 
   function lock() {
     abortRef.current?.abort();
+    clarity.event("chat_locked");
     sessionStorage.removeItem(SESSION_PIN_KEY);
     sessionStorage.removeItem(SESSION_HISTORY_KEY);
     setMessages([]);
@@ -136,6 +151,15 @@ export default function ChatClient() {
     setInput("");
     setStreaming(true);
 
+    clarity.event("chat_message_sent");
+    clarity.tag("chat_message_count", String(newHistory.length));
+    clarity.tag(
+      "chat_message_size",
+      trimmed.length < 80 ? "short" : trimmed.length < 240 ? "medium" : "long"
+    );
+    if (newHistory.length === 1) clarity.event("chat_first_message");
+    if (newHistory.length === 5) clarity.upgrade("chat_engaged");
+
     const controller = new AbortController();
     abortRef.current = controller;
 
@@ -150,14 +174,17 @@ export default function ChatClient() {
       if (res.status === 401) {
         setError("PIN was rejected. Lock and try again.");
         setStreaming(false);
+        clarity.event("chat_auth_lost");
         return;
       }
       if (!res.ok || !res.body) {
         const body = (await res.json().catch(() => ({}))) as { error?: string };
         setError(body.error || `Chat is unavailable (${res.status}).`);
         setStreaming(false);
+        clarity.event("chat_send_error");
         return;
       }
+      clarity.event("chat_response_started");
 
       // Add an empty assistant message that we'll fill in as the stream arrives.
       setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
@@ -205,10 +232,14 @@ export default function ChatClient() {
     } catch (err) {
       if ((err as Error).name !== "AbortError") {
         setError("Network error while streaming. Try again.");
+        clarity.event("chat_stream_error");
+      } else {
+        clarity.event("chat_stream_aborted");
       }
     } finally {
       setStreaming(false);
       abortRef.current = null;
+      clarity.event("chat_response_complete");
     }
   }
 
@@ -338,10 +369,14 @@ export default function ChatClient() {
                 to founder philosophy.
               </p>
               <div className="grid w-full gap-2 sm:grid-cols-2">
-                {SUGGESTIONS.map((s) => (
+                {SUGGESTIONS.map((s, i) => (
                   <button
                     key={s}
-                    onClick={() => void send(s)}
+                    onClick={() => {
+                      clarity.event("chat_suggestion_clicked");
+                      clarity.tag("chat_suggestion_index", String(i));
+                      void send(s);
+                    }}
                     className="rounded-xl border border-white/[0.08] bg-white/[0.02] px-4 py-3 text-left text-sm text-neutral-300 transition hover:border-emerald-500/30 hover:bg-white/[0.04] hover:text-white"
                   >
                     {s}

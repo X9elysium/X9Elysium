@@ -11,8 +11,11 @@ import ShareBar from "../components/ShareBar";
 import FAQBlock from "../components/FAQBlock";
 import ReadingProgress from "../components/ReadingProgress";
 import NewsletterCTA from "../components/NewsletterCTA";
+import TldrCard from "../../components/TldrCard";
+import Comments from "../../components/Comments";
 import { getAllPosts, getPostBySlug, getRelatedPosts } from "../../lib/blog";
 import { extractToc } from "../../lib/mdx";
+import { buildTldr, buildSpeakable } from "../../lib/tldr";
 
 export async function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
@@ -68,6 +71,17 @@ export default async function BlogPostPage({
 
   const toc = extractToc(post.content);
   const related = getRelatedPosts(post.slug, 3);
+
+  const tldr = buildTldr({
+    body: post.content,
+    override: post.frontmatter.tldr,
+    fallback: post.frontmatter.description,
+  });
+  const speakable = buildSpeakable({
+    title: post.frontmatter.title,
+    tldr,
+    body: post.content,
+  });
 
   const url = `https://x9elysium.com/blog/${post.slug}`;
   const ogImage = post.frontmatter.heroImage
@@ -178,10 +192,16 @@ export default async function BlogPostPage({
 
               {/* Main content */}
               <div className="min-w-0">
+                <TldrCard tldr={tldr} speakable={speakable} />
+
                 <BlogContent source={post.content} />
 
                 <div className="mt-16 pt-12 border-t border-neutral-200 dark:border-white/[0.06]">
                   <AuthorCard author={post.frontmatter.author} />
+                </div>
+
+                <div className="mt-12">
+                  <Comments threadId={`blog/${post.slug}`} title="Comments" />
                 </div>
               </div>
 

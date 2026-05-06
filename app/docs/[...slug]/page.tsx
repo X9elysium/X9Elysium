@@ -5,6 +5,9 @@ import { ChevronRight, ArrowLeft, Calendar, FileText } from "lucide-react";
 import fs from "fs";
 import path from "path";
 import { findBySlug, getAllFiles, renderDoc } from "../lib";
+import TldrCard from "../../components/TldrCard";
+import Comments from "../../components/Comments";
+import { buildTldr, buildSpeakable } from "../../lib/tldr";
 
 interface Props {
   params: { slug: string[] };
@@ -34,9 +37,12 @@ export default function DocFilePage({ params }: Props) {
   const file = findBySlug(params.slug);
   if (!file) notFound();
 
-  const { html, toc } = renderDoc(file);
+  const { html, toc, raw } = renderDoc(file);
   const abs = path.join(process.cwd(), "docs", file.path);
   const stat = fs.statSync(abs);
+
+  const tldr = buildTldr({ body: raw, fallback: file.title });
+  const speakable = buildSpeakable({ title: file.title, tldr, body: raw });
 
   return (
     <article>
@@ -88,10 +94,16 @@ export default function DocFilePage({ params }: Props) {
 
       <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_220px] gap-12">
         {/* Markdown body */}
-        <div
-          className="docs-prose prose prose-neutral dark:prose-invert max-w-none"
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
+        <div className="min-w-0">
+          <TldrCard tldr={tldr} speakable={speakable} />
+          <div
+            className="docs-prose prose prose-neutral dark:prose-invert max-w-none"
+            dangerouslySetInnerHTML={{ __html: html }}
+          />
+          <div className="mt-12">
+            <Comments threadId={`docs/${file.slug.join("/")}`} title="Notes from readers" />
+          </div>
+        </div>
 
         {/* On-page TOC */}
         {toc.length > 0 && (

@@ -12,7 +12,10 @@ import {
   Sparkles,
   ShieldCheck,
   AlertCircle,
+  Search,
 } from "lucide-react";
+import TldrCard from "../../../components/TldrCard";
+import type { Tldr } from "../../../lib/tldr";
 
 type FileNode = {
   type: "file";
@@ -21,6 +24,8 @@ type FileNode = {
   slug: string;
   title: string;
   html: string;
+  tldr?: Tldr;
+  speakable?: string;
 };
 
 type DirNode = {
@@ -97,6 +102,7 @@ export default function JournalApp({ blob }: Props) {
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [activeSlug, setActiveSlug] = useState<string | null>(null);
+  const [query, setQuery] = useState("");
 
   // Restore unlock state from sessionStorage
   useEffect(() => {
@@ -125,6 +131,15 @@ export default function JournalApp({ blob }: Props) {
     () => (activeSlug ? files.find((f) => f.slug === activeSlug) || null : null),
     [files, activeSlug]
   );
+
+  const filteredFiles = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return files;
+    return files.filter((f) => {
+      const hay = `${f.title}\n${f.path}\n${f.tldr?.punch ?? ""}\n${f.tldr?.summary ?? ""}\n${(f.tldr?.truths ?? []).join(" ")}\n${f.html.replace(/<[^>]+>/g, " ").slice(0, 4000)}`.toLowerCase();
+      return hay.includes(q);
+    });
+  }, [files, query]);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -189,13 +204,41 @@ export default function JournalApp({ blob }: Props) {
       <div className="grid grid-cols-1 lg:grid-cols-[260px_minmax(0,1fr)] gap-8 xl:gap-12">
         {/* Sidebar */}
         <aside className="lg:sticky lg:top-[100px] lg:self-start lg:max-h-[calc(100vh-120px)] lg:overflow-y-auto">
-          <div className="rounded-2xl border border-neutral-200/70 dark:border-white/[0.06] bg-white/60 dark:bg-white/[0.02] backdrop-blur-sm p-4 space-y-0.5">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400 px-2 mb-3">
-              Entries
+          <div className="rounded-2xl border border-neutral-200/70 dark:border-white/[0.06] bg-white/60 dark:bg-white/[0.02] backdrop-blur-sm p-4">
+            <div className="relative mb-3">
+              <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400 dark:text-neutral-500 pointer-events-none" />
+              <input
+                type="search"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search entries…"
+                aria-label="Search journal"
+                className="w-full pl-9 pr-3 py-2 text-sm bg-neutral-100 dark:bg-white/[0.03] border border-neutral-200 dark:border-white/[0.06] rounded-lg text-neutral-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-600 focus:outline-none focus:border-emerald-500/60 focus:ring-1 focus:ring-emerald-500/15 transition"
+              />
+            </div>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400 px-2 mb-2">
+              {query.trim() ? `Matches · ${filteredFiles.length}` : "Entries"}
             </p>
-            {tree.map((node) => (
-              <TreeItem key={node.path} node={node} activeSlug={activeSlug} depth={0} />
-            ))}
+            <div className="space-y-0.5">
+              {query.trim()
+                ? filteredFiles.map((f) => (
+                    <a
+                      key={f.path}
+                      href={`#/${f.slug}`}
+                      className={`flex items-center gap-1.5 py-1.5 px-2 rounded-md text-sm transition truncate ${
+                        activeSlug === f.slug
+                          ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 font-medium"
+                          : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-white/[0.04] hover:text-neutral-900 dark:hover:text-white"
+                      }`}
+                    >
+                      <FileText className="w-3.5 h-3.5 flex-shrink-0 text-neutral-400 dark:text-neutral-500" />
+                      <span className="truncate">{f.title}</span>
+                    </a>
+                  ))
+                : tree.map((node) => (
+                    <TreeItem key={node.path} node={node} activeSlug={activeSlug} depth={0} />
+                  ))}
+            </div>
           </div>
         </aside>
 
@@ -211,6 +254,16 @@ export default function JournalApp({ blob }: Props) {
                   {activeFile.title}
                 </h2>
               </header>
+
+              {activeFile.tldr && (
+                <TldrCard
+                  tldr={activeFile.tldr}
+                  speakable={activeFile.speakable}
+                  eyebrow="Journal Entry"
+                  playerEyebrow="Listen privately"
+                />
+              )}
+
               <div
                 className="docs-prose prose prose-neutral dark:prose-invert max-w-none"
                 dangerouslySetInnerHTML={{ __html: activeFile.html }}

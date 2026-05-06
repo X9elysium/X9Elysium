@@ -5,6 +5,12 @@ export interface FAQItem {
   a: string;
 }
 
+export interface TldrFrontmatter {
+  punch?: string;
+  summary?: string;
+  truths?: string[];
+}
+
 export interface PostAuthor {
   name: string;
   avatar?: string;
@@ -27,6 +33,7 @@ export interface PostFrontmatter {
   image?: string;
   featured?: boolean;
   faqs?: FAQItem[];
+  tldr?: TldrFrontmatter;
   draft?: boolean;
 }
 

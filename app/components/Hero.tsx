@@ -69,8 +69,13 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: smoothEase }}
           className="flex flex-col sm:flex-row items-start gap-4 mt-12"
         >
-          <BookingButton variant="primary-light" />
-          <a href="#work" className="btn-outline">
+          <BookingButton variant="primary-light" source="hero" />
+          <a
+            href="#work"
+            className="btn-outline"
+            data-track-cta="view_work"
+            data-track-location="hero"
+          >
             Explore Our Work
             <ArrowRight className="w-4 h-4" />
           </a>

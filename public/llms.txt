@@ -24,6 +24,7 @@ X9Elysium is a Shopify Partner headquartered at 28 Ann Street, Mississauga, Onta
 - [Foundation](https://x9elysium.com/foundation): The Elysium Method — the Sanskrit credo Vasudhaiva Kutumbakam (the world is one family), five operating pillars, and ten operating rules that govern every engagement
 - [Contact](https://x9elysium.com/contact): Senior-founder reply within 24 hours; web form + direct email (darshan@x9elysium.com)
 - [Blog](https://x9elysium.com/blog): Field notes on Shopify Plus, Canadian DTC, migration playbooks, and unified commerce
+- [Thoughts](https://x9elysium.com/thoughts): Short, operator-true field notes (cross-posted to x.com/x9elysium) with an open comment thread per item — anyone can reply without an account
 - [Careers](https://x9elysium.com/careers): Open roles for senior Shopify and full-stack engineers
 
 ## Platforms We Build On

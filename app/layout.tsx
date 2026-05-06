@@ -3,6 +3,7 @@ import { Inter, Noto_Sans_Devanagari } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./components/ThemeProvider";
 import ClarityInit from "./components/ClarityInit";
+import ClarityTracker from "./components/ClarityTracker";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -268,6 +269,7 @@ export default function RootLayout({
           <div className="noise-overlay" aria-hidden="true" />
           {children}
           <ClarityInit />
+          <ClarityTracker />
         </ThemeProvider>
       </body>
     </html>

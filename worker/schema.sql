@@ -23,3 +23,23 @@ CREATE TABLE IF NOT EXISTS leads (
 
 CREATE INDEX IF NOT EXISTS idx_leads_received_at ON leads(received_at DESC);
 CREATE INDEX IF NOT EXISTS idx_leads_email       ON leads(email);
+
+-- Open comments. Anyone can post; spam filters live in worker/index.ts.
+-- thread_id format: "blog/<slug>", "docs/<slug>", "thoughts/<id>".
+-- approved=1 → public on the page; 0 → hidden until Darsh promotes via D1.
+-- hidden=1 → soft-deleted (still in DB for forensics), never returned by GET.
+CREATE TABLE IF NOT EXISTS comments (
+  id           INTEGER PRIMARY KEY AUTOINCREMENT,
+  thread_id    TEXT    NOT NULL,
+  name         TEXT,
+  message      TEXT    NOT NULL,
+  ip           TEXT,
+  user_agent   TEXT,
+  referer      TEXT,
+  created_at   TEXT    NOT NULL,
+  approved     INTEGER NOT NULL DEFAULT 0,
+  hidden       INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE INDEX IF NOT EXISTS idx_comments_thread ON comments(thread_id, created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_comments_pending ON comments(approved, created_at DESC);

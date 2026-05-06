@@ -21,6 +21,7 @@
 
 import { renderLeadEmail, renderLeadText, renderAutoReply, renderAutoReplyText } from "./email";
 import { handleChat } from "./chat";
+import { handleComments } from "./comments";
 
 export interface Env {
   ASSETS: Fetcher;
@@ -91,6 +92,14 @@ export default {
         return json({ error: "Forbidden" }, 403, corsHeaders);
       }
       return handleChat(req, env, ctx, corsHeaders);
+    }
+    if (url.pathname === "/api/comments") {
+      const origin = req.headers.get("Origin") ?? "";
+      const corsHeaders = buildCorsHeaders(origin, "GET, POST, OPTIONS");
+      if (req.method === "POST" && origin && !ALLOWED_ORIGINS.has(origin)) {
+        return json({ error: "Forbidden" }, 403, corsHeaders);
+      }
+      return handleComments(req, env, ctx, corsHeaders);
     }
     if (url.pathname === "/api/health") {
       return json({ ok: true, ts: Date.now() });
@@ -313,11 +322,14 @@ async function sendSlack(webhookUrl: string, lead: NormalizedLead): Promise<void
   }
 }
 
-function buildCorsHeaders(origin: string): Record<string, string> {
+function buildCorsHeaders(
+  origin: string,
+  methods = "POST, OPTIONS",
+): Record<string, string> {
   const allowed = ALLOWED_ORIGINS.has(origin) ? origin : "https://x9elysium.com";
   return {
     "Access-Control-Allow-Origin": allowed,
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Methods": methods,
     "Access-Control-Allow-Headers": "Content-Type",
     "Access-Control-Max-Age": "86400",
     Vary: "Origin",

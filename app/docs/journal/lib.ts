@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { webcrypto } from "crypto";
 import { marked } from "marked";
+import { buildTldr, buildSpeakable, type Tldr } from "../../lib/tldr";
 
 const JOURNAL_DIR = path.join(process.cwd(), "docs", "journal");
 
@@ -20,6 +21,8 @@ type FileEntry = {
   title: string;
   html: string;
   raw: string;
+  tldr: Tldr;
+  speakable: string;
 };
 
 type DirEntry = {
@@ -75,14 +78,19 @@ function buildTree(dir: string, rel = ""): TreeEntry[] {
       const raw = fs.readFileSync(abs, "utf8");
       marked.setOptions({ gfm: true, breaks: false, headerIds: false, mangle: false });
       const html = marked.parse(raw) as string;
+      const title = readTitle(raw, humanize(e.name));
+      const tldr = buildTldr({ body: raw, fallback: title });
+      const speakable = buildSpeakable({ title, tldr, body: raw });
       out.push({
         type: "file",
         name: e.name,
         path: relPath,
         slug: pathToSlug(relPath),
-        title: readTitle(raw, humanize(e.name)),
+        title,
         html,
         raw,
+        tldr,
+        speakable,
       });
     }
   }
@@ -141,6 +149,8 @@ export async function getEncryptedJournal(): Promise<EncryptedBlob> {
             slug: n.slug,
             title: n.title,
             html: n.html,
+            tldr: n.tldr,
+            speakable: n.speakable,
           }
     );
   }

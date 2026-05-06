@@ -8,6 +8,7 @@ import type {
   PostAuthor,
   PostFrontmatter,
   Post,
+  TldrFrontmatter,
 } from "./blog-types";
 
 export type {
@@ -16,6 +17,7 @@ export type {
   PostAuthor,
   PostFrontmatter,
   Post,
+  TldrFrontmatter,
 } from "./blog-types";
 
 const POSTS_DIR = path.join(process.cwd(), "content/posts");
@@ -64,6 +66,19 @@ function deriveDescription(content: string, max = 160): string {
     .trim();
   if (stripped.length <= max) return stripped;
   return stripped.slice(0, max - 1).replace(/\s+\S*$/, "") + "…";
+}
+
+function normalizeTldr(raw: unknown): TldrFrontmatter | undefined {
+  if (!raw || typeof raw !== "object") return undefined;
+  const r = raw as Record<string, unknown>;
+  const punch = typeof r.punch === "string" ? r.punch.trim() : undefined;
+  const summary = typeof r.summary === "string" ? r.summary.trim() : undefined;
+  const truthsRaw = Array.isArray(r.truths) ? r.truths : [];
+  const truths = truthsRaw
+    .map((t) => (typeof t === "string" ? t.trim() : ""))
+    .filter(Boolean);
+  if (!punch && !summary && truths.length === 0) return undefined;
+  return { punch, summary, truths };
 }
 
 function calculateReadingTime(content: string): number {
@@ -126,6 +141,7 @@ function readPost(filename: string): Post | null {
     image: heroImage,
     featured: Boolean(data.featured),
     faqs: (data.faqs as FAQItem[]) || [],
+    tldr: normalizeTldr(data.tldr),
   };
 
   if (new Date(frontmatter.publishedAt) > new Date()) return null;

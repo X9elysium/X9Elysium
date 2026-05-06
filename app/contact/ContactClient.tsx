@@ -18,6 +18,7 @@ import Image from "next/image";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import { smoothEase } from "../lib/animations";
+import { clarity } from "../lib/clarity";
 
 const revenueOptions = [
   "Under $500K",
@@ -96,23 +97,60 @@ export default function ContactClient() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [gotcha, setGotcha] = useState("");
   const formMountedAt = useRef<number>(Date.now());
+  const formStartedRef = useRef<boolean>(false);
+  const fieldsTouchedRef = useRef<Set<string>>(new Set());
 
   useEffect(() => {
     formMountedAt.current = Date.now();
-  }, []);
+    clarity.event("contact_form_mounted");
+
+    const onUnload = () => {
+      if (formStartedRef.current && status !== "sent") {
+        clarity.event("contact_form_abandoned");
+        clarity.tag(
+          "contact_fields_touched",
+          String(fieldsTouchedRef.current.size)
+        );
+      }
+    };
+    window.addEventListener("pagehide", onUnload);
+    return () => window.removeEventListener("pagehide", onUnload);
+  }, [status]);
 
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >
   ) => {
-    setFormState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+
+    if (!formStartedRef.current) {
+      formStartedRef.current = true;
+      clarity.event("contact_form_started");
+      clarity.upgrade("contact_intent");
+    }
+
+    if (!fieldsTouchedRef.current.has(name) && value) {
+      fieldsTouchedRef.current.add(name);
+      clarity.event(`contact_field_${name}`);
+    }
+
+    setFormState((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setStatus("sending");
     setErrorMessage(null);
+
+    clarity.event("contact_form_submit_attempt");
+    const elapsedSec = Math.round(
+      (Date.now() - formMountedAt.current) / 1000
+    );
+    clarity.tag("contact_time_to_submit_s", elapsedSec);
+    if (formState.revenue) clarity.tag("lead_revenue", formState.revenue);
+    if (formState.platform) clarity.tag("lead_platform", formState.platform);
+    if (formState.service) clarity.tag("lead_service", formState.service);
 
     try {
       const res = await fetch("/api/lead", {
@@ -127,6 +165,8 @@ export default function ContactClient() {
 
       if (res.ok) {
         setStatus("sent");
+        clarity.event("contact_form_submitted");
+        clarity.upgrade("contact_submitted");
         setFormState({
           firstName: "",
           lastName: "",
@@ -142,11 +182,14 @@ export default function ContactClient() {
         setGotcha("");
       } else {
         setStatus("error");
+        clarity.event("contact_form_error");
+        clarity.tag("contact_error_status", String(res.status));
         const data = (await res.json().catch(() => null)) as { error?: string } | null;
         if (data?.error) setErrorMessage(data.error);
       }
     } catch {
       setStatus("error");
+      clarity.event("contact_form_network_error");
     }
   };
 
