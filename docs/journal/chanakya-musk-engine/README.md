@@ -8,9 +8,11 @@ This folder is private. It is not linked from any site navigation, sitemap, or c
 
 - [00-foundation.md](./00-foundation.md) — the original blueprint (CliftonStrengths × Chanakya Neeti), preserved verbatim as the starting point.
 - [01-deep-research.md](./01-deep-research.md) — Naval + Thiel deep analysis. Where the blueprint is right, where it's status-driven instead of wealth-driven, and the specific commerce-first path that compounds your existing assets instead of pivoting away from them.
+- [02-niche-and-secret.md](./02-niche-and-secret.md) — working draft of the one-sentence niche and the one-paragraph secret that 01 asked for. The act of articulating it in private is the discipline.
 
 ## How to use
 
 1. Read 00 first to ground in the strengths and intent.
 2. Read 01 to challenge the strategy. Both Naval and Thiel converge on the same critique — the plan is emotionally true but strategically vague, and pivoting to climate AI throws away seven years of compounding specific knowledge in commerce.
-3. Use the synthesis section in 01 to pick the next 90-day moves. Update this folder as decisions are made — keep it a living document, not a one-time exercise.
+3. Read 02 for the current working answer to "what's the niche, what's the secret." Update it whenever the answer sharpens.
+4. Use the synthesis sections to pick the next 90-day moves. Update this folder as decisions are made — keep it a living document, not a one-time exercise.

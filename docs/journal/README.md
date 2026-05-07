@@ -10,12 +10,16 @@ This folder is for Darsh's personal go-to-market plan, business goals, milestone
 
 The `npm run docs` local viewer always shows the journal in cleartext (it reads `docs/` directly without encryption) — use it for editing.
 
-## Suggested files
+## Files in this folder
+
+- [chanakya-musk-engine/](./chanakya-musk-engine/) — strategic operating system. Foundation (CliftonStrengths × Chanakya) → Naval/Thiel deep research → niche & secret working draft.
+- [lessons.md](./lessons.md) — lessons paid for in real commits. What recent dev cycles taught about the practice.
+- [wins.md](./wins.md) — asset-base inventory. What's actually shipped, dated, defensible. Naval frame: "wealth is assets that earn while you sleep."
+- [weekly/](./weekly/) — weekly notes (`YYYY-Www.md`). Format: shipped → learned → next.
+
+Other suggested filenames if needed:
 
 - `go-to-market.md` — overall GTM strategy, ICP, positioning, channels, targets
 - `goals.md` — quarterly / yearly goals and targets
-- `weekly/YYYY-Www.md` — weekly progress notes
-- `wins.md` — log of wins (signed clients, traffic milestones, etc.)
-- `lessons.md` — lessons learned, what to keep doing, what to stop
 
 Add files freely — the [docs README](../README.md) describes naming conventions.
