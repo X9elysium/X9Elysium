@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import CTABanner from "../components/CTABanner";
@@ -31,10 +31,9 @@ const projects = [
     id: 1,
     category: "Platform Migration",
     tag: "Shopify Plus Migration",
-    title: "Premium Fashion Retailer",
+    title: "Legacy → Plus, without launch panic",
     description:
-      "Full migration from Magento 2 to Shopify Plus — 80k SKUs, custom ERP sync, and a bespoke theme that launched on time.",
-    metric: "+40% Revenue in Q1",
+      "Magento, WooCommerce, BigCommerce, or a custom build — moved to Shopify Plus with a real cutover plan. Catalog, redirects, customer history, payment tokens, and ERP sync all reconciled before DNS flips.",
     bg: "bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a]",
     large: true,
   },
@@ -42,10 +41,9 @@ const projects = [
     id: 2,
     category: "Custom Apps",
     tag: "Custom App Development",
-    title: "DTC Health & Wellness",
+    title: "Subscription, OMS, and back-office wiring",
     description:
-      "Subscription engine, loyalty programme, and a custom OMS integration — built as a single unified Shopify app.",
-    metric: "3× Faster Order Processing",
+      "Purpose-built Shopify apps and integrations connecting OMS, ERP, PIM, and fulfillment. TypeScript, edge-deployed, owned by one team — no app-marketplace duct tape.",
     bg: "bg-gradient-to-br from-[#1a1a2e] via-[#16213e] to-[#0a0a1a]",
     large: false,
   },
@@ -53,10 +51,9 @@ const projects = [
     id: 3,
     category: "Unified Commerce",
     tag: "Unified Commerce Build",
-    title: "Multi-Location Retail Chain",
+    title: "POS + online + wholesale, one back-end",
     description:
-      "Shopify POS + online + wholesale consolidated into one back-end. Three channels, one inventory source of truth.",
-    metric: "Omnichannel live in 90 days",
+      "Shopify POS, online store, and B2B portal consolidated. One inventory source of truth, click-and-collect across multiple locations, and a merchandiser who finally agrees with the developer on what a SKU is.",
     bg: "bg-gradient-to-br from-[#0d1f22] via-[#1a3a3a] to-[#0a1a1a]",
     large: false,
   },
@@ -64,10 +61,9 @@ const projects = [
     id: 4,
     category: "Performance",
     tag: "Performance Overhaul",
-    title: "High-Volume Marketplace",
+    title: "Core Web Vitals without breaking the brand",
     description:
-      "Hydrogen headless rebuild, image pipeline optimisation, and Edge delivery. LCP dropped from 5.8s to 0.9s.",
-    metric: "Sub-1s load time achieved",
+      "Image pipeline, third-party script audit, edge delivery, and theme refactor. The boring stuff that compounds into LCP and INP that pass — without throwing the design out.",
     bg: "bg-gradient-to-br from-[#1c1917] via-[#292524] to-[#1c1917]",
     large: false,
   },
@@ -75,10 +71,9 @@ const projects = [
     id: 5,
     category: "Headless / Hydrogen",
     tag: "Headless Storefront",
-    title: "Luxury Lifestyle Brand",
+    title: "Hydrogen + a real CMS",
     description:
-      "Shopify Hydrogen + Sanity CMS: editorial-grade content with commerce performance. Fully server-rendered, edge-deployed.",
-    metric: "98 Lighthouse score",
+      "Shopify Hydrogen with Sanity, Contentful, or Storyblok — server-rendered, edge-deployed, and editorial-grade. The right call only when the math justifies the maintenance burden, and we will tell you when it doesn&apos;t.",
     bg: "bg-gradient-to-br from-[#111827] via-[#1f2937] to-[#111827]",
     large: false,
   },
@@ -86,10 +81,9 @@ const projects = [
     id: 6,
     category: "Custom Apps",
     tag: "B2B Portal",
-    title: "Industrial Wholesale Co.",
+    title: "B2B portals with tiered pricing and net terms",
     description:
-      "Custom B2B customer portal with tiered pricing, quote management, and net-terms billing integrated with NetSuite.",
-    metric: "€2.1M B2B GMV in year one",
+      "Customer-specific catalogues, quote management, net-terms billing, and ERP integration. Built on Shopify B2B where it fits, custom where it doesn&apos;t.",
     bg: "bg-gradient-to-br from-[#0a1628] via-[#0f2040] to-[#0a1628]",
     large: false,
   },
@@ -97,10 +91,9 @@ const projects = [
     id: 7,
     category: "Platform Migration",
     tag: "WooCommerce → Shopify Plus",
-    title: "Outdoor & Adventure Brand",
+    title: "WooCommerce → Plus, history intact",
     description:
-      "300k product catalogue, six years of order history, and a custom affiliate integration — migrated with zero data loss.",
-    metric: "Zero downtime cutover",
+      "Large catalogues, multi-year order history, and custom plugin behaviour migrated cleanly. Redirects mapped 1:1, SEO equity preserved, customers re-authenticated without a forced password reset.",
     bg: "bg-gradient-to-br from-[#132212] via-[#1a3a1a] to-[#0d1a0d]",
     large: false,
   },
@@ -108,10 +101,9 @@ const projects = [
     id: 8,
     category: "Unified Commerce",
     tag: "Omnichannel Integration",
-    title: "Canadian Grocery Chain",
+    title: "Multi-location retailers on one Shopify admin",
     description:
-      "Click-and-collect, real-time local inventory, and loyalty points across 12 locations — all managed through a single Shopify admin.",
-    metric: "12 locations unified",
+      "Click-and-collect, real-time local inventory, loyalty across stores, and a single Shopify admin that the regional manager can actually use on a Tuesday.",
     bg: "bg-gradient-to-br from-[#1a0f0a] via-[#2d1f14] to-[#1a0f0a]",
     large: false,
   },
@@ -119,35 +111,26 @@ const projects = [
 
 const stats = [
   { value: "30+", label: "Stores Shipped" },
-  { value: "$5M+", label: "GMV Managed" },
+  { value: "8+ yrs", label: "Per-Founder Experience" },
   { value: "95%", label: "Client Retention" },
-  { value: "6", label: "Industries Served" },
+  { value: "2", label: "Founders on Every Brief" },
 ];
 
-const testimonials = [
+const principles = [
   {
-    quote:
-      "X9Elysium transformed our Shopify store from a basic setup into a high-performing commerce platform. Revenue increased 40% in the first quarter after launch.",
-    role: "Head of Ecommerce",
-    company: "Premium fashion DTC",
-    metric: "+40% revenue",
-    initial: "F",
+    title: "We don&apos;t ship anonymized testimonials with invented metrics.",
+    body:
+      "Most of our work runs under NDA. The fastest way to verify our claims is to ask for a named reference — we&apos;ll route you to the founder of a store with the same shape as yours, and they&apos;ll tell you the unvarnished version.",
   },
   {
-    quote:
-      "The migration from our legacy platform was seamless. Every detail — data, design, integrations — handled without a single day of downtime.",
-    role: "CTO",
-    company: "Multi-brand apparel retailer",
-    metric: "Zero downtime",
-    initial: "A",
+    title: "Specific numbers stay private until the client signs off.",
+    body:
+      "Conversion lifts, AOV moves, infrastructure cost reductions — we have them. We just don&apos;t put them in a hero unit until the client has reviewed the framing. It&apos;s slower. It&apos;s also why our clients refer us.",
   },
   {
-    quote:
-      "Load times dropped from 6.2s to 1.8s. Conversion rate jumped 28% — the numbers speak for themselves.",
-    role: "Founder & CEO",
-    company: "Athletic & outdoor gear",
-    metric: "1.8s load time",
-    initial: "G",
+    title: "Every brief is delivered by both founders.",
+    body:
+      "Discovery, architecture, and implementation. The same two people you meet in week one are the same two people patching the regression in month nine. No juniors, no offshore handoffs, no telephone game.",
   },
 ];
 
@@ -157,11 +140,11 @@ export default function WorkClient() {
   const heroRef = useRef(null);
   const gridRef = useRef(null);
   const statsRef = useRef(null);
-  const testimonialsRef = useRef(null);
+  const principlesRef = useRef(null);
 
   const gridInView = useInView(gridRef, { once: true, margin: "-80px" });
   const statsInView = useInView(statsRef, { once: true, margin: "-80px" });
-  const testimonialsInView = useInView(testimonialsRef, { once: true, margin: "-80px" });
+  const principlesInView = useInView(principlesRef, { once: true, margin: "-80px" });
 
   const filtered =
     activeFilter === "All"
@@ -175,7 +158,6 @@ export default function WorkClient() {
     <>
       <Navigation />
       <main>
-        {/* ── Hero ── */}
         <section
           ref={heroRef}
           className="relative overflow-hidden bg-neutral-50 dark:bg-black pt-[140px] pb-20 sm:pt-[160px] sm:pb-24"
@@ -201,10 +183,10 @@ export default function WorkClient() {
               transition={{ duration: 0.8, ease: smoothEase }}
               className="text-display font-light text-neutral-900 dark:text-white max-w-4xl text-balance tracking-tight mt-2"
             >
-              30+ stores.{" "}
-              <span className="text-gradient-emerald">$5M+ GMV.</span>
+              30+ stores shipped.{" "}
+              <span className="text-gradient-emerald">Founder-delivered.</span>
               <br />
-              Every brief, founder-delivered.
+              Named references on request.
             </motion.h1>
 
             <motion.p
@@ -212,12 +194,12 @@ export default function WorkClient() {
               transition={{ duration: 0.8, ease: smoothEase }}
               className="text-body-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mt-6 leading-relaxed"
             >
-              From headless storefronts to complex ERP integrations — every project
-              is driven by measurable outcomes. Selected work below; named
-              references available on request, with client permission.
+              Most of our work runs under NDA. Below is the shape of the work
+              we ship, not a gallery of anonymized client logos with invented
+              metrics. Tell us your shape and we&apos;ll route you to a founder
+              who can vouch for it.
             </motion.p>
 
-            {/* Inline stats */}
             <motion.div
               variants={fadeUp}
               transition={{ duration: 0.8, ease: smoothEase }}
@@ -237,10 +219,8 @@ export default function WorkClient() {
           </motion.div>
         </section>
 
-        {/* ── Filter + Grid ── */}
         <section className="section-light" ref={gridRef}>
           <div className="section-container">
-            {/* Filter bar */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={gridInView ? { opacity: 1, y: 0 } : {}}
@@ -262,7 +242,6 @@ export default function WorkClient() {
               ))}
             </motion.div>
 
-            {/* Bento grid */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeFilter}
@@ -277,7 +256,7 @@ export default function WorkClient() {
                     layout
                     whileHover={{ scale: 1.015 }}
                     transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                    className={`group relative rounded-2xl overflow-hidden lg:col-span-2 lg:row-span-2 ${featured.bg} cursor-pointer`}
+                    className={`group relative rounded-2xl overflow-hidden lg:col-span-2 lg:row-span-2 ${featured.bg}`}
                   >
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent group-hover:from-black/50 transition-all duration-700" />
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-br from-emerald-500/[0.07] to-transparent" />
@@ -285,16 +264,12 @@ export default function WorkClient() {
                       <span className="text-label-sm uppercase tracking-[0.15em] text-emerald-400 mb-3">
                         {featured.tag}
                       </span>
-                      <h3 className="text-2xl sm:text-3xl font-light text-white mb-2">
+                      <h3 className="text-2xl sm:text-3xl font-light text-white mb-3 max-w-md">
                         {featured.title}
                       </h3>
-                      <p className="text-white/60 text-sm max-w-md mb-3 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      <p className="text-white/70 text-sm max-w-md leading-relaxed">
                         {featured.description}
                       </p>
-                      <p className="text-emerald-400/80 text-sm mb-4">{featured.metric}</p>
-                      <div className="flex items-center overflow-hidden h-5">
-                        <ArrowRight className="w-5 h-5 text-emerald-400 transform -translate-x-8 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300" />
-                      </div>
                     </div>
                   </motion.div>
                 )}
@@ -305,7 +280,7 @@ export default function WorkClient() {
                     layout
                     whileHover={{ scale: 1.02 }}
                     transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                    className={`group relative rounded-2xl overflow-hidden ${project.bg} cursor-pointer`}
+                    className={`group relative rounded-2xl overflow-hidden ${project.bg}`}
                   >
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent group-hover:from-black/50 transition-all duration-700" />
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-br from-emerald-500/[0.07] to-transparent" />
@@ -313,13 +288,12 @@ export default function WorkClient() {
                       <span className="text-label-sm uppercase tracking-[0.15em] text-emerald-400 mb-2">
                         {project.tag}
                       </span>
-                      <h3 className="text-lg font-light text-white mb-1">
+                      <h3 className="text-lg font-light text-white mb-2 leading-snug">
                         {project.title}
                       </h3>
-                      <p className="text-emerald-400/80 text-sm mb-3">{project.metric}</p>
-                      <div className="flex items-center overflow-hidden h-5">
-                        <ArrowRight className="w-4 h-4 text-emerald-400 transform -translate-x-8 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300" />
-                      </div>
+                      <p className="text-white/60 text-xs leading-relaxed">
+                        {project.description}
+                      </p>
                     </div>
                   </motion.div>
                 ))}
@@ -328,7 +302,6 @@ export default function WorkClient() {
           </div>
         </section>
 
-        {/* ── Stats Bar ── */}
         <section
           ref={statsRef}
           className="bg-neutral-950 dark:bg-black py-16 sm:py-20"
@@ -359,68 +332,61 @@ export default function WorkClient() {
           </div>
         </section>
 
-        {/* ── Testimonials ── */}
-        <section className="section-light" ref={testimonialsRef}>
+        <section className="section-light" ref={principlesRef}>
           <div className="section-container">
             <motion.div
               initial={{ opacity: 0, y: 15 }}
-              animate={testimonialsInView ? { opacity: 1, y: 0 } : {}}
+              animate={principlesInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, ease: smoothEase }}
-              className="mb-16"
+              className="mb-16 max-w-3xl"
             >
-              <span className="section-label">Client Stories</span>
-              <h2 className="text-h2-display text-neutral-900 dark:text-white max-w-2xl text-balance">
-                What our clients say
+              <span className="section-label">How we talk about work</span>
+              <h2 className="text-h2-display text-neutral-900 dark:text-white text-balance">
+                No invented quotes. No invented numbers.
               </h2>
             </motion.div>
 
             <motion.div
               variants={staggerContainer}
               initial="hidden"
-              animate={testimonialsInView ? "visible" : "hidden"}
+              animate={principlesInView ? "visible" : "hidden"}
               className="grid grid-cols-1 md:grid-cols-3 gap-6"
             >
-              {testimonials.map((t, idx) => (
+              {principles.map((p) => (
                 <motion.div
-                  key={`${t.company}-${idx}`}
+                  key={p.title}
                   variants={fadeUp}
                   transition={sectionTransition}
-                  className="glass-card p-8 flex flex-col hover:border-emerald-500/10 hover:shadow-lg hover:shadow-emerald-500/[0.03] transition-all duration-500"
+                  className="glass-card p-8 flex flex-col"
                 >
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="flex gap-1">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-emerald-500 text-emerald-500" />
-                      ))}
-                    </div>
-                    <span className="text-[11px] font-semibold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full uppercase tracking-wider">
-                      {t.metric}
-                    </span>
-                  </div>
-
-                  <span className="text-5xl font-serif text-emerald-500/20 leading-none mb-4 block select-none">
-                    &ldquo;
+                  <span className="text-3xl font-serif text-emerald-500/30 leading-none mb-3 block select-none">
+                    §
                   </span>
-
-                  <p className="text-neutral-700 dark:text-white/80 leading-relaxed text-base mb-8 flex-grow">
-                    {t.quote}
-                  </p>
-
-                  <div className="flex items-center gap-4 mt-auto">
-                    <div className="w-11 h-11 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white font-semibold text-sm flex-shrink-0 ring-2 ring-emerald-500/20 ring-offset-2 ring-offset-neutral-100 dark:ring-offset-neutral-900">
-                      {t.initial}
-                    </div>
-                    <div>
-                      <div className="text-sm font-semibold text-neutral-900 dark:text-white tracking-wide">
-                        {t.role}
-                      </div>
-                      <div className="text-xs text-neutral-500">
-                        {t.company}
-                      </div>
-                    </div>
-                  </div>
+                  <h3
+                    className="text-base font-semibold text-neutral-900 dark:text-white mb-3 tracking-tight"
+                    dangerouslySetInnerHTML={{ __html: p.title }}
+                  />
+                  <p
+                    className="text-neutral-700 dark:text-white/80 leading-relaxed text-sm"
+                    dangerouslySetInnerHTML={{ __html: p.body }}
+                  />
                 </motion.div>
               ))}
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={principlesInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.3, ease: smoothEase }}
+              className="mt-12"
+            >
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-600 dark:text-emerald-400 hover:text-emerald-500 transition-colors"
+              >
+                Ask for a named reference
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </motion.div>
           </div>
         </section>

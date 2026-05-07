@@ -36,3 +36,13 @@ LEAD_FROM_EMAIL = "X9Elysium <leads@x9elysium.com>"
 # binding = "LEADS_DB"
 # database_name = "x9elysium-leads"
 # database_id = "REPLACE_WITH_D1_ID"
+
+# Optional: R2 bucket for /sanctuary cloud-hosted ambient tracks.
+# Create with: npx wrangler r2 bucket create x9elysium-sanctuary
+# Upload tracks: npx wrangler r2 object put x9elysium-sanctuary/<key>.mp3 --file=./<file>.mp3 \
+#                  --content-type=audio/mpeg --custom-metadata=title="Drift",durationSec=900
+# Until this binding is uncommented, /api/sanctuary/manifest returns an empty
+# track list and the sanctuary client falls back to in-browser Web Audio synthesis.
+# [[r2_buckets]]
+# binding = "SANCTUARY"
+# bucket_name = "x9elysium-sanctuary"

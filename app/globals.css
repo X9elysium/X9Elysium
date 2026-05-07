@@ -326,3 +326,12 @@
 .dark .grok-player .grok-play-btn {
   box-shadow: 0 6px 20px rgb(16 185 129 / 0.18);
 }
+
+/* Sanctuary — 4-4-4-4 box-breathing pacer (full cycle 16s). */
+@keyframes x9-breath {
+  0%   { transform: scale(0.78); opacity: 0.55; }
+  25%  { transform: scale(1.18); opacity: 1;    }
+  50%  { transform: scale(1.18); opacity: 1;    }
+  75%  { transform: scale(0.78); opacity: 0.55; }
+  100% { transform: scale(0.78); opacity: 0.55; }
+}

@@ -4,7 +4,7 @@ import AboutClient from "./AboutClient";
 export const metadata: Metadata = {
   title: "About X9Elysium — Founder-Led Shopify & Unified-Commerce Studio",
   description:
-    "X9Elysium is a senior, founder-led Shopify and unified-commerce consultancy based in the Greater Toronto Area. Founded in 2021 by Darshan Patel and Adhvait Jadav — eight years of e-commerce experience each. Every brief is delivered by founders.",
+    "X9Elysium is a senior, founder-led Shopify and unified-commerce consultancy based in the Greater Toronto Area. Founded by Darshan Patel and Adhvait Jadav — eight years of e-commerce experience each. Every brief is delivered by founders.",
   keywords: [
     "X9Elysium about",
     "X9Elysium founders",
@@ -48,7 +48,7 @@ const aboutJsonLd = {
       url: "https://x9elysium.com/about",
       name: "About X9Elysium",
       description:
-        "Founder-led Shopify and unified-commerce consultancy based in the Greater Toronto Area, founded in 2021 by Darshan Patel and Adhvait Jadav.",
+        "Founder-led Shopify and unified-commerce consultancy based in the Greater Toronto Area, founded in 2022 by Darshan Patel and Adhvait Jadav.",
       inLanguage: "en-CA",
       mainEntity: { "@id": "https://x9elysium.com/#organization" },
     },
@@ -62,7 +62,7 @@ const aboutJsonLd = {
           name: "Who founded X9Elysium and when?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "X9Elysium was founded in 2021 by Darshan Patel and Adhvait Jadav. Both are senior full-stack developers with eight years of production e-commerce experience each across Shopify, Shopify Plus, Hydrogen, React, Next.js, and the broader Shopify ecosystem.",
+            text: "X9Elysium was founded in 2022 by Darshan Patel and Adhvait Jadav. Both are senior full-stack developers with eight years of production e-commerce experience each across Shopify, Shopify Plus, Hydrogen, React, Next.js, and the broader Shopify ecosystem.",
           },
         },
         {
@@ -104,7 +104,7 @@ const aboutJsonLd = {
       "@id": "https://x9elysium.com/#organization",
       name: "X9Elysium",
       url: "https://x9elysium.com",
-      foundingDate: "2021",
+      foundingDate: "2022",
       areaServed: "CA",
       address: {
         "@type": "PostalAddress",
@@ -119,10 +119,17 @@ const aboutJsonLd = {
         { "@id": "https://x9elysium.com/about#darshan-patel" },
         { "@id": "https://x9elysium.com/about#adhvait-jadav" },
       ],
-      hasCredential: [
-        "Shopify Partner",
-        "AWS Certified",
-        "Google Ads Certified",
+      knowsAbout: [
+        "Shopify Plus",
+        "Shopify Hydrogen",
+        "Checkout Extensibility",
+        "Shopify Functions",
+        "Klaviyo",
+        "Gorgias",
+        "ReCharge",
+        "ShipBob",
+        "Headless commerce",
+        "Unified commerce",
       ],
     },
     {

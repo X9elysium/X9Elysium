@@ -111,10 +111,10 @@ const FAQ_LD = {
     },
     {
       "@type": "Question",
-      name: "Are you a certified Shopify Partner?",
+      name: "Are you a Shopify Partner?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. X9Elysium is a Shopify Partner with hands-on experience across Shopify Plus, Hydrogen/Oxygen, checkout extensibility, and certified integrations with Klaviyo, Gorgias, ReCharge, and Yotpo.",
+        text: "X9Elysium has hands-on experience across Shopify Plus, Hydrogen, checkout extensibility, Shopify Functions, and the working integrations a real retailer needs — Klaviyo, Gorgias, ReCharge, Yotpo, ShipBob. Our public Shopify Partner directory listing is being processed; we'd rather state that plainly than overclaim.",
       },
     },
   ],

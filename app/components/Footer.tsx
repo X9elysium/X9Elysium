@@ -20,6 +20,7 @@ const footerLinks = {
   locations: [
     { name: "Toronto / GTA", href: "/locations/toronto" },
     { name: "Calgary / Alberta", href: "/locations/calgary" },
+    { name: "Vancouver / BC", href: "/locations/vancouver" },
   ],
   company: [
     { name: "About", href: "/about" },
@@ -27,12 +28,13 @@ const footerLinks = {
     { name: "Work", href: "/work" },
     { name: "Blog", href: "/blog" },
     { name: "Thoughts", href: "/thoughts" },
+    { name: "Sanctuary", href: "/sanctuary" },
     { name: "Changelog", href: "/changelog" },
     { name: "Careers", href: "/careers" },
     { name: "Contact", href: "/contact" },
   ],
   connect: [
-    { name: "Instagram", href: "https://www.instagram.com/x9elysium/" },
+    { name: "X.com", href: "https://x.com/x9elysium" },
     { name: "Facebook", href: "https://www.facebook.com/profile.php?id=100091230745202" },
   ],
 };

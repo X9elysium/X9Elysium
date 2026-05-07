@@ -15,7 +15,7 @@ export const pillarsData: Pillar[] = [
     number: "01",
     title: "Growth-First Excellence",
     aphorism: "Pretty stores don't pay invoices. Revenue does.",
-    body: "X9Elysium engineers commerce infrastructure for measurable, durable growth. The bar is a 40%+ revenue lift inside the first year — and it stays the bar long after launch.",
+    body: "X9Elysium engineers commerce infrastructure for measurable, durable growth. The bar is a step-change in revenue, conversion, or operational throughput — large enough that a CFO would notice without being prompted — and it stays the bar long after launch.",
   },
   {
     number: "02",

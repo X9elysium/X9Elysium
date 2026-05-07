@@ -23,7 +23,7 @@ const BREADCRUMB_LD = {
 export const metadata: Metadata = {
   title: "Shopify Plus Case Studies — Migrations, Custom Apps, Unified Commerce",
   description:
-    "Selected Shopify Plus case studies from X9Elysium: platform migrations, custom apps, headless Hydrogen builds, and unified commerce. 30+ stores shipped, $5M+ GMV managed, every engagement founder-delivered.",
+    "How X9Elysium scopes the work — platform migrations, custom apps, headless Hydrogen builds, and unified commerce. 30+ Shopify and Shopify Plus stores shipped, every engagement founder-delivered. Named references on request, with client permission.",
   alternates: { canonical: "https://x9elysium.com/work" },
   openGraph: {
     title: "Shopify Plus Case Studies — Migrations, Custom Apps, Unified Commerce | X9Elysium",

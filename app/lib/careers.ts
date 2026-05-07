@@ -124,7 +124,7 @@ export const jobs: Job[] = [
       "Design wireframes, prototypes, and pixel-perfect Figma UI for storefronts, PDPs, checkouts, and account pages.",
       "Run conversion-rate audits using GA4, Hotjar / Microsoft Clarity, and on-site survey data.",
       "Collaborate with engineering to ensure designs survive implementation — including motion specs, edge cases, and responsive behaviour.",
-      "Build and maintain a design system that scales across 30+ active client accounts.",
+      "Build and maintain a design system that scales across the active client portfolio.",
     ],
     requirements: [
       "3+ years designing for e-commerce or DTC brands, ideally with Shopify exposure.",
@@ -225,7 +225,7 @@ export const jobs: Job[] = [
     shortDescription:
       "Build the SMB go-to-market motion from scratch — pipeline, team, forecast, pricing — and own the number alongside the founders.",
     about:
-      "X9Elysium has been founder-sold since 2022. We've crossed $5M+ in influenced GMV and 30+ shipped engagements without an outbound team. You'll be the first leadership hire in this function — designing the SMB sales motion from scratch, hiring the AEs and Sales Manager who report to you, and owning the number alongside the founders. We're not looking for a quota-carrier with a manager title. We want an operator who has built a sales engine for a services or commerce-platform business serving SMB merchants ($500K – $10M GMV) and can do it again here.",
+      "X9Elysium has been founder-sold since 2022. 30+ shipped engagements, no outbound team, and a referral pipeline that has carried us this far. You'll be the first leadership hire in this function — designing the SMB sales motion from scratch, hiring the AEs and Sales Manager who report to you, and owning the number alongside the founders. We're not looking for a quota-carrier with a manager title. We want an operator who has built a sales engine for a services or commerce-platform business serving SMB merchants ($500K – $10M GMV) and can do it again here.",
     responsibilities: [
       "Own the SMB pipeline target — generation, conversion, average deal size, and forecast accuracy.",
       "Design the playbook end-to-end: ICP, discovery, scoping, proposal, close. Codify what's in the founders' heads.",

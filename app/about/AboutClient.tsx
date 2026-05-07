@@ -66,16 +66,17 @@ const team: TeamMember[] = [
 ];
 
 const stats = [
-  { value: "8+ yrs", label: "Combined Experience" },
+  { value: "8+ yrs", label: "Per-Founder Experience" },
+  { value: "16+ yrs", label: "Combined" },
   { value: "30+", label: "Stores Shipped" },
-  { value: "$5M+", label: "GMV Managed" },
   { value: "95%", label: "Client Retention" },
 ];
 
 const certifications = [
-  "Shopify Partner",
-  "AWS Certified",
-  "Google Ads Certified",
+  "Shopify Partner — listing in progress",
+  "Hydrogen / Headless Shopify",
+  "Checkout Extensibility",
+  "Shopify Functions",
 ];
 
 export default function AboutClient() {
@@ -179,7 +180,7 @@ export default function AboutClient() {
               </h2>
               <div className="flex flex-col gap-5 text-neutral-600 dark:text-neutral-400 leading-relaxed">
                 <p>
-                  X9Elysium was founded in 2021 in the Greater Toronto Area by
+                  X9Elysium was founded in 2022 in the Greater Toronto Area by
                   Darshan Patel and Adhvait Jadav — two senior full-stack
                   developers who&apos;d each spent eight years inside production
                   e-commerce: Shopify stores, custom apps, headless storefronts,
@@ -422,9 +423,9 @@ export default function AboutClient() {
               transition={{ duration: 0.6, ease: smoothEase }}
               className="mb-12"
             >
-              <span className="section-label">Certifications & Partners</span>
+              <span className="section-label">What we&apos;ve built with</span>
               <h2 className="text-h2-display text-neutral-900 dark:text-white max-w-2xl text-balance">
-                Credentialed on the platforms we build on
+                The Shopify surfaces we ship on, day to day
               </h2>
             </motion.div>
 

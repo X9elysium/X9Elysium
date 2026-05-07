@@ -9,7 +9,7 @@ const faqs = [
   {
     question: "What makes X9Elysium different from other Shopify agencies?",
     answer:
-      "We build commerce infrastructure, not just websites. Our Elysium Method — Discover, Strategize, Implement, Optimize — is a structured framework that consistently delivers 40%+ revenue lifts. We stay embedded after launch because that's when most agencies disappear.",
+      "Two senior founders deliver every brief. No juniors learning on your store. No offshore handoffs. Our Elysium Method — Discover, Strategize, Implement, Optimize — is the same four phases on every engagement, and we stay embedded after launch because that's when most agencies disappear.",
   },
   {
     question: "What size retailers do you work with?",
@@ -32,9 +32,9 @@ const faqs = [
       "Yes. We're headquartered in Mississauga with a presence in Calgary and Vancouver, but we work with retailers across North America. Most engagements are remote-first, so location is never a barrier.",
   },
   {
-    question: "What Shopify certifications does your team hold?",
+    question: "What Shopify expertise does your team hold?",
     answer:
-      "We're a certified Shopify Partner with deep expertise in Shopify Plus, Hydrogen storefronts, checkout extensibility, and the full ecosystem — Klaviyo, Gorgias, ReCharge, ShipBob, and more.",
+      "Eight years of hands-on production work each, across Shopify Plus, Hydrogen storefronts, checkout extensibility, and the integrations that hold a real retailer together — Klaviyo, Gorgias, ReCharge, ShipBob, and more. Our Shopify Partner directory listing is being processed; we'd rather state that plainly than overclaim.",
   },
   {
     question: "How do you measure success?",

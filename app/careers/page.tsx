@@ -189,19 +189,19 @@ export default function CareersPage() {
               </div>
               <div className="lg:col-span-7 flex flex-col gap-5 text-neutral-600 dark:text-neutral-400 leading-relaxed">
                 <p>
-                  X9Elysium was founded in Vancouver in 2022 by people who had
-                  spent years inside growing e-commerce brands — managing
-                  platforms, fighting integrations, and watching agencies
-                  deliver beautiful things that didn&apos;t actually move the
-                  numbers.
+                  X9Elysium was founded in 2022 by Darshan Patel and Adhvait
+                  Jadav — two senior full-stack developers who had spent years
+                  inside growing e-commerce brands, fighting integrations and
+                  watching agencies deliver beautiful things that didn&apos;t
+                  actually move the numbers.
                 </p>
                 <p>
-                  Today, we&apos;re a Shopify and Shopify Plus partner serving
-                  retailers and DTC brands across Canada from offices in
-                  Mississauga, Calgary, and Vancouver — and a remote team
-                  scattered between. We&apos;ve managed over $12M in client GMV,
-                  shipped 50+ projects, and kept 98% of our clients beyond their
-                  first engagement.
+                  Today we serve retailers and DTC brands across Canada and the
+                  US from a base in the Greater Toronto Area, with on-the-ground
+                  work in Calgary and Vancouver and a remote-first delivery
+                  posture. 30+ Shopify and Shopify Plus stores shipped, eight
+                  years of production experience per founder, and 95% client
+                  retention because we stay embedded after launch.
                 </p>
                 <p>
                   We&apos;re intentionally small and senior. The work is hard,

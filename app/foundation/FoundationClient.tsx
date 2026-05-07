@@ -613,7 +613,7 @@ export default function FoundationClient() {
                       <span className="text-white font-medium">
                         10x, not 10%.
                       </span>{" "}
-                      Pillar 01 is a 40%+ revenue lift bar — category change,
+                      Pillar 01 sets a step-change bar — category change,
                       not incremental.
                     </span>
                   </li>

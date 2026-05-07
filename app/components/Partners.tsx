@@ -75,10 +75,10 @@ export default function Partners() {
           className="text-center"
         >
           <span className="section-label text-center block">
-            Technology Partners
+            What we build with
           </span>
           <h2 className="text-h2-display text-neutral-900 dark:text-white text-center max-w-2xl mx-auto">
-            Certified across the Shopify ecosystem
+            Hands-on across the Shopify ecosystem
           </h2>
         </motion.div>
       </div>

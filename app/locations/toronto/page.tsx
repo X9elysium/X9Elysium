@@ -120,7 +120,7 @@ export default function TorontoLocationPage() {
         name: "Is X9Elysium a Shopify Partner?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. X9Elysium is a Shopify Partner with hands-on experience across Shopify Plus, Hydrogen / Oxygen headless, checkout extensibility, and certified integrations with Klaviyo, Gorgias, ReCharge, and Yotpo.",
+          text: "X9Elysium has hands-on experience across Shopify Plus, Hydrogen / Oxygen headless, checkout extensibility, Shopify Functions, and working integrations with Klaviyo, Gorgias, ReCharge, Yotpo, and ShipBob. Our public Shopify Partner directory listing is being processed.",
         },
       },
     ],

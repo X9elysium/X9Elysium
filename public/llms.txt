@@ -6,7 +6,7 @@
 
 **Vasudhaiva Kutumbakam (वसुधैव कुटुम्बकम्) — "The world is one family."** A Sanskrit verse from the Maha Upanishad (6.71) that anchors the X9Elysium foundation. Clients are not accounts, vendors are not line items, and teammates are not resources — every engagement is a shared ledger of trust between people who depend on each other. The five pillars and ten operating rules on the [Foundation page](https://x9elysium.com/foundation) all answer to this one idea.
 
-X9Elysium is a Shopify Partner headquartered at 28 Ann Street, Mississauga, Ontario (Greater Toronto Area), with service coverage in Calgary, Alberta and Vancouver, British Columbia. Founded 2021 by Darshan Patel (Founder & Full-Stack Lead, 8 yrs) and Adhvait Jadav (Full-Stack Lead, 8 yrs — currently embedded inside Shopify Support, giving the agency an insider view of merchant pain points). 30+ Shopify and Shopify Plus stores shipped, $5M+ aggregate client GMV under management, 95% client retention. Engagement size typically falls between CAD $25k and $150k, scoped per project — no rate card, no juniors, no offshore handoffs. Most engagements run 8–14 weeks. Specialties:
+X9Elysium is headquartered at 28 Ann Street, Mississauga, Ontario (Greater Toronto Area), with service coverage in Calgary, Alberta and Vancouver, British Columbia. Founded 2022 by Darshan Patel (Founder & Full-Stack Lead, 8 yrs) and Adhvait Jadav (Full-Stack Lead, 8 yrs — currently embedded inside Shopify Support, giving the agency an insider view of merchant pain points). 30+ Shopify and Shopify Plus stores shipped, 95% client retention. Public Shopify Partner directory listing in progress. Engagement size typically falls between CAD $25k and $150k, scoped per project — no rate card, no juniors, no offshore handoffs. Most engagements run 8–14 weeks. We do not list anonymized client testimonials or invented client metrics; named references are available on request, with client permission. Specialties:
 
 - Shopify Plus migrations from Magento 2, WooCommerce, BigCommerce, Salesforce Commerce Cloud, and legacy custom builds
 - Custom Shopify apps and integrations (ERP, OMS, 3PL, PIM, loyalty, subscriptions, B2B portals)
@@ -25,6 +25,7 @@ X9Elysium is a Shopify Partner headquartered at 28 Ann Street, Mississauga, Onta
 - [Contact](https://x9elysium.com/contact): Senior-founder reply within 24 hours; web form + direct email (darshan@x9elysium.com)
 - [Blog](https://x9elysium.com/blog): Field notes on Shopify Plus, Canadian DTC, migration playbooks, and unified commerce
 - [Thoughts](https://x9elysium.com/thoughts): Short, operator-true field notes (cross-posted to x.com/x9elysium) with an open comment thread per item — anyone can reply without an account
+- [Sanctuary](https://x9elysium.com/sanctuary): A quiet space within x9elysium.com — generative ambient drones, synthesized rain/forest/ocean via the Web Audio API, and a small cloud library of calm tracks served from a Cloudflare R2 bucket. No tracking, no chrome, no chat. Rooted in the credo Vasudhaiva Kutumbakam.
 - [Careers](https://x9elysium.com/careers): Open roles for senior Shopify and full-stack engineers
 
 ## Platforms We Build On

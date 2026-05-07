@@ -16,6 +16,7 @@ const STATIC_LASTMOD = {
   contact: "2026-05-02",
   blog: "2026-05-06",
   thoughts: "2026-05-06",
+  sanctuary: "2026-05-07",
   changelog: "2026-05-03",
   careers: "2026-04-26",
   toronto: "2026-04-22",
@@ -75,6 +76,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: STATIC_LASTMOD.thoughts,
       changeFrequency: "daily",
       priority: 0.75,
+    },
+    {
+      url: `${BASE_URL}/sanctuary`,
+      lastModified: STATIC_LASTMOD.sanctuary,
+      changeFrequency: "weekly",
+      priority: 0.5,
     },
     {
       url: `${BASE_URL}/changelog`,

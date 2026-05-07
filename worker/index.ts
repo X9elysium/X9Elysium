@@ -22,6 +22,7 @@
 import { renderLeadEmail, renderLeadText, renderAutoReply, renderAutoReplyText } from "./email";
 import { handleChat } from "./chat";
 import { handleComments } from "./comments";
+import { handleSanctuary } from "./sanctuary";
 
 export interface Env {
   ASSETS: Fetcher;
@@ -30,6 +31,7 @@ export interface Env {
   LEAD_FROM_EMAIL: string;
   LEADS_KV?: KVNamespace;
   LEADS_DB?: D1Database;
+  SANCTUARY?: R2Bucket;
   SLACK_WEBHOOK_URL?: string;
   ANTHROPIC_API_KEY?: string;
   CHAT_PIN?: string;
@@ -100,6 +102,11 @@ export default {
         return json({ error: "Forbidden" }, 403, corsHeaders);
       }
       return handleComments(req, env, ctx, corsHeaders);
+    }
+    if (url.pathname.startsWith("/api/sanctuary")) {
+      const origin = req.headers.get("Origin") ?? "";
+      const corsHeaders = buildCorsHeaders(origin, "GET, OPTIONS");
+      return handleSanctuary(req, env, corsHeaders);
     }
     if (url.pathname === "/api/health") {
       return json({ ok: true, ts: Date.now() });

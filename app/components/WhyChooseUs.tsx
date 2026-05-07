@@ -54,9 +54,9 @@ const reasons = [
   },
   {
     icon: Shield,
-    title: "Certified Partner",
+    title: "Built across the ecosystem",
     description:
-      "Shopify Partner with live expertise across Klaviyo, Gorgias, ReCharge, ShipBob, and enterprise-grade integrations.",
+      "Hands-on with Shopify Plus, Hydrogen, checkout extensibility, Klaviyo, Gorgias, ReCharge, ShipBob, and the integrations that hold a real retailer together.",
   },
   {
     icon: Users,
@@ -76,7 +76,7 @@ const stats = [
   { value: "8+ yrs", label: "Per-Founder Experience" },
   { value: "95%", label: "Client Retention" },
   { value: "30+", label: "Stores Shipped" },
-  { value: "$5M+", label: "Client GMV Managed" },
+  { value: "2", label: "Founders on Every Brief" },
 ];
 
 export default function WhyChooseUs() {
