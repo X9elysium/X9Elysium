@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Search, Lightbulb, Rocket, BarChart3, Zap, Shield, Users, TrendingUp } from "lucide-react";
+import { Search, Lightbulb, Rocket, BarChart3 } from "lucide-react";
 import {
   staggerContainer,
   fadeUp,
@@ -42,33 +42,6 @@ const methodologySteps = [
     duration: "Ongoing",
     description:
       "Continuous measurement, A/B testing, and iteration. We stay after launch because that's when the real work begins.",
-  },
-];
-
-const reasons = [
-  {
-    icon: Zap,
-    title: "Deep Shopify Expertise",
-    description:
-      "Real hands-on work across Shopify Plus, custom storefronts, checkout extensibility, and the full platform — not just credentials.",
-  },
-  {
-    icon: Shield,
-    title: "Built across the ecosystem",
-    description:
-      "Hands-on with Shopify Plus, Hydrogen, checkout extensibility, Klaviyo, Gorgias, ReCharge, ShipBob, and the integrations that hold a real retailer together.",
-  },
-  {
-    icon: Users,
-    title: "True Partnership",
-    description:
-      "We embed with your team and transfer knowledge. 95% client retention because we stay invested in your long-term success.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Growth-First Thinking",
-    description:
-      "Every decision — architecture, integrations, tooling — is made with where you're going in mind, not just where you are.",
   },
 ];
 
@@ -184,38 +157,6 @@ export default function WhyChooseUs() {
               </motion.div>
             ))}
           </motion.div>
-        </motion.div>
-
-        {/* Reasons Grid */}
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
-        >
-          {reasons.map((reason) => (
-            <motion.div
-              key={reason.title}
-              variants={fadeUp}
-              transition={sectionTransition}
-              className="flex gap-5 p-6 lg:p-8 rounded-xl bg-neutral-50 dark:bg-white/[0.04] border border-neutral-200/40 dark:border-white/[0.06] hover:bg-white dark:hover:bg-white/[0.07] hover:border-neutral-200 dark:hover:border-white/[0.1] hover:shadow-sm transition-all duration-500"
-            >
-              <div className="flex-shrink-0 w-12 h-12 rounded-full border border-emerald-500/20 bg-emerald-500/[0.06] flex items-center justify-center">
-                <reason.icon
-                  className="w-5 h-5 text-emerald-500"
-                  strokeWidth={1.5}
-                />
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-neutral-900 dark:text-white mb-2 tracking-tight">
-                  {reason.title}
-                </h3>
-                <p className="text-neutral-500 dark:text-neutral-400 leading-relaxed text-body-sm">
-                  {reason.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
         </motion.div>
       </div>
     </section>

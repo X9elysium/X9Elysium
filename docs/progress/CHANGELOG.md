@@ -12,6 +12,22 @@ Format:
 
 ---
 
+## (pending) — 2026-05-07 — homepage: cleaner pass — kill partners marquee, slim hero glows, drop redundant reasons grid
+
+- Touched:
+  - **`app/components/Partners.tsx`** — converted the infinite-scrolling logo marquee into a static 6-up grid (2 cols mobile, 3 sm, 6 lg). Removed the `motion.div animate={{ x: [0, -1200] }}` perpetual loop and the gradient fade-edge masks. Logos now appear once each, IntersectionObserver-triggered fade-up. The marquee was the most "video-like" element on the homepage — perpetual horizontal motion with no signal value, just chrome.
+  - **`app/components/Hero.tsx`** — simplified the gradient mesh from three blurred emerald glows (top-right + bottom-left + center) to one. Removed the bottom scroll-mouse indicator (animated `y: [0, 8, 0]` infinite) — the universal scroll affordance doesn't need a custom prompt. Removed the inline Shopify-bag SVG icon from the location badge and tightened the badge text from "Founder-Led Shopify Plus Consulting — Toronto · Calgary · Vancouver" to just "Toronto · Calgary · Vancouver." The headline already says "Founder-led Shopify Plus consulting" one line below; the badge was duplicating it.
+  - **`app/components/WhyChooseUs.tsx`** — removed the bottom "Reasons Grid" (4 cards: Deep Shopify Expertise / Built across the ecosystem / True Partnership / Growth-First Thinking). The Hero already lands the wedge ("no juniors, no handoffs"), the stats bar (8+ yrs / 95% / 30+ / 2 founders) lands the proof, and the Testimonials principles already cover the partnership posture. The section now ends after "The Elysium Method" 4-phase grid — substantive content stays, the redundant differentiators leave. Also removed the now-unused `Zap`, `Shield`, `Users`, `TrendingUp` lucide imports.
+- Tasks moved (CLAUDE.md §10): none.
+- Notes:
+  - **Why these three.** User asked to "remove video from homepage and make it more cleaner." There is no actual `<video>` on the homepage — the previous `<VideoShowcase>` Instagram clip was already removed (see earlier changelog entry). The Partners marquee was the closest thing — perpetual motion that reads as ambient video. Cutting it + the Hero scroll indicator removes both `repeat: Infinity` animations from the homepage.
+  - **What still moves.** Stagger-on-enter animations (intersection-gated) stay everywhere — those serve a perceptual purpose (signaling section structure as you scroll). What got cut was *perpetual* motion that runs whether the user is looking or not.
+  - **Section order unchanged.** Hero → Services → CaseStudies → Partners → WhyChooseUs → Team → Testimonials → Tweets → ThoughtsHook → FAQ → CTABanner. Slimmer, not restructured. Restructuring is a bigger call worth checking in on; pruning noise is a §2 decision-rights call.
+  - **No copy regressions vs §6.** Nothing fabricated. Everything removed was either ornamental (glows, scroll mouse, marquee) or duplicative (reasons grid, badge subtext).
+  - **Build/lint clean.** Static-export still works. No new deps. No globals.css/tailwind config touches.
+
+---
+
 ## (pending) — 2026-05-07 — supreme: ship the lab at /supreme — webgl prismatic field + manifesto + interactive loom + voice echo
 
 - Touched (all new under `app/supreme/`):
