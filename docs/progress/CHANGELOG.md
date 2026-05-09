@@ -12,6 +12,20 @@ Format:
 
 ---
 
+## (pending) — 2026-05-09 — docs/analytics: clarity-copilot quick reference + prompt library
+
+- Touched: [`docs/analytics/clarity-copilot.md`](../analytics/clarity-copilot.md) (new).
+- Why: Microsoft shipped Copilot Chat inside the Clarity dashboard (link: <https://learn.microsoft.com/en-us/clarity/copilot/clarity-copilot-chat>). It's a dashboard feature, not an embed — nothing to ship on x9elysium.com. The only prerequisite is "Clarity tracking installed," which we already have via [`app/components/ClarityTracker.tsx`](../../app/components/ClarityTracker.tsx).
+- What the doc captures:
+  - Where Copilot lives in the Clarity dashboard + what it can/can't answer (dashboard data only — no Recordings deep-link, no design reasoning).
+  - Full inventory of the **events** our tracker fires (page-section, engagement, friction, intent) and **custom tags** (`current_path`, `section`, `recent_paths`, `last_cta`, `viewport`, etc.) so prompts to Copilot can reference them by exact name instead of guessing.
+  - Seven ready-to-paste prompts that exercise the rich tagging — e.g. `cta_book_call` fired without `mailto_click`, `deep_engagement` rate by `section`, `exit_intent` mobile vs desktop.
+  - The known confabulation caveat — cross-check filter results in the dashboard before quoting.
+- Tasks moved (CLAUDE.md §10): none. Pure reference doc, no production change.
+- No code, no build impact.
+
+---
+
 ## (pending) — 2026-05-09 — contact form: mailto fallback so leads land even with /api/lead offline
 
 - Touched: [`app/contact/ContactClient.tsx`](../../app/contact/ContactClient.tsx).
