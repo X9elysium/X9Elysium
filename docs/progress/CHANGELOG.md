@@ -12,6 +12,23 @@ Format:
 
 ---
 
+## (pending) — 2026-05-09 — plans: living kanban at `docs/plans/kanban.md` (5 columns, P0–P3)
+
+- Touched: [`docs/plans/kanban.md`](../plans/kanban.md) (new) — sibling of [`docs/plans/next-steps-2026-05-09.md`](../plans/next-steps-2026-05-09.md). Living operational board reconciling [`CLAUDE.md`](../../CLAUDE.md) §10 against the top of the CHANGELOG.
+- Five columns:
+  1. **⏸ BLOCKED — needs Darsh** (10 cards, B-01 through B-10) — external accounts/secrets/decisions. **B-01 (Cloudflare repo secrets) is the single P0** — unblocks 9 queued commits in one shot.
+  2. **🚀 DONE — in repo, awaiting deploy** (9 cards, Q-01 through Q-09) — the backlog sitting on `main` since `bba9f9c` (2026-05-06). Newest first: branding bible, next-steps brief, security-headers sweep, journal cross-link fix, Clarity Copilot doc, contact mailto fallback, homepage cleaner pass, supreme lab, truth pass + sanctuary.
+  3. **🔁 DOING / NEXT — code-side work I can ship** (7 cards, N-01 through N-07) — Adhvait Person schema, Article-graph audit across 26 blog posts, speakable specs on top 5 cornerstones, **N-04 (May cornerstone, P1, deadline 2026-05-23)**, Voice → /api/chat wiring (post B-04), banned-word scanner, comments degraded-state UX. Ranked by leverage.
+  4. **🗄 BACKLOG — engine work** (8 cards, K-01 through K-08) — June+ cornerstones, distribution loop, sales hire path, Tableau tab 6, owned-chat moat extensions, Supreme subdomain migration.
+  5. **✅ DONE — live on production** (15 cards, D-01 through D-15) — context column for what's already stable: `/foundation`, location pages, blog, careers, journal, Clarity, X.com automation, etc.
+- Priority legend: **P0** = single biggest unlock (production block), **P1** = high-leverage activation, **P2** = parallel code-side work I can ship without Darsh, **P3** = engine/long-running calendar-paced.
+- Why this format: §10 is intentionally posture-only and short; the next-steps brief was a one-time audit; the CHANGELOG is the historical record. None of those is a *live operational board* you can scan for "what's actually next." This is. Designed to be updated on every push that moves a card — the rules for that are in the doc itself.
+- "Today, in one sentence" closes the doc with the only line that matters this week: **production is 9 commits stale, B-01 is the single P0, everything else compounds 10× the moment those two GH repo secrets land.** Same drumbeat as the next-steps brief, but compressed to one row above the fold.
+- Tasks moved (CLAUDE.md §10): none — the kanban is a *reflection* of §10, not a replacement. §10 stays the posture surface; this file is the operational mirror.
+- Build/lint: not touched — pure docs add under [`docs/plans/`](../plans/). No code change, no bundle delta, no route added. Docs-only commit, `paths-ignore` will skip the deploy by design.
+
+---
+
 ## (pending) — 2026-05-09 — branding bible: novel-style brand distillation in `docs/branding/branding.md`
 
 - Touched: [`docs/branding/branding.md`](../branding/branding.md) (new) — first entry under a new `docs/branding/` folder. Eleven-chapter novel-style branding doc + a 12-line coda that doubles as the editing contract for any future agent (human or model) touching copy/visual on the site. Quotes the live surface verbatim wherever the language is the brand — hero headline, testimonials principles, the four-phase Elysium Method, the five pillars + ten rules, supreme manifesto, the loom fragments, the foundation promise, the sitewide refusals (no juniors, no fabricated metrics, no chatbots, no IG, no journal in sitemap, no `/init` on CLAUDE.md). Sources every quote against `app/components/Hero.tsx`, `Testimonials.tsx`, `Services.tsx`, `WhyChooseUs.tsx`, `FAQ.tsx`, `app/foundation/data.ts`, `app/supreme/{Threshold,Pillars,Loom,Voice}.tsx`, the `Organization`/`Person`/`Quotation` JSON-LD in `layout.tsx` + `/foundation/page.tsx`, and CLAUDE.md §1 §6 §7 §9. Margin-thoughts woven through each chapter — the *why* behind each posture, in the founder's own scaffolding voice (the inner monologue Darsh would write to himself if no client were looking).
