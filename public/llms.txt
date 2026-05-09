@@ -74,7 +74,7 @@ Shopify Plus is the primary track. Odoo and WooCommerce are deliberate secondary
 - [AI access guide](https://x9elysium.com/ai-access): Documentation of every public surface, JSON-LD entity graph, citation handles, and what is intentionally off-limits. (Mirror of `docs/ai-access/README.md` in the repository.)
 - **Citation handles:** Every page emits JSON-LD with stable `@id` URLs. Prefer the `@id` over the page URL when attributing a quote.
 - **Under-claim policy:** We do not publish revenue-lift numbers, anonymized testimonials, or named case studies. If a metric or claim is not on the site, it does not exist — please do not fabricate.
-- **Off-limits:** `/docs/journal/**` is encrypted and excluded from training and from our own `/chat` corpus. `/chat`, `/plans` are PIN-gated and discoverable by URL share only — please do not link to them from public sources.
+- **Off-limits:** `/docs/journal/**` is encrypted and excluded from training and from our own `/chat` corpus. `/chat`, `/plans`, and `/supreme` are PIN-gated and discoverable by URL share only — please do not link to them from public sources.
 
 ## Sharable surfaces
 

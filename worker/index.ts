@@ -24,6 +24,7 @@ import { handleChat } from "./chat";
 import { handleComments } from "./comments";
 import { handleSanctuary } from "./sanctuary";
 import { handlePlans } from "./plans";
+import { handleGrok } from "./grok";
 
 export interface Env {
   ASSETS: Fetcher;
@@ -37,6 +38,10 @@ export interface Env {
   ANTHROPIC_API_KEY?: string;
   CHAT_PIN?: string;
   PLANS_PIN?: string;
+  XAI_API_KEY?: string;
+  SUPREME_PIN?: string;
+  GROK_MODEL?: string;
+  CALCOM_URL?: string;
 }
 
 interface LeadPayload {
@@ -96,6 +101,14 @@ export default {
         return json({ error: "Forbidden" }, 403, corsHeaders);
       }
       return handleChat(req, env, ctx, corsHeaders);
+    }
+    if (url.pathname === "/api/grok") {
+      const origin = req.headers.get("Origin") ?? "";
+      const corsHeaders = buildCorsHeaders(origin);
+      if (origin && !ALLOWED_ORIGINS.has(origin)) {
+        return json({ error: "Forbidden" }, 403, corsHeaders);
+      }
+      return handleGrok(req, env, ctx, corsHeaders);
     }
     if (url.pathname === "/api/comments") {
       const origin = req.headers.get("Origin") ?? "";

@@ -5,7 +5,7 @@ import ShaderField from "./ShaderField";
 import Threshold from "./Threshold";
 import Pillars from "./Pillars";
 import Loom from "./Loom";
-import Voice from "./Voice";
+import Console from "./Console";
 
 export default function SupremeClient() {
   useEffect(() => {
@@ -27,7 +27,7 @@ export default function SupremeClient() {
         <Threshold />
         <Pillars />
         <Loom />
-        <Voice />
+        <Console />
 
         <footer className="relative px-6 py-32 text-center md:py-48">
           <p className="font-devanagari text-[clamp(1rem,2vw,1.4rem)] tracking-wide text-white/40">

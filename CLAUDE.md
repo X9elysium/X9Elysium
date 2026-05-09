@@ -72,9 +72,10 @@ When in doubt: **ship the code**, leave the public claim as a placeholder, and c
 | Fonts | Inter (UI) + Noto Sans Devanagari (credo) via `next/font/google` |
 | Deploy | **Cloudflare Workers Static Assets** — `wrangler.toml` + `.github/workflows/deploy.yml`. Push to `main` → GH Actions → `wrangler deploy` → IndexNow ping → smoke test. |
 | Domain | Registered at Hostinger, DNS at Cloudflare |
-| Dynamic backend | Cloudflare Worker at `worker/` — `/api/lead`, `/api/chat`, `/api/comments`, `/api/plans`, `/api/sanctuary`, `/api/health` |
+| Dynamic backend | Cloudflare Worker at `worker/` — `/api/lead`, `/api/chat`, `/api/grok`, `/api/comments`, `/api/plans`, `/api/sanctuary`, `/api/health` |
 | Lead email | Resend (pending DNS + `wrangler secret put RESEND_API_KEY`) |
 | Chat | Claude Sonnet 4.6 via Anthropic API, PIN-gated, corpus-grounded |
+| Supreme console | Grok via xAI Responses API (`grok-4-latest`, override via `GROK_MODEL`) at `/api/grok`, PIN-gated (`SUPREME_PIN`). Server-side agent loop with built-in `web_search` + `x_search` (Grok Live Search), vision, and four custom tools (`search_thoughts`, `search_blog`, `book_call`, `lead_capture`). Front-end at `app/supreme/Console.tsx`. Tool data in `worker/supreme-index.json`, baked from `data/x-thoughts.md` + `content/posts/*.mdx` by `scripts/build-supreme-index.mjs`. Setup: [`docs/supreme/grok-integration.md`](docs/supreme/grok-integration.md). |
 | Comments | D1 + KV via `/api/comments`. Schema in `worker/schema.sql` (apply once). Honeypot + math captcha + URL gate + per-IP rate limit. |
 | Plans | Private editable md viewer at `/plans/<slug>`, PIN-gated (`PLANS_PIN`). Allowlist in `docs/plans-allowlist.json`, baked at build into `worker/plans-seed.json` by `scripts/build-plans-seed.mjs`. Edits persist in D1 `plans` table; md file in repo is the immortal seed. Comments thread via `/api/comments?thread=plans/<slug>`. Same private posture as `/docs/journal` — no nav, no sitemap, no llms.txt. |
 | Tracking | Microsoft Clarity (`@microsoft/clarity` v1) — full session/scroll/rage/exit tracking via `app/components/ClarityTracker.tsx`. Default project `nhmfksrzgs`, override with `NEXT_PUBLIC_CLARITY_PROJECT_ID`. |
@@ -111,6 +112,7 @@ docs/                EVERYTHING markdown — audits, journal, marketing, sales, 
 - `docs/deployments/post-push-checks.md` — mandatory verification after every push.
 - `docs/leads/setup.md` — Resend activation recipe.
 - `docs/chat/README.md` — `/chat` setup + cost model.
+- `docs/supreme/grok-integration.md` — `/supreme` Grok console activation, tools, privacy posture, cost model.
 - `docs/sales/` — playbook, hiring plan, role briefs.
 - `docs/marketing/6-month-organic-growth-plan.md` — May–Nov 2026 cornerstone cadence.
 - `docs/marketing/third-party-listings.md` — Shopify Partner / Clutch / GBP / LinkedIn checklist.
@@ -141,7 +143,7 @@ Voice bible: `docs/books-learning/naval-ravikant.md` + the hero in `app/page.tsx
 ## 7. HARD RULES (never break)
 
 - **Never fabricate metrics, names, or testimonials.** Anonymized + directional > false specifics.
-- **Never link `/docs/journal` or `/plans` from nav, footer, sitemap, or `llms.txt`.** Both are PIN-gated and discoverable by URL only.
+- **Never link `/docs/journal`, `/plans`, `/chat`, or `/supreme` from nav, footer, sitemap, or `llms.txt`.** All four are PIN-gated and discoverable by URL only.
 - **Never feed `docs/journal/**` into the `/chat` Anthropic corpus.** `scripts/build-chat-context.mjs` enforces the exclude list — don't break it.
 - **Never expose API keys in client bundles.** Web3Forms was killed for this reason. All secrets live in Worker env or GH Actions secrets.
 - **Never use Instagram for X9Elysium content.** X.com only.
@@ -227,6 +229,7 @@ If a feature doesn't fit one of these arcs, it probably doesn't belong.
 - Provision **GitHub repo secrets** for the Cloudflare deploy workflow: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`. Recipe: `docs/deployments/cloudflare-deploy.md` §1–3. Without these the workflow fails at the `Deploy to Cloudflare` step.
 - Activate `/api/lead` — Resend signup + DNS + `wrangler secret put RESEND_API_KEY`. Recipe: `docs/leads/setup.md`.
 - Activate `/chat` — `wrangler secret put ANTHROPIC_API_KEY` + `CHAT_PIN`. Recipe: `docs/chat/README.md`.
+- Activate `/supreme` — `wrangler secret put XAI_API_KEY` + `SUPREME_PIN`. Until set, the unlock screen returns 503 with a clear error. Recipe: `docs/supreme/grok-integration.md`. Optionally set `CALCOM_URL` (var) to wire the `book_call` tool to your real booking link.
 - Activate `/plans` — `wrangler secret put PLANS_PIN`. Until set, the unlock screen returns 503 with a clear error. Reads fall back to the build-time seed; writes return 503 until D1 is bound.
 - Apply the comments + plans schema to D1: `npx wrangler d1 execute x9elysium-leads --remote --file=worker/schema.sql`. Until applied, `POST /api/comments` and `PUT /api/plans` return 503; `/plans` reads still work via the seed.
 - Provision `LEADS_KV` (per-IP rate limit for `/api/lead` and `/api/comments`). Optional — failure mode is "rate limiter silently no-ops."
@@ -306,7 +309,7 @@ When someone asks "why do you do X?", the chain is: `because of <pillar/rule>` �
 | Blog | `pages/blog/**` + `content/posts/*.md` | Public, indexed, RSS | Same + RSS readers |
 | Thoughts | `app/thoughts/` + `data/x-thoughts.md` | Public, indexed, per-thought stable anchors | Same + sharable quote cards |
 | Sanctuary | `app/sanctuary/` + Cloudflare R2 | Public, no chrome, no tracking | Anyone |
-| Supreme | `app/supreme/` (will migrate to subdomain when provisioned) | Public, hidden (not in nav) | Future-state R&D |
+| Supreme | `app/supreme/` (visual shell) + `app/supreme/Console.tsx` (Grok console) + `worker/grok.ts` + `worker/supreme-index.json` | **PIN-gated** console, `noindex,nofollow`, will migrate to subdomain when provisioned | xAI Responses API + built-in web/x search + custom tools |
 | Chat | `app/chat/` + `worker/chat.ts` | **PIN-gated**, `noindex,nofollow` | Anthropic API + curated docs corpus |
 | Plans | `app/plans/` + `worker/plans.ts` + `docs/plans-allowlist.json` | **PIN-gated**, D1-backed, seed in repo | Founders only |
 | Journal | `docs/journal/**` + viewer at `/docs/journal` | **PIN-gated**, AES-encrypted, excluded from `/chat` corpus | Darsh only |
@@ -342,6 +345,10 @@ When someone asks "why do you do X?", the chain is: `because of <pillar/rule>` �
 | `ANTHROPIC_API_KEY` | `wrangler secret` | `/api/chat` |
 | `CHAT_PIN` | `wrangler secret` | `/api/chat` PIN gate |
 | `PLANS_PIN` | `wrangler secret` | `/api/plans` PIN gate |
+| `XAI_API_KEY` | `wrangler secret` | `/api/grok` (the `/supreme` console) |
+| `SUPREME_PIN` | `wrangler secret` | `/api/grok` PIN gate |
+| `GROK_MODEL` (optional) | `wrangler secret` or `[vars]` | Override default `grok-4-latest` for `/api/grok` |
+| `CALCOM_URL` (optional) | `[vars]` | Returned by Supreme `book_call` tool. Distinct from `NEXT_PUBLIC_CALCOM_URL` (build-time, client). |
 | `JOURNAL_PIN` (browser-side decrypt key) | `app/docs-journal/` build embed | Journal AES decrypt in browser |
 | `NEXT_PUBLIC_CALCOM_URL` | GH repo secret, forwarded at build | Booking link, future `book_call` chat tool |
 | `NEXT_PUBLIC_CLARITY_PROJECT_ID` | optional GH repo secret | Clarity tracker (default falls back) |
@@ -353,6 +360,7 @@ When someone asks "why do you do X?", the chain is: `because of <pillar/rule>` �
 - **Claude Code** (you, primary): full Read/Write/Edit/Bash + MCP filesystem-fetch-cloudflare-github via `.mcp.json`. Authority per §2. Ship without asking on the green list.
 - **Grok-via-Claude**: Darsh sometimes routes prompts through Grok. Grok writes a contract per §11; you execute it. If the contract is malformed, infer and proceed.
 - **The site's `/chat` agent**: Claude Sonnet 4.6 with the docs corpus as system prompt. Phase 2 (in [`docs/chat/thoughts-deep-integration.md`](docs/chat/thoughts-deep-integration.md)) gives it tool calls (`search_thoughts`, `search_blog`, `book_call`, `lead_capture`).
+- **The site's `/supreme` agent**: Grok via xAI Responses API (default `grok-4-latest`) with built-in web + x search, vision, and the same four custom tools already shipped server-side in [`worker/grok.ts`](worker/grok.ts). Server-side tool loop with normalized SSE envelope to the client. PIN-gated by `SUPREME_PIN`. Setup: [`docs/supreme/grok-integration.md`](docs/supreme/grok-integration.md).
 
 ### 12.8 The "ask Darsh" green and red list (memorize)
 
@@ -365,7 +373,7 @@ When in doubt: **ship the code, leave the public claim as a placeholder**, call 
 ### 12.9 The hard "never"s (the catastrophe list)
 
 - Never fabricate metrics, names, testimonials, or case studies.
-- Never link `/docs/journal`, `/plans`, or `/chat` from nav, footer, sitemap, or `llms.txt`.
+- Never link `/docs/journal`, `/plans`, `/chat`, or `/supreme` from nav, footer, sitemap, or `llms.txt`.
 - Never feed `docs/journal/**` into the `/chat` corpus or any external AI service.
 - Never expose API keys in client bundles. (Web3Forms was killed for this reason. Don't repeat.)
 - Never use Instagram for X9Elysium content. X.com only.

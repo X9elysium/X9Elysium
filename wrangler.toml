@@ -11,6 +11,10 @@ binding = "ASSETS"
 not_found_handling = "404-page"
 
 # Plain (non-secret) variables — safe to commit.
+# GROK_MODEL defaults to "grok-4-latest" inside the Worker; override here only
+# if you want to pin a specific model build (e.g. "grok-4-fast-reasoning").
+# CALCOM_URL is returned by the Supreme `book_call` tool when the user signals
+# scheduling intent.
 [vars]
 LEAD_TO_EMAIL = "darshan@x9elysium.com"
 LEAD_FROM_EMAIL = "X9Elysium <leads@x9elysium.com>"
@@ -21,6 +25,8 @@ LEAD_FROM_EMAIL = "X9Elysium <leads@x9elysium.com>"
 #   ANTHROPIC_API_KEY   — required for /api/chat, https://console.anthropic.com keys
 #   CHAT_PIN            — required for /api/chat, the PIN that gates /chat access
 #   PLANS_PIN           — required for /plans (read + edit), the PIN that gates the private plan viewer
+#   XAI_API_KEY         — required for /api/grok (the /supreme console), https://console.x.ai
+#   SUPREME_PIN         — required for /api/grok, the PIN that gates the supreme console
 
 # Optional: KV namespace for IP-based rate limiting.
 # Create with: npx wrangler kv namespace create LEADS_KV
