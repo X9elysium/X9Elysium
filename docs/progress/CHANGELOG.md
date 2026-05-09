@@ -12,6 +12,18 @@ Format:
 
 ---
 
+## (pending) — 2026-05-09 — plans: $5,000 budget allocation — gujju doctrine
+
+- Touched:
+  - [`docs/marketing/5k-budget-allocation.md`](../marketing/5k-budget-allocation.md) (new) — every penny plan for the first $5,000 spend on x9elysium.com. Operating principles section ("buy assets, not subscriptions; compounding > burning; founder time is free; kill rule on every line"), single-page allocation table (8 buckets totalling $5,000), line-by-line justification with kill rules per row, reallocation matrix (one-way flow toward the well, never the bonfire), monthly-review protocol, "what this $5k explicitly does NOT buy" cuts list (no agency, no SaaS suite, no popups, no IG ads — every cut frees a real dollar), week-1 deployment plan, and month-6 exit criterion (8 observable checks). Anchored against the three jobs in CLAUDE.md §1 and the open asks in CLAUDE.md §10.
+  - [`docs/plans-allowlist.json`](../plans-allowlist.json) — added `5k-budget` slug entry pointing at the new doc. Will surface at `/plans/5k-budget` (PIN-gated, same posture as `linkedin-20`).
+  - [`worker/plans-seed.json`](../../worker/plans-seed.json) — rebaked via `npm run plans:build-seed`. Now contains 2 plans (34.4 KB).
+- Tasks moved: none on the kanban; this is net-new strategic doc.
+- Why now: Darsh asked for a gujju-style $5k allocation across the whole x9elysium.com effort — Mukesh-Ambani-rupee-discipline + Ratan-Tata-invoice-test. The doc is internal/strategic, so it ships as a `/plans` entry (private, PIN-gated, not linked from sitemap or `llms.txt`) rather than as public marketing copy. The allocation itself is anchored to the open infrastructure asks (Anthropic + xAI credits, Resend, Cloudflare paid plan), the trust gap (Clutch + founder photos + BBB), and the cornerstone-content cadence — i.e., it converts the "Open asks for Darsh" list in CLAUDE.md §10 into a single concrete spend plan with kill rules.
+- Caveat: docs-only commit. Won't trigger a deploy under the workflow's `paths-ignore` (the allowlist + seed JSON are inside `docs/` and `worker/` — `worker/plans-seed.json` does live in `worker/`, so the deploy may fire; if it does, post-push protocol applies and `/plans/5k-budget` should resolve once `PLANS_PIN` is set in CF secrets per CLAUDE.md §10).
+
+---
+
 ## (pending) — 2026-05-09 — supreme: grok-powered console at /supreme with live search, vision, tools
 
 - Touched:
