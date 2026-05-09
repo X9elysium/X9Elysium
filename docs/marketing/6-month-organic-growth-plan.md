@@ -52,9 +52,9 @@ Dashboard for the engine: track in a simple Google Sheet — `linkedin_posts`, `
 - ✅ **(2026-05-02 — shipped)** Delete legacy `post-1`…`post-10` template files; 410 their URLs in `_redirects`
 - ✅ **(2026-05-02 — shipped)** llms.txt rewrite (founder-led wedge, reconciled stats, FAQ block, real published posts only)
 - ✅ **(2026-05-02 — shipped)** Sitemap: add /services, /work; pin static `lastmod` dates instead of `new Date()`
-- [ ] Build the `/locations/vancouver` page — copy + LocalBusiness schema modeled on Toronto and Calgary. Vancouver shows up in llms.txt and copy but has no landing page; this is wasted local intent.
+- ✅ **(2026-05-04 — shipped)** Build the `/locations/vancouver` page — copy + LocalBusiness schema modeled on Toronto and Calgary. Live with `ProfessionalService` JSON-LD, BC tax/EHF/EPR section, Pacific-Rim cross-border framing, and the 5-question FAQPage block.
+- ✅ **(2026-05-07 — shipped)** Strip the per-quote `metric` badges from `Testimonials.tsx`. The whole Testimonials component was rewritten as three operating principles ("Named references, on request" / "Under-claim. Always" / "The brief lives forever") — no more anonymized quotes with invented numbers.
 - [ ] Ship one **named, permissioned case study** at `/work/[slug]` — real client logo, real headshot quote, one verified metric. Worth more than all six anonymized testimonials combined. Targeted clients to ask in the next two weeks: top three current accounts.
-- [ ] Strip the per-quote `metric` badges from `Testimonials.tsx` (anonymized + specific numbers reads as fabricated to AI evaluators and to sharp buyers).
 - [ ] Wire `NEXT_PUBLIC_CALCOM_URL` in Cloudflare project env so the seven `BookingButton` CTAs flip from form-routing to actual calendar.
 
 ### Third-party proof (highest leverage)
@@ -121,8 +121,8 @@ Dashboard for the engine: track in a simple Google Sheet — `linkedin_posts`, `
 4. **GTA-targeted local piece — "How GTA Retailers Should Think About Shopify Plus in 2026"** — original survey data if possible (10–25 GTA DTC brands answering 5 questions). Even a small first-party dataset gets cited disproportionately by AI engines because the data exists nowhere else.
 
 ### Site
-- [ ] Add **FAQPage schema** to /locations/toronto, /locations/calgary, /locations/vancouver (4–6 questions each, location-specific: cost, timeline, retainer cadence, on-site vs remote). Perplexity + Google AIO disproportionately surface FAQ-marked passages from local-intent pages.
-- ✅ **(2026-05-09 — shipped)** **HSTS + security headers** via `public/_headers` (Cloudflare Workers Static Assets format). HSTS, X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy, COOP, plus immutable cache rules for `/_next/static/*`. Static-export config can't use `next.config.js` `headers()`, so `_headers` is the right surface.
+- ✅ **(2026-05-04 / 2026-05-07 — shipped)** **FAQPage schema** to /locations/toronto, /locations/calgary, /locations/vancouver — 5 questions each (cost, tax setup, cross-border / unified-commerce, headless suitability, hybrid on-site delivery). All three pages render `@type: FAQPage` with location-specific Q&A.
+- ✅ **(2026-05-09 — shipped)** **HSTS + security headers** via `public/_headers` (Cloudflare Workers Static Assets format). HSTS, X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy, COOP, plus immutable cache rules for `/_next/static/*`. Static-export config can't use `next.config.js` `headers()`, so `_headers` is the right surface. Note: live activation is gated on the Cloudflare deploy unblock — file ships with the static export but won't take effect until the queued deploys run.
 - [ ] Convert hero/team images to **WebP/AVIF** via Next `<Image>` once `images.unoptimized: true` can be relaxed (post static-export → Cloudflare assets cutover already done).
 - ✅ **(2026-05-09 — shipped)** Dropped the duplicate logo files (`logo-1.png`, `logoo.jpg`, `flower.jpg`, `Instagram.html`, `456441839…(1).jpg` in `public/`).
 

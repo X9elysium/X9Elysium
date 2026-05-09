@@ -12,7 +12,21 @@ Format:
 
 ---
 
-## (pending) — 2026-05-09 — site sweep: HSTS + security headers, audit player on shared component, drop orphan jpg
+## (pending) — 2026-05-09 — feature audit + next-steps brief, tick off shipped checklists, bump sitemap dates
+
+- Touched:
+  - [`docs/plans/next-steps-2026-05-09.md`](../plans/next-steps-2026-05-09.md) (new) — first entry under a new `docs/plans/` folder. Full feature audit (live vs repo) across the static surface, Worker / dynamic surface, trust / SEO / GEO surface, and operational surface. Calls out the eight commits sitting in `main` since `bba9f9c` (2026-05-06) that have **never reached production** because the GH Actions workflow has been red since then on the missing `CLOUDFLARE_API_TOKEN` repo secret. Cross-references CLAUDE.md §10 against actual code state and identifies §10 items where the code-side work is already done and only deploy or external-account provisioning is left. Ranks the next 14 days into A) Darsh unblocks production (30 min), B) Darsh activates dynamic surface (60 min), C) code-side work I can ship in parallel — May cornerstone, Adhvait `Person` schema, blog `speakable` specs on top 5 cornerstones, blog Article-graph audit, D) engine work. Recommends "When To Hire a Shopify Plus Agency vs Build In-House: A Founder's Decision Tree" as the May cornerstone (decision-stage prequel before June drops migration + comparison cornerstones).
+  - [`docs/marketing/6-month-organic-growth-plan.md`](../marketing/6-month-organic-growth-plan.md) — Month-1 boxes ticked: `/locations/vancouver` page (shipped 2026-05-04), Testimonials metric-badge strip (shipped 2026-05-07 — full component rewrite into operating principles). Month-3 box ticked: FAQPage schema across all 3 location pages, 5 questions each.
+  - [`app/sitemap.ts`](../../app/sitemap.ts) — `STATIC_LASTMOD` bumped on routes whose copy/schema actually moved between 2026-05-04 and 2026-05-09: home, about, services, work, foundation, careers, toronto, calgary, vancouver → 2026-05-07. contact and changelog → 2026-05-09. blog/thoughts/sanctuary unchanged. platforms unchanged. Pinned dates over `new Date()` per the existing comment ("turns every build into a freshness lie for crawlers"). The bumps are deliberate freshness signals tied to the truth pass + sanctuary + supreme + sweep work that's queued behind the deploy block.
+- Tasks moved (CLAUDE.md §10): none. The Cornerstone cadence task gets its first concrete write-up in the brief but no piece has shipped yet.
+- Tasks moved (6-month plan): Month-1 Vancouver page + metric-badge strip → shipped. Month-3 FAQPage location schema → shipped (was already done across all three pages, just untracked).
+- Why now: the user asked to audit features against CLAUDE.md, plan next steps, publish. The audit surfaced that several §10 / 6-month-plan items had been shipped weeks ago without the checklists getting updated; the bigger surface is that **production is 8 commits stale and no one has been counting**. The brief is the clean handoff document for unblocking that.
+- Build/lint: `next build` clean across all 92 static pages. No code-side regressions; sitemap bump produces the same 51-route output, just with newer `lastmod` dates on 9 routes.
+- Caveat: same as the last 8 commits. This push lands on `main` but doesn't reach the live site until `CLOUDFLARE_API_TOKEN` is provisioned. The brief is itself the receipt for that ask.
+
+---
+
+## c06c237 — 2026-05-09 — site sweep: HSTS + security headers, audit player on shared component, drop orphan jpg
 
 - Touched:
   - [`public/_headers`](../../public/_headers) (new) — Cloudflare Workers Static Assets `_headers` file. `/*` rule applies HSTS (`max-age=31536000; includeSubDomains; preload`), `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy: camera=(), microphone=(), geolocation=(), browsing-topics=()`, `Cross-Origin-Opener-Policy: same-origin`, `X-DNS-Prefetch-Control: on`. Plus immutable long-cache (`max-age=31536000, immutable`) on `/_next/static/*` and `/fonts/*`, 30-day cache on `/images/*`. Worker `/api/*` paths are unaffected — those set their own headers in `worker/index.ts`. The static-export config can't use `next.config.js` `headers()`, so `_headers` is the right surface and Workers Static Assets ships it through automatically. The `out/_headers` is generated from `public/_headers` on every `next build`.
