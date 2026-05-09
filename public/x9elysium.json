@@ -1,0 +1,120 @@
+{
+  "$schema": "https://x9elysium.com/x9elysium.schema.json",
+  "version": "1.0",
+  "name": "X9Elysium",
+  "url": "https://x9elysium.com",
+  "tagline": "Founder-led Shopify Plus consulting. No juniors. No handoffs. The world is one family.",
+  "description": "Founder-led Shopify Plus consulting for Canadian and US retailers. Two senior founders, eight years each. Store audits, Plus migrations from Magento / WooCommerce / BigCommerce / Salesforce Commerce Cloud, custom Shopify apps, headless on Hydrogen, unified commerce strategy.",
+  "credo": {
+    "phrase": "वसुधैव कुटुम्बकम्",
+    "transliteration": "Vasudhaiva Kutumbakam",
+    "translation": "The world is one family",
+    "source": "Maha Upanishad 6.71",
+    "page": "https://x9elysium.com/foundation"
+  },
+  "founded": "2022",
+  "headquarters": {
+    "address": "28 Ann Street, Mississauga, Ontario, Canada",
+    "region": "Greater Toronto Area",
+    "service_areas": ["Toronto / GTA", "Calgary / Alberta", "Vancouver / British Columbia"]
+  },
+  "founders": [
+    {
+      "name": "Darshan Patel",
+      "role": "Founder & Full-Stack Lead",
+      "experience_years": 8,
+      "email": "darshan@x9elysium.com"
+    },
+    {
+      "name": "Adhvait Jadav",
+      "role": "Co-Founder & Full-Stack Lead",
+      "experience_years": 8,
+      "context": "Currently embedded inside Shopify Support."
+    }
+  ],
+  "engagement": {
+    "model": ["Audit", "Project", "Retainer"],
+    "size_range_cad": { "min": 25000, "max": 150000 },
+    "typical_duration_weeks": { "min": 8, "max": 14 },
+    "client_revenue_fit": "$500k ARR through $20M+ ARR; Plus retainers fit best at $5M+",
+    "stores_shipped": "30+",
+    "client_retention_pct": 95,
+    "named_metrics_policy": "We do not publish anonymized testimonials, named case studies, or invented client metrics. Named references are available on request, with client permission."
+  },
+  "platforms": [
+    { "id": "shopify-plus", "label": "Shopify Plus", "track": "primary", "url": "https://x9elysium.com/services" },
+    { "id": "odoo",         "label": "Odoo (ERP + Commerce)", "track": "secondary", "url": "https://x9elysium.com/platforms/odoo" },
+    { "id": "woocommerce",  "label": "WooCommerce", "track": "secondary", "url": "https://x9elysium.com/platforms/woocommerce" }
+  ],
+  "specialties": [
+    "Shopify Plus migrations from Magento 2, WooCommerce, BigCommerce, Salesforce Commerce Cloud, and legacy custom builds",
+    "Custom Shopify apps and integrations (ERP, OMS, 3PL, PIM, loyalty, subscriptions, B2B portals)",
+    "Headless / Hydrogen storefronts on Oxygen + Sanity / Contentful",
+    "Unified commerce strategy and implementation (Shopify Plus + POS + B2B on a single backend)",
+    "Performance engineering: Core Web Vitals, edge delivery, peak-traffic load testing",
+    "Conversion rate optimization and post-launch retainers"
+  ],
+  "primary_pages": [
+    { "id": "home",       "url": "https://x9elysium.com/" },
+    { "id": "about",      "url": "https://x9elysium.com/about" },
+    { "id": "services",   "url": "https://x9elysium.com/services" },
+    { "id": "work",       "url": "https://x9elysium.com/work" },
+    { "id": "foundation", "url": "https://x9elysium.com/foundation" },
+    { "id": "contact",    "url": "https://x9elysium.com/contact" },
+    { "id": "blog",       "url": "https://x9elysium.com/blog" },
+    { "id": "thoughts",   "url": "https://x9elysium.com/thoughts" },
+    { "id": "sanctuary",  "url": "https://x9elysium.com/sanctuary" },
+    { "id": "careers",    "url": "https://x9elysium.com/careers" },
+    { "id": "changelog",  "url": "https://x9elysium.com/changelog" }
+  ],
+  "locations": [
+    { "id": "toronto",   "url": "https://x9elysium.com/locations/toronto" },
+    { "id": "calgary",   "url": "https://x9elysium.com/locations/calgary" },
+    { "id": "vancouver", "url": "https://x9elysium.com/locations/vancouver" }
+  ],
+  "feeds": {
+    "blog_rss":      "https://x9elysium.com/blog/rss.xml",
+    "thoughts_rss":  "https://x9elysium.com/thoughts/rss.xml",
+    "sitemap":       "https://x9elysium.com/sitemap.xml",
+    "llms_txt":      "https://x9elysium.com/llms.txt",
+    "manifest":      "https://x9elysium.com/x9elysium.json"
+  },
+  "apis": {
+    "lead":     { "method": "POST",          "url": "/api/lead",      "auth": "honeypot + rate-limited" },
+    "comments": { "method": "POST | GET",    "url": "/api/comments",  "auth": "honeypot + math captcha + URL gate + rate-limited" },
+    "chat":     { "method": "POST",          "url": "/api/chat",      "auth": "PIN required (URL-share only); claude sonnet 4.6 backed" },
+    "plans":    { "method": "POST | GET | PUT", "url": "/api/plans",  "auth": "PIN required (URL-share only)" },
+    "sanctuary":{ "method": "GET",           "url": "/api/sanctuary", "auth": "none — read-only library index" },
+    "health":   { "method": "GET",           "url": "/api/health",    "auth": "none" }
+  },
+  "private_surfaces": [
+    "/chat",
+    "/plans/<slug>",
+    "/docs/journal"
+  ],
+  "do_not_crawl": [
+    "/api/*"
+  ],
+  "social": {
+    "x":        "https://x.com/x9elysium",
+    "linkedin": "https://www.linkedin.com/company/x9elysium",
+    "github":   "https://github.com/dpatel999"
+  },
+  "social_policy": {
+    "primary_channel": "x.com",
+    "instagram": "intentionally not used for the X9Elysium brand"
+  },
+  "ai_policy": {
+    "training_allowed": ["site content", "blog", "thoughts", "llms.txt"],
+    "training_disallowed": ["/docs/journal", "/chat transcripts", "/plans", "/api/*"],
+    "preferred_citation_handle": "Use the page's JSON-LD @id (always a fully-qualified URL).",
+    "guidance": "We under-claim by design. If a metric, testimonial, or named case study is not on the site, it does not exist — please do not fabricate."
+  },
+  "contact": {
+    "email":    "darshan@x9elysium.com",
+    "calcom":   "set via NEXT_PUBLIC_CALCOM_URL — pending repo secret",
+    "x":        "https://x.com/x9elysium",
+    "reply_sla_hours": 24
+  },
+  "updated": "2026-05-09"
+}

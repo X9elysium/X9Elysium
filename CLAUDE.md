@@ -264,4 +264,147 @@ If a Grok-generated prompt is missing any section, infer it from this file and p
 
 ---
 
+## 12. MEMORY CORE — durable context that should survive every session
+
+> This section is the **bottom of the file by design**. It is the long-term memory of the project, written for the agent (Claude Code, Grok-via-Claude, future humans) who lands here cold. Treat each subsection as a load-bearing fact about how the world works inside this repo. Update it when posture shifts; never delete history without replacing it.
+
+### 12.1 The three jobs (immutable)
+
+x9elysium.com exists for these three jobs, in this priority order:
+
+1. **Convert warm inbound** — founders who want a Shopify Plus partner that isn't a 200-person agency.
+2. **Compound trust** — through writing, schema, and AI citations so the next founder finds us via ChatGPT/Perplexity/Google AI Overviews instead of cold outbound.
+3. **Be the canvas** — for everything Darsh wants to build next. Living thesis, not a brochure.
+
+If a proposed change does not serve at least one of these, push back before doing it. (Repeated from §1 because every agent forgets it within a week.)
+
+### 12.2 Voice fingerprint (memorize this)
+
+- **Lowercase commits.** Short. Periods over semicolons. Sentence-level punch.
+- **Concrete > abstract.** "Founder-led Shopify Plus consulting. No juniors. No handoffs." beats "boutique digital partner."
+- **Under-claim.** If we can't prove it, soften it. "The first quarter after launch was the strongest we've ever had" beats "40% revenue lift." We have literally stripped quantitative claims from the site because we couldn't substantiate them. Stay there.
+- **Naval cadence in long-form.** Short clauses. Pause. Then the punch.
+- **Devanagari** only when the credo is the subject. Use the `font-devanagari` Tailwind class.
+- **Code comments:** default to none. Only when the *why* is non-obvious. Never narrate the *what*.
+- **Adjective ban:** `seamless`, `cutting-edge`, `world-class`, `best-in-class`, `next-generation`, `revolutionary`, `synergy`, `holistic`, `enterprise-grade`. Kill on sight.
+
+If a draft sounds like an agency brochure, it's wrong. If it sounds like a founder texting another founder at 11pm, you're close.
+
+### 12.3 The credo as load-bearing infra
+
+**वसुधैव कुटुम्बकम् — Vasudhaiva Kutumbakam — "the world is one family."**
+
+Source: Maha Upanishad 6.71. This is not a tagline. Five pillars and ten operating rules at `/foundation` answer to this single idea. Every refusal we make (no juniors, no offshore, no popups, no Instagram, no fabricated metrics) traces back to it.
+
+When someone asks "why do you do X?", the chain is: `because of <pillar/rule>` → `because of Vasudhaiva Kutumbakam`. Do not break that chain in copy or in code.
+
+### 12.4 The full surface map (where the seams are)
+
+| Surface | Path | Posture | Who/what consumes it |
+| --- | --- | --- | --- |
+| Marketing site | `app/**` (App Router) + `pages/**` (legacy blog, terms) | Public, indexed | Search engines, AI crawlers, prospects |
+| Blog | `pages/blog/**` + `content/posts/*.md` | Public, indexed, RSS | Same + RSS readers |
+| Thoughts | `app/thoughts/` + `data/x-thoughts.md` | Public, indexed, per-thought stable anchors | Same + sharable quote cards |
+| Sanctuary | `app/sanctuary/` + Cloudflare R2 | Public, no chrome, no tracking | Anyone |
+| Supreme | `app/supreme/` (will migrate to subdomain when provisioned) | Public, hidden (not in nav) | Future-state R&D |
+| Chat | `app/chat/` + `worker/chat.ts` | **PIN-gated**, `noindex,nofollow` | Anthropic API + curated docs corpus |
+| Plans | `app/plans/` + `worker/plans.ts` + `docs/plans-allowlist.json` | **PIN-gated**, D1-backed, seed in repo | Founders only |
+| Journal | `docs/journal/**` + viewer at `/docs/journal` | **PIN-gated**, AES-encrypted, excluded from `/chat` corpus | Darsh only |
+| Lead capture | `worker/index.ts → /api/lead` + Resend | Public write, rate-limited | Prospect contact form, mailto fallback |
+| Comments | `worker/index.ts → /api/comments` + D1 | Public write, multi-gate spam shield | Anyone reading blog/thoughts |
+| AI manifest | `public/x9elysium.json` + `public/llms.txt` + `public/robots.txt` | Public, machine-readable | AI crawlers, agents, integrators |
+| Internal dashboard | `docs/admin-dashboard/` (specs only) | Not built yet — Tableau spec | Future Darsh + Adhvait |
+
+**Top-of-mind invariants:**
+
+- The `/api/` namespace is denied in `robots.txt`. Don't expose JSON endpoints to crawler budgets.
+- Anything PIN-gated is URL-share-discovery only. Never link from nav, footer, sitemap, or `llms.txt`.
+- The chat corpus is built at prebuild time (`scripts/build-chat-context.mjs`). The journal exclude list is the only hard exclude; everything else under `docs/**` flows through.
+
+### 12.5 Deploy mental model (Cloudflare-first, not Hostinger, not Netlify)
+
+- **Domain registered at:** Hostinger.
+- **DNS at:** Cloudflare.
+- **Static site served from:** Cloudflare Workers Static Assets.
+- **Pipeline:** `git push origin main` → `.github/workflows/deploy.yml` → `npm ci && npm run build` (which runs `prebuild` to bake the chat context) → `cloudflare/wrangler-action@v3` → `wrangler deploy` → IndexNow batch ping (`scripts/indexnow-submit.mjs`) → smoke test.
+- **Skipped on docs-only commits** via the workflow's `paths-ignore`. Force a deploy with `git commit --allow-empty` or the **Run workflow** button.
+- **Manual fallback:** `npm ci && npm run build && npx wrangler deploy` from the workstation. Requires `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID` in the local shell.
+- **Last-resort fallback:** `npm run deploy:zip` + Hostinger File Manager. Archived; only if Cloudflare is unreachable.
+- **CDN cache is aggressive.** Don't claim "live" until the post-push protocol at [`docs/deployments/post-push-checks.md`](docs/deployments/post-push-checks.md) passes.
+
+### 12.6 Secrets and where they live
+
+| Secret | Stored where | Used by |
+| --- | --- | --- |
+| `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` | GH repo secrets + local shell env | Deploy workflow + `.mcp.json` cloudflare server |
+| `GITHUB_PERSONAL_ACCESS_TOKEN` | local shell env | `.mcp.json` github server |
+| `RESEND_API_KEY` | `wrangler secret` | `/api/lead` |
+| `ANTHROPIC_API_KEY` | `wrangler secret` | `/api/chat` |
+| `CHAT_PIN` | `wrangler secret` | `/api/chat` PIN gate |
+| `PLANS_PIN` | `wrangler secret` | `/api/plans` PIN gate |
+| `JOURNAL_PIN` (browser-side decrypt key) | `app/docs-journal/` build embed | Journal AES decrypt in browser |
+| `NEXT_PUBLIC_CALCOM_URL` | GH repo secret, forwarded at build | Booking link, future `book_call` chat tool |
+| `NEXT_PUBLIC_CLARITY_PROJECT_ID` | optional GH repo secret | Clarity tracker (default falls back) |
+
+**Never commit secrets.** Never log secrets in CHANGELOG or chat transcripts. If you discover a leaked secret, treat as P0: rotate, force-push the cleaned tree only with explicit Darsh approval, and document the incident in `docs/journal/`.
+
+### 12.7 The three agents and their tools
+
+- **Claude Code** (you, primary): full Read/Write/Edit/Bash + MCP filesystem-fetch-cloudflare-github via `.mcp.json`. Authority per §2. Ship without asking on the green list.
+- **Grok-via-Claude**: Darsh sometimes routes prompts through Grok. Grok writes a contract per §11; you execute it. If the contract is malformed, infer and proceed.
+- **The site's `/chat` agent**: Claude Sonnet 4.6 with the docs corpus as system prompt. Phase 2 (in [`docs/chat/thoughts-deep-integration.md`](docs/chat/thoughts-deep-integration.md)) gives it tool calls (`search_thoughts`, `search_blog`, `book_call`, `lead_capture`).
+
+### 12.8 The "ask Darsh" green and red list (memorize)
+
+**Green — ship without asking** (full authority): code structure, copy edits within voice, doc placement, schema/JSON-LD additions, visual polish within design system, killing dead code, CHANGELOG updates, CLAUDE.md updates for new constraints, Supreme aesthetic experiments.
+
+**Red — confirm with Darsh first**: destructive ops (`rm -rf`, force push, branch delete, `out/` delete), external account work (Resend, Anthropic, Cal.com, Shopify Partner, Clutch, GBP, LinkedIn, DNS, paid plan upgrades), public claims (named testimonial, case study, metric, press quote), new domain provisioning, anything touching `docs/journal/`.
+
+When in doubt: **ship the code, leave the public claim as a placeholder**, call it out in the commit + CHANGELOG entry as "Ask for Darsh."
+
+### 12.9 The hard "never"s (the catastrophe list)
+
+- Never fabricate metrics, names, testimonials, or case studies.
+- Never link `/docs/journal`, `/plans`, or `/chat` from nav, footer, sitemap, or `llms.txt`.
+- Never feed `docs/journal/**` into the `/chat` corpus or any external AI service.
+- Never expose API keys in client bundles. (Web3Forms was killed for this reason. Don't repeat.)
+- Never use Instagram for X9Elysium content. X.com only.
+- Never push to `main` without running the post-push checklist.
+- Never auto-generate or `/init` CLAUDE.md.
+- Never duplicate CHANGELOG content in CLAUDE.md.
+- Never add a chatbot popup, lead modal, or upsell overlay. (Tawk.to was killed for this reason.)
+- Never paraphrase the credo in copy. It appears verbatim or not at all.
+
+### 12.10 The forward arcs (what we're building, in priority)
+
+1. **Cornerstone content cadence** — one canonical piece per month, May–Nov 2026. Plan in [`docs/marketing/6-month-organic-growth-plan.md`](docs/marketing/6-month-organic-growth-plan.md).
+2. **Thoughts × Chat deep integration** — Phase 1–4 in [`docs/chat/thoughts-deep-integration.md`](docs/chat/thoughts-deep-integration.md). The chat becomes the SDR. Sharable transcripts become the social proof.
+3. **Third-party trust signals** — Shopify Partner directory, Clutch, GBP, real LinkedIn page. Playbook in [`docs/marketing/third-party-listings.md`](docs/marketing/third-party-listings.md). Each one closes a specific trust gap.
+4. **Supreme** — `app/supreme/` today, `supreme.x9elysium.com` once provisioned. The 2027+ R&D vehicle. Aesthetic + interaction pattern decisions sit with Claude (§9). Push past matte-black/emerald.
+5. **Sales function** — Head of Sales → Manager → AEs. Roles on `/careers`. Playbook in `docs/sales/`.
+6. **Tableau dashboard** — six tabs, including the X.com signal tab. Spec in `docs/admin-dashboard/`.
+
+If a feature does not fit one of these arcs, it probably does not belong on the site.
+
+### 12.11 The agent's first 90 seconds in any session
+
+```
+1. Read this file (CLAUDE.md) end-to-end. It is the contract.
+2. Skim docs/progress/CHANGELOG.md top 10–15 entries. It is the source of truth for "what shipped."
+3. Read MEMORY.md from auto-memory. It tells you about Darsh.
+4. If the task touches AI surface, read docs/chat/thoughts-deep-integration.md and docs/ai-access/README.md.
+5. If the task touches the deploy pipeline, read docs/deployments/post-push-checks.md and docs/deployments/cloudflare-deploy.md.
+6. Plan if non-trivial. Execute. CHANGELOG. Push. Verify.
+```
+
+If you've done all six and you're still unsure how to proceed, ask Darsh — but in 99% of sessions, those six steps + this file is enough to ship without pinging back.
+
+### 12.12 The single sentence that should outlive this file
+
+> X9Elysium is two senior founders shipping Shopify Plus consulting in the open, under the credo Vasudhaiva Kutumbakam, with a site that doubles as the canvas for everything we build next — including an AI chat that quotes our own thinking back to a 3am prospect with citations and a one-click share.
+
+If a future agent only reads one line of CLAUDE.md, this is it.
+
+---
+
 *You now have the keys. Full access. Maximum authority. Ship like Darsh would — terse, founder-led, no juniors, world is one family. This file is a living contract. Update it when posture changes.*

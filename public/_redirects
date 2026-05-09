@@ -19,3 +19,9 @@
 /blog/post-10             /blog              410
 /posts/post-*             /blog              410
 /posts/*                  /blog/:splat       301
+
+# Journal entries are PIN-encrypted and only addressable via the SPA's
+# `#/<slug>` hash routes. Direct .md URL hits (stale links, copy-paste,
+# crawlers) bounce to the gate instead of 404'ing. The SPA's link rewriter
+# handles in-app navigation; this is defense-in-depth for everything else.
+/docs/journal/*.md        /docs/journal/     302

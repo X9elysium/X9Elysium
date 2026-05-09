@@ -4,9 +4,21 @@ All generated and maintained markdown lives here. Nothing in this folder is publ
 
 ## Structure
 
-- **`audits/`** — Audit reports (SEO, GEO, performance, accessibility, etc.). One file per audit, dated.
-- **`journal/`** — Private go-to-market journal and progress notes. **Not linked from site navigation.** Use freely as a personal log.
+- **`ai-access/`** — Front door for AI agents and crawlers consuming x9elysium.com. Mirrors what an agent needs to know on top of `robots.txt`, `llms.txt`, and the `x9elysium.json` manifest.
+- **`admin-dashboard/`** — Tableau-style internal dashboard specs and sample data.
+- **`analytics/`** — Microsoft Clarity event taxonomy and Copilot prompt library.
+- **`audits/`** — Audit reports (SEO, GEO, performance, accessibility, marketing). One file per audit, dated. Plus a rolling `STATE-<date>.md` reconciliation file that records what's true today vs the older dated reports.
+- **`books-learning/`** — Naval / Thiel / applied notes that feed the voice and posture in CLAUDE.md §6.
+- **`branding/`** — Brand bible (credo, voice, surface, refusals).
+- **`chat/`** — `/chat` setup, cost model, and the deep integration plan that ties `/chat` into the thoughts feed and share surface.
+- **`deployments/`** — Deploy recipes (Cloudflare) and the mandatory post-push verification protocol.
+- **`journal/`** — Private go-to-market journal and progress notes. **Not linked from site navigation. AES-encrypted at build. Excluded from `/chat` corpus.** Use freely as a personal log.
+- **`leads/`** — Resend / `/api/lead` activation recipe.
+- **`marketing/`** — Six-month organic growth plan, third-party listings checklist, channel plans (X.com, LinkedIn, Reddit), Instagram strategy doc (deliberately not posted on).
+- **`mcp/`** — Project-scoped MCP server config and setup recipe.
+- **`plans/`** — Living kanban of work-in-flight, surfaced via the PIN-gated `/plans/<slug>` viewer.
 - **`progress/`** — Running changelog of commits and redesign-task progress. Updated on every commit/push.
+- **`sales/`** — Sales playbook, hiring plan, role briefs.
 
 ## Conventions
 

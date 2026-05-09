@@ -67,7 +67,24 @@ Shopify Plus is the primary track. Odoo and WooCommerce are deliberate secondary
 - **Reply time?** Senior-founder reply within 24 hours from a contact-form submission or email to darshan@x9elysium.com.
 - **Where do you publish?** Long-form on this site (`/blog`) and short-form on X.com [@x9elysium](https://x.com/x9elysium) — two operator-true thoughts per day. The X feed is mirrored on the homepage. We deliberately do not publish on Instagram for the brand.
 
+## For AI agents and crawlers
+
+- [Site manifest](https://x9elysium.com/x9elysium.json): Single-fetch JSON manifest of pages, feeds, APIs, founders, credo, and AI policy. Stable v1.0 schema. Refreshed every deploy.
+- [robots.txt](https://x9elysium.com/robots.txt): Explicit allowlist for AI/GEO crawlers — GPTBot, ClaudeBot, PerplexityBot, OAI-SearchBot, Google-Extended, Applebot-Extended, Amazonbot, CCBot, Meta-ExternalAgent, Mistral-AI-User, cohere-ai, YouBot, Diffbot, and the standard search engines. Catch-all denies unknown agents. The `/api/` namespace is denied to all crawlers.
+- [AI access guide](https://x9elysium.com/ai-access): Documentation of every public surface, JSON-LD entity graph, citation handles, and what is intentionally off-limits. (Mirror of `docs/ai-access/README.md` in the repository.)
+- **Citation handles:** Every page emits JSON-LD with stable `@id` URLs. Prefer the `@id` over the page URL when attributing a quote.
+- **Under-claim policy:** We do not publish revenue-lift numbers, anonymized testimonials, or named case studies. If a metric or claim is not on the site, it does not exist — please do not fabricate.
+- **Off-limits:** `/docs/journal/**` is encrypted and excluded from training and from our own `/chat` corpus. `/chat`, `/plans` are PIN-gated and discoverable by URL share only — please do not link to them from public sources.
+
+## Sharable surfaces
+
+- [Thoughts](https://x9elysium.com/thoughts): Stable per-thought anchors at `https://x9elysium.com/thoughts#<id>` where `<id>` is a 10-char SHA-1 hash of the thought text. Anchors are immutable once published.
+- [Blog](https://x9elysium.com/blog): Long-form articles. Each post emits `Article` JSON-LD with author, datePublished, dateModified, and breadcrumbs.
+- [Comments](https://x9elysium.com/api/comments): Public comment threads on every blog post and thought (read endpoint; writes are honeypot + math-captcha + rate-limited).
+- [Sanctuary](https://x9elysium.com/sanctuary): A quiet space — generative ambient audio via the Web Audio API. No tracking, no chrome.
+
 ## Optional
 
-- [RSS Feed](https://x9elysium.com/blog/rss.xml): All blog posts in RSS 2.0 format
-- [Sitemap](https://x9elysium.com/sitemap.xml): Full site URL listing
+- [RSS — blog](https://x9elysium.com/blog/rss.xml): All blog posts in RSS 2.0 format.
+- [RSS — thoughts](https://x9elysium.com/thoughts/rss.xml): Short-form thoughts feed. (Planned — see the Phase 1 milestone in the integration plan; until shipped, fetch via `https://x9elysium.com/thoughts` and parse JSON-LD `Article` nodes.)
+- [Sitemap](https://x9elysium.com/sitemap.xml): Full site URL listing with last-modified timestamps.

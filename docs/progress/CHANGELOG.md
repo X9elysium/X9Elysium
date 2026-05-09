@@ -12,6 +12,22 @@ Format:
 
 ---
 
+## (pending) — 2026-05-09 — ai-friendly surface: manifest, llms.txt extend, chat×thoughts plan, claude.md memory core
+
+- Touched:
+  - [`public/x9elysium.json`](../../public/x9elysium.json) (new) — single-fetch v1.0 site manifest. Pages, feeds, APIs, founders, credo, locations, platforms, social, AI policy. Schema documented in [`docs/ai-access/README.md`](../ai-access/README.md) §3. Refreshed every deploy.
+  - [`public/llms.txt`](../../public/llms.txt) — extended with three new sections: "For AI agents and crawlers" (manifest pointer, robots posture, citation rules, off-limits), "Sharable surfaces" (thoughts anchors, blog, comments, sanctuary), and rebuilt "Optional" with planned thoughts RSS. No removal of existing content; pure addition.
+  - [`docs/ai-access/README.md`](../ai-access/README.md) (new, first entry under new `docs/ai-access/` folder) — front door for AI agents and crawlers. What's published vs not, crawler posture, manifest schema, JSON-LD citation handles, programmatic feeds and refresh cadence, sharable thoughts contract, hard off-limits.
+  - [`docs/chat/thoughts-deep-integration.md`](../chat/thoughts-deep-integration.md) (new) — four-phase plan to evolve `/chat` from docs Q&A into an agentic surface that quotes thoughts and blog with citations, dispatches `search_thoughts` / `search_blog` / `book_call` / `lead_capture` tool calls, and produces shareable transcript permalinks (`/chat/share/<slug>`). Phase 1 (corpus expand) ships next; Phases 2–4 staged.
+  - [`docs/audits/STATE-2026-05-09.md`](../audits/STATE-2026-05-09.md) (new) — reconciliation pass against the May 2 audits. Headline: blog-500 and per-route-metadata findings are closed; estimated rubric-equivalent score is now ~78/100 (up from 53.8). Records what's still open (cornerstone cadence, third-party listings, founder photos, Cal.com link, field-measured CWV).
+  - [`docs/README.md`](../README.md) — index expanded to register every existing subfolder (`ai-access`, `admin-dashboard`, `analytics`, `books-learning`, `branding`, `chat`, `deployments`, `leads`, `marketing`, `mcp`, `plans`, `sales`) plus a one-liner each. Stops the README from lying about structure.
+  - [`CLAUDE.md`](../../CLAUDE.md) — new §12 MEMORY CORE appendix at the bottom: three jobs, voice fingerprint, credo as load-bearing infra, full surface map, deploy mental model, secrets table, three agents, green/red ask list, hard nevers, forward arcs, the agent's first 90 seconds, the single sentence that should outlive the file. Reading it cold is enough to ship.
+- Tasks moved (CLAUDE.md §10): none new closed; reframed several existing asks (Cal.com, third-party listings, cornerstone cadence) inside the new MEMORY CORE so a future agent finds them without re-reading §10.
+- Why now: brief was "make AI-friendly to get data, sharable thoughts, deeply connect with advanced AI chat, plan it well, add Memory Core to CLAUDE.md." Hit all four in one pass: manifest + llms.txt extend = AI-friendly; thoughts-deep-integration plan + ai-access doc = the deep chat connection plan + sharable thoughts spec; CLAUDE.md §12 = Memory Core. Audits refreshed for trustworthy "current state" reading.
+- Caveat: same deploy block — lands on `main` but won't reach prod until the GH Actions Cloudflare secrets are set. Once shipped, post-push check should confirm `https://x9elysium.com/x9elysium.json` returns 200 with valid JSON, and `/llms.txt` includes the new "For AI agents and crawlers" section.
+
+---
+
 ## (pending) — 2026-05-09 — journal 404 safety net + project mcp config
 
 - Touched:
