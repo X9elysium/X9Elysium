@@ -76,8 +76,6 @@ function buildTree(dir: string, rel = ""): TreeEntry[] {
       out.push({ type: "dir", name: e.name, path: relPath, children });
     } else if (e.isFile() && /\.md$/i.test(e.name)) {
       const raw = fs.readFileSync(abs, "utf8");
-      marked.setOptions({ gfm: true, breaks: false, headerIds: false, mangle: false });
-      const html = marked.parse(raw) as string;
       const title = readTitle(raw, humanize(e.name));
       const tldr = buildTldr({ body: raw, fallback: title });
       const speakable = buildSpeakable({ title, tldr, body: raw });
@@ -87,7 +85,7 @@ function buildTree(dir: string, rel = ""): TreeEntry[] {
         path: relPath,
         slug: pathToSlug(relPath),
         title,
-        html,
+        html: "",
         raw,
         tldr,
         speakable,
@@ -99,6 +97,50 @@ function buildTree(dir: string, rel = ""): TreeEntry[] {
     return a.name.localeCompare(b.name);
   });
   return out;
+}
+
+function collectSlugMap(nodes: TreeEntry[], map = new Map<string, string>()): Map<string, string> {
+  for (const n of nodes) {
+    if (n.type === "file") map.set(n.path, n.slug);
+    else collectSlugMap(n.children, map);
+  }
+  return map;
+}
+
+// Cross-entry markdown links (e.g. [foo](./foo.md)) get rendered by marked as
+// plain relative anchors. Inside the unlocked viewer those resolve against the
+// page URL `/docs/journal/...` and 404 — the entries only exist as encrypted
+// JSON keyed by slug. Rewrite them to the viewer's `#/<slug>` hash routes.
+function rewriteJournalLinks(
+  html: string,
+  currentDir: string,
+  slugByRelPath: Map<string, string>
+): string {
+  return html.replace(/href="([^"]+)"/g, (match, raw: string) => {
+    if (/^(?:[a-z]+:|\/|#)/i.test(raw)) return match;
+    const hashIdx = raw.indexOf("#");
+    const hrefPath = hashIdx >= 0 ? raw.slice(0, hashIdx) : raw;
+    if (!/\.md$/i.test(hrefPath)) return match;
+    const base = currentDir ? currentDir : ".";
+    const resolved = path.posix.normalize(path.posix.join(base, hrefPath));
+    const slug = slugByRelPath.get(resolved);
+    if (!slug) return match;
+    return `href="#/${slug}"`;
+  });
+}
+
+function renderHtml(nodes: TreeEntry[], slugMap: Map<string, string>): void {
+  marked.setOptions({ gfm: true, breaks: false, headerIds: false, mangle: false });
+  for (const n of nodes) {
+    if (n.type === "file") {
+      const dir = path.posix.dirname(n.path);
+      const currentDir = dir === "." ? "" : dir;
+      const rendered = marked.parse(n.raw) as string;
+      n.html = rewriteJournalLinks(rendered, currentDir, slugMap);
+    } else {
+      renderHtml(n.children, slugMap);
+    }
+  }
 }
 
 function bufToB64(buf: ArrayBuffer | Uint8Array): string {
@@ -136,6 +178,8 @@ export type EncryptedBlob = {
 /** Build-time: read journal/, render md, encrypt the whole structure. */
 export async function getEncryptedJournal(): Promise<EncryptedBlob> {
   const tree = buildTree(JOURNAL_DIR);
+  const slugMap = collectSlugMap(tree);
+  renderHtml(tree, slugMap);
 
   // Strip raw markdown — clients only need rendered HTML
   function stripRaw(nodes: TreeEntry[]): unknown {

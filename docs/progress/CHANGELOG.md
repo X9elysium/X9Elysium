@@ -12,6 +12,20 @@ Format:
 
 ---
 
+## (pending) — 2026-05-09 — journal: rewrite cross-entry .md links to viewer's hash routes
+
+- Touched: [`app/docs/journal/lib.ts`](../../app/docs/journal/lib.ts).
+- Bug: inside the unlocked `/docs/journal/` viewer, clicking a link like `[00-foundation.md](./00-foundation.md)` from `chanakya-musk-engine/README.md` navigated the browser to `https://x9elysium.com/docs/journal/00-foundation.md` and 404'd. The viewer is a SPA that routes by hash slug (`#/<slug>`) — the entries only exist as encrypted JSON keyed by slug, never as standalone HTML pages. Marked was emitting raw relative anchors verbatim, so the viewer leaked into the static-export 404 the moment anyone followed an inter-entry reference.
+- Fix:
+  - Refactored `buildTree` to do FS walk + tldr/speakable build only — defer HTML rendering to a second pass so the slug map is fully known first.
+  - Added `collectSlugMap` (relPath → slug) and `renderHtml` walks. `renderHtml` calls `marked.parse` then post-processes the HTML through `rewriteJournalLinks`, which regex-rewrites `href="..."` for any relative `.md` link to `#/<slug>` using `path.posix.normalize` against the entry's directory. External URLs (`https:`, `mailto:`, `/`-rooted, anchor-only `#…`) are left alone. Unknown targets (broken cross-references) are also left alone — they'll still 404 but at least we tried, and the build can flag them later.
+  - Fragments on `.md` links (`./foo.md#section`) are dropped during rewrite — the journal viewer's hash router doesn't support nested anchors and the rendered headings don't get IDs (`headerIds: false`), so a `#/wins#section` href would route to nowhere.
+- Why now: surfaced today by Darsh pasting `https://x9elysium.com/docs/journal/00-foundation.md` — that exact URL is generated automatically by every link in `chanakya-musk-engine/README.md` and `01-deep-research.md` once the README is rendered inside the viewer.
+- Tasks moved (CLAUDE.md §10): none.
+- Build/lint: green. `/docs/journal` bundle 5.91 kB (unchanged — the rewrite happens at build time inside `getEncryptedJournal`, the encrypted blob is the same shape).
+
+---
+
 ## (pending) — 2026-05-09 — docs/analytics: clarity-copilot quick reference + prompt library
 
 - Touched: [`docs/analytics/clarity-copilot.md`](../analytics/clarity-copilot.md) (new).
