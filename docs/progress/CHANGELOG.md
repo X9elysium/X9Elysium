@@ -12,6 +12,18 @@ Format:
 
 ---
 
+## (pending) — 2026-05-09 — branding bible: novel-style brand distillation in `docs/branding/branding.md`
+
+- Touched: [`docs/branding/branding.md`](../branding/branding.md) (new) — first entry under a new `docs/branding/` folder. Eleven-chapter novel-style branding doc + a 12-line coda that doubles as the editing contract for any future agent (human or model) touching copy/visual on the site. Quotes the live surface verbatim wherever the language is the brand — hero headline, testimonials principles, the four-phase Elysium Method, the five pillars + ten rules, supreme manifesto, the loom fragments, the foundation promise, the sitewide refusals (no juniors, no fabricated metrics, no chatbots, no IG, no journal in sitemap, no `/init` on CLAUDE.md). Sources every quote against `app/components/Hero.tsx`, `Testimonials.tsx`, `Services.tsx`, `WhyChooseUs.tsx`, `FAQ.tsx`, `app/foundation/data.ts`, `app/supreme/{Threshold,Pillars,Loom,Voice}.tsx`, the `Organization`/`Person`/`Quotation` JSON-LD in `layout.tsx` + `/foundation/page.tsx`, and CLAUDE.md §1 §6 §7 §9. Margin-thoughts woven through each chapter — the *why* behind each posture, in the founder's own scaffolding voice (the inner monologue Darsh would write to himself if no client were looking).
+- Why now: user asked to audit running state vs CLAUDE.md, sweep the whole surface for wording/branding/styling, and publish a branding doc in novel/literary style with the underlying thoughts included. Filled the gap that was sitting between [`docs/books-learning/naval-ravikant.md`](../books-learning/naval-ravikant.md) (voice bible) and [`CLAUDE.md`](../../CLAUDE.md) §6 (style rules) — neither of those frames the brand as a *posture*, narratively, the way a designer or copywriter onboarding cold needs. The novel-form treatment is deliberate — voice rules read like rules; voice modeled in prose reads like the brand.
+- Structure: Prologue (the credo as load-bearing wall) → I. The Wedge → II. The Voice → III. The Method → IV. The Five Pillars + Ten Rules → V. The Surface (color, type, motion, refusals) → VI. Two Rooms with No Door Sign (Sanctuary + Supreme) → VII. The Ledger of Refusals → VIII. The Stack as a Sentence → IX. The Six Sound Equivalents (the six recurring phrases that ARE the brand to a returning visitor or AI Overview) → X. The Future as a Direction, Not a Date → XI. The Promise → Coda (12-line style guide for editors).
+- Voice integrity: the doc itself follows §6 — lowercase commit message, sentence-level prose, periods over semicolons, no fabricated metrics, Naval cadence in the long-form sections, Devanagari only when the credo is the subject. The 6 "sound equivalents" chapter is the cheat sheet for cornerstone authors and the chat corpus alike — it's the smallest set of phrases that round-trip an AI Overview citation.
+- Tasks moved (CLAUDE.md §10): none. New documentation surface; doesn't touch the §10 punch list.
+- Build/lint: not touched — pure docs add under `docs/branding/`, outside the static export per CLAUDE.md §5. No `next build` impact, no bundle size delta, no route added.
+- Caveat: same deploy block as the prior 9 commits. This file lands on `main` but doesn't reach the live site (it's outside `out/` anyway — `docs/` is intentional and never deployed). Reading lives at the repo path; cross-linked from CHANGELOG and from the 12-line coda at the bottom of the file.
+
+---
+
 ## (pending) — 2026-05-09 — feature audit + next-steps brief, tick off shipped checklists, bump sitemap dates
 
 - Touched:
