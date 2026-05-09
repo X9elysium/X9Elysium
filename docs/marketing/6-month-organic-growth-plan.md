@@ -122,9 +122,9 @@ Dashboard for the engine: track in a simple Google Sheet — `linkedin_posts`, `
 
 ### Site
 - [ ] Add **FAQPage schema** to /locations/toronto, /locations/calgary, /locations/vancouver (4–6 questions each, location-specific: cost, timeline, retainer cadence, on-site vs remote). Perplexity + Google AIO disproportionately surface FAQ-marked passages from local-intent pages.
-- [ ] **HSTS + security headers** — add via `next.config.js` `headers()` (or Cloudflare Worker rule). The technical audit flagged this; SSL trust signal does feed AI citation decisions.
+- ✅ **(2026-05-09 — shipped)** **HSTS + security headers** via `public/_headers` (Cloudflare Workers Static Assets format). HSTS, X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy, COOP, plus immutable cache rules for `/_next/static/*`. Static-export config can't use `next.config.js` `headers()`, so `_headers` is the right surface.
 - [ ] Convert hero/team images to **WebP/AVIF** via Next `<Image>` once `images.unoptimized: true` can be relaxed (post static-export → Cloudflare assets cutover already done).
-- [ ] Drop the duplicate logo files (`logo-1.png`, `logoo.jpg`, `flower.jpg`, `Instagram.html`, `456441839…(1).jpg` in repo root).
+- ✅ **(2026-05-09 — shipped)** Dropped the duplicate logo files (`logo-1.png`, `logoo.jpg`, `flower.jpg`, `Instagram.html`, `456441839…(1).jpg` in `public/`).
 
 ### Third-party proof
 - [ ] Submit X9Elysium to **G2** (services category) — once Clutch reviews are syndicated, G2 follows them automatically.

@@ -12,6 +12,23 @@ Format:
 
 ---
 
+## (pending) — 2026-05-09 — site sweep: HSTS + security headers, audit player on shared component, drop orphan jpg
+
+- Touched:
+  - [`public/_headers`](../../public/_headers) (new) — Cloudflare Workers Static Assets `_headers` file. `/*` rule applies HSTS (`max-age=31536000; includeSubDomains; preload`), `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy: camera=(), microphone=(), geolocation=(), browsing-topics=()`, `Cross-Origin-Opener-Policy: same-origin`, `X-DNS-Prefetch-Control: on`. Plus immutable long-cache (`max-age=31536000, immutable`) on `/_next/static/*` and `/fonts/*`, 30-day cache on `/images/*`. Worker `/api/*` paths are unaffected — those set their own headers in `worker/index.ts`. The static-export config can't use `next.config.js` `headers()`, so `_headers` is the right surface and Workers Static Assets ships it through automatically. The `out/_headers` is generated from `public/_headers` on every `next build`.
+  - [`app/docs/audits/full-audit-report/page.tsx`](../../app/docs/audits/full-audit-report/page.tsx) — switched the audio player import from the bespoke `./Player` to the shared `app/components/AudioPlayer`. Prop signature change: `title="Full SEO Audit"` → `eyebrow="Listen · Full SEO Audit"` (the shared component accepts a single eyebrow string and prepends "Listen ·" upstream when callers pass it raw).
+  - [`app/docs/audits/full-audit-report/Player.tsx`](../../app/docs/audits/full-audit-report/Player.tsx) (deleted) — the bespoke 482-line copy that was always meant to be temporary. Closes the 5-minute follow-up that had been sitting in CLAUDE.md §10 since the shared player landed.
+  - [`public/456441839_488866147207033_4632849824668430109_n(1).jpg`](../../public/) (deleted) — the rogue 49 KB Instagram-scrape jpg that the marketing audit (`docs/audits/marketing-audit-2026-05-02.md`) flagged for removal. Already long-superseded by `public/images/x9-logo.png` and `public/images/favicon.png`, both of which were derived from this source on 2026-05-01 and now exist as standalone assets. Only references left were in `.claude/settings.json` historic permission entries (under a stale path that no longer exists) and the audit/plan docs that flag it for removal.
+  - [`CLAUDE.md`](../../CLAUDE.md) §10 — pruned the Player migration line.
+  - [`docs/marketing/6-month-organic-growth-plan.md`](../marketing/6-month-organic-growth-plan.md) — ticked off the HSTS + duplicate-files checkboxes with shipped dates.
+- Tasks moved (CLAUDE.md §10): Player migration removed from "Open code tasks." Cornerstone cadence is now the only remaining open code task.
+- Tasks moved (6-month plan): HSTS + security headers (Month 3) and duplicate-logo cleanup (Month 3) marked shipped.
+- Why now: same context as the journal-link fix earlier today — sweeping the §10 punch list before reaching for cornerstone content. HSTS is the single biggest "trust at AI evaluation" signal still missing per the GEO-TECHNICAL audit; the player migration was a 5-minute task that had been sitting on the backlog for weeks; the orphan jpg has been a small site-bytes embarrassment since the marketing audit flagged it.
+- Build/lint: green. `out/_headers` shipped (889 bytes). No bundle size delta — the shared `AudioPlayer` is already in the build for `/sanctuary` and the journal viewer, so removing `Player.tsx` is a pure size win on the audit page chunk.
+- Caveat: deploy still blocked at the missing `CLOUDFLARE_API_TOKEN` repo secret (CLAUDE.md §10), so these changes will land on `main` but won't reach the live site until that secret is provisioned (or until a manual `wrangler deploy` from a workstation with the token in shell env). HSTS + security headers in particular are a no-op until the deploy runs.
+
+---
+
 ## (pending) — 2026-05-09 — journal: rewrite cross-entry .md links to viewer's hash routes
 
 - Touched: [`app/docs/journal/lib.ts`](../../app/docs/journal/lib.ts).

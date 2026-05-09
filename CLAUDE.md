@@ -219,7 +219,6 @@ If a feature doesn't fit one of these arcs, it probably doesn't belong.
 **Open code tasks (no external account needed):**
 
 - Cornerstone content cadence — 1 piece/month, May–Nov 2026. See `docs/marketing/6-month-organic-growth-plan.md`.
-- Migrate the bespoke `app/docs/audits/full-audit-report/Player.tsx` to the shared `app/components/AudioPlayer.tsx` (5-minute follow-up — was deferred as scope creep when the shared player landed).
 
 **Open asks for Darsh (external accounts/decisions):**
 

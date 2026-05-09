@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { marked } from "marked";
 import { ArrowLeft, Calendar, FileText, Sparkles } from "lucide-react";
-import Player from "./Player";
+import AudioPlayer from "../../../components/AudioPlayer";
 
 const REL_PATH = "audits/FULL-AUDIT-REPORT.md";
 
@@ -129,7 +129,7 @@ export default function FullAuditReportPage() {
 
       {/* Audio player */}
       <div className="mb-10 lg:mb-14">
-        <Player speakableText={speakable} title="Full SEO Audit" />
+        <AudioPlayer speakableText={speakable} eyebrow="Listen · Full SEO Audit" />
       </div>
 
       {/* Body + TOC */}
