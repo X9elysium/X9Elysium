@@ -12,6 +12,52 @@ Format:
 
 ---
 
+## (pending) — 2026-05-09 — journal 404 safety net + project mcp config
+
+- Touched:
+  - [`public/_redirects`](../../public/_redirects) — added `/docs/journal/*.md → /docs/journal/ 302`. Defense-in-depth on top of the in-app rewriter from `4789fe0` so any direct `.md` URL hit (stale links, copy-paste, crawlers) bounces to the PIN gate instead of 404'ing through `app/not-found.tsx`. Specifically fixes `https://x9elysium.com/docs/journal/00-foundation.md`, which was the symptom that surfaced this. Splat matches across slashes, so the `chanakya-musk-engine/*.md` paths are covered too.
+  - [`.mcp.json`](../../.mcp.json) (new) — project-scoped MCP manifest. Wires up `github`, `cloudflare`, `filesystem` (path-locked to repo root), and `fetch`. All credentials sourced from shell env vars (`GITHUB_PERSONAL_ACCESS_TOKEN`, `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`) — nothing committed. Picked up by Claude Code on session start; activate with `/mcp`.
+  - [`docs/mcp/setup.md`](../mcp/setup.md) (new, first entry under new `docs/mcp/` folder) — token provisioning steps, trust posture (filesystem sandboxed, tokens shell-only, removable per-server), and the rationale for these four servers vs accumulating more.
+- Tasks moved (CLAUDE.md §10): none. The Cloudflare account-id and API token requirements for the MCP cloudflare server are the same secrets §10 already calls out for the GH Actions deploy workflow, so unblocking deploys also unblocks the MCP server.
+- Why now: 404 surfaced from a journal cross-link that wasn't covered by the in-app rewriter's path scope (direct URL access bypasses the SPA entirely). MCP config was a parallel ask to grow the agent toolkit without leaving the editor.
+- Caveat: same deploy block — this lands on `main` but the redirect rule won't reach prod until the GH Actions secrets are set. Once shipped, post-push check should confirm `curl -sI https://x9elysium.com/docs/journal/00-foundation.md` returns `302` with `location: /docs/journal/`.
+
+---
+
+## (pending) — 2026-05-09 — `/plans/<slug>` private editable md viewer with comments
+
+- Touched:
+  - [`worker/plans.ts`](../../worker/plans.ts) (new) — `POST /api/plans/unlock`, `GET /api/plans?slug=`, `PUT /api/plans`. Constant-time PIN compare, etag-based optimistic concurrency on writes, sha-256 etag derived from content, IP-based rate limit on PUT/unlock when `LEADS_KV` is bound. Falls back to seed when D1 has no row for the slug; first PUT writes the row.
+  - [`worker/schema.sql`](../../worker/schema.sql) — additive `plans` table (slug PK, content, etag, updated_at, updated_by) + index. No destructive change to existing `leads` or `comments` tables. Apply to remote with the same one-liner already pending in CLAUDE.md §10.
+  - [`worker/comments.ts`](../../worker/comments.ts) — extended `THREAD_PREFIX_RE` to accept `plans/<slug>` so the existing comment system serves the plans surface unchanged.
+  - [`worker/index.ts`](../../worker/index.ts) — wired `/api/plans` and `/api/plans/unlock` into the route map; added `PLANS_PIN` to `Env`; widened `buildCorsHeaders` to accept a custom `Allow-Headers` value (lets the client send `X-Plans-Pin` on GET).
+  - [`docs/plans-allowlist.json`](../plans-allowlist.json) (new) — single source of truth for which md files appear at `/plans/<slug>`. First entry: `linkedin-20` → `docs/marketing/linkedin-content-plan-20.md`. Adding a new plan = one JSON object + rebuild.
+  - [`scripts/build-plans-seed.mjs`](../../scripts/build-plans-seed.mjs) (new) — runs in `prebuild` alongside `build-chat-context.mjs`. Reads the allowlist, validates each entry, sha-256-hashes the content for the seed etag, writes `worker/plans-seed.json` (committed alongside `worker/chat-context.json` per project pattern).
+  - [`worker/plans-seed.json`](../../worker/plans-seed.json) (generated, committed) — 14.8 KB seed for `linkedin-20`.
+  - [`app/plans/lib.ts`](../../app/plans/lib.ts) (new) — server-side allowlist loader for `generateStaticParams` and `generateMetadata`.
+  - [`app/plans/layout.tsx`](../../app/plans/layout.tsx) (new) — robots noindex/nofollow/noarchive/nosnippet for the whole subtree.
+  - [`app/plans/page.tsx`](../../app/plans/page.tsx) (new) — index page listing the allowlisted slugs (still PIN-gated at the per-plan view).
+  - [`app/plans/[slug]/page.tsx`](../../app/plans/[slug]/page.tsx) (new) — server shell with `generateStaticParams` + `dynamicParams = false` (so the static export is a closed set; unknown slugs `notFound()`).
+  - [`app/plans/[slug]/PlanClient.tsx`](../../app/plans/[slug]/PlanClient.tsx) (new) — PIN gate (sessionStorage `x9_plans_pin_v1`, parity with `/chat`), three-mode toggle (edit / split / preview), live `marked` GFM render with Tailwind typography prose styling, save with etag concurrency, dirty/clean state indicator, copy-share-link, reload, embedded `<Comments threadId="plans/<slug>">` reusing the existing component.
+  - [`wrangler.toml`](../../wrangler.toml) — documented `PLANS_PIN` in the secrets comment block.
+  - [`package.json`](../../package.json) — `prebuild` chains `build-plans-seed.mjs`; new `plans:build-seed` script for ad-hoc rebuilds.
+  - [`.gitignore`](../../.gitignore) — `.dev.vars` (so local PIN secrets don't accidentally land in git).
+  - [`CLAUDE.md`](../../CLAUDE.md) §4 (added `/api/plans` to the Worker route list + a new "Plans" stack row), §7 (extended the "never link" rule to cover `/plans` alongside `/docs/journal`), §10 (new open-asks: `wrangler secret put PLANS_PIN`, schema apply now also covers the plans table).
+- Why: user asked for a separate, PIN-gated link that renders a markdown plan with GitHub-style preview, in-browser editing, and a comments thread. First slug is the LinkedIn 20-post plan. Same private posture as `/docs/journal` and `/chat` — discoverable by URL only, never in nav/sitemap/llms.txt.
+- Verified locally:
+  - `npm run lint` clean.
+  - `npm run build` succeeds; `out/plans/index.html` and `out/plans/linkedin-20/index.html` carry `<meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />`.
+  - `out/sitemap.xml` has zero `/plans` references.
+  - `wrangler dev` smoke: unlock with right PIN → `{ok:true}`, wrong PIN → 401, GET without `X-Plans-Pin` header → 401, GET with PIN → returns seed (`fromSeed: true`, content length 14464 chars), PUT without D1 binding → 503 with explicit "binding isn't configured" message, PUT wrong PIN → 401, PUT bad slug → 404, comment thread `plans/linkedin-20` accepted by the existing `/api/comments` route.
+- Open asks (in CLAUDE.md §10): set `PLANS_PIN`, apply the new schema (one command — covers both plans and the existing pending comments table), and the standing GHA Cloudflare secrets so the deploy workflow can ship it.
+
+## (pending) — 2026-05-09 — marketing: 20-post linkedin plan in `docs/marketing/linkedin-content-plan-20.md`
+
+- Touched: docs/marketing/linkedin-content-plan-20.md
+- Notes: green-default (16) / white-exception (4) split, pros+cons per theme, audience targeting per surface, IG held out per CLAUDE.md §7 with override flagged for darsh
+
+---
+
 ## (pending) — 2026-05-09 — plans: living kanban at `docs/plans/kanban.md` (5 columns, P0–P3)
 
 - Touched: [`docs/plans/kanban.md`](../plans/kanban.md) (new) — sibling of [`docs/plans/next-steps-2026-05-09.md`](../plans/next-steps-2026-05-09.md). Living operational board reconciling [`CLAUDE.md`](../../CLAUDE.md) §10 against the top of the CHANGELOG.

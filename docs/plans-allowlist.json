@@ -1,0 +1,11 @@
+{
+  "$schema": "./plans-allowlist.schema.json",
+  "_comment": "Allowlist for the private /plans/<slug> viewer. Each entry seeds worker/plans-seed.json at build time. The route is PIN-gated and excluded from sitemap/nav/llms.txt — discoverable by URL only. Edits write to D1 and the seed becomes the fallback once a row exists.",
+  "plans": [
+    {
+      "slug": "linkedin-20",
+      "title": "LinkedIn — 20-post plan (May 2026)",
+      "source": "docs/marketing/linkedin-content-plan-20.md"
+    }
+  ]
+}

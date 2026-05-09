@@ -23,6 +23,7 @@ import { renderLeadEmail, renderLeadText, renderAutoReply, renderAutoReplyText }
 import { handleChat } from "./chat";
 import { handleComments } from "./comments";
 import { handleSanctuary } from "./sanctuary";
+import { handlePlans } from "./plans";
 
 export interface Env {
   ASSETS: Fetcher;
@@ -35,6 +36,7 @@ export interface Env {
   SLACK_WEBHOOK_URL?: string;
   ANTHROPIC_API_KEY?: string;
   CHAT_PIN?: string;
+  PLANS_PIN?: string;
 }
 
 interface LeadPayload {
@@ -107,6 +109,14 @@ export default {
       const origin = req.headers.get("Origin") ?? "";
       const corsHeaders = buildCorsHeaders(origin, "GET, OPTIONS");
       return handleSanctuary(req, env, corsHeaders);
+    }
+    if (url.pathname === "/api/plans" || url.pathname === "/api/plans/unlock") {
+      const origin = req.headers.get("Origin") ?? "";
+      const corsHeaders = buildCorsHeaders(origin, "GET, POST, PUT, OPTIONS", "Content-Type, X-Plans-Pin");
+      if ((req.method === "POST" || req.method === "PUT") && origin && !ALLOWED_ORIGINS.has(origin)) {
+        return json({ error: "Forbidden" }, 403, corsHeaders);
+      }
+      return handlePlans(req, env, ctx, corsHeaders);
     }
     if (url.pathname === "/api/health") {
       return json({ ok: true, ts: Date.now() });
@@ -332,12 +342,13 @@ async function sendSlack(webhookUrl: string, lead: NormalizedLead): Promise<void
 function buildCorsHeaders(
   origin: string,
   methods = "POST, OPTIONS",
+  allowHeaders = "Content-Type",
 ): Record<string, string> {
   const allowed = ALLOWED_ORIGINS.has(origin) ? origin : "https://x9elysium.com";
   return {
     "Access-Control-Allow-Origin": allowed,
     "Access-Control-Allow-Methods": methods,
-    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Allow-Headers": allowHeaders,
     "Access-Control-Max-Age": "86400",
     Vary: "Origin",
   };

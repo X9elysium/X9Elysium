@@ -43,3 +43,17 @@ CREATE TABLE IF NOT EXISTS comments (
 
 CREATE INDEX IF NOT EXISTS idx_comments_thread ON comments(thread_id, created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_comments_pending ON comments(approved, created_at DESC);
+
+-- Private editable plan pages — `app/plans/<slug>` behind PIN gate.
+-- Content seeds from a build-time `worker/plans-seed.json` baked from the allowlist
+-- in `docs/plans-allowlist.json`; first save inserts the row and from then on D1 wins.
+-- `etag` is a sha-256 of content used for optimistic concurrency on PUT.
+CREATE TABLE IF NOT EXISTS plans (
+  slug         TEXT    PRIMARY KEY,
+  content      TEXT    NOT NULL,
+  etag         TEXT    NOT NULL,
+  updated_at   TEXT    NOT NULL,
+  updated_by   TEXT
+);
+
+CREATE INDEX IF NOT EXISTS idx_plans_updated ON plans(updated_at DESC);

@@ -72,11 +72,13 @@ When in doubt: **ship the code**, leave the public claim as a placeholder, and c
 | Fonts | Inter (UI) + Noto Sans Devanagari (credo) via `next/font/google` |
 | Deploy | **Cloudflare Workers Static Assets** — `wrangler.toml` + `.github/workflows/deploy.yml`. Push to `main` → GH Actions → `wrangler deploy` → IndexNow ping → smoke test. |
 | Domain | Registered at Hostinger, DNS at Cloudflare |
-| Dynamic backend | Cloudflare Worker at `worker/` — `/api/lead`, `/api/chat`, `/api/comments`, `/api/health` |
+| Dynamic backend | Cloudflare Worker at `worker/` — `/api/lead`, `/api/chat`, `/api/comments`, `/api/plans`, `/api/sanctuary`, `/api/health` |
 | Lead email | Resend (pending DNS + `wrangler secret put RESEND_API_KEY`) |
 | Chat | Claude Sonnet 4.6 via Anthropic API, PIN-gated, corpus-grounded |
 | Comments | D1 + KV via `/api/comments`. Schema in `worker/schema.sql` (apply once). Honeypot + math captcha + URL gate + per-IP rate limit. |
+| Plans | Private editable md viewer at `/plans/<slug>`, PIN-gated (`PLANS_PIN`). Allowlist in `docs/plans-allowlist.json`, baked at build into `worker/plans-seed.json` by `scripts/build-plans-seed.mjs`. Edits persist in D1 `plans` table; md file in repo is the immortal seed. Comments thread via `/api/comments?thread=plans/<slug>`. Same private posture as `/docs/journal` — no nav, no sitemap, no llms.txt. |
 | Tracking | Microsoft Clarity (`@microsoft/clarity` v1) — full session/scroll/rage/exit tracking via `app/components/ClarityTracker.tsx`. Default project `nhmfksrzgs`, override with `NEXT_PUBLIC_CLARITY_PROJECT_ID`. |
+| Agent MCP | Project-scoped servers in `.mcp.json` — github, cloudflare, filesystem (path-locked to repo), fetch. Tokens sourced from shell env (`GITHUB_PERSONAL_ACCESS_TOKEN`, `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`). Setup recipe: `docs/mcp/setup.md`. Activate inside a session with `/mcp`. |
 
 **Aesthetic:** matte black + emerald `#10b981` + Inter, soft glass cards, gradient mesh, film-grain noise overlay. Don't reinvent — extend.
 
@@ -139,7 +141,7 @@ Voice bible: `docs/books-learning/naval-ravikant.md` + the hero in `app/page.tsx
 ## 7. HARD RULES (never break)
 
 - **Never fabricate metrics, names, or testimonials.** Anonymized + directional > false specifics.
-- **Never link `/docs/journal` from nav, footer, sitemap, or `llms.txt`.** Discoverable by URL only.
+- **Never link `/docs/journal` or `/plans` from nav, footer, sitemap, or `llms.txt`.** Both are PIN-gated and discoverable by URL only.
 - **Never feed `docs/journal/**` into the `/chat` Anthropic corpus.** `scripts/build-chat-context.mjs` enforces the exclude list — don't break it.
 - **Never expose API keys in client bundles.** Web3Forms was killed for this reason. All secrets live in Worker env or GH Actions secrets.
 - **Never use Instagram for X9Elysium content.** X.com only.
@@ -225,7 +227,8 @@ If a feature doesn't fit one of these arcs, it probably doesn't belong.
 - Provision **GitHub repo secrets** for the Cloudflare deploy workflow: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`. Recipe: `docs/deployments/cloudflare-deploy.md` §1–3. Without these the workflow fails at the `Deploy to Cloudflare` step.
 - Activate `/api/lead` — Resend signup + DNS + `wrangler secret put RESEND_API_KEY`. Recipe: `docs/leads/setup.md`.
 - Activate `/chat` — `wrangler secret put ANTHROPIC_API_KEY` + `CHAT_PIN`. Recipe: `docs/chat/README.md`.
-- Apply the comments schema to D1: `npx wrangler d1 execute x9elysium-leads --remote --file=worker/schema.sql`. Until applied, `POST /api/comments` returns 503 and pages render with empty comments sections.
+- Activate `/plans` — `wrangler secret put PLANS_PIN`. Until set, the unlock screen returns 503 with a clear error. Reads fall back to the build-time seed; writes return 503 until D1 is bound.
+- Apply the comments + plans schema to D1: `npx wrangler d1 execute x9elysium-leads --remote --file=worker/schema.sql`. Until applied, `POST /api/comments` and `PUT /api/plans` return 503; `/plans` reads still work via the seed.
 - Provision `LEADS_KV` (per-IP rate limit for `/api/lead` and `/api/comments`). Optional — failure mode is "rate limiter silently no-ops."
 - Third-party proof — Shopify Partner directory + Clutch + GBP + real LinkedIn company page. Playbook: `docs/marketing/third-party-listings.md`.
 - Cal.com — set `NEXT_PUBLIC_CALCOM_URL` as a GitHub repo secret (the deploy workflow forwards it to `next build`).

@@ -20,6 +20,7 @@ LEAD_FROM_EMAIL = "X9Elysium <leads@x9elysium.com>"
 #   SLACK_WEBHOOK_URL   — optional, Slack incoming-webhook URL for instant ping
 #   ANTHROPIC_API_KEY   — required for /api/chat, https://console.anthropic.com keys
 #   CHAT_PIN            — required for /api/chat, the PIN that gates /chat access
+#   PLANS_PIN           — required for /plans (read + edit), the PIN that gates the private plan viewer
 
 # Optional: KV namespace for IP-based rate limiting.
 # Create with: npx wrangler kv namespace create LEADS_KV
