@@ -12,6 +12,24 @@ Format:
 
 ---
 
+## (pending) — 2026-05-09 — contact form: mailto fallback so leads land even with /api/lead offline
+
+- Touched: [`app/contact/ContactClient.tsx`](../../app/contact/ContactClient.tsx).
+- Behavior change: the contact form now delivers email **today**, even though `/api/lead` is currently 405 on production (deploy pipeline blocked on the missing `CLOUDFLARE_API_TOKEN` GitHub secret — §10).
+- How it works:
+  - **Primary path unchanged.** `POST /api/lead` is still attempted first. When the Worker + Resend get activated, the form behaves exactly as before — silent network call, "You're in good hands." success state, no fallback ever fires.
+  - **AbortController + 6s timeout.** The fetch was previously unbounded; if the Worker hung (or, today, returned 405 instantly), the user would either wait forever or hit the bare `error` state. Now: 6s ceiling, then we treat it as a failure.
+  - **`mailto:` fallback.** On any of {timeout, network error, 405, 5xx, 4xx that isn't user-fixable}, the form builds a `mailto:darshan@x9elysium.com` URL with a pre-formatted body containing every field the user filled (name, email, phone, company, website, revenue band, current platform, service, the message itself) and pops the user's mail client via `window.location.href`. The body format mirrors `worker/email.ts` `renderLeadText` so the inbox view looks the same whether the message arrives through Resend or directly from the user's mail app.
+  - **New `fallback` UI state.** Replaces the bare red error box with a clean success-style screen: "Your mail app is opening" + a "Open mail app again" button (pre-filled with the same `mailto:` URL) for embedded/in-app webviews where `window.location.href` to a `mailto:` is silently swallowed + a plain `mailto:darshan@x9elysium.com` link for users who don't have a mail client configured + a back-arrow to edit and retry. No fake success.
+  - **4xx that the user can fix still surfaces inline.** Validation errors and 429 rate-limit responses keep showing the existing red banner with the server's error message — those need user action, not a mail-client redirect. 405 specifically routes to mailto since it's the platform telling us the Worker isn't there.
+  - **Telemetry preserved.** New Clarity events: `contact_form_mailto_fallback`, plus tags `contact_fallback_reason` (timeout / network_error / non_ok_status) and `contact_fallback_status` (the HTTP code). Existing `contact_form_submit_attempt`, `contact_form_submitted`, `contact_form_error`, `contact_field_*`, etc. all stay.
+  - **No new deps. No third-party form service.** This is a "custom form" in the §7 sense — no Web3Forms, no Formspree, no exposed API key. Just the form + the `mailto:` web standard underneath it.
+- Why now: live probe of `/api/lead` returned 405 and `/api/health` returned 404 (Worker not deployed since 2026-05-06 16:43, all 7 deploys since failed at the Cloudflare publish step). Without this fallback, every form submission since then has silently dropped — the user clicks "Talk to Our Team," sees a red "something went wrong" banner, and walks away. With the fallback, that same submission opens their mail app pre-filled and arrives at darshan@x9elysium.com.
+- Tasks moved (CLAUDE.md §10): none directly. The `/api/lead` activation ask still stands — when the Worker + Resend secrets land, the form quietly upgrades to silent POST. The fallback stays as belt-and-suspenders for embedded webview users (LinkedIn in-app browser, X.com card preview, etc.) and as graceful degradation if the Worker ever 5xxs in production.
+- Build/lint: green. /contact bundle 7.52 kB → 8.31 kB (+790 bytes for the mailto builder, fallback state, AbortController). No globals.css, no tailwind config, no new deps.
+
+---
+
 ## (pending) — 2026-05-07 — homepage: cleaner pass — kill partners marquee, slim hero glows, drop redundant reasons grid
 
 - Touched:

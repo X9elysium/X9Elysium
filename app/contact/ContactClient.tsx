@@ -13,6 +13,7 @@ import {
   Zap,
   ChevronDown,
   Layers,
+  Send,
 } from "lucide-react";
 import Image from "next/image";
 import Navigation from "../components/Navigation";
@@ -56,6 +57,54 @@ const trustedLogos = [
   { name: "Wix", src: "/images/brands/wix.png" },
 ];
 
+const LEAD_TO_EMAIL = "darshan@x9elysium.com";
+const LEAD_API_TIMEOUT_MS = 6000;
+
+type FormState = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  company: string;
+  website: string;
+  revenue: string;
+  platform: string;
+  service: string;
+  message: string;
+};
+
+// Build a mailto: URL pre-filled with everything the form collected.
+// Used as the fallback when /api/lead is missing — the user's mail
+// client opens with the message ready to send. No third-party service,
+// no exposed API key, no custom backend required to capture leads.
+function buildMailto(state: FormState): string {
+  const fullName = `${state.firstName} ${state.lastName}`.trim();
+  const subject = state.company
+    ? `New inquiry — ${fullName} · ${state.company}`
+    : `New inquiry — ${fullName || "x9elysium.com"}`;
+
+  const lines = [
+    `Hi Darshan,`,
+    ``,
+    `${state.message.trim()}`,
+    ``,
+    `---`,
+    `Name:     ${fullName || "—"}`,
+    `Email:    ${state.email || "—"}`,
+    state.phone ? `Phone:    ${state.phone}` : null,
+    state.company ? `Company:  ${state.company}` : null,
+    state.website ? `Website:  ${state.website}` : null,
+    state.revenue ? `Revenue:  ${state.revenue}` : null,
+    state.platform ? `Platform: ${state.platform}` : null,
+    state.service ? `Service:  ${state.service}` : null,
+    ``,
+    `Sent via x9elysium.com/contact`,
+  ].filter(Boolean) as string[];
+
+  const body = lines.join("\n");
+  return `mailto:${LEAD_TO_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
 const steps = [
   {
     icon: Clock,
@@ -78,7 +127,7 @@ const steps = [
 ];
 
 export default function ContactClient() {
-  const [formState, setFormState] = useState({
+  const [formState, setFormState] = useState<FormState>({
     firstName: "",
     lastName: "",
     email: "",
@@ -91,10 +140,11 @@ export default function ContactClient() {
     message: "",
   });
 
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
-    "idle"
-  );
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "sent" | "fallback" | "error"
+  >("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [fallbackHref, setFallbackHref] = useState<string>("");
   const [gotcha, setGotcha] = useState("");
   const formMountedAt = useRef<number>(Date.now());
   const formStartedRef = useRef<boolean>(false);
@@ -138,10 +188,28 @@ export default function ContactClient() {
     setFormState((prev) => ({ ...prev, [name]: value }));
   };
 
+  const triggerMailtoFallback = (reason: string, statusCode?: number) => {
+    const href = buildMailto(formState);
+    setFallbackHref(href);
+    setStatus("fallback");
+    clarity.event("contact_form_mailto_fallback");
+    clarity.tag("contact_fallback_reason", reason);
+    if (statusCode !== undefined) {
+      clarity.tag("contact_fallback_status", String(statusCode));
+    }
+    // Pop the user's mail client. If their browser blocks the navigation
+    // (rare, but happens on some embedded/in-app webviews) the UI also
+    // surfaces a visible "Open mail app" button as a manual fallback.
+    if (typeof window !== "undefined") {
+      window.location.href = href;
+    }
+  };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setStatus("sending");
     setErrorMessage(null);
+    setFallbackHref("");
 
     clarity.event("contact_form_submit_attempt");
     const elapsedSec = Math.round(
@@ -152,6 +220,12 @@ export default function ContactClient() {
     if (formState.platform) clarity.tag("lead_platform", formState.platform);
     if (formState.service) clarity.tag("lead_service", formState.service);
 
+    const controller = new AbortController();
+    const timeoutId = setTimeout(
+      () => controller.abort(),
+      LEAD_API_TIMEOUT_MS,
+    );
+
     try {
       const res = await fetch("/api/lead", {
         method: "POST",
@@ -161,7 +235,9 @@ export default function ContactClient() {
           _gotcha: gotcha,
           _ts: formMountedAt.current,
         }),
+        signal: controller.signal,
       });
+      clearTimeout(timeoutId);
 
       if (res.ok) {
         setStatus("sent");
@@ -180,16 +256,30 @@ export default function ContactClient() {
           message: "",
         });
         setGotcha("");
-      } else {
+        return;
+      }
+
+      // 4xx the user can fix → show inline error so they can retry
+      // (e.g. validation, rate limit). 405/5xx/anything else → mailto.
+      if (res.status >= 400 && res.status < 500 && res.status !== 405) {
         setStatus("error");
         clarity.event("contact_form_error");
         clarity.tag("contact_error_status", String(res.status));
-        const data = (await res.json().catch(() => null)) as { error?: string } | null;
+        const data = (await res.json().catch(() => null)) as
+          | { error?: string }
+          | null;
         if (data?.error) setErrorMessage(data.error);
+        return;
       }
-    } catch {
-      setStatus("error");
-      clarity.event("contact_form_network_error");
+
+      triggerMailtoFallback("non_ok_status", res.status);
+    } catch (err) {
+      clearTimeout(timeoutId);
+      const reason =
+        err instanceof DOMException && err.name === "AbortError"
+          ? "timeout"
+          : "network_error";
+      triggerMailtoFallback(reason);
     }
   };
 
@@ -290,6 +380,49 @@ export default function ContactClient() {
                       className="mt-10 text-emerald-500 text-sm font-medium hover:text-emerald-600 dark:hover:text-white transition-colors"
                     >
                       Send another message
+                    </button>
+                  </motion.div>
+                ) : status === "fallback" ? (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="flex flex-col items-center justify-center py-20 text-center"
+                  >
+                    <div className="w-20 h-20 rounded-full bg-emerald-500/10 flex items-center justify-center mb-8">
+                      <Send className="w-9 h-9 text-emerald-500" />
+                    </div>
+                    <h2 className="text-3xl sm:text-4xl font-light text-neutral-900 dark:text-white mb-4 tracking-tight">
+                      Your mail app is opening.
+                    </h2>
+                    <p className="text-neutral-600 dark:text-neutral-400 text-body-lg max-w-md leading-relaxed mb-8">
+                      We&apos;ve composed the message with the details you
+                      entered — hit{" "}
+                      <span className="text-neutral-900 dark:text-white font-medium">
+                        send
+                      </span>{" "}
+                      and it lands directly in Darshan&apos;s inbox.
+                    </p>
+                    <a
+                      href={fallbackHref}
+                      className="btn-accent"
+                    >
+                      Open mail app again
+                      <ArrowRight className="w-4 h-4" />
+                    </a>
+                    <p className="mt-6 text-sm text-neutral-500">
+                      No mail app set up?{" "}
+                      <a
+                        href={`mailto:${LEAD_TO_EMAIL}`}
+                        className="text-emerald-500 hover:underline"
+                      >
+                        {LEAD_TO_EMAIL}
+                      </a>
+                    </p>
+                    <button
+                      onClick={() => setStatus("idle")}
+                      className="mt-8 text-neutral-500 text-sm hover:text-emerald-500 transition-colors"
+                    >
+                      ← Edit the message
                     </button>
                   </motion.div>
                 ) : (
