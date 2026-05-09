@@ -40,6 +40,10 @@ yarn-error.log*
 .dev.vars
 .wrangler/
 
+# local agent / claude code artifacts
+.claude/scheduled_tasks.lock
+.claude/scheduled_tasks/
+
 # vercel
 .vercel
 

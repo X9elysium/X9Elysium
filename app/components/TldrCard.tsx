@@ -21,6 +21,7 @@ export default function TldrCard({
   return (
     <aside
       aria-label={`${eyebrow} summary`}
+      data-speakable="tldr"
       className="not-prose relative overflow-hidden rounded-2xl border border-emerald-500/20 dark:border-emerald-400/15 bg-gradient-to-br from-emerald-500/[0.04] via-white/60 to-white/40 dark:from-emerald-500/[0.06] dark:via-white/[0.02] dark:to-transparent backdrop-blur-sm shadow-[0_1px_0_rgba(16,185,129,0.08)] my-10 lg:my-12"
     >
       <div className="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-emerald-500 to-emerald-700/60 pointer-events-none" />

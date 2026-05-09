@@ -27,6 +27,7 @@ const API_BASE = "";
 export default function Comments({ threadId, title = "Comments", prompt }: Props) {
   const [comments, setComments] = useState<Comment[]>([]);
   const [loading, setLoading] = useState(true);
+  const [unconfigured, setUnconfigured] = useState(false);
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [busy, setBusy] = useState(false);
@@ -43,6 +44,7 @@ export default function Comments({ threadId, title = "Comments", prompt }: Props
     tsRef.current = Date.now();
     let cancelled = false;
     setLoading(true);
+    setUnconfigured(false);
     fetch(`${API_BASE}/api/comments?thread=${encodeURIComponent(threadId)}`, {
       headers: { Accept: "application/json" },
     })
@@ -50,6 +52,7 @@ export default function Comments({ threadId, title = "Comments", prompt }: Props
       .then((data) => {
         if (cancelled) return;
         setComments(Array.isArray(data?.comments) ? data.comments : []);
+        if (data?.unconfigured === true) setUnconfigured(true);
       })
       .catch(() => {
         if (!cancelled) setComments([]);
@@ -93,6 +96,11 @@ export default function Comments({ threadId, title = "Comments", prompt }: Props
         }),
       });
       const data = await res.json().catch(() => ({}));
+      if (res.status === 503) {
+        setUnconfigured(true);
+        setError(null);
+        return;
+      }
       if (!res.ok) {
         setError(data?.error || "Couldn't post — try again in a minute.");
         setCaptcha(randCaptcha());
@@ -141,7 +149,25 @@ export default function Comments({ threadId, title = "Comments", prompt }: Props
       </div>
       <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-5">{promptCopy}</p>
 
-      <form onSubmit={onSubmit} className="space-y-3 mb-7">
+      {unconfigured && (
+        <div className="rounded-lg border border-amber-500/30 bg-amber-500/[0.04] dark:bg-amber-400/[0.04] px-4 py-3 mb-5">
+          <p className="text-sm text-amber-800 dark:text-amber-200">
+            Comments are warming up. Drop a thought to{" "}
+            <a
+              href="mailto:darshan@x9elysium.com"
+              className="font-semibold underline decoration-amber-500/50 underline-offset-2 hover:decoration-amber-500"
+            >
+              darshan@x9elysium.com
+            </a>{" "}
+            and it&apos;ll land in the right thread once the store is live.
+          </p>
+        </div>
+      )}
+
+      <form
+        onSubmit={onSubmit}
+        className={`space-y-3 mb-7 ${unconfigured ? "opacity-50 pointer-events-none" : ""}`}
+      >
         <div className="grid grid-cols-1 sm:grid-cols-[200px_minmax(0,1fr)] gap-3">
           <input
             type="text"

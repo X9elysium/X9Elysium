@@ -142,7 +142,7 @@ Voice bible: `docs/books-learning/naval-ravikant.md` + the hero in `app/page.tsx
 
 ## 7. HARD RULES (never break)
 
-- **Never fabricate metrics, names, or testimonials.** Anonymized + directional > false specifics.
+- **Never fabricate metrics, names, or testimonials.** Anonymized + directional > false specifics. The `npm run build` postbuild gate at [`scripts/banned-words-check.mjs`](scripts/banned-words-check.mjs) hard-fails on the strip-list (fabricated revenue lifts, project counts, success rates, `AWS Certified`, `certified Shopify Partner`, the "first quarter after launch" testimonial fragment). If a legitimate occurrence trips it, refine the pattern — never disable the gate.
 - **Never link `/docs/journal`, `/plans`, `/chat`, or `/supreme` from nav, footer, sitemap, or `llms.txt`.** All four are PIN-gated and discoverable by URL only.
 - **Never feed `docs/journal/**` into the `/chat` Anthropic corpus.** `scripts/build-chat-context.mjs` enforces the exclude list — don't break it.
 - **Never expose API keys in client bundles.** Web3Forms was killed for this reason. All secrets live in Worker env or GH Actions secrets.
@@ -160,7 +160,8 @@ Voice bible: `docs/books-learning/naval-ravikant.md` + the hero in `app/page.tsx
 
 ```bash
 npm run dev          # local dev
-npm run build        # static export → out/
+npm run build        # static export → out/  (postbuild runs the truth gate)
+npm run truth:check  # ad-hoc: run banned-words-check.mjs against existing out/
 npm run docs         # localhost:4000/docs viewer (never deploy)
 npm run lint         # eslint
 npm run worker:dev   # local Worker
@@ -372,7 +373,7 @@ When in doubt: **ship the code, leave the public claim as a placeholder**, call 
 
 ### 12.9 The hard "never"s (the catastrophe list)
 
-- Never fabricate metrics, names, testimonials, or case studies.
+- Never fabricate metrics, names, testimonials, or case studies. The `npm run build` postbuild gate ([`scripts/banned-words-check.mjs`](scripts/banned-words-check.mjs)) hard-fails on the strip-list. Refine the pattern when something legit trips it; never disable the gate.
 - Never link `/docs/journal`, `/plans`, `/chat`, or `/supreme` from nav, footer, sitemap, or `llms.txt`.
 - Never feed `docs/journal/**` into the `/chat` corpus or any external AI service.
 - Never expose API keys in client bundles. (Web3Forms was killed for this reason. Don't repeat.)

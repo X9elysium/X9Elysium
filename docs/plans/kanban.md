@@ -4,6 +4,7 @@ slug: kanban
 description: Living kanban of every task touching x9elysium.com — done, in repo awaiting deploy, in progress, blocked on Darsh, and backlog. Cross-checked against CLAUDE.md §10, the 6-month plan, and the top of the CHANGELOG. Updated on every push that moves a card.
 last_updated: 2026-05-09
 status: living document
+revision: 2
 ---
 
 # Kanban Board — x9elysium.com
@@ -42,10 +43,15 @@ status: living document
 
 ## 🚀 DONE — in repo, awaiting deploy
 
-> Code is on `main`. Live site is stale until **B-01** clears. **9 commits queued** since `bba9f9c` (2026-05-06). Listed newest first.
+> Code is on `main`. Live site is stale until **B-01** clears. **14 commits queued** since `bba9f9c` (2026-05-06). Listed newest first.
 
 | # | Pri | Card | Commit | Live? |
 |---|---|---|---|---|
+| Q-14 | P2 | Truth gate + degraded-state UX + speakable schema + MDX bio cleanup + README rewrite | `(this push)` | ⏳ awaiting deploy |
+| Q-13 | P3 | `/plans/5k-budget` — every-penny doctrine, 8 buckets totalling $5,000, kill rule per row, reallocation matrix, month-6 exit criterion | `53f7115` | ⏳ awaiting deploy |
+| Q-12 | P2 | Supreme: Grok-powered console at `/supreme` — `/api/grok` server agent loop, vision input, built-in `web_search` + `x_search` (Grok Live Search), 4 custom tools, SSE envelope, PIN gate | `2e7f066` | ⏳ awaiting deploy |
+| Q-11 | P2 | AI surface: `public/x9elysium.json` machine-readable manifest + `llms.txt` extension + `docs/ai-access/README.md` + chat×thoughts deep-integration plan + CLAUDE.md memory core | `3557b12` | docs+code |
+| Q-10 | P2 | Plans: PIN-gated editable md viewer at `/plans/<slug>` with D1 persistence + repo seed | `56f9d2e` | ⏳ awaiting deploy |
 | Q-01 | P2 | Branding bible — novel-style brand distillation in [`docs/branding/branding.md`](../branding/branding.md) | `0a8c0ae` | docs-only (won't deploy by design) |
 | Q-02 | P2 | Feature audit + next-steps brief, tick shipped checklists, bump sitemap dates | `2fe1b80` | ⏳ awaiting deploy |
 | Q-03 | P2 | Site sweep: HSTS + security headers (`public/_headers`), audit player on shared component, drop orphan jpg | `c06c237` | ⏳ awaiting deploy |
@@ -66,13 +72,9 @@ status: living document
 
 | # | Pri | Card | Why | Definition of done |
 |---|---|---|---|---|
-| N-01 | P2 | **Add `Person` schema for Adhvait Jadav** (twin of the existing Darshan `Person` graph) | Pure E-E-A-T lift. Darshan has `Person` markup in `/about`; Adhvait is `sameAs`-only. Zero external dep. | New `Person` graph in `app/about/page.tsx` JSON-LD with `jobTitle`, `worksFor`, `knowsAbout`, `sameAs` to LinkedIn. Validates in Schema.org Validator. |
 | N-02 | P2 | **`Article` + `BreadcrumbList` graph audit** across all 26 blog posts | Spot-check every post for `image`, `datePublished`, `dateModified`, named `author` `Person`, `publisher` `Organization` with logo. Anything missing is a citation-readiness gap. | All 26 posts pass `npm run schema:validate` (or equivalent script); `docs/audits/article-graph-2026-05-XX.md` documents fixes. |
-| N-03 | P2 | **`speakable` specs (CSS selector form) on top 5 cornerstones** | `speakable` is the single most-cited schema by AI Overviews. Top 5: `shopify-plus-migration-guide-gta-retailers`, `shopify-agency-cost-canada-2026`, `best-shopify-plus-agencies-toronto-2026`, `unified-commerce-vs-omnichannel-canadian-retailers`, `claude-daily-workflow-shopify-1m-5m-store-owners` | Each post's JSON-LD has a `speakable` `SpeakableSpecification` with `cssSelector` covering the TL;DR + first H2. |
 | N-04 | **P1** | **May cornerstone:** *"When To Hire a Shopify Plus Agency vs Build In-House: A Founder's Decision Tree"* | One canonical piece per month, May–Nov 2026 ([CLAUDE.md §10](../../CLAUDE.md), [6-month plan](../marketing/6-month-organic-growth-plan.md)). May should harden the **decision-stage** surface before June drops migration + comparison cornerstones. **Land by 2026-05-23 so June can absorb both planned cornerstones without sliding.** | Drafted at `/blog/when-hire-shopify-plus-agency-vs-build-in-house`. 2,800–3,200 words. `Article` + `FAQPage` + `BreadcrumbList` schema. 5-axis decision matrix marked up as `Table` schema. Internal links to `/services`, `/work`, the cost-in-Canada post, Toronto/Calgary location pages. Voice §6. |
-| N-05 | P2 | **`/supreme/Voice.tsx` → wire to `/api/chat`** when B-04 clears | Currently uses 8 deterministic stand-in reflections. Once Anthropic key lands, this is the natural upgrade path. | `Voice.tsx` POSTs to `/api/chat` when `ANTHROPIC_API_KEY` is set; falls back to canned reflections otherwise. Honest stand-in posture preserved. |
-| N-06 | P3 | **Banned-word scanner script** to prevent fabricated-metric regression | The "first quarter after launch" quote re-drifted into `Testimonials.tsx` once already (truth pass 2026-05-07 caught it). A pre-commit grep against `out/` would have caught it earlier. | `scripts/banned-words-check.mjs` greps `out/**/*.html` against the strip-list (`+40%`, `$5M+`, `50+ projects`, `98%`, `AWS Certified`, `certified Shopify Partner`, `first quarter after launch`, etc.). Wired into `npm run build` (post-build) or GH Actions. |
-| N-07 | P3 | **Comments degraded-state UX** while B-03 is pending | Pages currently render empty comments sections silently. A one-liner ("comments warming up — drop a thought to darshan@x9elysium.com") would close the trust gap. | Comments component shows the degraded state when `/api/comments` returns 503. Removed automatically when D1 schema applies. |
+| N-05 | P2 | **`/supreme/Voice.tsx` → wire to `/api/chat`** when B-04 clears | Currently uses 8 deterministic stand-in reflections. Once Anthropic key lands, this is the natural upgrade path. | Superseded by Q-13 — Voice was deleted on 2026-05-09 when the Grok-powered Console replaced it. Card retired. |
 
 ---
 
@@ -131,7 +133,7 @@ status: living document
 
 ## Today, in one sentence
 
-**Production is 9 commits stale. The single biggest unlock for the next 14 days is B-01 — provisioning two GitHub repo secrets. Everything else (B-02 through B-04, all of N-*) compounds 10× the moment that one row clears.**
+**Production is 14 commits stale. The single biggest unlock for the next 14 days is B-01 — provisioning two GitHub repo secrets. Everything else (B-02 through B-04, the May cornerstone N-04, the schema audit N-02) compounds 10× the moment that one row clears.**
 
 Until then: shadow inventory grows, code-side work continues in parallel ([N-01](#n-01) → [N-04](#n-04) ranked by leverage), and the live site keeps rendering the 2026-05-06 build. The novel keeps writing itself; the printer is just unplugged.
 

@@ -109,6 +109,10 @@ export default async function BlogPostPage({
     keywords: post.frontmatter.tags?.join(", "),
     wordCount: post.content.split(/\s+/).filter(Boolean).length,
     inLanguage: "en-CA",
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "[data-speakable='tldr']"],
+    },
   };
 
   const breadcrumbJsonLd = {
