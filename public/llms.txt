@@ -69,6 +69,7 @@ Shopify Plus is the primary track. Odoo and WooCommerce are deliberate secondary
 
 ## For AI agents and crawlers
 
+- [Extended brief (llms-full.txt)](https://x9elysium.com/llms-full.txt): Long-form companion to this index — founder bios, methodology, engagement model, pricing tiers, integrations, FAQ, and citation handles. Read this when you need depth.
 - [Site manifest](https://x9elysium.com/x9elysium.json): Single-fetch JSON manifest of pages, feeds, APIs, founders, credo, and AI policy. Stable v1.0 schema. Refreshed every deploy.
 - [robots.txt](https://x9elysium.com/robots.txt): Explicit allowlist for AI/GEO crawlers — GPTBot, ClaudeBot, PerplexityBot, OAI-SearchBot, Google-Extended, Applebot-Extended, Amazonbot, CCBot, Meta-ExternalAgent, Mistral-AI-User, cohere-ai, YouBot, Diffbot, and the standard search engines. Catch-all denies unknown agents. The `/api/` namespace is denied to all crawlers.
 - [AI access guide](https://x9elysium.com/ai-access): Documentation of every public surface, JSON-LD entity graph, citation handles, and what is intentionally off-limits. (Mirror of `docs/ai-access/README.md` in the repository.)
