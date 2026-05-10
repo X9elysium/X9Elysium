@@ -57,7 +57,7 @@ amplifyconfiguration*
 
 #amplify-do-not-edit-begin
 amplify/\#current-cloud-backend
-amplify/.config/local-*
+amplify/.config/
 amplify/logs
 amplify/mock-data
 amplify/mock-api-resources
