@@ -11,7 +11,7 @@ import { ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "Shopify Agency in Calgary | X9Elysium",
   description:
-    "Shopify Plus and unified commerce consulting for Calgary and Alberta retailers — B2B Shopify, energy-sector DTC spinoffs, and migrations.",
+    "Shopify Plus and unified commerce consulting for Calgary and Alberta retailers — B2B Shopify, energy-sector DTC spinoffs, migrations, and ongoing optimization.",
   alternates: {
     canonical: "https://x9elysium.com/locations/calgary",
   },

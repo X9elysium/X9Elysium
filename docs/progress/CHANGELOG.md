@@ -12,6 +12,26 @@ Format:
 
 ---
 
+## (pending) — 2026-05-18 — geo: 2-week tuning pass for Shopify agency rankings
+
+- Touched:
+  - `content/posts/best-shopify-plus-agencies-toronto-2026.mdx` — renamed "The short answer" H2 → "TL;DR"; converted 4/7 H2s to question form; trimmed description to 155 chars.
+  - `content/posts/shopify-agency-cost-canada-2026.mdx` — converted 7/9 H2s to question form (78%); added /locations/toronto and /locations/calgary cross-links in final word.
+  - `content/posts/launching-dtc-brand-toronto-90-day-playbook.mdx` — added "2026" to title; converted 5/8 H2s to question form; added direct-answer intro sentences to Days 1-30 and Days 31-60; trimmed description 170→152 chars; added /locations/toronto link.
+  - `content/posts/shopify-plus-migration-guide-gta-retailers.mdx` — converted 4/8 H2s to question form (50%); added Mississauga, Brampton, Markham, Vaughan sub-city mentions; added /locations/toronto link.
+  - `content/posts/best-shopify-agencies-calgary-2026.mdx` — renamed "The short answer" H2 → "TL;DR"; converted 4/7 H2s to question form; trimmed description 167→150 chars.
+  - `content/posts/western-canada-ecommerce-calgary-dtc-hub.mdx` — added "2026" to title; converted 4/7 H2s to question form; trimmed description 162→160 chars.
+  - `content/posts/shopify-tax-setup-alberta-no-pst.mdx` — added "2026" to title; hyperlinked all 4 provincial registration URLs and canada.ca CRA reference (external authority citations 0→10 pts).
+  - `content/posts/unified-commerce-vs-omnichannel-canadian-retailers.mdx` — added "2026" to title; fixed description 136→156 chars; converted 5/10 H2s to question form (50%); added /locations/toronto and /locations/calgary cross-links.
+  - `public/llms.txt` — corrected 2 post title mismatches: "The 9 Best…" and "The 7 Best…" listicle framing → actual X9Elysium authority post titles.
+  - `app/locations/calgary/page.tsx` — extended meta description 137→161 chars (now within 140-160 range).
+  - `geo-tuning/citability-before.md` (new) — per-post citability scores before pass. Avg 80.6/120.
+  - `geo-tuning/citability-after.md` (new) — per-post citability scores after pass. Avg 104.9/120. All 8 posts pass ≥75 threshold.
+  - `geo-tuning/seo-pages-before.md` (new) — location page SEO audit. Toronto 95/100, Calgary 85/100 (meta desc was under-length; fixed).
+  - `geo-tuning/crawlers-and-llmstxt.md` (new) — robots.txt PASS (all 11 required AI crawlers). llms.txt spec PASS; 2 title mismatches fixed.
+  - `geo-tuning/brand-mentions.md` (new) — Brand Authority score 29/100. GitHub ✓, Clutch ✓, owned site ✓. Shopify Partner directory, LinkedIn company page, Reddit — all pending human action (see report for 5 recommended actions).
+- Notes: citability lift 80.6 → 104.9 avg across 8 posts. dtc-toronto-playbook brought from 74 (failing) to 108. Brand authority score 29/100 — below 60 threshold; external-signal actions required from Darsh (see geo-tuning/brand-mentions.md). `npm run build` clean. Truth gate passed.
+
 ## (pending) — 2026-05-09 — truth gate + degraded comments + speakable schema + readme rewrite
 
 - Touched:
